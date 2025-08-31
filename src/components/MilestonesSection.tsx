@@ -1,7 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, Trophy, Target, Code, Rocket, Users, ChartLine } from '@phosphor-icons/react';
+import { Calendar, Trophy, Target, Code, Rocket, Users, ChartLine, Building, Star, Medal, Lightning } from '@phosphor-icons/react';
 import developerWorkspace from '@/assets/images/developer-workspace.svg';
+import companyLogo1 from '@/assets/images/company-logo-1.svg';
+import companyLogo2 from '@/assets/images/company-logo-2.svg';
+import companyLogo3 from '@/assets/images/company-logo-3.svg';
+import companyLogo4 from '@/assets/images/company-logo-4.svg';
 
 interface Project {
   name: string;
@@ -10,20 +14,34 @@ interface Project {
   impact: string;
 }
 
+interface Achievement {
+  text: string;
+  icon: React.ReactNode;
+  highlight?: boolean;
+}
+
 interface Milestone {
   year: string;
   title: string;
+  company?: string;
+  companyLogo?: string;
   description: string;
   icon: React.ReactNode;
   color: string;
   projects?: Project[];
-  achievements?: string[];
+  achievements?: Achievement[];
+  duration?: string;
+  location?: string;
 }
 
 const milestones: Milestone[] = [
   {
     year: '2024',
     title: 'Senior Full Stack Developer',
+    company: 'TechCorp Solutions',
+    companyLogo: companyLogo1,
+    duration: 'Jan 2024 - Present',
+    location: 'San Francisco, CA',
     description: 'Promoted to senior role, leading development of enterprise applications and mentoring junior developers.',
     icon: <Trophy size={24} weight="duotone" />,
     color: 'from-purple-500 to-pink-500',
@@ -48,14 +66,33 @@ const milestones: Milestone[] = [
       }
     ],
     achievements: [
-      'Led team of 8 developers across 3 projects',
-      'Mentored 4 junior developers',
-      'Implemented CI/CD pipeline reducing bugs by 45%'
+      {
+        text: 'Led team of 8 developers across 3 major projects',
+        icon: <Users size={16} weight="duotone" />,
+        highlight: true
+      },
+      {
+        text: 'Mentored 4 junior developers to promotion',
+        icon: <Star size={16} weight="duotone" />
+      },
+      {
+        text: 'Implemented CI/CD pipeline reducing bugs by 45%',
+        icon: <Lightning size={16} weight="duotone" />
+      },
+      {
+        text: 'Achieved 99.9% uptime across all production systems',
+        icon: <Medal size={16} weight="duotone" />,
+        highlight: true
+      }
     ]
   },
   {
     year: '2023',
-    title: 'Tech Lead Position',
+    title: 'Tech Lead',
+    company: 'InnovateHub Inc.',
+    companyLogo: companyLogo2,
+    duration: 'Mar 2023 - Dec 2023',
+    location: 'Austin, TX',
     description: 'Led a team of 5 developers in delivering multiple high-impact projects using modern web technologies.',
     icon: <Target size={24} weight="duotone" />,
     color: 'from-blue-500 to-cyan-500',
@@ -80,16 +117,35 @@ const milestones: Milestone[] = [
       }
     ],
     achievements: [
-      'Delivered 5 major projects on time',
-      'Established coding standards and best practices',
-      'Reduced technical debt by 35%'
+      {
+        text: 'Delivered 5 major projects on time and under budget',
+        icon: <Trophy size={16} weight="duotone" />,
+        highlight: true
+      },
+      {
+        text: 'Established coding standards and best practices',
+        icon: <Code size={16} weight="duotone" />
+      },
+      {
+        text: 'Reduced technical debt by 35% through refactoring',
+        icon: <Lightning size={16} weight="duotone" />
+      },
+      {
+        text: 'Won "Innovation Award" for breakthrough solutions',
+        icon: <Medal size={16} weight="duotone" />,
+        highlight: true
+      }
     ]
   },
   {
     year: '2022',
     title: 'Full Stack Developer',
+    company: 'WebSolutions Pro',
+    companyLogo: companyLogo3,
+    duration: 'Jun 2022 - Feb 2023',
+    location: 'Seattle, WA',
     description: 'Transitioned to full-stack development, mastering both frontend and backend technologies.',
-    icon: <Trophy size={24} weight="duotone" />,
+    icon: <Code size={24} weight="duotone" />,
     color: 'from-green-500 to-emerald-500',
     projects: [
       {
@@ -112,14 +168,33 @@ const milestones: Milestone[] = [
       }
     ],
     achievements: [
-      'Mastered 6 new programming languages',
-      'Implemented automated testing (95% coverage)',
-      'Optimized database queries (50% faster response)'
+      {
+        text: 'Mastered 6 new programming languages and frameworks',
+        icon: <Star size={16} weight="duotone" />,
+        highlight: true
+      },
+      {
+        text: 'Implemented automated testing achieving 95% coverage',
+        icon: <Lightning size={16} weight="duotone" />
+      },
+      {
+        text: 'Optimized database queries for 50% faster response',
+        icon: <ChartLine size={16} weight="duotone" />
+      },
+      {
+        text: 'Received "Developer of the Year" recognition',
+        icon: <Medal size={16} weight="duotone" />,
+        highlight: true
+      }
     ]
   },
   {
     year: '2021',
-    title: 'Started Career',
+    title: 'Frontend Developer',
+    company: 'StartupVenture',
+    companyLogo: companyLogo4,
+    duration: 'Aug 2021 - May 2022',
+    location: 'Boston, MA',
     description: 'Began my journey as a Frontend Developer, focusing on React and modern JavaScript frameworks.',
     icon: <Calendar size={24} weight="duotone" />,
     color: 'from-orange-500 to-red-500',
@@ -144,9 +219,24 @@ const milestones: Milestone[] = [
       }
     ],
     achievements: [
-      'Completed 15+ frontend projects',
-      'Learned modern development tools',
-      'Built first production application'
+      {
+        text: 'Completed 15+ frontend projects successfully',
+        icon: <Trophy size={16} weight="duotone" />,
+        highlight: true
+      },
+      {
+        text: 'Learned modern development tools and workflows',
+        icon: <Star size={16} weight="duotone" />
+      },
+      {
+        text: 'Built first production application from scratch',
+        icon: <Rocket size={16} weight="duotone" />
+      },
+      {
+        text: 'Earned "Rising Star" award in first 6 months',
+        icon: <Medal size={16} weight="duotone" />,
+        highlight: true
+      }
     ]
   }
 ];
@@ -157,25 +247,61 @@ const MilestonesSection: React.FC = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1
+        staggerChildren: 0.3,
+        delayChildren: 0.2
       }
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, x: -50 },
+    hidden: { opacity: 0, x: -60, scale: 0.9 },
     visible: {
       opacity: 1,
-      x: 0
+      x: 0,
+      scale: 1,
+      transition: {
+        duration: 0.8,
+        ease: [0.4, 0.0, 0.2, 1]
+      }
     }
   };
 
   const projectVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 30, scale: 0.95 },
     visible: {
       opacity: 1,
-      y: 0
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.6,
+        ease: [0.4, 0.0, 0.2, 1]
+      }
+    }
+  };
+
+  const logoVariants = {
+    hidden: { opacity: 0, scale: 0.5, rotate: -180 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      rotate: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.4, 0.0, 0.2, 1],
+        delay: 0.2
+      }
+    }
+  };
+
+  const achievementVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.5,
+        ease: [0.4, 0.0, 0.2, 1]
+      }
     }
   };
 
@@ -363,7 +489,7 @@ const MilestonesSection: React.FC = () => {
             </div>
           </motion.div>
 
-          <div className="space-y-16 relative z-10">
+          <div className="space-y-20 relative z-10">
             {milestones.map((milestone, index) => (
               <motion.div
                 key={milestone.year}
@@ -372,37 +498,142 @@ const MilestonesSection: React.FC = () => {
                   index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
                 }`}
               >
-                {/* Timeline dot */}
-                <div className="absolute left-8 md:left-1/2 w-4 h-4 bg-background border-4 border-primary rounded-full transform md:-translate-x-1/2 z-10 mt-6"></div>
-
-                {/* Content card */}
-                <div className={`ml-20 md:ml-0 ${
-                  index % 2 === 0 ? 'md:mr-8 md:text-right' : 'md:ml-8'
-                } md:w-1/2`}>
+                {/* Enhanced Timeline dot with company logo */}
+                <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 z-20 mt-6">
                   <motion.div
-                    className="glass-card p-6 rounded-xl hover-lift group"
-                    whileHover={{ scale: 1.02 }}
+                    className="relative flex items-center justify-center"
+                    whileHover={{ scale: 1.1 }}
                     transition={{ duration: 0.2 }}
                   >
-                    {/* Header */}
-                    <div className={`inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r ${milestone.color} mb-4 group-hover:animate-pulse-glow`}>
-                      {milestone.icon}
-                    </div>
-                    <div className="flex items-center gap-3 mb-3">
-                      <span className="text-2xl font-bold text-primary">{milestone.year}</span>
-                      <div className={`h-1 flex-1 bg-gradient-to-r ${milestone.color} rounded-full`}></div>
-                    </div>
-                    <h3 className="text-xl font-semibold mb-3 text-foreground">{milestone.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed mb-6">{milestone.description}</p>
+                    {/* Outer ring with gradient */}
+                    <motion.div
+                      className={`w-20 h-20 rounded-full bg-gradient-to-r ${milestone.color} p-1 shadow-lg`}
+                      initial={{ scale: 0, rotate: -180 }}
+                      whileInView={{ scale: 1, rotate: 0 }}
+                      transition={{ 
+                        duration: 0.8, 
+                        ease: [0.4, 0.0, 0.2, 1],
+                        delay: index * 0.2 
+                      }}
+                      viewport={{ once: true }}
+                    >
+                      {/* Company logo container */}
+                      <div className="w-full h-full bg-background rounded-full flex items-center justify-center p-2 relative overflow-hidden">
+                        {milestone.companyLogo && (
+                          <motion.img
+                            src={milestone.companyLogo}
+                            alt={`${milestone.company} logo`}
+                            className="w-10 h-10 object-contain"
+                            variants={logoVariants}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true }}
+                          />
+                        )}
+                        
+                        {/* Animated pulse effect */}
+                        <motion.div
+                          className={`absolute inset-0 rounded-full bg-gradient-to-r ${milestone.color} opacity-20`}
+                          animate={{
+                            scale: [1, 1.2, 1],
+                            opacity: [0.2, 0.4, 0.2]
+                          }}
+                          transition={{
+                            duration: 3,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                            delay: index * 0.5
+                          }}
+                        />
+                      </div>
+                    </motion.div>
+                    
+                    {/* Year badge */}
+                    <motion.div
+                      className={`absolute -bottom-2 bg-gradient-to-r ${milestone.color} text-white text-xs font-bold px-2 py-1 rounded-full shadow-md`}
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ 
+                        duration: 0.5, 
+                        delay: index * 0.2 + 0.3 
+                      }}
+                      viewport={{ once: true }}
+                    >
+                      {milestone.year}
+                    </motion.div>
+                  </motion.div>
+                </div>
 
-                    {/* Projects */}
+                {/* Content card */}
+                <div className={`ml-32 md:ml-0 ${
+                  index % 2 === 0 ? 'md:mr-12 md:text-right' : 'md:ml-12'
+                } md:w-1/2`}>
+                  <motion.div
+                    className="glass-card p-8 rounded-2xl hover-lift group relative overflow-hidden"
+                    whileHover={{ 
+                      scale: 1.02,
+                      y: -8
+                    }}
+                    transition={{ duration: 0.3, ease: [0.4, 0.0, 0.2, 1] }}
+                  >
+                    {/* Gradient overlay animation */}
+                    <motion.div
+                      className={`absolute inset-0 bg-gradient-to-r ${milestone.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}
+                    />
+                    
+                    {/* Header section */}
+                    <div className="relative z-10">
+                      <div className={`flex items-center gap-4 mb-4 ${
+                        index % 2 === 0 ? 'md:justify-end' : 'md:justify-start'
+                      } justify-start`}>
+                        <motion.div
+                          className={`inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-r ${milestone.color} shadow-lg group-hover:animate-pulse-glow`}
+                          whileHover={{ rotate: 360 }}
+                          transition={{ duration: 0.6 }}
+                        >
+                          <div className="text-white">
+                            {milestone.icon}
+                          </div>
+                        </motion.div>
+                        
+                        <div className={`${index % 2 === 0 ? 'md:text-right' : 'md:text-left'} text-left`}>
+                          <h3 className="text-2xl font-bold text-foreground mb-1">{milestone.title}</h3>
+                          {milestone.company && (
+                            <div className="flex items-center gap-2 text-primary font-semibold mb-1">
+                              <Building size={16} weight="duotone" />
+                              {milestone.company}
+                            </div>
+                          )}
+                          {milestone.duration && (
+                            <p className="text-sm text-muted-foreground">{milestone.duration}</p>
+                          )}
+                          {milestone.location && (
+                            <p className="text-xs text-muted-foreground opacity-75">{milestone.location}</p>
+                          )}
+                        </div>
+                      </div>
+                      
+                      <div className={`h-1 bg-gradient-to-r ${milestone.color} rounded-full mb-6 opacity-50`}></div>
+                      
+                      <p className="text-muted-foreground leading-relaxed mb-8 text-lg">{milestone.description}</p>
+                    </div>
+
+                    {/* Projects section */}
                     {milestone.projects && (
-                      <div className="mb-6">
-                        <h4 className="flex items-center gap-2 text-lg font-semibold mb-4 text-foreground">
-                          <Code size={20} weight="duotone" />
+                      <div className="mb-8">
+                        <motion.h4 
+                          className="flex items-center gap-3 text-xl font-bold mb-6 text-foreground"
+                          initial={{ opacity: 0, x: -20 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.6, delay: 0.2 }}
+                          viewport={{ once: true }}
+                        >
+                          <div className={`p-2 rounded-lg bg-gradient-to-r ${milestone.color} bg-opacity-10`}>
+                            <Code size={20} weight="duotone" className="text-primary" />
+                          </div>
                           Key Projects
-                        </h4>
-                        <div className="space-y-4">
+                        </motion.h4>
+                        <div className="grid gap-6">
                           {milestone.projects.map((project, projectIndex) => (
                             <motion.div
                               key={project.name}
@@ -410,27 +641,41 @@ const MilestonesSection: React.FC = () => {
                               initial="hidden"
                               whileInView="visible"
                               viewport={{ once: true }}
-                              transition={{ delay: projectIndex * 0.1 }}
-                              className="bg-background/50 rounded-lg p-4 border border-border hover:border-primary/50 transition-colors"
+                              transition={{ delay: projectIndex * 0.15 }}
+                              className="project-card bg-background/70 rounded-xl p-6 border border-border hover:border-primary/30 transition-all duration-300 relative overflow-hidden group/project"
                             >
-                              <div className="flex items-start justify-between mb-2">
-                                <h5 className="font-semibold text-foreground">{project.name}</h5>
-                                <Rocket size={16} className="text-primary mt-1 flex-shrink-0" />
-                              </div>
-                              <p className="text-sm text-muted-foreground mb-3">{project.description}</p>
-                              <div className="flex flex-wrap gap-1 mb-3">
-                                {project.tech.map((tech) => (
-                                  <span
-                                    key={tech}
-                                    className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full font-medium"
+                              {/* Project gradient overlay */}
+                              <div className={`absolute inset-0 bg-gradient-to-r ${milestone.color} opacity-0 group-hover/project:opacity-5 transition-opacity duration-300`}></div>
+                              
+                              <div className="relative z-10">
+                                <div className="flex items-start justify-between mb-3">
+                                  <h5 className="font-bold text-lg text-foreground">{project.name}</h5>
+                                  <motion.div
+                                    whileHover={{ scale: 1.2, rotate: 15 }}
+                                    transition={{ duration: 0.2 }}
                                   >
-                                    {tech}
-                                  </span>
-                                ))}
-                              </div>
-                              <div className="flex items-center gap-2 text-xs text-accent font-medium">
-                                <ChartLine size={14} weight="duotone" />
-                                {project.impact}
+                                    <Rocket size={20} className="text-primary flex-shrink-0" />
+                                  </motion.div>
+                                </div>
+                                <p className="text-muted-foreground mb-4 leading-relaxed">{project.description}</p>
+                                <div className="flex flex-wrap gap-2 mb-4">
+                                  {project.tech.map((tech, techIndex) => (
+                                    <motion.span
+                                      key={tech}
+                                      initial={{ opacity: 0, scale: 0.8 }}
+                                      whileInView={{ opacity: 1, scale: 1 }}
+                                      transition={{ delay: techIndex * 0.05 }}
+                                      viewport={{ once: true }}
+                                      className="px-3 py-1.5 bg-primary/15 text-primary text-sm rounded-lg font-medium hover:bg-primary/25 transition-colors"
+                                    >
+                                      {tech}
+                                    </motion.span>
+                                  ))}
+                                </div>
+                                <div className="flex items-center gap-2 text-sm text-accent font-semibold">
+                                  <ChartLine size={16} weight="duotone" />
+                                  {project.impact}
+                                </div>
                               </div>
                             </motion.div>
                           ))}
@@ -438,39 +683,89 @@ const MilestonesSection: React.FC = () => {
                       </div>
                     )}
 
-                    {/* Achievements */}
+                    {/* Enhanced Achievements section */}
                     {milestone.achievements && (
                       <div>
-                        <h4 className="flex items-center gap-2 text-lg font-semibold mb-3 text-foreground">
-                          <Users size={20} weight="duotone" />
+                        <motion.h4 
+                          className="flex items-center gap-3 text-xl font-bold mb-6 text-foreground"
+                          initial={{ opacity: 0, x: -20 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.6, delay: 0.3 }}
+                          viewport={{ once: true }}
+                        >
+                          <div className={`p-2 rounded-lg bg-gradient-to-r ${milestone.color} bg-opacity-10`}>
+                            <Medal size={20} weight="duotone" className="text-accent" />
+                          </div>
                           Key Achievements
-                        </h4>
-                        <ul className="space-y-2">
+                        </motion.h4>
+                        <div className="grid gap-3">
                           {milestone.achievements.map((achievement, achievementIndex) => (
-                            <motion.li
+                            <motion.div
                               key={achievementIndex}
-                              variants={projectVariants}
+                              variants={achievementVariants}
                               initial="hidden"
                               whileInView="visible"
                               viewport={{ once: true }}
                               transition={{ delay: achievementIndex * 0.1 }}
-                              className="flex items-start gap-2 text-sm text-muted-foreground"
+                              className={`flex items-start gap-3 p-4 rounded-lg transition-all duration-300 hover:scale-[1.02] ${
+                                achievement.highlight 
+                                  ? `bg-gradient-to-r ${milestone.color} bg-opacity-10 border border-primary/20 shadow-md` 
+                                  : 'bg-background/50 hover:bg-background/70'
+                              }`}
                             >
-                              <div className="w-1.5 h-1.5 bg-accent rounded-full mt-2 flex-shrink-0"></div>
-                              {achievement}
-                            </motion.li>
+                              <motion.div
+                                className={`p-2 rounded-lg ${
+                                  achievement.highlight 
+                                    ? `bg-gradient-to-r ${milestone.color} text-white shadow-md` 
+                                    : 'bg-muted text-muted-foreground'
+                                }`}
+                                whileHover={{ scale: 1.1 }}
+                                transition={{ duration: 0.2 }}
+                              >
+                                {achievement.icon}
+                              </motion.div>
+                              <p className={`text-sm leading-relaxed flex-1 ${
+                                achievement.highlight 
+                                  ? 'text-foreground font-semibold' 
+                                  : 'text-muted-foreground'
+                              }`}>
+                                {achievement.text}
+                              </p>
+                              {achievement.highlight && (
+                                <motion.div
+                                  className="text-accent"
+                                  animate={{ 
+                                    scale: [1, 1.2, 1],
+                                    opacity: [0.5, 1, 0.5]
+                                  }}
+                                  transition={{ 
+                                    duration: 2, 
+                                    repeat: Infinity,
+                                    ease: "easeInOut"
+                                  }}
+                                >
+                                  <Star size={16} weight="fill" />
+                                </motion.div>
+                              )}
+                            </motion.div>
                           ))}
-                        </ul>
+                        </div>
                       </div>
                     )}
                   </motion.div>
                 </div>
 
-                {/* Year indicator for mobile */}
-                <div className="md:hidden absolute left-0 w-16 text-center">
-                  <span className="text-sm font-semibold text-primary bg-background px-2 py-1 rounded-full">
+                {/* Mobile year indicator */}
+                <div className="md:hidden absolute left-0 w-24 text-center">
+                  <motion.span 
+                    className="text-sm font-bold text-primary bg-background px-3 py-2 rounded-full shadow-md border border-border"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                  >
                     {milestone.year}
-                  </span>
+                  </motion.span>
                 </div>
               </motion.div>
             ))}

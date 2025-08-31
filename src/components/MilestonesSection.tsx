@@ -11,6 +11,12 @@ import companyLogo2 from '@/assets/images/company-logo-2.svg';
 import companyLogo3 from '@/assets/images/company-logo-3.svg';
 import companyLogo4 from '@/assets/images/company-logo-4.svg';
 
+// New sample parallax images
+import codingWorkspace from '@/assets/images/coding-workspace.svg';
+import serverArchitecture from '@/assets/images/server-architecture.svg';
+import mobileDevelopment from '@/assets/images/mobile-development.svg';
+import teamLeadership from '@/assets/images/team-leadership.svg';
+
 interface Project {
   name: string;
   description: string;
@@ -45,7 +51,7 @@ const milestones: Milestone[] = [
     title: 'Senior Full Stack Developer',
     company: 'TechCorp Solutions',
     companyLogo: companyLogo1,
-    illustration: seniorDevIllustration,
+    illustration: teamLeadership,
     duration: 'Jan 2024 - Present',
     location: 'San Francisco, CA',
     description: 'Promoted to senior role, leading development of enterprise applications and mentoring junior developers.',
@@ -97,7 +103,7 @@ const milestones: Milestone[] = [
     title: 'Tech Lead',
     company: 'InnovateHub Inc.',
     companyLogo: companyLogo2,
-    illustration: techLeadIllustration,
+    illustration: serverArchitecture,
     duration: 'Mar 2023 - Dec 2023',
     location: 'Austin, TX',
     description: 'Led a team of 5 developers in delivering multiple high-impact projects using modern web technologies.',
@@ -149,7 +155,7 @@ const milestones: Milestone[] = [
     title: 'Full Stack Developer',
     company: 'WebSolutions Pro',
     companyLogo: companyLogo3,
-    illustration: fullStackIllustration,
+    illustration: mobileDevelopment,
     duration: 'Jun 2022 - Feb 2023',
     location: 'Seattle, WA',
     description: 'Transitioned to full-stack development, mastering both frontend and backend technologies.',
@@ -201,7 +207,7 @@ const milestones: Milestone[] = [
     title: 'Frontend Developer',
     company: 'StartupVenture',
     companyLogo: companyLogo4,
-    illustration: frontendDevIllustration,
+    illustration: codingWorkspace,
     duration: 'Aug 2021 - May 2022',
     location: 'Boston, MA',
     description: 'Began my journey as a Frontend Developer, focusing on React and modern JavaScript frameworks.',
@@ -369,9 +375,9 @@ const MilestonesSection: React.FC = () => {
           >
             <div className="relative w-full h-full">
               <motion.img
-                src={developerWorkspace}
-                alt="Developer workspace illustration"
-                className="w-full h-full object-contain opacity-20 dark:opacity-10"
+                src={codingWorkspace}
+                alt="Coding workspace illustration"
+                className="w-full h-full object-contain opacity-25 dark:opacity-15"
                 animate={{ 
                   y: [0, -10, 0],
                   rotate: [0, 1, 0]
@@ -417,6 +423,64 @@ const MilestonesSection: React.FC = () => {
                   duration: 5, 
                   repeat: Infinity, 
                   delay: 2 
+                }}
+              />
+            </div>
+          </motion.div>
+
+          {/* Additional floating image - Server Architecture - Left Side */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, x: -20 }}
+            whileInView={{ opacity: 1, scale: 1, x: 0 }}
+            transition={{ 
+              duration: 0.8, 
+              ease: [0.4, 0.0, 0.2, 1],
+              delay: 1.2 
+            }}
+            viewport={{ once: true }}
+            className="hidden lg:block absolute top-96 left-5 xl:left-15 w-72 h-48 z-0"
+          >
+            <div className="relative w-full h-full">
+              <motion.img
+                src={serverArchitecture}
+                alt="Server architecture illustration"
+                className="w-full h-full object-contain opacity-20 dark:opacity-10"
+                animate={{ 
+                  y: [0, -12, 0],
+                  rotate: [0, -1, 0]
+                }}
+                transition={{ 
+                  duration: 7, 
+                  repeat: Infinity, 
+                  ease: "easeInOut",
+                  delay: 1
+                }}
+              />
+              {/* Data flow particles */}
+              <motion.div
+                className="absolute top-6 right-6 w-1.5 h-1.5 bg-cyan-400 rounded-full opacity-60"
+                animate={{ 
+                  scale: [1, 1.4, 1],
+                  opacity: [0.4, 0.8, 0.4],
+                  x: [0, 10, 0]
+                }}
+                transition={{ 
+                  duration: 3, 
+                  repeat: Infinity, 
+                  delay: 0.5 
+                }}
+              />
+              <motion.div
+                className="absolute bottom-6 left-6 w-2 h-2 bg-green-400 rounded-full opacity-50"
+                animate={{ 
+                  scale: [1, 1.6, 1],
+                  opacity: [0.3, 0.7, 0.3],
+                  y: [0, -8, 0]
+                }}
+                transition={{ 
+                  duration: 4, 
+                  repeat: Infinity, 
+                  delay: 1.5 
                 }}
               />
             </div>
@@ -502,6 +566,63 @@ const MilestonesSection: React.FC = () => {
               >
                 {"{}"}
               </motion.div>
+            </div>
+          </motion.div>
+
+          {/* Mobile Development Image - Bottom Right */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ 
+              duration: 0.8, 
+              ease: [0.4, 0.0, 0.2, 1],
+              delay: 1.8 
+            }}
+            viewport={{ once: true }}
+            className="hidden lg:block absolute bottom-20 right-5 xl:right-15 w-60 h-40 z-0"
+          >
+            <div className="relative w-full h-full">
+              <motion.img
+                src={mobileDevelopment}
+                alt="Mobile development illustration"
+                className="w-full h-full object-contain opacity-15 dark:opacity-8"
+                animate={{ 
+                  y: [0, -6, 0],
+                  rotate: [0, 0.5, 0]
+                }}
+                transition={{ 
+                  duration: 9, 
+                  repeat: Infinity, 
+                  ease: "easeInOut",
+                  delay: 2
+                }}
+              />
+              {/* Mobile interaction particles */}
+              <motion.div
+                className="absolute top-4 left-8 w-1 h-1 bg-blue-400 rounded-full opacity-50"
+                animate={{ 
+                  scale: [1, 2, 1],
+                  opacity: [0.3, 0.8, 0.3]
+                }}
+                transition={{ 
+                  duration: 2.5, 
+                  repeat: Infinity, 
+                  delay: 0.3 
+                }}
+              />
+              <motion.div
+                className="absolute bottom-8 right-4 w-1.5 h-1.5 bg-purple-400 rounded-full opacity-40"
+                animate={{ 
+                  scale: [1, 1.5, 1],
+                  opacity: [0.2, 0.6, 0.2],
+                  rotate: [0, 180, 360]
+                }}
+                transition={{ 
+                  duration: 5, 
+                  repeat: Infinity, 
+                  delay: 2.5 
+                }}
+              />
             </div>
           </motion.div>
 

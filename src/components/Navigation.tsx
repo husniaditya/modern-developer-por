@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from '@phosphor-icons/react';
 
 const Navigation = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   const sections = [
     { id: 'home', label: 'Home' },
@@ -20,6 +22,9 @@ const Navigation = () => {
     const handleScroll = () => {
       const sections = document.querySelectorAll('section[id]');
       const scrollPosition = window.scrollY + 100;
+      
+      // Update scroll state for background opacity
+      setScrolled(window.scrollY > 50);
 
       sections.forEach((section) => {
         const element = section as HTMLElement;
@@ -42,62 +47,176 @@ const Navigation = () => {
     setIsOpen(false);
   };
 
+  const mobileMenuVariants = {
+    closed: {
+      opacity: 0,
+      height: 0,
+      transition: {
+        duration: 0.3,
+        ease: "easeInOut"
+      }
+    },
+    open: {
+      opacity: 1,
+      height: "auto",
+      transition: {
+        duration: 0.3,
+        ease: "easeInOut"
+      }
+    }
+  };
+
+  const menuItemVariants = {
+    closed: { x: -20, opacity: 0 },
+    open: { 
+      x: 0, 
+      opacity: 1,
+      transition: {
+        duration: 0.3
+      }
+    }
+  };
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
+    <motion.nav 
+      className={`fixed top-0 left-0 right-0 z-50 border-b border-border transition-all duration-300 ${
+        scrolled ? 'bg-background/95 backdrop-blur-lg shadow-lg' : 'bg-background/80 backdrop-blur-md'
+      }`}
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <div className="flex-shrink-0">
+          <motion.div 
+            className="flex-shrink-0"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
             <h1 className="text-xl font-bold text-primary">Portfolio</h1>
-          </div>
+          </motion.div>
           
           {/* Desktop Navigation */}
-          <div className="hidden md:block">
+          <motion.div 
+            className="hidden md:block"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
             <div className="ml-10 flex items-baseline space-x-4">
-              {sections.map((section) => (
-                <Button
+              {sections.map((section, index) => (
+                <motion.div
                   key={section.id}
-                  variant={activeSection === section.id ? 'default' : 'ghost'}
-                  size="sm"
-                  onClick={() => scrollToSection(section.id)}
-                  className="transition-colors"
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: 0.1 * index }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  {section.label}
-                </Button>
+                  <Button
+                    variant={activeSection === section.id ? 'default' : 'ghost'}
+                    size="sm"
+                    onClick={() => scrollToSection(section.id)}
+                    className="transition-all duration-200 relative"
+                  >
+                    {section.label}
+                    {activeSection === section.id && (
+                      <motion.div
+                        className="absolute inset-0 bg-primary/10 rounded-md -z-10"
+                        layoutId="activeSection"
+                        initial={false}
+                        transition={{
+                          type: "spring",
+                          stiffness: 300,
+                          damping: 30
+                        }}
+                      />
+                    )}
+                  </Button>
+                </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setIsOpen(!isOpen)}
+          <motion.div 
+            className="md:hidden"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <motion.div
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </Button>
-          </div>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setIsOpen(!isOpen)}
+              >
+                <AnimatePresence mode="wait">
+                  {isOpen ? (
+                    <motion.div
+                      key="close"
+                      initial={{ rotate: -90, opacity: 0 }}
+                      animate={{ rotate: 0, opacity: 1 }}
+                      exit={{ rotate: 90, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <X size={24} />
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="menu"
+                      initial={{ rotate: 90, opacity: 0 }}
+                      animate={{ rotate: 0, opacity: 1 }}
+                      exit={{ rotate: -90, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <Menu size={24} />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </Button>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
 
       {/* Mobile Navigation */}
-      {isOpen && (
-        <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-background border-b border-border">
-            {sections.map((section) => (
-              <Button
-                key={section.id}
-                variant={activeSection === section.id ? 'default' : 'ghost'}
-                className="w-full justify-start"
-                onClick={() => scrollToSection(section.id)}
-              >
-                {section.label}
-              </Button>
-            ))}
-          </div>
-        </div>
-      )}
-    </nav>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div 
+            className="md:hidden overflow-hidden"
+            variants={mobileMenuVariants}
+            initial="closed"
+            animate="open"
+            exit="closed"
+          >
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-background border-b border-border">
+              {sections.map((section, index) => (
+                <motion.div
+                  key={section.id}
+                  variants={menuItemVariants}
+                  initial="closed"
+                  animate="open"
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <Button
+                    variant={activeSection === section.id ? 'default' : 'ghost'}
+                    className="w-full justify-start"
+                    onClick={() => scrollToSection(section.id)}
+                  >
+                    {section.label}
+                  </Button>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.nav>
   );
 };
 

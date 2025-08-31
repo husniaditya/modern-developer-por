@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 
@@ -13,6 +14,8 @@ interface Milestone {
 }
 
 const MilestonesSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
   const milestones: Milestone[] = [
     {
       id: '1',
@@ -112,29 +115,90 @@ const MilestonesSection = () => {
     }
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        delayChildren: 0.3,
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { x: -50, opacity: 0 },
+    visible: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const timelineVariants = {
+    hidden: { scaleY: 0 },
+    visible: {
+      scaleY: 1,
+      transition: {
+        duration: 1.5,
+        ease: "easeInOut"
+      }
+    }
+  };
+
   return (
-    <section id="milestones" className="py-20">
+    <section id="milestones" ref={sectionRef} className="py-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.6 }}
+        >
           <h2 className="text-4xl font-bold text-foreground mb-4">Career Milestones</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Key achievements and significant moments throughout my professional journey
           </p>
-        </div>
+        </motion.div>
 
         <div className="relative">
           {/* Timeline line */}
-          <div className="absolute left-8 top-0 bottom-0 w-0.5 timeline-line"></div>
+          <motion.div 
+            className="absolute left-8 top-0 bottom-0 w-0.5 timeline-line origin-top"
+            variants={timelineVariants}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+          ></motion.div>
 
-          <div className="space-y-12">
+          <motion.div 
+            className="space-y-12"
+            variants={containerVariants}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+          >
             {milestones.map((milestone, index) => (
-              <div key={milestone.id} className="relative flex items-start group">
+              <motion.div 
+                key={milestone.id} 
+                className="relative flex items-start group"
+                variants={itemVariants}
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.2 }}
+              >
                 {/* Timeline dot */}
-                <div className={`absolute left-6 w-4 h-4 rounded-full ${getTypeColor(milestone.type)} ring-4 ring-background z-10 group-hover:scale-125 transition-transform`}></div>
+                <motion.div 
+                  className={`absolute left-6 w-4 h-4 rounded-full ${getTypeColor(milestone.type)} ring-4 ring-background z-10`}
+                  initial={{ scale: 0 }}
+                  animate={isInView ? { scale: 1 } : { scale: 0 }}
+                  transition={{ delay: 0.5 + index * 0.2, duration: 0.3 }}
+                  whileHover={{ scale: 1.25 }}
+                ></motion.div>
                 
                 {/* Content */}
                 <div className="ml-16 w-full">
-                  <Card className="group-hover:shadow-lg transition-all duration-300 group-hover:-translate-y-1">
+                  <Card className="hover:shadow-lg transition-all duration-300">
                     <CardContent className="p-6">
                       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
                         <div>
@@ -159,19 +223,25 @@ const MilestonesSection = () => {
                         <h4 className="font-medium text-foreground">Key Achievements:</h4>
                         <ul className="space-y-1">
                           {milestone.achievements.map((achievement, idx) => (
-                            <li key={idx} className="text-sm text-muted-foreground flex items-start">
+                            <motion.li 
+                              key={idx} 
+                              className="text-sm text-muted-foreground flex items-start"
+                              initial={{ opacity: 0, x: -20 }}
+                              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+                              transition={{ delay: 0.8 + index * 0.2 + idx * 0.1 }}
+                            >
                               <span className="text-primary mr-2">•</span>
                               {achievement}
-                            </li>
+                            </motion.li>
                           ))}
                         </ul>
                       </div>
                     </CardContent>
                   </Card>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

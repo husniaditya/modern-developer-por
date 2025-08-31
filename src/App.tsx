@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Toaster } from '@/components/ui/sonner';
 import Navigation from '@/components/Navigation';
 import HeroSection from '@/components/HeroSection';
@@ -10,8 +11,25 @@ import TestimonialsSection from '@/components/TestimonialsSection';
 import ContactSection from '@/components/ContactSection';
 
 function App() {
+  const pageVariants = {
+    initial: { opacity: 0, y: 20 },
+    animate: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-background scroll-smooth">
+    <motion.div 
+      className="min-h-screen bg-background scroll-smooth"
+      variants={pageVariants}
+      initial="initial"
+      animate="animate"
+    >
       <Navigation />
       
       <main>
@@ -24,17 +42,36 @@ function App() {
         <ContactSection />
       </main>
 
-      <footer className="bg-primary text-primary-foreground py-8">
+      <motion.footer 
+        className="bg-primary text-primary-foreground py-8"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p>&copy; 2024 Your Name. All rights reserved.</p>
-          <p className="text-sm mt-2 opacity-80">
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            &copy; 2024 Your Name. All rights reserved.
+          </motion.p>
+          <motion.p 
+            className="text-sm mt-2 opacity-80"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 0.8 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+            viewport={{ once: true }}
+          >
             Built with React, TypeScript, and Tailwind CSS
-          </p>
+          </motion.p>
         </div>
-      </footer>
+      </motion.footer>
 
       <Toaster position="bottom-right" />
-    </div>
+    </motion.div>
   );
 }
 

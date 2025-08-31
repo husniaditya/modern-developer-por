@@ -437,6 +437,35 @@ html {
   scroll-padding-top: 80px;
 }
 
+/* Mobile-specific optimizations for milestones */
+@media (max-width: 768px) {
+  .milestone-section {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  
+  .milestone-card {
+    margin-left: 1.25rem;
+    margin-right: 0.25rem;
+  }
+  
+  .milestone-timeline {
+    left: 1.5rem;
+  }
+  
+  .milestone-dot {
+    left: 1.5rem;
+  }
+}
+
+/* Smooth mobile scrolling */
+@media (max-width: 768px) {
+  .scroll-smooth {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
 /* Enhanced timeline animations */
 @keyframes timeline-pulse {
   0%, 100% {

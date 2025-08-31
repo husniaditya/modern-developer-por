@@ -328,25 +328,25 @@ const MilestonesSection: React.FC = () => {
   };
 
   return (
-    <section id="milestones" className="py-20 bg-muted/30 relative overflow-hidden">
+    <section id="milestones" className="py-12 sm:py-16 lg:py-20 bg-muted/30 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-1/4 left-10 w-32 h-32 bg-primary rounded-full blur-3xl animate-pulse-glow"></div>
-        <div className="absolute bottom-1/4 right-10 w-24 h-24 bg-accent rounded-full blur-2xl animate-float"></div>
+        <div className="absolute top-1/4 left-4 sm:left-10 w-20 h-20 sm:w-32 sm:h-32 bg-primary rounded-full blur-3xl animate-pulse-glow"></div>
+        <div className="absolute bottom-1/4 right-4 sm:right-10 w-16 h-16 sm:w-24 sm:h-24 bg-accent rounded-full blur-2xl animate-float"></div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div className="max-w-6xl mx-auto px-3 sm:px-4 lg:px-8 relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.4, 0.0, 0.2, 1] }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-12 lg:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
             Career <span className="brand-gradient-text">Milestones</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-2">
             Key achievements, projects, and pivotal moments that have shaped my professional journey
           </p>
         </motion.div>
@@ -359,7 +359,7 @@ const MilestonesSection: React.FC = () => {
           className="relative"
         >
           {/* Timeline line */}
-          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-1 timeline-line transform md:-translate-x-1/2"></div>
+          <div className="absolute left-6 sm:left-8 md:left-1/2 top-0 bottom-0 w-0.5 sm:w-1 timeline-line transform md:-translate-x-1/2"></div>
 
           {/* Floating Developer Workspace Image - Right */}
           <motion.div
@@ -626,7 +626,7 @@ const MilestonesSection: React.FC = () => {
             </div>
           </motion.div>
 
-          <div className="space-y-20 relative z-10">
+          <div className="space-y-12 sm:space-y-16 lg:space-y-20 relative z-10">
             {milestones.map((milestone, index) => (
               <motion.div
                 key={milestone.year}
@@ -744,7 +744,7 @@ const MilestonesSection: React.FC = () => {
                   </motion.div>
                 )}
                 {/* Enhanced Timeline dot with company logo */}
-                <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 z-20 mt-6">
+                <div className="absolute left-6 sm:left-8 md:left-1/2 transform md:-translate-x-1/2 z-20 mt-4 sm:mt-6">
                   <motion.div
                     className="relative flex items-center justify-center"
                     whileHover={{ scale: 1.1 }}
@@ -752,7 +752,7 @@ const MilestonesSection: React.FC = () => {
                   >
                     {/* Outer ring with gradient */}
                     <motion.div
-                      className={`w-20 h-20 rounded-full bg-gradient-to-r ${milestone.color} p-1 shadow-lg`}
+                      className={`w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 rounded-full bg-gradient-to-r ${milestone.color} p-1 shadow-lg`}
                       initial={{ scale: 0, rotate: -180 }}
                       whileInView={{ scale: 1, rotate: 0 }}
                       transition={{ 
@@ -763,12 +763,12 @@ const MilestonesSection: React.FC = () => {
                       viewport={{ once: true }}
                     >
                       {/* Company logo container */}
-                      <div className="w-full h-full bg-background rounded-full flex items-center justify-center p-2 relative overflow-hidden">
+                      <div className="w-full h-full bg-background rounded-full flex items-center justify-center p-1.5 sm:p-2 relative overflow-hidden">
                         {milestone.companyLogo && (
                           <motion.img
                             src={milestone.companyLogo}
                             alt={`${milestone.company} logo`}
-                            className="w-10 h-10 object-contain company-logo"
+                            className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 object-contain company-logo"
                             variants={logoVariants}
                             initial="hidden"
                             whileInView="visible"
@@ -795,7 +795,7 @@ const MilestonesSection: React.FC = () => {
                     
                     {/* Year badge */}
                     <motion.div
-                      className={`absolute -bottom-2 bg-gradient-to-r ${milestone.color} text-white text-xs font-bold px-2 py-1 rounded-full shadow-md`}
+                      className={`absolute -bottom-1 sm:-bottom-2 bg-gradient-to-r ${milestone.color} text-white text-xs font-bold px-2 py-1 rounded-full shadow-md`}
                       initial={{ opacity: 0, y: 10 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ 
@@ -810,14 +810,14 @@ const MilestonesSection: React.FC = () => {
                 </div>
 
                 {/* Content card */}
-                <div className={`ml-32 md:ml-0 ${
+                <div className={`ml-20 sm:ml-24 lg:ml-32 md:ml-0 ${
                   index % 2 === 0 ? 'md:mr-12 md:text-right' : 'md:ml-12'
                 } md:w-1/2 relative z-10`}>
                   <motion.div
-                    className="glass-card p-8 rounded-2xl hover-lift group relative overflow-hidden"
+                    className="glass-card p-4 sm:p-6 lg:p-8 rounded-xl sm:rounded-2xl hover-lift group relative overflow-hidden"
                     whileHover={{ 
-                      scale: 1.02,
-                      y: -8
+                      scale: 1.01,
+                      y: -4
                     }}
                     transition={{ duration: 0.3, ease: [0.4, 0.0, 0.2, 1] }}
                   >
@@ -828,29 +828,30 @@ const MilestonesSection: React.FC = () => {
                     
                     {/* Header section */}
                     <div className="relative z-10">
-                      <div className={`flex items-center gap-4 mb-4 ${
+                      <div className={`flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4 ${
                         index % 2 === 0 ? 'md:justify-end' : 'md:justify-start'
                       } justify-start`}>
                         <motion.div
-                          className={`inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-r ${milestone.color} shadow-lg group-hover:animate-pulse-glow`}
+                          className={`inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-lg sm:rounded-xl bg-gradient-to-r ${milestone.color} shadow-lg group-hover:animate-pulse-glow`}
                           whileHover={{ rotate: 360 }}
                           transition={{ duration: 0.6 }}
                         >
-                          <div className="text-white">
+                          <div className="text-white text-lg sm:text-xl lg:text-2xl">
                             {milestone.icon}
                           </div>
                         </motion.div>
                         
                         <div className={`${index % 2 === 0 ? 'md:text-right' : 'md:text-left'} text-left`}>
-                          <h3 className="text-2xl font-bold text-foreground mb-1">{milestone.title}</h3>
+                          <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-foreground mb-1">{milestone.title}</h3>
                           {milestone.company && (
-                            <div className="flex items-center gap-2 text-primary font-semibold mb-1">
-                              <Building size={16} weight="duotone" />
+                            <div className="flex items-center gap-2 text-primary font-semibold mb-1 text-sm sm:text-base">
+                              <Building size={14} className="sm:hidden" />
+                              <Building size={16} className="hidden sm:block" weight="duotone" />
                               {milestone.company}
                             </div>
                           )}
                           {milestone.duration && (
-                            <p className="text-sm text-muted-foreground">{milestone.duration}</p>
+                            <p className="text-xs sm:text-sm text-muted-foreground">{milestone.duration}</p>
                           )}
                           {milestone.location && (
                             <p className="text-xs text-muted-foreground opacity-75">{milestone.location}</p>
@@ -858,27 +859,28 @@ const MilestonesSection: React.FC = () => {
                         </div>
                       </div>
                       
-                      <div className={`h-1 bg-gradient-to-r ${milestone.color} rounded-full mb-6 opacity-50`}></div>
+                      <div className={`h-0.5 sm:h-1 bg-gradient-to-r ${milestone.color} rounded-full mb-4 sm:mb-6 opacity-50`}></div>
                       
-                      <p className="text-muted-foreground leading-relaxed mb-8 text-lg">{milestone.description}</p>
+                      <p className="text-muted-foreground leading-relaxed mb-6 sm:mb-8 text-sm sm:text-base lg:text-lg">{milestone.description}</p>
                     </div>
 
                     {/* Projects section */}
                     {milestone.projects && (
-                      <div className="mb-8">
+                      <div className="mb-6 sm:mb-8">
                         <motion.h4 
-                          className="flex items-center gap-3 text-xl font-bold mb-6 text-foreground"
+                          className="flex items-center gap-2 sm:gap-3 text-lg sm:text-xl font-bold mb-4 sm:mb-6 text-foreground"
                           initial={{ opacity: 0, x: -20 }}
                           whileInView={{ opacity: 1, x: 0 }}
                           transition={{ duration: 0.6, delay: 0.2 }}
                           viewport={{ once: true }}
                         >
-                          <div className={`p-2 rounded-lg bg-gradient-to-r ${milestone.color} bg-opacity-10`}>
-                            <Code size={20} weight="duotone" className="text-primary" />
+                          <div className={`p-1.5 sm:p-2 rounded-lg bg-gradient-to-r ${milestone.color} bg-opacity-10`}>
+                            <Code size={16} className="sm:hidden" weight="duotone" />
+                            <Code size={20} className="hidden sm:block" weight="duotone" />
                           </div>
                           Key Projects
                         </motion.h4>
-                        <div className="grid gap-6">
+                        <div className="grid gap-4 sm:gap-6">
                           {milestone.projects.map((project, projectIndex) => (
                             <motion.div
                               key={project.name}
@@ -887,23 +889,24 @@ const MilestonesSection: React.FC = () => {
                               whileInView="visible"
                               viewport={{ once: true }}
                               transition={{ delay: projectIndex * 0.15 }}
-                              className="project-card bg-background/70 rounded-xl p-6 border border-border hover:border-primary/30 transition-all duration-300 relative overflow-hidden group/project"
+                              className="project-card bg-background/70 rounded-lg sm:rounded-xl p-4 sm:p-6 border border-border hover:border-primary/30 transition-all duration-300 relative overflow-hidden group/project"
                             >
                               {/* Project gradient overlay */}
                               <div className={`absolute inset-0 bg-gradient-to-r ${milestone.color} opacity-0 group-hover/project:opacity-5 transition-opacity duration-300`}></div>
                               
                               <div className="relative z-10">
-                                <div className="flex items-start justify-between mb-3">
-                                  <h5 className="font-bold text-lg text-foreground">{project.name}</h5>
+                                <div className="flex items-start justify-between mb-2 sm:mb-3">
+                                  <h5 className="font-bold text-base sm:text-lg text-foreground">{project.name}</h5>
                                   <motion.div
                                     whileHover={{ scale: 1.2, rotate: 15 }}
                                     transition={{ duration: 0.2 }}
                                   >
-                                    <Rocket size={20} className="text-primary flex-shrink-0" />
+                                    <Rocket size={18} className="sm:hidden text-primary flex-shrink-0" />
+                                    <Rocket size={20} className="hidden sm:block text-primary flex-shrink-0" />
                                   </motion.div>
                                 </div>
-                                <p className="text-muted-foreground mb-4 leading-relaxed">{project.description}</p>
-                                <div className="flex flex-wrap gap-2 mb-4">
+                                <p className="text-muted-foreground mb-3 sm:mb-4 leading-relaxed text-sm sm:text-base">{project.description}</p>
+                                <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3 sm:mb-4">
                                   {project.tech.map((tech, techIndex) => (
                                     <motion.span
                                       key={tech}
@@ -911,14 +914,15 @@ const MilestonesSection: React.FC = () => {
                                       whileInView={{ opacity: 1, scale: 1 }}
                                       transition={{ delay: techIndex * 0.05 }}
                                       viewport={{ once: true }}
-                                      className="px-3 py-1.5 bg-primary/15 text-primary text-sm rounded-lg font-medium hover:bg-primary/25 transition-colors"
+                                      className="px-2 sm:px-3 py-1 sm:py-1.5 bg-primary/15 text-primary text-xs sm:text-sm rounded-md sm:rounded-lg font-medium hover:bg-primary/25 transition-colors"
                                     >
                                       {tech}
                                     </motion.span>
                                   ))}
                                 </div>
-                                <div className="flex items-center gap-2 text-sm text-accent font-semibold">
-                                  <ChartLine size={16} weight="duotone" />
+                                <div className="flex items-center gap-2 text-xs sm:text-sm text-accent font-semibold">
+                                  <ChartLine size={14} className="sm:hidden" weight="duotone" />
+                                  <ChartLine size={16} className="hidden sm:block" weight="duotone" />
                                   {project.impact}
                                 </div>
                               </div>
@@ -932,18 +936,19 @@ const MilestonesSection: React.FC = () => {
                     {milestone.achievements && (
                       <div>
                         <motion.h4 
-                          className="flex items-center gap-3 text-xl font-bold mb-6 text-foreground"
+                          className="flex items-center gap-2 sm:gap-3 text-lg sm:text-xl font-bold mb-4 sm:mb-6 text-foreground"
                           initial={{ opacity: 0, x: -20 }}
                           whileInView={{ opacity: 1, x: 0 }}
                           transition={{ duration: 0.6, delay: 0.3 }}
                           viewport={{ once: true }}
                         >
-                          <div className={`p-2 rounded-lg bg-gradient-to-r ${milestone.color} bg-opacity-10`}>
-                            <Medal size={20} weight="duotone" className="text-accent" />
+                          <div className={`p-1.5 sm:p-2 rounded-lg bg-gradient-to-r ${milestone.color} bg-opacity-10`}>
+                            <Medal size={16} className="sm:hidden" weight="duotone" />
+                            <Medal size={20} className="hidden sm:block" weight="duotone" />
                           </div>
                           Key Achievements
                         </motion.h4>
-                        <div className="grid gap-3">
+                        <div className="grid gap-2 sm:gap-3">
                           {milestone.achievements.map((achievement, achievementIndex) => (
                             <motion.div
                               key={achievementIndex}
@@ -952,14 +957,14 @@ const MilestonesSection: React.FC = () => {
                               whileInView="visible"
                               viewport={{ once: true }}
                               transition={{ delay: achievementIndex * 0.1 }}
-                              className={`flex items-start gap-3 p-4 rounded-lg transition-all duration-300 hover:scale-[1.02] ${
+                              className={`flex items-start gap-2 sm:gap-3 p-3 sm:p-4 rounded-lg transition-all duration-300 hover:scale-[1.02] ${
                                 achievement.highlight 
                                   ? `bg-gradient-to-r ${milestone.color} bg-opacity-10 border border-primary/20 shadow-md` 
                                   : 'bg-background/50 hover:bg-background/70'
                               }`}
                             >
                               <motion.div
-                                className={`p-2 rounded-lg ${
+                                className={`p-1.5 sm:p-2 rounded-lg ${
                                   achievement.highlight 
                                     ? `bg-gradient-to-r ${milestone.color} text-white shadow-md` 
                                     : 'bg-muted text-muted-foreground'
@@ -967,9 +972,11 @@ const MilestonesSection: React.FC = () => {
                                 whileHover={{ scale: 1.1 }}
                                 transition={{ duration: 0.2 }}
                               >
-                                {achievement.icon}
+                                <div className="text-sm sm:text-base">
+                                  {achievement.icon}
+                                </div>
                               </motion.div>
-                              <p className={`text-sm leading-relaxed flex-1 ${
+                              <p className={`text-xs sm:text-sm leading-relaxed flex-1 ${
                                 achievement.highlight 
                                   ? 'text-foreground font-semibold' 
                                   : 'text-muted-foreground'
@@ -989,7 +996,8 @@ const MilestonesSection: React.FC = () => {
                                     ease: "easeInOut"
                                   }}
                                 >
-                                  <Star size={16} weight="fill" />
+                                  <Star size={14} className="sm:hidden" weight="fill" />
+                                  <Star size={16} className="hidden sm:block" weight="fill" />
                                 </motion.div>
                               )}
                             </motion.div>
@@ -1001,9 +1009,9 @@ const MilestonesSection: React.FC = () => {
                 </div>
 
                 {/* Mobile year indicator */}
-                <div className="md:hidden absolute left-0 w-24 text-center">
+                <div className="md:hidden absolute left-0 w-16 sm:w-20 text-center">
                   <motion.span 
-                    className="text-sm font-bold text-primary bg-background px-3 py-2 rounded-full shadow-md border border-border"
+                    className="text-xs sm:text-sm font-bold text-primary bg-background px-2 sm:px-3 py-1 sm:py-2 rounded-full shadow-md border border-border"
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}

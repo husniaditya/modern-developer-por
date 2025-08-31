@@ -257,13 +257,6 @@ const milestones: Milestone[] = [
 ];
 
 const MilestonesSection: React.FC = () => {
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -282,7 +275,7 @@ const MilestonesSection: React.FC = () => {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: [0.4, 0.0, 0.2, 1]
+        ease: "easeOut" as const
       }
     }
   };
@@ -295,7 +288,7 @@ const MilestonesSection: React.FC = () => {
       scale: 1,
       transition: {
         duration: 0.6,
-        ease: [0.4, 0.0, 0.2, 1]
+        ease: "easeOut" as const
       }
     }
   };
@@ -307,7 +300,7 @@ const MilestonesSection: React.FC = () => {
       scale: 1,
       transition: {
         duration: 0.6,
-        ease: [0.4, 0.0, 0.2, 1],
+        ease: "easeOut" as const,
         delay: 0.2
       }
     }
@@ -320,7 +313,7 @@ const MilestonesSection: React.FC = () => {
       x: 0,
       transition: {
         duration: 0.5,
-        ease: [0.4, 0.0, 0.2, 1]
+        ease: "easeOut" as const
       }
     }
   };
@@ -337,7 +330,7 @@ const MilestonesSection: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: [0.4, 0.0, 0.2, 1] }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true }}
           className="text-center mb-10 sm:mb-12 lg:mb-16"
         >
@@ -359,14 +352,14 @@ const MilestonesSection: React.FC = () => {
           {/* Timeline line */}
           <div className="absolute left-6 sm:left-8 md:left-1/2 top-0 bottom-0 w-0.5 sm:w-1 timeline-line transform md:-translate-x-1/2"></div>
 
-          {/* Floating Developer Workspace Image - Right */}
+          {/* Floating Developer Workspace Image - Right - Optimized */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            initial={{ opacity: 0, scale: 0.9, y: 10 }}
             whileInView={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ 
-              duration: 0.8, 
-              ease: [0.4, 0.0, 0.2, 1],
-              delay: 0.5 
+              duration: 1, 
+              ease: "easeOut",
+              delay: 0.3 
             }}
             viewport={{ once: true }}
             className="hidden lg:block absolute top-20 right-10 xl:right-20 w-80 h-52 z-0"
@@ -375,52 +368,40 @@ const MilestonesSection: React.FC = () => {
               <motion.img
                 src={codingWorkspace}
                 alt="Coding workspace illustration"
-                className="w-full h-full object-contain opacity-25 dark:opacity-15"
+                className="w-full h-full object-contain opacity-20 dark:opacity-10"
                 animate={{ 
-                  y: [0, -5, 0]
+                  y: [0, -3, 0]
                 }}
                 transition={{ 
-                  duration: 8, 
+                  duration: 12, 
                   repeat: Infinity, 
-                  ease: "easeInOut" 
+                  ease: "easeInOut",
+                  delay: 1
                 }}
               />
-              {/* Reduced floating particles */}
+              {/* Single reduced particle */}
               <motion.div
-                className="absolute top-4 left-4 w-2 h-2 bg-primary rounded-full opacity-40"
+                className="absolute top-4 left-4 w-1 h-1 bg-primary rounded-full opacity-30"
                 animate={{ 
-                  scale: [1, 1.2, 1],
-                  opacity: [0.4, 0.6, 0.4]
-                }}
-                transition={{ 
-                  duration: 5, 
-                  repeat: Infinity, 
-                  delay: 0 
-                }}
-              />
-              <motion.div
-                className="absolute bottom-8 left-12 w-1 h-1 bg-accent rounded-full opacity-30"
-                animate={{ 
-                  scale: [1, 1.3, 1],
-                  opacity: [0.3, 0.5, 0.3]
+                  scale: [1, 1.1, 1],
+                  opacity: [0.3, 0.4, 0.3]
                 }}
                 transition={{ 
                   duration: 6, 
-                  repeat: Infinity, 
-                  delay: 2 
+                  repeat: Infinity
                 }}
               />
             </div>
           </motion.div>
 
-          {/* Additional floating image - Server Architecture - Left Side */}
+          {/* Additional floating image - Server Architecture - Left Side - Optimized */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8, x: -20 }}
+            initial={{ opacity: 0, scale: 0.9, x: -10 }}
             whileInView={{ opacity: 1, scale: 1, x: 0 }}
             transition={{ 
-              duration: 0.8, 
-              ease: [0.4, 0.0, 0.2, 1],
-              delay: 1.2 
+              duration: 1, 
+              ease: "easeOut",
+              delay: 0.8 
             }}
             viewport={{ once: true }}
             className="hidden lg:block absolute top-96 left-5 xl:left-15 w-72 h-48 z-0"
@@ -429,70 +410,42 @@ const MilestonesSection: React.FC = () => {
               <motion.img
                 src={serverArchitecture}
                 alt="Server architecture illustration"
-                className="w-full h-full object-contain opacity-20 dark:opacity-10"
+                className="w-full h-full object-contain opacity-15 dark:opacity-8"
                 animate={{ 
-                  y: [0, -8, 0]
+                  y: [0, -4, 0]
                 }}
                 transition={{ 
-                  duration: 10, 
+                  duration: 14, 
                   repeat: Infinity, 
                   ease: "easeInOut",
-                  delay: 1
-                }}
-              />
-              {/* Simplified data flow particles */}
-              <motion.div
-                className="absolute top-6 right-6 w-1.5 h-1.5 bg-cyan-400 rounded-full opacity-40"
-                animate={{ 
-                  scale: [1, 1.2, 1],
-                  opacity: [0.3, 0.5, 0.3]
-                }}
-                transition={{ 
-                  duration: 5, 
-                  repeat: Infinity, 
-                  delay: 0.5 
+                  delay: 2
                 }}
               />
             </div>
           </motion.div>
 
-          {/* Floating Code Elements - Left */}
+          {/* Floating Code Elements - Left - Simplified */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8, x: -20 }}
+            initial={{ opacity: 0, scale: 0.9, x: -10 }}
             whileInView={{ opacity: 1, scale: 1, x: 0 }}
             transition={{ 
-              duration: 0.8, 
-              ease: [0.4, 0.0, 0.2, 1],
-              delay: 0.8 
+              duration: 1, 
+              ease: "easeOut",
+              delay: 0.5 
             }}
             viewport={{ once: true }}
             className="hidden lg:block absolute top-80 left-10 xl:left-20 w-60 h-40 z-0"
           >
-            <div className="relative w-full h-full opacity-10 dark:opacity-5">
-              {/* Simplified code blocks */}
+            <div className="relative w-full h-full opacity-8 dark:opacity-4">
+              {/* Simplified code symbol */}
               <motion.div
-                className="absolute top-0 left-0 w-32 h-3 bg-gradient-to-r from-primary to-accent rounded-full"
+                className="absolute top-20 left-8 text-2xl font-mono text-primary opacity-20"
                 animate={{ 
-                  scaleX: [1, 1.05, 1],
-                  opacity: [0.2, 0.4, 0.2]
+                  opacity: [0.1, 0.2, 0.1]
                 }}
                 transition={{ 
-                  duration: 6, 
-                  repeat: Infinity, 
-                  delay: 0 
-                }}
-              />
-              
-              {/* Simplified floating symbol */}
-              <motion.div
-                className="absolute top-20 left-8 text-3xl font-mono text-primary"
-                animate={{ 
-                  opacity: [0.1, 0.3, 0.1]
-                }}
-                transition={{ 
-                  duration: 8, 
-                  repeat: Infinity, 
-                  delay: 0.5 
+                  duration: 10, 
+                  repeat: Infinity
                 }}
               >
                 {"</>"}
@@ -500,14 +453,14 @@ const MilestonesSection: React.FC = () => {
             </div>
           </motion.div>
 
-          {/* Mobile Development Image - Bottom Right */}
+          {/* Mobile Development Image - Bottom Right - Optimized */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            initial={{ opacity: 0, scale: 0.9, y: 10 }}
             whileInView={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ 
-              duration: 0.8, 
-              ease: [0.4, 0.0, 0.2, 1],
-              delay: 1.8 
+              duration: 1, 
+              ease: "easeOut",
+              delay: 1.2 
             }}
             viewport={{ once: true }}
             className="hidden lg:block absolute bottom-20 right-5 xl:right-15 w-60 h-40 z-0"
@@ -516,28 +469,15 @@ const MilestonesSection: React.FC = () => {
               <motion.img
                 src={mobileDevelopment}
                 alt="Mobile development illustration"
-                className="w-full h-full object-contain opacity-15 dark:opacity-8"
+                className="w-full h-full object-contain opacity-12 dark:opacity-6"
                 animate={{ 
-                  y: [0, -4, 0]
+                  y: [0, -2, 0]
                 }}
                 transition={{ 
-                  duration: 12, 
+                  duration: 16, 
                   repeat: Infinity, 
                   ease: "easeInOut",
-                  delay: 2
-                }}
-              />
-              {/* Simplified mobile interaction particles */}
-              <motion.div
-                className="absolute bottom-8 right-4 w-1.5 h-1.5 bg-purple-400 rounded-full opacity-30"
-                animate={{ 
-                  scale: [1, 1.3, 1],
-                  opacity: [0.2, 0.4, 0.2]
-                }}
-                transition={{ 
-                  duration: 7, 
-                  repeat: Infinity, 
-                  delay: 2.5 
+                  delay: 4
                 }}
               />
             </div>
@@ -552,7 +492,7 @@ const MilestonesSection: React.FC = () => {
                   index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
                 }`}
               >
-                {/* Parallax illustration */}
+                {/* Parallax illustration - optimized for smoother animations */}
                 {milestone.illustration && (
                   <motion.div
                     className={`hidden lg:block absolute z-0 parallax-element ${
@@ -561,17 +501,17 @@ const MilestonesSection: React.FC = () => {
                         : 'left-10 xl:left-20'
                     }`}
                     style={{
-                      transform: `translateY(${scrollY * 0.05}px)`,
-                      top: `${80 + index * 50}px`
+                      top: `${80 + index * 50}px`,
+                      willChange: 'transform'
                     }}
-                    initial={{ opacity: 0, scale: 0.8, x: index % 2 === 0 ? 50 : -50 }}
+                    initial={{ opacity: 0, scale: 0.9, x: index % 2 === 0 ? 30 : -30 }}
                     whileInView={{ opacity: 1, scale: 1, x: 0 }}
                     transition={{ 
-                      duration: 1.2, 
-                      ease: [0.4, 0.0, 0.2, 1],
-                      delay: index * 0.3 
+                      duration: 0.8, 
+                      ease: "easeOut",
+                      delay: index * 0.2 
                     }}
-                    viewport={{ once: true, margin: "-100px" }}
+                    viewport={{ once: true, margin: "-50px" }}
                   >
                     <div className="relative w-80 h-60">
                       <motion.img
@@ -579,48 +519,30 @@ const MilestonesSection: React.FC = () => {
                         alt={`${milestone.title} illustration`}
                         className="w-full h-full object-contain opacity-25 dark:opacity-15"
                         animate={{ 
-                          y: [0, -4, 0]
+                          y: [0, -2, 0]
                         }}
                         transition={{ 
-                          duration: 10 + index, 
+                          duration: 8 + index * 2, 
                           repeat: Infinity, 
                           ease: "easeInOut",
-                          delay: index * 2
+                          delay: index
                         }}
                       />
                       
-                      {/* Simplified floating particles around illustration */}
+                      {/* Single optimized floating particle */}
                       <motion.div
-                        className={`absolute top-8 left-8 w-2 h-2 rounded-full opacity-30`}
+                        className="absolute top-8 left-8 w-1.5 h-1.5 rounded-full opacity-20"
                         style={{
-                          background: `linear-gradient(135deg, var(--primary), var(--accent))`
+                          background: `var(--primary)`
                         }}
                         animate={{ 
-                          scale: [1, 1.2, 1],
-                          opacity: [0.2, 0.4, 0.2]
+                          scale: [1, 1.1, 1],
+                          opacity: [0.2, 0.3, 0.2]
                         }}
                         transition={{ 
-                          duration: 6, 
+                          duration: 4, 
                           repeat: Infinity, 
-                          delay: index * 0.5 
-                        }}
-                      />
-                      
-                      {/* Subtle glowing effect around illustration */}
-                      <motion.div
-                        className="absolute inset-0 rounded-lg opacity-10"
-                        style={{
-                          background: `radial-gradient(circle at center, var(--primary) 0%, transparent 70%)`
-                        }}
-                        animate={{
-                          scale: [1, 1.05, 1],
-                          opacity: [0.05, 0.15, 0.05]
-                        }}
-                        transition={{
-                          duration: 8,
-                          repeat: Infinity,
-                          ease: "easeInOut",
-                          delay: index * 1.5
+                          delay: index * 0.8 
                         }}
                       />
                     </div>
@@ -640,7 +562,7 @@ const MilestonesSection: React.FC = () => {
                       whileInView={{ scale: 1 }}
                       transition={{ 
                         duration: 0.6, 
-                        ease: [0.4, 0.0, 0.2, 1],
+                        ease: "easeOut",
                         delay: index * 0.1 
                       }}
                       viewport={{ once: true }}
@@ -659,18 +581,18 @@ const MilestonesSection: React.FC = () => {
                           />
                         )}
                         
-                        {/* Animated pulse effect */}
+                        {/* Optimized animated pulse effect */}
                         <motion.div
-                          className={`absolute inset-0 rounded-full bg-gradient-to-r ${milestone.color} opacity-20`}
+                          className={`absolute inset-0 rounded-full bg-gradient-to-r ${milestone.color} opacity-15`}
                           animate={{
-                            scale: [1, 1.1, 1],
-                            opacity: [0.1, 0.3, 0.1]
+                            scale: [1, 1.05, 1],
+                            opacity: [0.1, 0.2, 0.1]
                           }}
                           transition={{
-                            duration: 4,
+                            duration: 6,
                             repeat: Infinity,
                             ease: "easeInOut",
-                            delay: index * 0.8
+                            delay: index * 1.5
                           }}
                         />
                       </div>
@@ -702,7 +624,7 @@ const MilestonesSection: React.FC = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ 
                       duration: 0.6, 
-                      ease: [0.4, 0.0, 0.2, 1],
+                      ease: "easeOut",
                       delay: index * 0.1 
                     }}
                     viewport={{ once: true }}

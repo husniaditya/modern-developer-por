@@ -61,8 +61,8 @@
   
   --muted: oklch(0.13 0.01 264);
   --muted-foreground: oklch(0.65 0.02 264);
-  --border: oklch(0.25 0.02 264);
-  --input: oklch(0.25 0.02 264);
+  --border: oklch(0.35 0.05 285); /* Higher contrast border with purple tint */
+  --input: oklch(0.30 0.05 285); /* Slightly darker input with purple tint */
   --ring: oklch(0.58 0.18 285);
 }
 
@@ -211,11 +211,14 @@
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 .dark .glass-card {
   background: rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid oklch(0.35 0.05 285);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
+              inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 /* Project showcase hover effects */
@@ -223,15 +226,26 @@
   transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
   position: relative;
   overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08),
+              0 0 0 1px rgba(0, 0, 0, 0.04);
 }
 
 .project-card:hover {
   transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15),
+              0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+.dark .project-card {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3),
+              0 0 0 1px oklch(0.35 0.05 285),
+              inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .dark .project-card:hover {
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5),
+              0 0 0 1px oklch(0.45 0.08 285),
+              inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .project-overlay {
@@ -264,6 +278,78 @@
 .hover-lift:hover {
   transform: translateY(-6px);
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+/* Dark mode enhanced shadows */
+.dark .hover-lift:hover {
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4), 
+              0 0 0 1px oklch(0.35 0.05 285);
+}
+
+/* Enhanced card shadows for better depth */
+.shadow-card {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08),
+              0 0 0 1px rgba(0, 0, 0, 0.04);
+}
+
+.dark .shadow-card {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3),
+              0 0 0 1px oklch(0.35 0.05 285),
+              inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Enhanced card shadows for better depth */
+.shadow-card {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08),
+              0 0 0 1px rgba(0, 0, 0, 0.04);
+}
+
+.dark .shadow-card {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3),
+              0 0 0 1px oklch(0.35 0.05 285),
+              inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Enhanced glass card with better borders */
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.dark .glass-card {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid oklch(0.35 0.05 285);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
+              inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Enhanced borders for inputs and components */
+.dark input,
+.dark textarea,
+.dark select {
+  border-color: oklch(0.35 0.05 285) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.dark input:focus,
+.dark textarea:focus,
+.dark select:focus {
+  border-color: oklch(0.58 0.18 285) !important;
+  box-shadow: 0 0 0 2px oklch(0.58 0.18 285 / 0.2),
+              0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Enhanced button borders in dark mode */
+.dark button {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2),
+              inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.dark button:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25),
+              inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 /* Smooth focus states */

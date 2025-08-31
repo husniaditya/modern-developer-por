@@ -13,25 +13,23 @@ const MouseTracker: React.FC = () => {
       });
     };
 
-    const handleMouseEnter = (e: Event) => {
-      const target = e.target as HTMLElement;
-      if (target.closest('button, a, [role="button"], .cursor-pointer, input, textarea')) {
-        setCursorVariant('hover');
+    const handleMouseOver = (e: MouseEvent) => {
+      const target = e.target;
+      if (target && target instanceof HTMLElement) {
+        if (target.closest('button, a, [role="button"], .cursor-pointer, input, textarea')) {
+          setCursorVariant('hover');
+        } else {
+          setCursorVariant('default');
+        }
       }
     };
 
-    const handleMouseLeave = () => {
-      setCursorVariant('default');
-    };
-
     window.addEventListener('mousemove', mouseMove);
-    document.addEventListener('mouseenter', handleMouseEnter, true);
-    document.addEventListener('mouseleave', handleMouseLeave, true);
+    document.addEventListener('mouseover', handleMouseOver);
 
     return () => {
       window.removeEventListener('mousemove', mouseMove);
-      document.removeEventListener('mouseenter', handleMouseEnter, true);
-      document.removeEventListener('mouseleave', handleMouseLeave, true);
+      document.removeEventListener('mouseover', handleMouseOver);
     };
   }, []);
 

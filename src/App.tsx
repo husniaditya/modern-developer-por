@@ -1,3 +1,4 @@
+import React from 'react';
 import { Toaster } from '@/components/ui/sonner';
 import Navigation from '@/components/Navigation';
 import HeroSection from '@/components/HeroSection';

@@ -14,21 +14,25 @@ const SkillsSection = () => {
   const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
 
   const skills: Skill[] = [
-    { name: 'React', level: 90, category: 'Frontend' },
-    { name: 'TypeScript', level: 85, category: 'Frontend' },
-    { name: 'Next.js', level: 80, category: 'Frontend' },
-    { name: 'Tailwind CSS', level: 90, category: 'Frontend' },
-    { name: 'Node.js', level: 85, category: 'Backend' },
-    { name: 'Express.js', level: 80, category: 'Backend' },
-    { name: 'PostgreSQL', level: 75, category: 'Backend' },
-    { name: 'MongoDB', level: 70, category: 'Backend' },
-    { name: 'AWS', level: 75, category: 'DevOps' },
-    { name: 'Docker', level: 70, category: 'DevOps' },
-    { name: 'Git', level: 85, category: 'Tools' },
-    { name: 'Figma', level: 70, category: 'Tools' }
+    { name: 'React', level: 95, category: 'Frontend' },
+    { name: 'TypeScript', level: 90, category: 'Frontend' },
+    { name: 'Next.js', level: 85, category: 'Frontend' },
+    { name: 'Tailwind CSS', level: 92, category: 'Frontend' },
+    { name: 'Vue.js', level: 75, category: 'Frontend' },
+    { name: 'Node.js', level: 88, category: 'Backend' },
+    { name: 'Express.js', level: 85, category: 'Backend' },
+    { name: 'PostgreSQL', level: 80, category: 'Backend' },
+    { name: 'MongoDB', level: 78, category: 'Backend' },
+    { name: 'Python', level: 72, category: 'Backend' },
+    { name: 'AWS', level: 82, category: 'Cloud & DevOps' },
+    { name: 'Docker', level: 78, category: 'Cloud & DevOps' },
+    { name: 'Kubernetes', level: 70, category: 'Cloud & DevOps' },
+    { name: 'Git', level: 90, category: 'Tools & Others' },
+    { name: 'Figma', level: 75, category: 'Tools & Others' },
+    { name: 'Jest', level: 80, category: 'Tools & Others' }
   ];
 
-  const categories = ['Frontend', 'Backend', 'DevOps', 'Tools'];
+  const categories = ['Frontend', 'Backend', 'Cloud & DevOps', 'Tools & Others'];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -80,7 +84,7 @@ const SkillsSection = () => {
         </motion.div>
 
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8"
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
@@ -105,17 +109,28 @@ const SkillsSection = () => {
                           <span className="font-medium">{skill.name}</span>
                           <Badge variant="secondary">{skill.level}%</Badge>
                         </div>
-                        <div className="w-full bg-muted rounded-full h-2 overflow-hidden">
+                        <div className="w-full bg-muted rounded-full h-3 overflow-hidden relative">
                           <motion.div
-                            className="skill-bar h-2 rounded-full"
+                            className="skill-bar h-3 rounded-full relative"
                             initial={{ width: 0 }}
                             animate={isInView ? { width: `${skill.level}%` } : { width: 0 }}
                             transition={{ 
-                              duration: 1.5, 
-                              delay: categoryIndex * 0.2 + skillIndex * 0.1,
-                              ease: "easeOut" 
+                              duration: 2, 
+                              delay: categoryIndex * 0.15 + skillIndex * 0.08,
+                              ease: [0.25, 0.1, 0.25, 1]
                             }}
-                          />
+                          >
+                            <motion.div
+                              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+                              initial={{ x: '-100%' }}
+                              animate={isInView ? { x: '100%' } : { x: '-100%' }}
+                              transition={{
+                                duration: 1.5,
+                                delay: categoryIndex * 0.15 + skillIndex * 0.08 + 0.5,
+                                ease: "easeInOut"
+                              }}
+                            />
+                          </motion.div>
                         </div>
                       </motion.div>
                     ))}

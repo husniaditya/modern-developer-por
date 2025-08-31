@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Toaster } from '@/components/ui/sonner';
 import Navigation from '@/components/Navigation';
@@ -9,8 +9,23 @@ import ProjectsSection from '@/components/ProjectsSection';
 import MilestonesSection from '@/components/MilestonesSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import ContactSection from '@/components/ContactSection';
+import ScrollToTop from '@/components/ScrollToTop';
 
 function App() {
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      setScrollProgress(scrolled);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const pageVariants = {
     initial: { opacity: 0, y: 20 },
     animate: { 
@@ -18,7 +33,7 @@ function App() {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut"
+        ease: [0.4, 0.0, 0.2, 1]
       }
     }
   };
@@ -30,6 +45,15 @@ function App() {
       initial="initial"
       animate="animate"
     >
+      {/* Scroll Progress Bar */}
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-1 bg-primary z-50 origin-left"
+        style={{ scaleX: scrollProgress / 100 }}
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: scrollProgress / 100 }}
+        transition={{ duration: 0.1 }}
+      />
+      
       <Navigation />
       
       <main>
@@ -46,7 +70,7 @@ function App() {
         className="bg-primary text-primary-foreground py-8"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.6, ease: [0.4, 0.0, 0.2, 1] }}
         viewport={{ once: true }}
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -71,6 +95,7 @@ function App() {
       </motion.footer>
 
       <Toaster position="bottom-right" />
+      <ScrollToTop />
     </motion.div>
   );
 }

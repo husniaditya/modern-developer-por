@@ -10,8 +10,8 @@ interface TypewriterEffectProps {
 
 const TypewriterEffect: React.FC<TypewriterEffectProps> = ({
   texts,
-  speed = 50,
-  pauseDuration = 1200,
+  speed = 30,
+  pauseDuration = 800,
   className = ''
 }) => {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);

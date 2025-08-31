@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from '@phosphor-icons/react';
+import { smoothScrollTo, getActiveSection } from '@/utils/scrollUtils';
 
 const Navigation = () => {
   const [activeSection, setActiveSection] = useState('home');
@@ -20,30 +21,20 @@ const Navigation = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = document.querySelectorAll('section[id]');
-      const scrollPosition = window.scrollY + 100;
-      
       // Update scroll state for background opacity
       setScrolled(window.scrollY > 50);
-
-      sections.forEach((section) => {
-        const element = section as HTMLElement;
-        const { offsetTop, offsetHeight } = element;
-        if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-          setActiveSection(element.id);
-        }
-      });
+      
+      // Update active section
+      setActiveSection(getActiveSection());
     };
 
-    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial call
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    smoothScrollTo(sectionId);
     setIsOpen(false);
   };
 

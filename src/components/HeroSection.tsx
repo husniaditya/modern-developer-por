@@ -4,20 +4,19 @@ import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { ArrowDown, Download, LinkedinLogo, GithubLogo, Envelope } from '@phosphor-icons/react';
 import TypewriterEffect from './TypewriterEffect';
+import { smoothScrollTo } from '@/utils/scrollUtils';
 
 const HeroSection = () => {
   const jobTitles = [
-    "Full Stack Developer",
-    "Frontend Developer", 
-    "Backend Developer",
-    "Application Support Engineer"
+    "Senior Full Stack Developer",
+    "React & TypeScript Specialist", 
+    "Backend Systems Engineer",
+    "Application Support Engineer",
+    "Cloud Solutions Developer"
   ];
 
   const scrollToNext = () => {
-    const skillsSection = document.getElementById('skills');
-    if (skillsSection) {
-      skillsSection.scrollIntoView({ behavior: 'smooth' });
-    }
+    smoothScrollTo('skills');
   };
 
   // Animation variants
@@ -101,16 +100,17 @@ const HeroSection = () => {
             >
               <TypewriterEffect 
                 texts={jobTitles} 
-                speed={50}
-                pauseDuration={1200}
+                speed={30}
+                pauseDuration={800}
               />
             </motion.h2>
             <motion.p 
               className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed"
               variants={itemVariants}
             >
-              Passionate developer with 5+ years of experience building modern web applications. 
-              I love creating efficient, scalable solutions that make a real impact.
+              Experienced software engineer with 7+ years developing enterprise applications. 
+              Specialized in React, Node.js, and cloud technologies with a passion for building 
+              scalable, user-centric solutions that drive business growth.
             </motion.p>
           </div>
 

@@ -1,248 +1,338 @@
-import React, { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
-import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Calendar, Award, Trophy, Target, Code, Rocket, Users, ChartLine } from '@phosphor-icons/react';
 
-interface Milestone {
-  id: string;
-  year: string;
-  title: string;
-  company: string;
+interface Project {
+  name: string;
   description: string;
-  achievements: string[];
-  type: 'work' | 'education' | 'project';
+  tech: string[];
+  impact: string;
 }
 
-const MilestonesSection = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
-  const milestones: Milestone[] = [
-    {
-      id: '1',
-      year: '2023',
-      title: 'Senior Full Stack Developer',
-      company: 'Tech Innovations Inc.',
-      description: 'Led development of enterprise-scale applications serving 100k+ users.',
-      achievements: [
-        'Reduced application load time by 40%',
-        'Mentored 5 junior developers',
-        'Architected microservices infrastructure'
-      ],
-      type: 'work'
-    },
-    {
-      id: '2',
-      year: '2022',
-      title: 'AWS Solutions Architect Certification',
-      company: 'Amazon Web Services',
-      description: 'Achieved professional certification in cloud architecture and best practices.',
-      achievements: [
-        'Designed scalable cloud solutions',
-        'Implemented cost optimization strategies',
-        'Led cloud migration projects'
-      ],
-      type: 'education'
-    },
-    {
-      id: '3',
-      year: '2021',
-      title: 'Full Stack Developer',
-      company: 'StartupXYZ',
-      description: 'Joined early-stage startup, built core platform from ground up.',
-      achievements: [
-        'Developed MVP that secured $2M funding',
-        'Built entire frontend and backend',
-        'Established development best practices'
-      ],
-      type: 'work'
-    },
-    {
-      id: '4',
-      year: '2020',
-      title: 'Open Source Contributor',
-      company: 'Various Projects',
-      description: 'Active contributor to popular open source projects and maintainer.',
-      achievements: [
-        '50+ merged pull requests',
-        'Maintained React component library',
-        'Contributed to Next.js documentation'
-      ],
-      type: 'project'
-    },
-    {
-      id: '5',
-      year: '2019',
-      title: 'Frontend Developer',
-      company: 'Digital Agency Co.',
-      description: 'First professional role building client websites and web applications.',
-      achievements: [
-        'Delivered 20+ client projects',
-        'Specialized in React and modern CSS',
-        'Improved team workflow efficiency'
-      ],
-      type: 'work'
-    },
-    {
-      id: '6',
-      year: '2018',
-      title: 'Computer Science Degree',
-      company: 'University of Technology',
-      description: 'Bachelor of Science in Computer Science with focus on software engineering.',
-      achievements: [
-        'Graduated Magna Cum Laude',
-        'Completed senior capstone project',
-        'Dean\'s List for 4 semesters'
-      ],
-      type: 'education'
-    }
-  ];
+interface Milestone {
+  year: string;
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+  color: string;
+  projects?: Project[];
+  achievements?: string[];
+}
 
-  const getTypeColor = (type: string) => {
-    switch (type) {
-      case 'work': return 'bg-primary';
-      case 'education': return 'bg-accent';
-      case 'project': return 'bg-secondary';
-      default: return 'bg-muted';
-    }
-  };
+const milestones: Milestone[] = [
+  {
+    year: '2024',
+    title: 'Senior Full Stack Developer',
+    description: 'Promoted to senior role, leading development of enterprise applications and mentoring junior developers.',
+    icon: <Trophy size={24} weight="duotone" />,
+    color: 'from-purple-500 to-pink-500',
+    projects: [
+      {
+        name: 'Enterprise Dashboard',
+        description: 'Real-time analytics platform for enterprise clients',
+        tech: ['React', 'TypeScript', 'Node.js', 'PostgreSQL'],
+        impact: '40% improvement in data visualization efficiency'
+      },
+      {
+        name: 'Microservices Architecture',
+        description: 'Migrated monolithic application to microservices',
+        tech: ['Docker', 'Kubernetes', 'Redis', 'GraphQL'],
+        impact: '60% reduction in deployment time'
+      },
+      {
+        name: 'AI-Powered Chatbot',
+        description: 'Customer service automation with natural language processing',
+        tech: ['Python', 'TensorFlow', 'FastAPI', 'MongoDB'],
+        impact: '70% reduction in customer support tickets'
+      }
+    ],
+    achievements: [
+      'Led team of 8 developers across 3 projects',
+      'Mentored 4 junior developers',
+      'Implemented CI/CD pipeline reducing bugs by 45%'
+    ]
+  },
+  {
+    year: '2023',
+    title: 'Tech Lead Position',
+    description: 'Led a team of 5 developers in delivering multiple high-impact projects using modern web technologies.',
+    icon: <Target size={24} weight="duotone" />,
+    color: 'from-blue-500 to-cyan-500',
+    projects: [
+      {
+        name: 'E-commerce Platform',
+        description: 'Complete redesign of online shopping experience',
+        tech: ['Next.js', 'Tailwind', 'Stripe', 'Prisma'],
+        impact: '120% increase in conversion rates'
+      },
+      {
+        name: 'Mobile Banking App',
+        description: 'Cross-platform financial services application',
+        tech: ['React Native', 'Redux', 'Firebase', 'Biometrics'],
+        impact: '500K+ active users within 6 months'
+      },
+      {
+        name: 'Data Visualization Tool',
+        description: 'Interactive charts and reporting dashboard',
+        tech: ['D3.js', 'WebGL', 'Express', 'InfluxDB'],
+        impact: 'Processed 10M+ data points in real-time'
+      }
+    ],
+    achievements: [
+      'Delivered 5 major projects on time',
+      'Established coding standards and best practices',
+      'Reduced technical debt by 35%'
+    ]
+  },
+  {
+    year: '2022',
+    title: 'Full Stack Developer',
+    description: 'Transitioned to full-stack development, mastering both frontend and backend technologies.',
+    icon: <Award size={24} weight="duotone" />,
+    color: 'from-green-500 to-emerald-500',
+    projects: [
+      {
+        name: 'Social Media Platform',
+        description: 'Community-driven content sharing application',
+        tech: ['Vue.js', 'Laravel', 'MySQL', 'AWS S3'],
+        impact: '50K+ registered users in first quarter'
+      },
+      {
+        name: 'Inventory Management System',
+        description: 'Real-time stock tracking for retail chains',
+        tech: ['Angular', 'Spring Boot', 'Apache Kafka', 'ElasticSearch'],
+        impact: '30% reduction in inventory discrepancies'
+      },
+      {
+        name: 'Learning Management System',
+        description: 'Online education platform with video streaming',
+        tech: ['React', 'Django', 'FFmpeg', 'CDN'],
+        impact: '10K+ students enrolled across 50+ courses'
+      }
+    ],
+    achievements: [
+      'Mastered 6 new programming languages',
+      'Implemented automated testing (95% coverage)',
+      'Optimized database queries (50% faster response)'
+    ]
+  },
+  {
+    year: '2021',
+    title: 'Started Career',
+    description: 'Began my journey as a Frontend Developer, focusing on React and modern JavaScript frameworks.',
+    icon: <Calendar size={24} weight="duotone" />,
+    color: 'from-orange-500 to-red-500',
+    projects: [
+      {
+        name: 'Corporate Website',
+        description: 'Responsive company website with CMS integration',
+        tech: ['React', 'SCSS', 'Strapi', 'Netlify'],
+        impact: '200% increase in organic traffic'
+      },
+      {
+        name: 'Task Management App',
+        description: 'Collaborative project management tool',
+        tech: ['JavaScript', 'Express.js', 'Socket.io', 'MongoDB'],
+        impact: 'Adopted by 20+ teams internally'
+      },
+      {
+        name: 'Portfolio Showcase',
+        description: 'Interactive portfolio for creative professionals',
+        tech: ['HTML5', 'CSS3', 'GSAP', 'Three.js'],
+        impact: 'Featured in 5+ design galleries'
+      }
+    ],
+    achievements: [
+      'Completed 15+ frontend projects',
+      'Learned modern development tools',
+      'Built first production application'
+    ]
+  }
+];
 
-  const getTypeBadgeVariant = (type: string) => {
-    switch (type) {
-      case 'work': return 'default';
-      case 'education': return 'secondary';
-      case 'project': return 'outline';
-      default: return 'secondary';
-    }
-  };
-
+const MilestonesSection: React.FC = () => {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        delayChildren: 0.3,
-        staggerChildren: 0.2
+        staggerChildren: 0.2,
+        delayChildren: 0.1
       }
     }
   };
 
   const itemVariants = {
-    hidden: { x: -50, opacity: 0 },
+    hidden: { opacity: 0, x: -50 },
     visible: {
-      x: 0,
       opacity: 1,
+      x: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut"
+        ease: [0.4, 0.0, 0.2, 1]
       }
     }
   };
 
-  const timelineVariants = {
-    hidden: { scaleY: 0 },
+  const projectVariants = {
+    hidden: { opacity: 0, y: 20 },
     visible: {
-      scaleY: 1,
+      opacity: 1,
+      y: 0,
       transition: {
-        duration: 1.5,
-        ease: "easeInOut"
+        duration: 0.4,
+        ease: [0.4, 0.0, 0.2, 1]
       }
     }
   };
 
   return (
-    <section id="milestones" ref={sectionRef} className="py-20">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
+    <section id="milestones" className="py-20 bg-muted/30 relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-1/4 left-10 w-32 h-32 bg-primary rounded-full blur-3xl animate-pulse-glow"></div>
+        <div className="absolute bottom-1/4 right-10 w-24 h-24 bg-accent rounded-full blur-2xl animate-float"></div>
+      </div>
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: [0.4, 0.0, 0.2, 1] }}
+          viewport={{ once: true }}
           className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl font-bold text-foreground mb-4">Career Milestones</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Key achievements and significant moments throughout my professional journey
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Career <span className="brand-gradient-text">Milestones</span>
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            Key achievements, projects, and pivotal moments that have shaped my professional journey
           </p>
         </motion.div>
 
-        <div className="relative">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="relative"
+        >
           {/* Timeline line */}
-          <motion.div 
-            className="absolute left-8 top-0 bottom-0 w-0.5 timeline-line origin-top"
-            variants={timelineVariants}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-          ></motion.div>
+          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-1 timeline-line transform md:-translate-x-1/2"></div>
 
-          <motion.div 
-            className="space-y-12"
-            variants={containerVariants}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-          >
+          <div className="space-y-16">
             {milestones.map((milestone, index) => (
-              <motion.div 
-                key={milestone.id} 
-                className="relative flex items-start group"
+              <motion.div
+                key={milestone.year}
                 variants={itemVariants}
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.2 }}
+                className={`relative flex items-start ${
+                  index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+                }`}
               >
                 {/* Timeline dot */}
-                <motion.div 
-                  className={`absolute left-6 w-4 h-4 rounded-full ${getTypeColor(milestone.type)} ring-4 ring-background z-10`}
-                  initial={{ scale: 0 }}
-                  animate={isInView ? { scale: 1 } : { scale: 0 }}
-                  transition={{ delay: 0.5 + index * 0.2, duration: 0.3 }}
-                  whileHover={{ scale: 1.25 }}
-                ></motion.div>
-                
-                {/* Content */}
-                <div className="ml-16 w-full">
-                  <Card className="hover:shadow-lg transition-all duration-300">
-                    <CardContent className="p-6">
-                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
-                        <div>
-                          <h3 className="text-xl font-semibold text-foreground mb-1">
-                            {milestone.title}
-                          </h3>
-                          <p className="text-primary font-medium">{milestone.company}</p>
-                        </div>
-                        <div className="flex items-center gap-2 mt-2 sm:mt-0">
-                          <Badge variant={getTypeBadgeVariant(milestone.type)} className="capitalize">
-                            {milestone.type}
-                          </Badge>
-                          <Badge variant="outline">{milestone.year}</Badge>
+                <div className="absolute left-8 md:left-1/2 w-4 h-4 bg-background border-4 border-primary rounded-full transform md:-translate-x-1/2 z-10 mt-6"></div>
+
+                {/* Content card */}
+                <div className={`ml-20 md:ml-0 ${
+                  index % 2 === 0 ? 'md:mr-8 md:text-right' : 'md:ml-8'
+                } md:w-1/2`}>
+                  <motion.div
+                    className="glass-card p-6 rounded-xl hover-lift group"
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    {/* Header */}
+                    <div className={`inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r ${milestone.color} mb-4 group-hover:animate-pulse-glow`}>
+                      {milestone.icon}
+                    </div>
+                    <div className="flex items-center gap-3 mb-3">
+                      <span className="text-2xl font-bold text-primary">{milestone.year}</span>
+                      <div className={`h-1 flex-1 bg-gradient-to-r ${milestone.color} rounded-full`}></div>
+                    </div>
+                    <h3 className="text-xl font-semibold mb-3 text-foreground">{milestone.title}</h3>
+                    <p className="text-muted-foreground leading-relaxed mb-6">{milestone.description}</p>
+
+                    {/* Projects */}
+                    {milestone.projects && (
+                      <div className="mb-6">
+                        <h4 className="flex items-center gap-2 text-lg font-semibold mb-4 text-foreground">
+                          <Code size={20} weight="duotone" />
+                          Key Projects
+                        </h4>
+                        <div className="space-y-4">
+                          {milestone.projects.map((project, projectIndex) => (
+                            <motion.div
+                              key={project.name}
+                              variants={projectVariants}
+                              initial="hidden"
+                              whileInView="visible"
+                              viewport={{ once: true }}
+                              transition={{ delay: projectIndex * 0.1 }}
+                              className="bg-background/50 rounded-lg p-4 border border-border hover:border-primary/50 transition-colors"
+                            >
+                              <div className="flex items-start justify-between mb-2">
+                                <h5 className="font-semibold text-foreground">{project.name}</h5>
+                                <Rocket size={16} className="text-primary mt-1 flex-shrink-0" />
+                              </div>
+                              <p className="text-sm text-muted-foreground mb-3">{project.description}</p>
+                              <div className="flex flex-wrap gap-1 mb-3">
+                                {project.tech.map((tech) => (
+                                  <span
+                                    key={tech}
+                                    className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full font-medium"
+                                  >
+                                    {tech}
+                                  </span>
+                                ))}
+                              </div>
+                              <div className="flex items-center gap-2 text-xs text-accent font-medium">
+                                <ChartLine size={14} weight="duotone" />
+                                {project.impact}
+                              </div>
+                            </motion.div>
+                          ))}
                         </div>
                       </div>
-                      
-                      <p className="text-muted-foreground mb-4 leading-relaxed">
-                        {milestone.description}
-                      </p>
-                      
-                      <div className="space-y-2">
-                        <h4 className="font-medium text-foreground">Key Achievements:</h4>
-                        <ul className="space-y-1">
-                          {milestone.achievements.map((achievement, idx) => (
-                            <motion.li 
-                              key={idx} 
-                              className="text-sm text-muted-foreground flex items-start"
-                              initial={{ opacity: 0, x: -20 }}
-                              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                              transition={{ delay: 0.8 + index * 0.2 + idx * 0.1 }}
+                    )}
+
+                    {/* Achievements */}
+                    {milestone.achievements && (
+                      <div>
+                        <h4 className="flex items-center gap-2 text-lg font-semibold mb-3 text-foreground">
+                          <Users size={20} weight="duotone" />
+                          Key Achievements
+                        </h4>
+                        <ul className="space-y-2">
+                          {milestone.achievements.map((achievement, achievementIndex) => (
+                            <motion.li
+                              key={achievementIndex}
+                              variants={projectVariants}
+                              initial="hidden"
+                              whileInView="visible"
+                              viewport={{ once: true }}
+                              transition={{ delay: achievementIndex * 0.1 }}
+                              className="flex items-start gap-2 text-sm text-muted-foreground"
                             >
-                              <span className="text-primary mr-2">•</span>
+                              <div className="w-1.5 h-1.5 bg-accent rounded-full mt-2 flex-shrink-0"></div>
                               {achievement}
                             </motion.li>
                           ))}
                         </ul>
                       </div>
-                    </CardContent>
-                  </Card>
+                    )}
+                  </motion.div>
+                </div>
+
+                {/* Year indicator for mobile */}
+                <div className="md:hidden absolute left-0 w-16 text-center">
+                  <span className="text-sm font-semibold text-primary bg-background px-2 py-1 rounded-full">
+                    {milestone.year}
+                  </span>
                 </div>
               </motion.div>
             ))}
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

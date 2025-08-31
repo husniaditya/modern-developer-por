@@ -11,6 +11,7 @@ import MilestonesSection from '@/components/MilestonesSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import ContactSection from '@/components/ContactSection';
 import ScrollToTop from '@/components/ScrollToTop';
+import MouseTracker from '@/components/MouseTracker';
 
 function App() {
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -42,11 +43,14 @@ function App() {
   return (
     <ThemeProvider>
       <motion.div 
-        className="min-h-screen bg-background scroll-smooth transition-colors duration-300"
+        className="min-h-screen bg-background scroll-smooth transition-colors duration-300 cursor-none lg:cursor-none"
         variants={pageVariants}
         initial="initial"
         animate="animate"
       >
+        {/* Mouse Tracker */}
+        <MouseTracker />
+        
         {/* Scroll Progress Bar */}
         <motion.div
           className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-accent z-50 origin-left"

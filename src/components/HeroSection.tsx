@@ -101,8 +101,8 @@ const HeroSection = () => {
             >
               <TypewriterEffect 
                 texts={jobTitles} 
-                speed={120}
-                pauseDuration={2500}
+                speed={50}
+                pauseDuration={1200}
               />
             </motion.h2>
             <motion.p 

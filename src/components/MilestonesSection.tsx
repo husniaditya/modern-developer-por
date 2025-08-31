@@ -276,13 +276,12 @@ const MilestonesSection: React.FC = () => {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, x: -60, scale: 0.9 },
+    hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
-      x: 0,
-      scale: 1,
+      y: 0,
       transition: {
-        duration: 0.8,
+        duration: 0.6,
         ease: [0.4, 0.0, 0.2, 1]
       }
     }
@@ -302,13 +301,12 @@ const MilestonesSection: React.FC = () => {
   };
 
   const logoVariants = {
-    hidden: { opacity: 0, scale: 0.5, rotate: -180 },
+    hidden: { opacity: 0, scale: 0.8 },
     visible: {
       opacity: 1,
       scale: 1,
-      rotate: 0,
       transition: {
-        duration: 0.8,
+        duration: 0.6,
         ease: [0.4, 0.0, 0.2, 1],
         delay: 0.2
       }
@@ -379,48 +377,35 @@ const MilestonesSection: React.FC = () => {
                 alt="Coding workspace illustration"
                 className="w-full h-full object-contain opacity-25 dark:opacity-15"
                 animate={{ 
-                  y: [0, -10, 0],
-                  rotate: [0, 1, 0]
+                  y: [0, -5, 0]
                 }}
                 transition={{ 
-                  duration: 6, 
+                  duration: 8, 
                   repeat: Infinity, 
                   ease: "easeInOut" 
                 }}
               />
-              {/* Floating particles around the image */}
+              {/* Reduced floating particles */}
               <motion.div
-                className="absolute top-4 left-4 w-2 h-2 bg-primary rounded-full opacity-60"
+                className="absolute top-4 left-4 w-2 h-2 bg-primary rounded-full opacity-40"
                 animate={{ 
-                  scale: [1, 1.5, 1],
-                  opacity: [0.6, 1, 0.6]
+                  scale: [1, 1.2, 1],
+                  opacity: [0.4, 0.6, 0.4]
                 }}
                 transition={{ 
-                  duration: 3, 
+                  duration: 5, 
                   repeat: Infinity, 
                   delay: 0 
                 }}
               />
               <motion.div
-                className="absolute top-16 right-8 w-1.5 h-1.5 bg-accent rounded-full opacity-50"
+                className="absolute bottom-8 left-12 w-1 h-1 bg-accent rounded-full opacity-30"
                 animate={{ 
-                  scale: [1, 1.2, 1],
-                  opacity: [0.5, 0.8, 0.5]
+                  scale: [1, 1.3, 1],
+                  opacity: [0.3, 0.5, 0.3]
                 }}
                 transition={{ 
-                  duration: 4, 
-                  repeat: Infinity, 
-                  delay: 1 
-                }}
-              />
-              <motion.div
-                className="absolute bottom-8 left-12 w-1 h-1 bg-primary rounded-full opacity-40"
-                animate={{ 
-                  scale: [1, 1.8, 1],
-                  opacity: [0.4, 0.9, 0.4]
-                }}
-                transition={{ 
-                  duration: 5, 
+                  duration: 6, 
                   repeat: Infinity, 
                   delay: 2 
                 }}
@@ -446,41 +431,26 @@ const MilestonesSection: React.FC = () => {
                 alt="Server architecture illustration"
                 className="w-full h-full object-contain opacity-20 dark:opacity-10"
                 animate={{ 
-                  y: [0, -12, 0],
-                  rotate: [0, -1, 0]
+                  y: [0, -8, 0]
                 }}
                 transition={{ 
-                  duration: 7, 
+                  duration: 10, 
                   repeat: Infinity, 
                   ease: "easeInOut",
                   delay: 1
                 }}
               />
-              {/* Data flow particles */}
+              {/* Simplified data flow particles */}
               <motion.div
-                className="absolute top-6 right-6 w-1.5 h-1.5 bg-cyan-400 rounded-full opacity-60"
+                className="absolute top-6 right-6 w-1.5 h-1.5 bg-cyan-400 rounded-full opacity-40"
                 animate={{ 
-                  scale: [1, 1.4, 1],
-                  opacity: [0.4, 0.8, 0.4],
-                  x: [0, 10, 0]
+                  scale: [1, 1.2, 1],
+                  opacity: [0.3, 0.5, 0.3]
                 }}
                 transition={{ 
-                  duration: 3, 
+                  duration: 5, 
                   repeat: Infinity, 
                   delay: 0.5 
-                }}
-              />
-              <motion.div
-                className="absolute bottom-6 left-6 w-2 h-2 bg-green-400 rounded-full opacity-50"
-                animate={{ 
-                  scale: [1, 1.6, 1],
-                  opacity: [0.3, 0.7, 0.3],
-                  y: [0, -8, 0]
-                }}
-                transition={{ 
-                  duration: 4, 
-                  repeat: Infinity, 
-                  delay: 1.5 
                 }}
               />
             </div>
@@ -499,72 +469,33 @@ const MilestonesSection: React.FC = () => {
             className="hidden lg:block absolute top-80 left-10 xl:left-20 w-60 h-40 z-0"
           >
             <div className="relative w-full h-full opacity-10 dark:opacity-5">
-              {/* Code blocks */}
+              {/* Simplified code blocks */}
               <motion.div
                 className="absolute top-0 left-0 w-32 h-3 bg-gradient-to-r from-primary to-accent rounded-full"
                 animate={{ 
-                  scaleX: [1, 1.1, 1],
-                  opacity: [0.3, 0.6, 0.3]
-                }}
-                transition={{ 
-                  duration: 4, 
-                  repeat: Infinity, 
-                  delay: 0 
-                }}
-              />
-              <motion.div
-                className="absolute top-6 left-4 w-24 h-3 bg-gradient-to-r from-accent to-primary rounded-full"
-                animate={{ 
-                  scaleX: [1, 1.2, 1],
-                  opacity: [0.2, 0.5, 0.2]
-                }}
-                transition={{ 
-                  duration: 5, 
-                  repeat: Infinity, 
-                  delay: 1 
-                }}
-              />
-              <motion.div
-                className="absolute top-12 left-0 w-28 h-3 bg-gradient-to-r from-primary to-accent rounded-full"
-                animate={{ 
-                  scaleX: [1, 1.15, 1],
-                  opacity: [0.25, 0.55, 0.25]
+                  scaleX: [1, 1.05, 1],
+                  opacity: [0.2, 0.4, 0.2]
                 }}
                 transition={{ 
                   duration: 6, 
                   repeat: Infinity, 
-                  delay: 2 
+                  delay: 0 
                 }}
               />
               
-              {/* Floating symbols */}
+              {/* Simplified floating symbol */}
               <motion.div
-                className="absolute top-20 left-8 text-4xl font-mono text-primary"
+                className="absolute top-20 left-8 text-3xl font-mono text-primary"
                 animate={{ 
-                  y: [0, -8, 0],
-                  opacity: [0.2, 0.4, 0.2]
+                  opacity: [0.1, 0.3, 0.1]
                 }}
                 transition={{ 
-                  duration: 3, 
+                  duration: 8, 
                   repeat: Infinity, 
                   delay: 0.5 
                 }}
               >
                 {"</>"}
-              </motion.div>
-              <motion.div
-                className="absolute top-28 left-16 text-3xl font-mono text-accent"
-                animate={{ 
-                  y: [0, -6, 0],
-                  opacity: [0.15, 0.35, 0.15]
-                }}
-                transition={{ 
-                  duration: 4, 
-                  repeat: Infinity, 
-                  delay: 1.5 
-                }}
-              >
-                {"{}"}
               </motion.div>
             </div>
           </motion.div>
@@ -587,38 +518,24 @@ const MilestonesSection: React.FC = () => {
                 alt="Mobile development illustration"
                 className="w-full h-full object-contain opacity-15 dark:opacity-8"
                 animate={{ 
-                  y: [0, -6, 0],
-                  rotate: [0, 0.5, 0]
+                  y: [0, -4, 0]
                 }}
                 transition={{ 
-                  duration: 9, 
+                  duration: 12, 
                   repeat: Infinity, 
                   ease: "easeInOut",
                   delay: 2
                 }}
               />
-              {/* Mobile interaction particles */}
+              {/* Simplified mobile interaction particles */}
               <motion.div
-                className="absolute top-4 left-8 w-1 h-1 bg-blue-400 rounded-full opacity-50"
+                className="absolute bottom-8 right-4 w-1.5 h-1.5 bg-purple-400 rounded-full opacity-30"
                 animate={{ 
-                  scale: [1, 2, 1],
-                  opacity: [0.3, 0.8, 0.3]
+                  scale: [1, 1.3, 1],
+                  opacity: [0.2, 0.4, 0.2]
                 }}
                 transition={{ 
-                  duration: 2.5, 
-                  repeat: Infinity, 
-                  delay: 0.3 
-                }}
-              />
-              <motion.div
-                className="absolute bottom-8 right-4 w-1.5 h-1.5 bg-purple-400 rounded-full opacity-40"
-                animate={{ 
-                  scale: [1, 1.5, 1],
-                  opacity: [0.2, 0.6, 0.2],
-                  rotate: [0, 180, 360]
-                }}
-                transition={{ 
-                  duration: 5, 
+                  duration: 7, 
                   repeat: Infinity, 
                   delay: 2.5 
                 }}
@@ -644,7 +561,7 @@ const MilestonesSection: React.FC = () => {
                         : 'left-10 xl:left-20'
                     }`}
                     style={{
-                      transform: `translateY(${scrollY * 0.1}px)`,
+                      transform: `translateY(${scrollY * 0.05}px)`,
                       top: `${80 + index * 50}px`
                     }}
                     initial={{ opacity: 0, scale: 0.8, x: index % 2 === 0 ? 50 : -50 }}
@@ -662,79 +579,45 @@ const MilestonesSection: React.FC = () => {
                         alt={`${milestone.title} illustration`}
                         className="w-full h-full object-contain opacity-25 dark:opacity-15"
                         animate={{ 
-                          y: [0, -8, 0],
-                          rotate: [0, 1, 0]
+                          y: [0, -4, 0]
                         }}
                         transition={{ 
-                          duration: 8 + index, 
+                          duration: 10 + index, 
                           repeat: Infinity, 
                           ease: "easeInOut",
                           delay: index * 2
                         }}
                       />
                       
-                      {/* Floating particles around illustration */}
+                      {/* Simplified floating particles around illustration */}
                       <motion.div
-                        className={`absolute top-8 left-8 w-3 h-3 rounded-full opacity-50`}
+                        className={`absolute top-8 left-8 w-2 h-2 rounded-full opacity-30`}
                         style={{
                           background: `linear-gradient(135deg, var(--primary), var(--accent))`
                         }}
                         animate={{ 
-                          scale: [1, 1.5, 1],
-                          opacity: [0.3, 0.8, 0.3],
-                          y: [0, -10, 0]
-                        }}
-                        transition={{ 
-                          duration: 4, 
-                          repeat: Infinity, 
-                          delay: index * 0.5 
-                        }}
-                      />
-                      <motion.div
-                        className={`absolute top-20 right-12 w-2 h-2 rounded-full opacity-40`}
-                        style={{
-                          background: `linear-gradient(135deg, var(--accent), var(--primary))`
-                        }}
-                        animate={{ 
-                          scale: [1, 1.3, 1],
-                          opacity: [0.2, 0.6, 0.2],
-                          x: [0, 8, 0]
-                        }}
-                        transition={{ 
-                          duration: 5, 
-                          repeat: Infinity, 
-                          delay: index * 0.7 + 1 
-                        }}
-                      />
-                      <motion.div
-                        className={`absolute bottom-12 left-16 w-1.5 h-1.5 rounded-full opacity-35`}
-                        style={{
-                          background: `linear-gradient(135deg, var(--primary), var(--accent))`
-                        }}
-                        animate={{ 
-                          scale: [1, 1.8, 1],
-                          opacity: [0.25, 0.7, 0.25],
-                          rotate: [0, 180, 360]
+                          scale: [1, 1.2, 1],
+                          opacity: [0.2, 0.4, 0.2]
                         }}
                         transition={{ 
                           duration: 6, 
                           repeat: Infinity, 
-                          delay: index * 0.9 + 2 
+                          delay: index * 0.5 
                         }}
                       />
                       
-                      {/* Glowing effect around illustration */}
+                      {/* Subtle glowing effect around illustration */}
                       <motion.div
-                        className="absolute inset-0 rounded-lg opacity-20"
+                        className="absolute inset-0 rounded-lg opacity-10"
                         style={{
                           background: `radial-gradient(circle at center, var(--primary) 0%, transparent 70%)`
                         }}
                         animate={{
-                          scale: [1, 1.1, 1],
-                          opacity: [0.1, 0.3, 0.1]
+                          scale: [1, 1.05, 1],
+                          opacity: [0.05, 0.15, 0.05]
                         }}
                         transition={{
-                          duration: 6,
+                          duration: 8,
                           repeat: Infinity,
                           ease: "easeInOut",
                           delay: index * 1.5
@@ -753,12 +636,12 @@ const MilestonesSection: React.FC = () => {
                     {/* Outer ring with gradient */}
                     <motion.div
                       className={`w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 rounded-full bg-gradient-to-r ${milestone.color} p-1 shadow-lg`}
-                      initial={{ scale: 0, rotate: -180 }}
-                      whileInView={{ scale: 1, rotate: 0 }}
+                      initial={{ scale: 0 }}
+                      whileInView={{ scale: 1 }}
                       transition={{ 
-                        duration: 0.8, 
+                        duration: 0.6, 
                         ease: [0.4, 0.0, 0.2, 1],
-                        delay: index * 0.2 
+                        delay: index * 0.1 
                       }}
                       viewport={{ once: true }}
                     >
@@ -778,16 +661,16 @@ const MilestonesSection: React.FC = () => {
                         
                         {/* Animated pulse effect */}
                         <motion.div
-                          className={`absolute inset-0 rounded-full bg-gradient-to-r ${milestone.color} opacity-20 timeline-dot`}
+                          className={`absolute inset-0 rounded-full bg-gradient-to-r ${milestone.color} opacity-20`}
                           animate={{
-                            scale: [1, 1.2, 1],
-                            opacity: [0.2, 0.4, 0.2]
+                            scale: [1, 1.1, 1],
+                            opacity: [0.1, 0.3, 0.1]
                           }}
                           transition={{
-                            duration: 3,
+                            duration: 4,
                             repeat: Infinity,
                             ease: "easeInOut",
-                            delay: index * 0.5
+                            delay: index * 0.8
                           }}
                         />
                       </div>
@@ -815,11 +698,15 @@ const MilestonesSection: React.FC = () => {
                 } md:w-1/2 relative z-10`}>
                   <motion.div
                     className="glass-card p-4 sm:p-6 lg:p-8 rounded-xl sm:rounded-2xl hover-lift group relative overflow-hidden"
-                    whileHover={{ 
-                      scale: 1.01,
-                      y: -4
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ 
+                      duration: 0.6, 
+                      ease: [0.4, 0.0, 0.2, 1],
+                      delay: index * 0.1 
                     }}
-                    transition={{ duration: 0.3, ease: [0.4, 0.0, 0.2, 1] }}
+                    viewport={{ once: true }}
+                    whileHover={{ y: -2 }}
                   >
                     {/* Gradient overlay animation */}
                     <motion.div
@@ -832,9 +719,7 @@ const MilestonesSection: React.FC = () => {
                         index % 2 === 0 ? 'md:justify-end' : 'md:justify-start'
                       } justify-start`}>
                         <motion.div
-                          className={`inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-lg sm:rounded-xl bg-gradient-to-r ${milestone.color} shadow-lg group-hover:animate-pulse-glow`}
-                          whileHover={{ rotate: 360 }}
-                          transition={{ duration: 0.6 }}
+                          className={`inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-lg sm:rounded-xl bg-gradient-to-r ${milestone.color} shadow-lg`}
                         >
                           <div className="text-white text-lg sm:text-xl lg:text-2xl">
                             {milestone.icon}
@@ -898,7 +783,7 @@ const MilestonesSection: React.FC = () => {
                                 <div className="flex items-start justify-between mb-2 sm:mb-3">
                                   <h5 className="font-bold text-base sm:text-lg text-foreground">{project.name}</h5>
                                   <motion.div
-                                    whileHover={{ scale: 1.2, rotate: 15 }}
+                                    whileHover={{ scale: 1.1 }}
                                     transition={{ duration: 0.2 }}
                                   >
                                     <Rocket size={18} className="sm:hidden text-primary flex-shrink-0" />

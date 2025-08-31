@@ -267,16 +267,22 @@
   opacity: 0.9;
 }
 
-/* Smooth transitions for all interactive elements - Optimized */
+/* Optimized transitions for smooth animations */
 * {
-  transition: transform 0.15s cubic-bezier(0.4, 0.0, 0.2, 1), 
-              box-shadow 0.15s cubic-bezier(0.4, 0.0, 0.2, 1), 
-              opacity 0.15s cubic-bezier(0.4, 0.0, 0.2, 1);
+  transition: opacity 0.2s cubic-bezier(0.4, 0.0, 0.2, 1), 
+              box-shadow 0.2s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
-/* Disable transitions for cursor elements to avoid lag */
-.cursor-element {
+/* Performance optimized cursor and animation elements */
+.cursor-element,
+.parallax-element {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
   transition: none !important;
+  /* Force GPU acceleration for smooth movement */
+  -webkit-transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
 }
 
 /* Section-specific cursor styling indicators */
@@ -306,9 +312,20 @@
     scroll-behavior: auto;
   }
   
-  .cursor-element {
+  .cursor-element,
+  .parallax-element,
+  .timeline-dot,
+  .company-logo,
+  .achievement-highlight {
     animation: none !important;
     transition: none !important;
+  }
+  
+  /* Disable all motion animations for accessibility */
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
@@ -437,7 +454,7 @@ html {
   scroll-padding-top: 80px;
 }
 
-/* Mobile-specific optimizations for milestones */
+/* Mobile-specific optimizations for milestones - Enhanced */
 @media (max-width: 768px) {
   .milestone-section {
     padding-left: 0.75rem;
@@ -447,6 +464,7 @@ html {
   .milestone-card {
     margin-left: 1.25rem;
     margin-right: 0.25rem;
+    transform: none !important; /* Prevent mobile transform conflicts */
   }
   
   .milestone-timeline {
@@ -455,6 +473,18 @@ html {
   
   .milestone-dot {
     left: 1.5rem;
+    transform: none !important; /* Prevent mobile transform conflicts */
+  }
+  
+  /* Reduce animations on mobile for better performance */
+  .parallax-element,
+  .floating-element {
+    display: none !important;
+  }
+  
+  /* Simplify hover effects on mobile */
+  .hover-lift:hover {
+    transform: none !important;
   }
 }
 
@@ -466,54 +496,55 @@ html {
   }
 }
 
-/* Enhanced timeline animations */
-@keyframes timeline-pulse {
+/* Enhanced timeline animations - Optimized */
+@keyframes timeline-pulse-subtle {
   0%, 100% {
     transform: scale(1);
-    opacity: 0.3;
+    opacity: 0.2;
   }
   50% {
-    transform: scale(1.1);
-    opacity: 0.6;
+    transform: scale(1.05);
+    opacity: 0.4;
   }
 }
 
-@keyframes logo-float {
+@keyframes logo-float-gentle {
   0%, 100% {
-    transform: translateY(0px) rotate(0deg);
+    transform: translateY(0px);
   }
   50% {
-    transform: translateY(-5px) rotate(2deg);
+    transform: translateY(-3px);
   }
 }
 
-@keyframes achievement-highlight {
+@keyframes achievement-highlight-soft {
   0%, 100% {
     box-shadow: 0 0 0 rgba(var(--primary), 0);
   }
   50% {
-    box-shadow: 0 0 20px rgba(var(--primary), 0.3);
+    box-shadow: 0 0 10px rgba(var(--primary), 0.2);
   }
 }
 
 .timeline-dot {
-  animation: timeline-pulse 3s ease-in-out infinite;
+  animation: timeline-pulse-subtle 4s ease-in-out infinite;
 }
 
 .company-logo {
-  animation: logo-float 4s ease-in-out infinite;
+  animation: logo-float-gentle 6s ease-in-out infinite;
 }
 
 .achievement-highlight {
-  animation: achievement-highlight 2s ease-in-out infinite;
+  animation: achievement-highlight-soft 3s ease-in-out infinite;
 }
 
-/* Parallax performance optimizations */
+/* Parallax performance optimizations - Reduced effects */
 .parallax-element {
   will-change: transform;
   transform: translateZ(0);
   backface-visibility: hidden;
   perspective: 1000px;
+  transition: none !important;
   /* Force GPU acceleration for smooth parallax */
   -webkit-transform: translateZ(0);
   -webkit-backface-visibility: hidden;

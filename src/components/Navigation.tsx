@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Menu, X } from '@phosphor-icons/react';
+import { List, X } from '@phosphor-icons/react';
 import { smoothScrollTo, getActiveSection } from '@/utils/scrollUtils';
 import Logo from '@/components/Logo';
 import ThemeToggle from '@/components/ThemeToggle';
@@ -43,19 +43,11 @@ const Navigation = () => {
   const mobileMenuVariants = {
     closed: {
       opacity: 0,
-      height: 0,
-      transition: {
-        duration: 0.3,
-        ease: "easeInOut"
-      }
+      height: 0
     },
     open: {
       opacity: 1,
-      height: "auto",
-      transition: {
-        duration: 0.3,
-        ease: "easeInOut"
-      }
+      height: "auto"
     }
   };
 
@@ -173,7 +165,7 @@ const Navigation = () => {
                       exit={{ rotate: -90, opacity: 0 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <Menu size={24} />
+                      <List size={24} />
                     </motion.div>
                   )}
                 </AnimatePresence>

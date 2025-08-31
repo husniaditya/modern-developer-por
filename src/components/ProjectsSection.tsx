@@ -3,7 +3,7 @@ import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ExternalLink, GithubLogo, Globe } from '@phosphor-icons/react';
+import { ArrowSquareOut, GithubLogo, Globe } from '@phosphor-icons/react';
 
 interface Project {
   id: string;
@@ -112,37 +112,20 @@ const ProjectsSection = () => {
     hidden: { y: 50, opacity: 0 },
     visible: {
       y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut"
-      }
+      opacity: 1
     },
     exit: {
       y: -20,
-      opacity: 0,
-      transition: {
-        duration: 0.3
-      }
+      opacity: 0
     }
   };
 
   const filterButtonVariants = {
     active: {
-      scale: 1.05,
-      transition: {
-        type: "spring",
-        stiffness: 300,
-        damping: 20
-      }
+      scale: 1.05
     },
     inactive: {
-      scale: 1,
-      transition: {
-        type: "spring",
-        stiffness: 300,
-        damping: 20
-      }
+      scale: 1
     }
   };
 
@@ -175,6 +158,11 @@ const ProjectsSection = () => {
               animate={activeFilter === category ? "active" : "inactive"}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              transition={{
+                type: "spring",
+                stiffness: 300,
+                damping: 20
+              }}
             >
               <Button
                 variant={activeFilter === category ? 'default' : 'outline'}

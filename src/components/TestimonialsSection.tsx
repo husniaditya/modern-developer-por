@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { ChevronLeft, ChevronRight, Star } from '@phosphor-icons/react';
+import { CaretLeft, CaretRight, Star } from '@phosphor-icons/react';
 
 interface Testimonial {
   id: string;
@@ -130,7 +130,7 @@ const TestimonialsSection = () => {
               onClick={prevTestimonial}
               className="rounded-full"
             >
-              <ChevronLeft size={20} />
+              <CaretLeft size={20} />
             </Button>
 
             {/* Indicators */}
@@ -154,7 +154,7 @@ const TestimonialsSection = () => {
               onClick={nextTestimonial}
               className="rounded-full"
             >
-              <ChevronRight size={20} />
+              <CaretRight size={20} />
             </Button>
           </div>
         </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Award, Calendar } from '@phosphor-icons/react';
+import { Trophy, Calendar } from '@phosphor-icons/react';
 
 interface Certification {
   id: string;
@@ -79,7 +79,7 @@ const CertificationsSection = () => {
             <Card key={cert.id} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
               <CardHeader className="pb-4">
                 <div className="flex items-start justify-between">
-                  <Award size={32} className="text-primary flex-shrink-0" />
+                  <Trophy size={32} className="text-primary flex-shrink-0" />
                   <Badge variant={cert.status === 'active' ? 'default' : 'secondary'}>
                     {cert.status}
                   </Badge>

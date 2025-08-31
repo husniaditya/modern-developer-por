@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, Award, Trophy, Target, Code, Rocket, Users, ChartLine } from '@phosphor-icons/react';
+import { Calendar, Trophy, Target, Code, Rocket, Users, ChartLine } from '@phosphor-icons/react';
+import developerWorkspace from '@/assets/images/developer-workspace.svg';
 
 interface Project {
   name: string;
@@ -88,7 +89,7 @@ const milestones: Milestone[] = [
     year: '2022',
     title: 'Full Stack Developer',
     description: 'Transitioned to full-stack development, mastering both frontend and backend technologies.',
-    icon: <Award size={24} weight="duotone" />,
+    icon: <Trophy size={24} weight="duotone" />,
     color: 'from-green-500 to-emerald-500',
     projects: [
       {
@@ -166,11 +167,7 @@ const MilestonesSection: React.FC = () => {
     hidden: { opacity: 0, x: -50 },
     visible: {
       opacity: 1,
-      x: 0,
-      transition: {
-        duration: 0.6,
-        ease: [0.4, 0.0, 0.2, 1]
-      }
+      x: 0
     }
   };
 
@@ -178,11 +175,7 @@ const MilestonesSection: React.FC = () => {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.4,
-        ease: [0.4, 0.0, 0.2, 1]
-      }
+      y: 0
     }
   };
 
@@ -220,7 +213,157 @@ const MilestonesSection: React.FC = () => {
           {/* Timeline line */}
           <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-1 timeline-line transform md:-translate-x-1/2"></div>
 
-          <div className="space-y-16">
+          {/* Floating Developer Workspace Image - Right */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ 
+              duration: 0.8, 
+              ease: [0.4, 0.0, 0.2, 1],
+              delay: 0.5 
+            }}
+            viewport={{ once: true }}
+            className="hidden lg:block absolute top-20 right-10 xl:right-20 w-80 h-52 z-0"
+          >
+            <div className="relative w-full h-full">
+              <motion.img
+                src={developerWorkspace}
+                alt="Developer workspace illustration"
+                className="w-full h-full object-contain opacity-20 dark:opacity-10"
+                animate={{ 
+                  y: [0, -10, 0],
+                  rotate: [0, 1, 0]
+                }}
+                transition={{ 
+                  duration: 6, 
+                  repeat: Infinity, 
+                  ease: "easeInOut" 
+                }}
+              />
+              {/* Floating particles around the image */}
+              <motion.div
+                className="absolute top-4 left-4 w-2 h-2 bg-primary rounded-full opacity-60"
+                animate={{ 
+                  scale: [1, 1.5, 1],
+                  opacity: [0.6, 1, 0.6]
+                }}
+                transition={{ 
+                  duration: 3, 
+                  repeat: Infinity, 
+                  delay: 0 
+                }}
+              />
+              <motion.div
+                className="absolute top-16 right-8 w-1.5 h-1.5 bg-accent rounded-full opacity-50"
+                animate={{ 
+                  scale: [1, 1.2, 1],
+                  opacity: [0.5, 0.8, 0.5]
+                }}
+                transition={{ 
+                  duration: 4, 
+                  repeat: Infinity, 
+                  delay: 1 
+                }}
+              />
+              <motion.div
+                className="absolute bottom-8 left-12 w-1 h-1 bg-primary rounded-full opacity-40"
+                animate={{ 
+                  scale: [1, 1.8, 1],
+                  opacity: [0.4, 0.9, 0.4]
+                }}
+                transition={{ 
+                  duration: 5, 
+                  repeat: Infinity, 
+                  delay: 2 
+                }}
+              />
+            </div>
+          </motion.div>
+
+          {/* Floating Code Elements - Left */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, x: -20 }}
+            whileInView={{ opacity: 1, scale: 1, x: 0 }}
+            transition={{ 
+              duration: 0.8, 
+              ease: [0.4, 0.0, 0.2, 1],
+              delay: 0.8 
+            }}
+            viewport={{ once: true }}
+            className="hidden lg:block absolute top-80 left-10 xl:left-20 w-60 h-40 z-0"
+          >
+            <div className="relative w-full h-full opacity-10 dark:opacity-5">
+              {/* Code blocks */}
+              <motion.div
+                className="absolute top-0 left-0 w-32 h-3 bg-gradient-to-r from-primary to-accent rounded-full"
+                animate={{ 
+                  scaleX: [1, 1.1, 1],
+                  opacity: [0.3, 0.6, 0.3]
+                }}
+                transition={{ 
+                  duration: 4, 
+                  repeat: Infinity, 
+                  delay: 0 
+                }}
+              />
+              <motion.div
+                className="absolute top-6 left-4 w-24 h-3 bg-gradient-to-r from-accent to-primary rounded-full"
+                animate={{ 
+                  scaleX: [1, 1.2, 1],
+                  opacity: [0.2, 0.5, 0.2]
+                }}
+                transition={{ 
+                  duration: 5, 
+                  repeat: Infinity, 
+                  delay: 1 
+                }}
+              />
+              <motion.div
+                className="absolute top-12 left-0 w-28 h-3 bg-gradient-to-r from-primary to-accent rounded-full"
+                animate={{ 
+                  scaleX: [1, 1.15, 1],
+                  opacity: [0.25, 0.55, 0.25]
+                }}
+                transition={{ 
+                  duration: 6, 
+                  repeat: Infinity, 
+                  delay: 2 
+                }}
+              />
+              
+              {/* Floating symbols */}
+              <motion.div
+                className="absolute top-20 left-8 text-4xl font-mono text-primary"
+                animate={{ 
+                  y: [0, -8, 0],
+                  opacity: [0.2, 0.4, 0.2]
+                }}
+                transition={{ 
+                  duration: 3, 
+                  repeat: Infinity, 
+                  delay: 0.5 
+                }}
+              >
+                {"</>"}
+              </motion.div>
+              <motion.div
+                className="absolute top-28 left-16 text-3xl font-mono text-accent"
+                animate={{ 
+                  y: [0, -6, 0],
+                  opacity: [0.15, 0.35, 0.15]
+                }}
+                transition={{ 
+                  duration: 4, 
+                  repeat: Infinity, 
+                  delay: 1.5 
+                }}
+              >
+                {"{}"}
+              </motion.div>
+            </div>
+          </motion.div>
+
+          <div className="space-y-16 relative z-10">
             {milestones.map((milestone, index) => (
               <motion.div
                 key={milestone.year}

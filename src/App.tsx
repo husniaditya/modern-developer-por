@@ -32,11 +32,7 @@ function App() {
     initial: { opacity: 0, y: 20 },
     animate: { 
       opacity: 1, 
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: [0.4, 0.0, 0.2, 1]
-      }
+      y: 0
     }
   };
 
@@ -47,6 +43,10 @@ function App() {
         variants={pageVariants}
         initial="initial"
         animate="animate"
+        transition={{
+          duration: 0.6,
+          ease: [0.4, 0.0, 0.2, 1]
+        }}
       >
         {/* Mouse Tracker */}
         <MouseTracker />

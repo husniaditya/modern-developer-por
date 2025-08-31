@@ -45,7 +45,7 @@ const ContactSection = () => {
       await new Promise(resolve => setTimeout(resolve, 1000));
 
       // Save submission
-      setSubmissions(current => [...current, { ...formData }]);
+      setSubmissions(current => [...(current || []), { ...formData }]);
 
       // Reset form
       setFormData({

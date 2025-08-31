@@ -35,11 +35,7 @@ const HeroSection = () => {
     hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut"
-      }
+      opacity: 1
     }
   };
 
@@ -47,17 +43,10 @@ const HeroSection = () => {
     hidden: { scale: 0, opacity: 0 },
     visible: {
       scale: 1,
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut"
-      }
+      opacity: 1
     },
     hover: {
-      scale: 1.05,
-      transition: {
-        duration: 0.3
-      }
+      scale: 1.05
     }
   };
 
@@ -117,6 +106,10 @@ const HeroSection = () => {
             <motion.div
               variants={avatarVariants}
               whileHover="hover"
+              transition={{
+                duration: 0.6,
+                ease: "easeOut"
+              }}
             >
               <Avatar className="w-36 h-36 ring-4 ring-primary ring-offset-4 ring-offset-background shadow-2xl">
                 <AvatarImage src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" alt="Professional Profile" />

@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 const MouseTracker: React.FC = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [cursorVariant, setCursorVariant] = useState('default');
-  const rafRef = useRef<number>();
+  const rafRef = useRef<number | null>(null);
   const mouseRef = useRef({ x: 0, y: 0 });
   const lastUpdate = useRef(0);
 

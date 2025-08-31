@@ -267,34 +267,83 @@
   opacity: 0.9;
 }
 
-/* Smooth transitions for all interactive elements */
+/* Smooth transitions for all interactive elements - Optimized */
 * {
-  transition: transform 0.2s cubic-bezier(0.4, 0.0, 0.2, 1), 
-              box-shadow 0.2s cubic-bezier(0.4, 0.0, 0.2, 1), 
-              opacity 0.2s cubic-bezier(0.4, 0.0, 0.2, 1);
+  transition: transform 0.15s cubic-bezier(0.4, 0.0, 0.2, 1), 
+              box-shadow 0.15s cubic-bezier(0.4, 0.0, 0.2, 1), 
+              opacity 0.15s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
-/* Hardware acceleration for cursor elements */
+/* Disable transitions for cursor elements to avoid lag */
+.cursor-element {
+  transition: none !important;
+}
+
+/* Section-specific cursor styling indicators */
+#hero {
+  cursor: none;
+}
+
+#skills {
+  cursor: none;
+}
+
+#projects {
+  cursor: none;
+}
+
+#contact {
+  cursor: none;
+}
+
+/* Performance optimizations for smooth scrolling */
+.scroll-smooth {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-smooth {
+    scroll-behavior: auto;
+  }
+  
+  .cursor-element {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Hardware acceleration for cursor elements - Optimized */
 .cursor-element {
   will-change: transform;
   transform: translateZ(0);
   backface-visibility: hidden;
   perspective: 1000px;
+  /* Force GPU acceleration */
+  -webkit-transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000px;
+  /* Optimize for smooth movement */
+  transform-style: preserve-3d;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Hide default cursor on desktop when using custom cursor */
+/* Hide default cursor on desktop when using custom cursor - Optimized */
 @media (min-width: 1024px) {
+  .cursor-none, 
   .cursor-none * {
     cursor: none !important;
   }
   
-  button, a, [role="button"], .cursor-pointer, input, textarea {
+  /* Force cursor hiding on all interactive elements */
+  button, a, [role="button"], .cursor-pointer, 
+  input, textarea, select, [tabindex] {
     cursor: none !important;
   }
   
-  /* Optimize rendering for custom cursor */
-  .cursor-none {
-    cursor: none !important;
+  /* Disable pointer events on cursor elements to prevent interference */
+  .cursor-element {
+    pointer-events: none !important;
   }
 }
 

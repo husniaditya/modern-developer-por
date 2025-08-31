@@ -7,12 +7,12 @@ import Logo from '@/components/Logo';
 import ThemeToggle from '@/components/ThemeToggle';
 
 const Navigation = () => {
-  const [activeSection, setActiveSection] = useState('home');
+  const [activeSection, setActiveSection] = useState('hero');
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   const sections = [
-    { id: 'home', label: 'Home' },
+    { id: 'hero', label: 'Home' },
     { id: 'skills', label: 'Skills' },
     { id: 'certifications', label: 'Certifications' },
     { id: 'projects', label: 'Projects' },

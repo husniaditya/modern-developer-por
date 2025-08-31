@@ -19,7 +19,7 @@ export const getActiveSection = (): string => {
   const sections = document.querySelectorAll('section[id]');
   const scrollPosition = window.scrollY + 100;
   
-  let activeSection = 'home';
+  let activeSection = 'hero';
   
   sections.forEach((section) => {
     const element = section as HTMLElement;

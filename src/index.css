@@ -274,6 +274,14 @@
               opacity 0.2s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
+/* Hardware acceleration for cursor elements */
+.cursor-element {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
 /* Hide default cursor on desktop when using custom cursor */
 @media (min-width: 1024px) {
   .cursor-none * {
@@ -281,6 +289,11 @@
   }
   
   button, a, [role="button"], .cursor-pointer, input, textarea {
+    cursor: none !important;
+  }
+  
+  /* Optimize rendering for custom cursor */
+  .cursor-none {
     cursor: none !important;
   }
 }

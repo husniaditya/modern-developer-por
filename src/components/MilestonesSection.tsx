@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, Trophy, Target, Code, Rocket, Users, ChartLine, Building, Star, Medal, Lightning } from '@phosphor-icons/react';
 import developerWorkspace from '@/assets/images/developer-workspace.svg';
+import seniorDevIllustration from '@/assets/images/senior-dev-illustration.svg';
+import techLeadIllustration from '@/assets/images/tech-lead-illustration.svg';
+import fullStackIllustration from '@/assets/images/full-stack-illustration.svg';
+import frontendDevIllustration from '@/assets/images/frontend-dev-illustration.svg';
 import companyLogo1 from '@/assets/images/company-logo-1.svg';
 import companyLogo2 from '@/assets/images/company-logo-2.svg';
 import companyLogo3 from '@/assets/images/company-logo-3.svg';
@@ -32,6 +36,7 @@ interface Milestone {
   achievements?: Achievement[];
   duration?: string;
   location?: string;
+  illustration?: string;
 }
 
 const milestones: Milestone[] = [
@@ -40,6 +45,7 @@ const milestones: Milestone[] = [
     title: 'Senior Full Stack Developer',
     company: 'TechCorp Solutions',
     companyLogo: companyLogo1,
+    illustration: seniorDevIllustration,
     duration: 'Jan 2024 - Present',
     location: 'San Francisco, CA',
     description: 'Promoted to senior role, leading development of enterprise applications and mentoring junior developers.',
@@ -91,6 +97,7 @@ const milestones: Milestone[] = [
     title: 'Tech Lead',
     company: 'InnovateHub Inc.',
     companyLogo: companyLogo2,
+    illustration: techLeadIllustration,
     duration: 'Mar 2023 - Dec 2023',
     location: 'Austin, TX',
     description: 'Led a team of 5 developers in delivering multiple high-impact projects using modern web technologies.',
@@ -142,6 +149,7 @@ const milestones: Milestone[] = [
     title: 'Full Stack Developer',
     company: 'WebSolutions Pro',
     companyLogo: companyLogo3,
+    illustration: fullStackIllustration,
     duration: 'Jun 2022 - Feb 2023',
     location: 'Seattle, WA',
     description: 'Transitioned to full-stack development, mastering both frontend and backend technologies.',
@@ -193,6 +201,7 @@ const milestones: Milestone[] = [
     title: 'Frontend Developer',
     company: 'StartupVenture',
     companyLogo: companyLogo4,
+    illustration: frontendDevIllustration,
     duration: 'Aug 2021 - May 2022',
     location: 'Boston, MA',
     description: 'Began my journey as a Frontend Developer, focusing on React and modern JavaScript frameworks.',
@@ -242,6 +251,13 @@ const milestones: Milestone[] = [
 ];
 
 const MilestonesSection: React.FC = () => {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -498,6 +514,114 @@ const MilestonesSection: React.FC = () => {
                   index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
                 }`}
               >
+                {/* Parallax illustration */}
+                {milestone.illustration && (
+                  <motion.div
+                    className={`hidden lg:block absolute z-0 parallax-element ${
+                      index % 2 === 0 
+                        ? 'right-10 xl:right-20' 
+                        : 'left-10 xl:left-20'
+                    }`}
+                    style={{
+                      transform: `translateY(${scrollY * 0.1}px)`,
+                      top: `${80 + index * 50}px`
+                    }}
+                    initial={{ opacity: 0, scale: 0.8, x: index % 2 === 0 ? 50 : -50 }}
+                    whileInView={{ opacity: 1, scale: 1, x: 0 }}
+                    transition={{ 
+                      duration: 1.2, 
+                      ease: [0.4, 0.0, 0.2, 1],
+                      delay: index * 0.3 
+                    }}
+                    viewport={{ once: true, margin: "-100px" }}
+                  >
+                    <div className="relative w-80 h-60">
+                      <motion.img
+                        src={milestone.illustration}
+                        alt={`${milestone.title} illustration`}
+                        className="w-full h-full object-contain opacity-25 dark:opacity-15"
+                        animate={{ 
+                          y: [0, -8, 0],
+                          rotate: [0, 1, 0]
+                        }}
+                        transition={{ 
+                          duration: 8 + index, 
+                          repeat: Infinity, 
+                          ease: "easeInOut",
+                          delay: index * 2
+                        }}
+                      />
+                      
+                      {/* Floating particles around illustration */}
+                      <motion.div
+                        className={`absolute top-8 left-8 w-3 h-3 rounded-full opacity-50`}
+                        style={{
+                          background: `linear-gradient(135deg, var(--primary), var(--accent))`
+                        }}
+                        animate={{ 
+                          scale: [1, 1.5, 1],
+                          opacity: [0.3, 0.8, 0.3],
+                          y: [0, -10, 0]
+                        }}
+                        transition={{ 
+                          duration: 4, 
+                          repeat: Infinity, 
+                          delay: index * 0.5 
+                        }}
+                      />
+                      <motion.div
+                        className={`absolute top-20 right-12 w-2 h-2 rounded-full opacity-40`}
+                        style={{
+                          background: `linear-gradient(135deg, var(--accent), var(--primary))`
+                        }}
+                        animate={{ 
+                          scale: [1, 1.3, 1],
+                          opacity: [0.2, 0.6, 0.2],
+                          x: [0, 8, 0]
+                        }}
+                        transition={{ 
+                          duration: 5, 
+                          repeat: Infinity, 
+                          delay: index * 0.7 + 1 
+                        }}
+                      />
+                      <motion.div
+                        className={`absolute bottom-12 left-16 w-1.5 h-1.5 rounded-full opacity-35`}
+                        style={{
+                          background: `linear-gradient(135deg, var(--primary), var(--accent))`
+                        }}
+                        animate={{ 
+                          scale: [1, 1.8, 1],
+                          opacity: [0.25, 0.7, 0.25],
+                          rotate: [0, 180, 360]
+                        }}
+                        transition={{ 
+                          duration: 6, 
+                          repeat: Infinity, 
+                          delay: index * 0.9 + 2 
+                        }}
+                      />
+                      
+                      {/* Glowing effect around illustration */}
+                      <motion.div
+                        className="absolute inset-0 rounded-lg opacity-20"
+                        style={{
+                          background: `radial-gradient(circle at center, var(--primary) 0%, transparent 70%)`
+                        }}
+                        animate={{
+                          scale: [1, 1.1, 1],
+                          opacity: [0.1, 0.3, 0.1]
+                        }}
+                        transition={{
+                          duration: 6,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                          delay: index * 1.5
+                        }}
+                      />
+                    </div>
+                  </motion.div>
+                )}
                 {/* Enhanced Timeline dot with company logo */}
                 <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 z-20 mt-6">
                   <motion.div
@@ -523,7 +647,7 @@ const MilestonesSection: React.FC = () => {
                           <motion.img
                             src={milestone.companyLogo}
                             alt={`${milestone.company} logo`}
-                            className="w-10 h-10 object-contain"
+                            className="w-10 h-10 object-contain company-logo"
                             variants={logoVariants}
                             initial="hidden"
                             whileInView="visible"
@@ -533,7 +657,7 @@ const MilestonesSection: React.FC = () => {
                         
                         {/* Animated pulse effect */}
                         <motion.div
-                          className={`absolute inset-0 rounded-full bg-gradient-to-r ${milestone.color} opacity-20`}
+                          className={`absolute inset-0 rounded-full bg-gradient-to-r ${milestone.color} opacity-20 timeline-dot`}
                           animate={{
                             scale: [1, 1.2, 1],
                             opacity: [0.2, 0.4, 0.2]
@@ -567,7 +691,7 @@ const MilestonesSection: React.FC = () => {
                 {/* Content card */}
                 <div className={`ml-32 md:ml-0 ${
                   index % 2 === 0 ? 'md:mr-12 md:text-right' : 'md:ml-12'
-                } md:w-1/2`}>
+                } md:w-1/2 relative z-10`}>
                   <motion.div
                     className="glass-card p-8 rounded-2xl hover-lift group relative overflow-hidden"
                     whileHover={{ 

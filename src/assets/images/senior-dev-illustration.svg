@@ -1,0 +1,85 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#gradient1)"/>
+  
+  <!-- Monitor/Screen -->
+  <rect x="50" y="80" width="200" height="120" rx="8" fill="#1a1a1a" stroke="#333" stroke-width="2"/>
+  <rect x="60" y="90" width="180" height="100" rx="4" fill="#0a0a0a"/>
+  
+  <!-- Code on screen -->
+  <rect x="70" y="100" width="60" height="4" rx="2" fill="#7c3aed"/>
+  <rect x="140" y="100" width="40" height="4" rx="2" fill="#06b6d4"/>
+  <rect x="70" y="110" width="80" height="4" rx="2" fill="#10b981"/>
+  <rect x="160" y="110" width="20" height="4" rx="2" fill="#f59e0b"/>
+  <rect x="70" y="120" width="50" height="4" rx="2" fill="#ef4444"/>
+  <rect x="130" y="120" width="60" height="4" rx="2" fill="#7c3aed"/>
+  <rect x="70" y="130" width="70" height="4" rx="2" fill="#06b6d4"/>
+  <rect x="150" y="130" width="30" height="4" rx="2" fill="#10b981"/>
+  <rect x="70" y="140" width="90" height="4" rx="2" fill="#f59e0b"/>
+  <rect x="70" y="150" width="40" height="4" rx="2" fill="#ef4444"/>
+  <rect x="120" y="150" width="50" height="4" rx="2" fill="#7c3aed"/>
+  <rect x="70" y="160" width="80" height="4" rx="2" fill="#06b6d4"/>
+  <rect x="160" y="160" width="20" height="4" rx="2" fill="#10b981"/>
+  
+  <!-- Monitor stand -->
+  <rect x="135" y="200" width="30" height="20" rx="4" fill="#333"/>
+  <rect x="110" y="220" width="80" height="8" rx="4" fill="#555"/>
+  
+  <!-- Coffee cup -->
+  <ellipse cx="300" cy="190" rx="15" ry="12" fill="#8b4513"/>
+  <ellipse cx="300" cy="185" rx="12" ry="8" fill="#d2691e"/>
+  <path d="M 315 185 Q 325 180 325 190 Q 325 200 315 195" stroke="#8b4513" stroke-width="2" fill="none"/>
+  
+  <!-- Floating icons representing senior dev responsibilities -->
+  <g transform="translate(320, 100)">
+    <!-- Team/leadership icon -->
+    <circle cx="0" cy="0" r="8" fill="#7c3aed" opacity="0.8"/>
+    <circle cx="-10" cy="5" r="6" fill="#06b6d4" opacity="0.6"/>
+    <circle cx="10" cy="5" r="6" fill="#10b981" opacity="0.6"/>
+  </g>
+  
+  <g transform="translate(340, 120)">
+    <!-- Architecture icon -->
+    <rect x="-6" y="-6" width="12" height="12" rx="2" fill="#f59e0b" opacity="0.7"/>
+    <rect x="-3" y="-3" width="6" height="6" rx="1" fill="#ef4444" opacity="0.5"/>
+  </g>
+  
+  <g transform="translate(310, 60)">
+    <!-- Code quality icon -->
+    <path d="M -6 -3 L 0 3 L 6 -3" stroke="#10b981" stroke-width="2" fill="none" opacity="0.8"/>
+    <path d="M -6 3 L 0 -3 L 6 3" stroke="#7c3aed" stroke-width="2" fill="none" opacity="0.6"/>
+  </g>
+  
+  <!-- Keyboard -->
+  <rect x="50" y="230" width="120" height="40" rx="6" fill="#2a2a2a" stroke="#444" stroke-width="1"/>
+  <rect x="60" y="240" width="8" height="6" rx="1" fill="#444"/>
+  <rect x="72" y="240" width="8" height="6" rx="1" fill="#444"/>
+  <rect x="84" y="240" width="8" height="6" rx="1" fill="#444"/>
+  <rect x="96" y="240" width="8" height="6" rx="1" fill="#444"/>
+  <rect x="108" y="240" width="8" height="6" rx="1" fill="#444"/>
+  <rect x="120" y="240" width="8" height="6" rx="1" fill="#444"/>
+  <rect x="132" y="240" width="8" height="6" rx="1" fill="#444"/>
+  <rect x="144" y="240" width="8" height="6" rx="1" fill="#444"/>
+  <rect x="60" y="250" width="12" height="6" rx="1" fill="#444"/>
+  <rect x="76" y="250" width="8" height="6" rx="1" fill="#444"/>
+  <rect x="88" y="250" width="8" height="6" rx="1" fill="#444"/>
+  <rect x="100" y="250" width="8" height="6" rx="1" fill="#444"/>
+  <rect x="112" y="250" width="8" height="6" rx="1" fill="#444"/>
+  <rect x="124" y="250" width="8" height="6" rx="1" fill="#444"/>
+  <rect x="136" y="250" width="16" height="6" rx="1" fill="#444"/>
+  <rect x="70" y="260" width="80" height="6" rx="1" fill="#444"/>
+  
+  <!-- Success/achievement elements -->
+  <g opacity="0.6">
+    <polygon points="280,40 285,50 295,50 287,58 290,68 280,63 270,68 273,58 265,50 275,50" fill="#f59e0b"/>
+    <polygon points="340,50 343,56 350,56 345,61 347,68 340,65 333,68 335,61 330,56 337,56" fill="#10b981"/>
+    <polygon points="360,80 362,84 367,84 364,87 365,92 360,90 355,92 356,87 353,84 358,84" fill="#ef4444"/>
+  </g>
+  
+  <defs>
+    <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8fafc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e2e8f0;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+</svg>

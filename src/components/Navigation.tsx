@@ -64,7 +64,7 @@ const Navigation = () => {
 
   return (
     <motion.nav 
-      className={`fixed top-0 left-0 right-0 z-50 border-b border-border transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-[55] border-b border-border transition-all duration-300 ${
         scrolled ? 'bg-background/95 backdrop-blur-lg shadow-lg' : 'bg-background/80 backdrop-blur-md'
       }`}
       initial={{ y: -100 }}

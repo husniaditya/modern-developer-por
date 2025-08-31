@@ -43,6 +43,12 @@ const MouseTracker: React.FC = () => {
         return;
       }
 
+      // Check for navigation area
+      if (target.closest('nav')) {
+        setCursorVariant('hover');
+        return;
+      }
+
       // Check for section-specific cursors
       const section = target.closest('section');
       if (section) {
@@ -144,7 +150,7 @@ const MouseTracker: React.FC = () => {
     <>
       {/* Main cursor with section morphing */}
       <motion.div
-        className="fixed top-0 left-0 w-6 h-6 pointer-events-none z-50 mix-blend-difference hidden lg:block cursor-element"
+        className="fixed top-0 left-0 w-6 h-6 pointer-events-none z-[100] mix-blend-difference hidden lg:block cursor-element"
         variants={variants}
         animate={cursorVariant}
         transition={smoothTransition}
@@ -159,7 +165,7 @@ const MouseTracker: React.FC = () => {
       
       {/* Optimized cursor trail */}
       <motion.div
-        className="fixed top-0 left-0 w-2 h-2 rounded-full pointer-events-none z-40 hidden lg:block cursor-element"
+        className="fixed top-0 left-0 w-2 h-2 rounded-full pointer-events-none z-[99] hidden lg:block cursor-element"
         animate={{
           x: mousePosition.x - 4,
           y: mousePosition.y - 4,

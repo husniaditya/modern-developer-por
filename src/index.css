@@ -12,30 +12,58 @@
 }
 
 :root {
+  /* Light theme - Personal brand colors */
   --background: oklch(1 0 0);
-  --foreground: oklch(0.15 0 0);
+  --foreground: oklch(0.13 0.01 264);
   
-  --card: oklch(0.98 0 0);
-  --card-foreground: oklch(0.15 0 0);
+  --card: oklch(0.99 0 0);
+  --card-foreground: oklch(0.13 0.01 264);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.15 0 0);
+  --popover-foreground: oklch(0.13 0.01 264);
   
-  --primary: oklch(0.35 0.15 250);
+  /* Custom brand colors - Modern purple to cyan gradient theme */
+  --primary: oklch(0.47 0.15 285); /* Rich purple */
   --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.95 0 0);
-  --secondary-foreground: oklch(0.15 0 0);
-  --accent: oklch(0.68 0.18 45);
-  --accent-foreground: oklch(1 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
+  --secondary: oklch(0.96 0.01 250);
+  --secondary-foreground: oklch(0.13 0.01 264);
+  --accent: oklch(0.65 0.18 195); /* Bright cyan */
+  --accent-foreground: oklch(0.1 0.01 264);
+  --destructive: oklch(0.65 0.24 15);
   --destructive-foreground: oklch(1 0 0);
   
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --border: oklch(0.92 0 0);
-  --input: oklch(0.92 0 0);
-  --ring: oklch(0.35 0.15 250);
+  --muted: oklch(0.97 0.01 250);
+  --muted-foreground: oklch(0.55 0.02 250);
+  --border: oklch(0.91 0.01 250);
+  --input: oklch(0.91 0.01 250);
+  --ring: oklch(0.47 0.15 285);
   
-  --radius: 0.5rem;
+  --radius: 0.6rem;
+}
+
+.dark {
+  /* Dark theme - Matching brand colors */
+  --background: oklch(0.08 0.01 264);
+  --foreground: oklch(0.95 0.01 264);
+  
+  --card: oklch(0.11 0.01 264);
+  --card-foreground: oklch(0.95 0.01 264);
+  --popover: oklch(0.08 0.01 264);
+  --popover-foreground: oklch(0.95 0.01 264);
+  
+  --primary: oklch(0.58 0.18 285); /* Lighter purple for dark mode */
+  --primary-foreground: oklch(0.08 0.01 264);
+  --secondary: oklch(0.15 0.01 264);
+  --secondary-foreground: oklch(0.95 0.01 264);
+  --accent: oklch(0.75 0.20 195); /* Brighter cyan for dark mode */
+  --accent-foreground: oklch(0.08 0.01 264);
+  --destructive: oklch(0.75 0.24 15);
+  --destructive-foreground: oklch(0.08 0.01 264);
+  
+  --muted: oklch(0.13 0.01 264);
+  --muted-foreground: oklch(0.65 0.02 264);
+  --border: oklch(0.18 0.01 264);
+  --input: oklch(0.18 0.01 264);
+  --ring: oklch(0.58 0.18 285);
 }
 
 @theme {
@@ -128,12 +156,101 @@
   }
 }
 
+@keyframes brand-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 .animate-float {
   animation: float 3s ease-in-out infinite;
 }
 
 .animate-pulse-glow {
   animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-brand-gradient {
+  background: linear-gradient(-45deg, var(--primary), var(--accent), var(--primary), var(--accent));
+  background-size: 400% 400%;
+  animation: brand-gradient 4s ease infinite;
+}
+
+.animate-sparkle {
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+/* Brand gradient text effect */
+.brand-gradient-text {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Glassmorphism effects */
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass-card {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Project showcase hover effects */
+.project-card {
+  transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.dark .project-card:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.project-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.project-card:hover .project-overlay {
+  opacity: 0.9;
 }
 
 /* Smooth transitions for all interactive elements */

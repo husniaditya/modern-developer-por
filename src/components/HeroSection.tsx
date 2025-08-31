@@ -62,8 +62,47 @@ const HeroSection = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background to-secondary/20">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <section id="home" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-secondary/30 relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <motion.div
+          className="absolute top-20 left-10 w-20 h-20 bg-primary/10 rounded-full animate-float"
+          animate={{
+            x: [0, 50, 0],
+            y: [0, -30, 0],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
+        <motion.div
+          className="absolute top-40 right-20 w-16 h-16 bg-accent/10 rounded-full animate-sparkle"
+          animate={{
+            x: [0, -40, 0],
+            y: [0, 40, 0],
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
+        <motion.div
+          className="absolute bottom-20 left-1/3 w-12 h-12 bg-primary/5 rounded-full"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.7, 0.3],
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+          }}
+        />
+      </div>
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
         <motion.div 
           className="text-center space-y-8"
           variants={containerVariants}
@@ -79,94 +118,124 @@ const HeroSection = () => {
               variants={avatarVariants}
               whileHover="hover"
             >
-              <Avatar className="w-32 h-32 ring-4 ring-primary/20 shadow-lg">
-                <AvatarImage src="/api/placeholder/128/128" alt="Profile" />
-                <AvatarFallback className="text-2xl font-bold">YN</AvatarFallback>
+              <Avatar className="w-36 h-36 ring-4 ring-primary ring-offset-4 ring-offset-background shadow-2xl">
+                <AvatarImage src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" alt="Professional Profile" />
+                <AvatarFallback className="text-3xl font-bold bg-gradient-to-br from-primary to-accent text-white">
+                  JS
+                </AvatarFallback>
               </Avatar>
             </motion.div>
           </motion.div>
 
           {/* Main Heading */}
-          <div className="space-y-4">
+          <div className="space-y-6">
             <motion.h1 
-              className="text-5xl sm:text-6xl font-bold text-foreground"
+              className="text-5xl sm:text-7xl font-bold bg-gradient-to-r from-foreground via-primary to-accent bg-clip-text text-transparent"
               variants={itemVariants}
             >
-              Your Name
+              John Smith
             </motion.h1>
             <motion.h2 
-              className="text-2xl sm:text-3xl font-semibold text-primary min-h-[3rem] flex items-center justify-center"
+              className="text-2xl sm:text-4xl font-semibold text-primary min-h-[4rem] flex items-center justify-center"
               variants={itemVariants}
             >
               <TypewriterEffect 
                 texts={jobTitles} 
-                speed={30}
-                pauseDuration={800}
+                speed={50}
+                pauseDuration={1500}
               />
             </motion.h2>
             <motion.p 
-              className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed"
+              className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed"
               variants={itemVariants}
             >
-              Experienced software engineer with 7+ years developing enterprise applications. 
-              Specialized in React, Node.js, and cloud technologies with a passion for building 
-              scalable, user-centric solutions that drive business growth.
+              Passionate software engineer with <span className="font-semibold text-primary">7+ years</span> of experience crafting enterprise applications. 
+              Specialized in <span className="font-semibold text-accent">React, Node.js, and cloud technologies</span> with a proven track record of 
+              delivering scalable, user-centric solutions that drive business growth and innovation.
             </motion.p>
           </div>
 
-          {/* Social Links & CTA */}
+          {/* Enhanced Social Links & CTA */}
           <motion.div 
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            className="flex flex-col sm:flex-row items-center justify-center gap-6"
             variants={itemVariants}
           >
             <div className="flex items-center gap-4">
-              <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-                <Button variant="outline" size="icon">
+              <motion.a
+                href="https://linkedin.com/in/yourprofile"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button variant="outline" size="icon" className="border-primary/30 hover:border-primary hover:bg-primary/10">
                   <LinkedinLogo size={20} />
                 </Button>
-              </motion.div>
-              <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-                <Button variant="outline" size="icon">
+              </motion.a>
+              <motion.a
+                href="https://github.com/yourusername"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1, rotate: -5 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button variant="outline" size="icon" className="border-primary/30 hover:border-primary hover:bg-primary/10">
                   <GithubLogo size={20} />
                 </Button>
-              </motion.div>
-              <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-                <Button variant="outline" size="icon">
+              </motion.a>
+              <motion.a
+                href="mailto:john.smith@email.com"
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button variant="outline" size="icon" className="border-primary/30 hover:border-primary hover:bg-primary/10">
                   <Envelope size={20} />
                 </Button>
-              </motion.div>
+              </motion.a>
             </div>
             <div className="flex items-center gap-4">
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button className="group">
+              <motion.a
+                href="/resume.pdf"
+                download
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button className="group bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 transition-all duration-300">
                   <Download size={16} className="mr-2 group-hover:animate-bounce" />
                   Download Resume
                 </Button>
-              </motion.div>
+              </motion.a>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button variant="outline" onClick={scrollToNext}>
+                <Button variant="outline" onClick={scrollToNext} className="border-accent/50 hover:border-accent hover:bg-accent/10">
                   View My Work
                 </Button>
               </motion.div>
             </div>
           </motion.div>
 
-          {/* Scroll indicator */}
+          {/* Enhanced scroll indicator */}
           <motion.div 
-            className="pt-12"
+            className="pt-16"
             variants={itemVariants}
           >
             <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
+              animate={{ 
+                y: [0, 12, 0],
+                opacity: [0.5, 1, 0.5]
+              }}
+              transition={{ 
+                duration: 2.5, 
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
             >
               <Button 
                 variant="ghost" 
                 size="icon"
                 onClick={scrollToNext}
-                className="hover:bg-primary/10"
+                className="hover:bg-primary/10 rounded-full w-12 h-12"
               >
-                <ArrowDown size={24} />
+                <ArrowDown size={24} className="text-primary" />
               </Button>
             </motion.div>
           </motion.div>

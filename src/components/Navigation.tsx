@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from '@phosphor-icons/react';
 import { smoothScrollTo, getActiveSection } from '@/utils/scrollUtils';
+import Logo from '@/components/Logo';
+import ThemeToggle from '@/components/ThemeToggle';
 
 const Navigation = () => {
   const [activeSection, setActiveSection] = useState('home');
@@ -80,22 +82,26 @@ const Navigation = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <motion.div 
-            className="flex-shrink-0"
+            className="flex items-center space-x-3"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <h1 className="text-xl font-bold text-primary">Portfolio</h1>
+            <Logo size="md" />
+            <div className="flex flex-col">
+              <h1 className="text-lg font-bold brand-gradient-text">DevPortfolio</h1>
+              <span className="text-xs text-muted-foreground">Full Stack Developer</span>
+            </div>
           </motion.div>
           
           {/* Desktop Navigation */}
           <motion.div 
-            className="hidden md:block"
+            className="hidden md:flex items-center space-x-4"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            <div className="ml-10 flex items-baseline space-x-4">
+            <div className="flex items-baseline space-x-4">
               {sections.map((section, index) => (
                 <motion.div
                   key={section.id}
@@ -128,15 +134,17 @@ const Navigation = () => {
                 </motion.div>
               ))}
             </div>
+            <ThemeToggle />
           </motion.div>
 
-          {/* Mobile menu button */}
+          {/* Mobile controls */}
           <motion.div 
-            className="md:hidden"
+            className="md:hidden flex items-center space-x-2"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
+            <ThemeToggle />
             <motion.div
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}

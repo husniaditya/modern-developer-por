@@ -1,0 +1,97 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "about": "Über mich",
+    "skills": "Fähigkeiten",
+    "projects": "Projekte",
+    "milestones": "Erfahrung",
+    "certificates": "Zertifikate",
+    "testimonials": "Referenzen",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "greeting": "Hallo, ich bin",
+    "name": "Husni Aditya",
+    "title": "Senior Full Stack Developer",
+    "description": "Leidenschaftlich dabei, außergewöhnliche digitale Erfahrungen durch innovative Web-Lösungen zu schaffen. Spezialisiert auf moderne Technologien und skalierbare Architekturen.",
+    "downloadResume": "Lebenslauf herunterladen",
+    "contactMe": "Kontaktiere mich"
+  },
+  "skills": {
+    "title": "Technische Fähigkeiten",
+    "subtitle": "Technologien und Tools, mit denen ich Ideen zum Leben erwecke",
+    "categories": {
+      "languages": "Programmiersprachen",
+      "frameworks": "Frameworks & Bibliotheken",
+      "databases": "Datenbanken",
+      "tools": "Tools & Plattformen",
+      "cloud": "Cloud & DevOps"
+    }
+  },
+  "projects": {
+    "title": "Ausgewählte Projekte",
+    "subtitle": "Eine Auswahl meiner neuesten Arbeiten und Beiträge zu verschiedenen Projekten",
+    "filters": {
+      "all": "Alle Projekte",
+      "fullStack": "Full Stack",
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "mobile": "Mobile"
+    },
+    "viewProject": "Projekt ansehen",
+    "sourceCode": "Quellcode",
+    "liveDemo": "Live-Demo",
+    "code": "Code",
+    "featured": "Empfohlen"
+  },
+  "milestones": {
+    "title": {
+      "career": "Karriere",
+      "milestones": "Meilensteine"
+    },
+    "subtitle": "Wichtige Erfolge, Projekte und entscheidende Momente, die meinen beruflichen Werdegang geprägt haben"
+  },
+  "certificates": {
+    "title": "Zertifikate",
+    "subtitle": "Professionelle Zertifikate, die meine Expertise und mein Engagement für kontinuierliches Lernen bestätigen"
+  },
+  "testimonials": {
+    "title": "Was andere sagen",
+    "subtitle": "Referenzen von Kollegen, Kunden und Mitarbeitern, mit denen ich zusammengearbeitet habe",
+    "rating": "Bewertung",
+    "previous": "Vorherige",
+    "next": "Nächste",
+    "ariaLabel": "Referenz {{index}} von {{total}}",
+    "navigationLabel": "Referenz-Navigation"
+  },
+  "contact": {
+    "title": "Kontakt aufnehmen",
+    "subtitle": "Ich bin immer offen für Diskussionen über neue Möglichkeiten, interessante Projekte oder einfach nur ein Gespräch über Technologie",
+    "connect": "Verbinden wir uns",
+    "connectDescription": "Ob Sie ein Projekt im Kopf haben, eine mögliche Zusammenarbeit besprechen möchten oder einfach nur Hallo sagen wollen, ich würde gerne von Ihnen hören. Zögern Sie nicht, mich über einen der unten stehenden Kanäle zu kontaktieren.",
+    "email": "E-Mail",
+    "phone": "Telefon",
+    "location": "Standort",
+    "followMe": "Folge mir",
+    "whatsapp": {
+      "title": "Lass uns auf WhatsApp chatten",
+      "ready": "Bereit, Ihr Projekt zu besprechen?",
+      "description": "Lassen Sie uns kurz auf WhatsApp sprechen! Ich bin verfügbar, um Ihre Projektideen zu besprechen, Fragen zu beantworten oder mögliche Zusammenarbeiten zu erkunden. Klicken Sie auf die Schaltfläche unten, um unser Gespräch zu beginnen.",
+      "button": "Nachricht auf WhatsApp",
+      "alternative": "Bevorzugen Sie andere Methoden? Sie können mich auch per E-Mail oder Telefon über die Kontaktinformationen links erreichen."
+    }
+  },
+  "common": {
+    "loading": "Laden...",
+    "error": "Etwas ist schief gelaufen",
+    "retry": "Erneut versuchen",
+    "close": "Schließen",
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "submit": "Senden",
+    "next": "Weiter",
+    "previous": "Zurück",
+    "viewMore": "Mehr anzeigen",
+    "viewLess": "Weniger anzeigen"
+  }
+}

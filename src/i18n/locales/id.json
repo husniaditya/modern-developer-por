@@ -1,0 +1,109 @@
+{
+  "testimonials": {
+    "title": "Apa Kata Mereka",
+    "subtitle": "Testimoni dari kolega, klien, dan rekan kerja yang pernah bekerja sama dengan saya",
+    "rating": "Rating",
+    "previous": "Sebelumnya",
+    "next": "Selanjutnya",
+    "ariaLabel": "Testimoni {{index}} dari {{total}}",
+    "navigationLabel": "Navigasi testimoni"
+  },
+  "nav": {
+    "home": "Beranda",
+    "about": "Tentang",
+    "skills": "Keahlian",
+    "projects": "Proyek",
+    "milestones": "Pengalaman",
+    "certificates": "Sertifikat",
+    "testimonials": "Testimoni",
+    "contact": "Kontak"
+  },
+  "hero": {
+    "greeting": "Hai, saya",
+    "name": "Husni Aditya",
+    "title": "Senior Full Stack Developer",
+    "description": "Bersemangat menciptakan pengalaman digital yang luar biasa melalui solusi web inovatif. Spesialisasi dalam teknologi modern dan arsitektur yang dapat diskalakan.",
+    "downloadResume": "Unduh Resume",
+    "contactMe": "Hubungi Saya"
+  },
+  "skills": {
+    "title": "Keahlian & Expertise",
+    "subtitle": "Gambaran komprehensif tentang keahlian teknis dan tingkat kemahiran saya",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "tools": "Alat & Lainnya"
+    }
+  },
+  "projects": {
+    "title": "Proyek Unggulan",
+    "subtitle": "Showcase dari karya terbaru saya dan kontribusi pada berbagai proyek",
+    "filters": {
+      "all": "Semua",
+      "fullStack": "Full Stack",
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "mobile": "Mobile"
+    },
+    "viewProject": "Lihat Proyek",
+    "sourceCode": "Kode Sumber",
+    "liveDemo": "Demo Langsung",
+    "code": "Kode",
+    "featured": "Unggulan",
+    "github": "GitHub"
+  },
+  "milestones": {
+    "title": {
+      "career": "Karir",
+      "milestones": "Tonggak Penting"
+    },
+    "subtitle": "Pencapaian utama, proyek, dan momen penting yang membentuk perjalanan profesional saya",
+    "duration": "Durasi",
+    "location": "Lokasi",
+    "projects": "Proyek",
+    "achievements": "Pencapaian",
+    "technologies": "Teknologi yang Digunakan",
+    "impact": "Dampak"
+  },
+  "certificates": {
+    "title": "Sertifikat",
+    "subtitle": "Sertifikat profesional yang memvalidasi keahlian saya dan komitmen terhadap pembelajaran berkelanjutan",
+    "issuer": "Penerbit",
+    "date": "Tanggal",
+    "status": {
+      "active": "Aktif",
+      "expired": "Kedaluwarsa"
+    },
+    "credentialId": "ID Kredensial"
+  },
+  "contact": {
+    "title": "Mari Terhubung",
+    "subtitle": "Saya selalu terbuka untuk mendiskusikan peluang baru, proyek menarik, atau sekadar berbincang tentang teknologi",
+    "connect": "Mari Terhubung",
+    "connectDescription": "Apakah Anda memiliki proyek dalam pikiran, ingin mendiskusikan kolaborasi potensial, atau hanya ingin menyapa, saya senang mendengar dari Anda. Jangan ragu untuk menghubungi melalui saluran di bawah ini.",
+    "email": "Email",
+    "phone": "Telepon",
+    "location": "Lokasi",
+    "followMe": "Ikuti Saya",
+    "whatsapp": {
+      "title": "Mari Ngobrol di WhatsApp",
+      "ready": "Siap mendiskusikan proyek Anda?",
+      "description": "Mari ngobrol cepat di WhatsApp! Saya siap mendiskusikan ide proyek Anda, menjawab pertanyaan, atau mengeksplorasi kolaborasi potensial. Klik tombol di bawah untuk memulai percakapan kita.",
+      "button": "Kirim pesan di WhatsApp",
+      "alternative": "Lebih suka metode lain? Anda juga bisa menghubungi saya via email atau telepon menggunakan informasi kontak di sebelah kiri."
+    }
+  },
+  "common": {
+    "loading": "Memuat...",
+    "error": "Ada yang salah",
+    "retry": "Coba lagi",
+    "close": "Tutup",
+    "save": "Simpan",
+    "cancel": "Batal",
+    "submit": "Kirim",
+    "next": "Selanjutnya",
+    "previous": "Sebelumnya",
+    "viewMore": "Lihat Lebih",
+    "viewLess": "Lihat Kurang"
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "nav": {
+    "home": "ホーム",
+    "about": "プロフィール",
+    "skills": "スキル",
+    "projects": "プロジェクト",
+    "milestones": "経験",
+    "certificates": "資格",
+    "testimonials": "推薦文",
+    "contact": "連絡先"
+  },
+  "hero": {
+    "greeting": "こんにちは、私は",
+    "name": "Husni Aditya",
+    "title": "シニアフルスタック開発者",
+    "description": "革新的なWebソリューションを通じて卓越したデジタル体験を創造することに情熱を注いでいます。現代技術とスケーラブルなアーキテクチャを専門としています。",
+    "downloadResume": "履歴書をダウンロード",
+    "contactMe": "お問い合わせ"
+  },
+  "skills": {
+    "title": "技術スキル",
+    "subtitle": "アイデアを実現するために使用している技術とツール",
+    "categories": {
+      "languages": "プログラミング言語",
+      "frameworks": "フレームワーク＆ライブラリ",
+      "databases": "データベース",
+      "tools": "ツール＆プラットフォーム",
+      "cloud": "クラウド＆DevOps"
+    }
+  },
+  "projects": {
+    "title": "注目プロジェクト",
+    "subtitle": "私の最近の作品とさまざまなプロジェクトへの貢献のショーケース",
+    "filters": {
+      "all": "全プロジェクト",
+      "fullStack": "フルスタック",
+      "backend": "バックエンド",
+      "frontend": "フロントエンド",
+      "mobile": "モバイル"
+    },
+    "viewProject": "プロジェクトを見る",
+    "sourceCode": "ソースコード",
+    "liveDemo": "ライブデモ",
+    "code": "コード",
+    "featured": "注目"
+  },
+  "milestones": {
+    "title": {
+      "career": "キャリア",
+      "milestones": "マイルストーン"
+    },
+    "subtitle": "私のプロフェッショナルな歩みを形作った主要な成果、プロジェクト、重要な瞬間"
+  },
+  "certificates": {
+    "title": "資格",
+    "subtitle": "私の専門知識と継続的な学習への取り組みを証明するプロフェッショナル資格"
+  },
+  "testimonials": {
+    "title": "皆様の声",
+    "subtitle": "一緒に働いた同僚、クライアント、協力者からの推薦文",
+    "rating": "評価",
+    "previous": "前へ",
+    "next": "次へ",
+    "ariaLabel": "推薦文 {{index}} / {{total}}",
+    "navigationLabel": "推薦文ナビゲーション"
+  },
+  "contact": {
+    "title": "お問い合わせ",
+    "subtitle": "新しい機会、興味深いプロジェクト、または単に技術について話すことについて、いつでも議論を歓迎します",
+    "connect": "つながりましょう",
+    "connectDescription": "プロジェクトのアイデアがある、潜在的なコラボレーションについて話し合いたい、または単に挨拶したい場合でも、お聞かせください。以下のチャンネルからお気軽にお問い合わせください。",
+    "email": "メール",
+    "phone": "電話",
+    "location": "所在地",
+    "followMe": "フォローしてください",
+    "whatsapp": {
+      "title": "WhatsAppでチャットしましょう",
+      "ready": "プロジェクトについて話し合う準備はできていますか？",
+      "description": "WhatsAppで簡単にチャットしましょう！プロジェクトのアイデアについて話し合い、質問に答え、潜在的なコラボレーションを探る準備ができています。以下のボタンをクリックして会話を始めましょう。",
+      "button": "WhatsAppでメッセージを送る",
+      "alternative": "他の方法をお好みですか？左側の連絡先情報を使用してメールまたは電話で私に連絡することもできます。"
+    }
+  },
+  "common": {
+    "loading": "読み込み中...",
+    "error": "何かが間違っています",
+    "retry": "再試行",
+    "close": "閉じる",
+    "save": "保存",
+    "cancel": "キャンセル",
+    "submit": "送信",
+    "next": "次へ",
+    "previous": "前へ",
+    "viewMore": "もっと見る",
+    "viewLess": "少なく見る"
+  }
+}

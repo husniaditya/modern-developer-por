@@ -1,0 +1,107 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "milestones": "Experience",
+    "certificates": "Certificates",
+    "testimonials": "Testimonials",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Hi, I'm",
+    "name": "Husni Aditya",
+    "title": "Senior Full Stack Developer",
+    "description": "Passionate about creating exceptional digital experiences through innovative web solutions. Specialized in modern technologies and scalable architectures.",
+    "downloadResume": "Download Resume",
+    "contactMe": "Contact Me"
+  },
+  "skills": {
+    "title": "Skills & Expertise",
+    "subtitle": "A comprehensive overview of my technical skills and proficiency levels",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "tools": "Tools & Others"
+    }
+  },
+  "projects": {
+    "title": "Featured Projects",
+    "subtitle": "A showcase of my recent work and contributions to various projects",
+    "filters": {
+      "all": "All",
+      "fullStack": "Full Stack",
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "mobile": "Mobile"
+    },
+    "viewProject": "View Project",
+    "sourceCode": "Source Code",
+    "liveDemo": "Live Demo",
+    "github": "GitHub"
+  },
+  "milestones": {
+    "title": {
+      "career": "Career",
+      "milestones": "Milestones"
+    },
+    "subtitle": "Key achievements, projects, and pivotal moments that have shaped my professional journey",
+    "duration": "Duration",
+    "location": "Location",
+    "projects": "Projects",
+    "achievements": "Achievements",
+    "technologies": "Technologies Used",
+    "impact": "Impact"
+  },
+  "certificates": {
+    "title": "Certificates",
+    "subtitle": "Professional certificates that validate my expertise and commitment to continuous learning",
+    "issuer": "Issuer",
+    "date": "Date",
+    "status": {
+      "active": "Active",
+      "expired": "Expired"
+    },
+    "credentialId": "Credential ID"
+  },
+  "testimonials": {
+    "title": "What People Say",
+    "subtitle": "Testimonials from colleagues, clients, and collaborators I've worked with",
+    "rating": "Rating",
+    "previous": "Previous",
+    "next": "Next",
+    "ariaLabel": "Testimonial {{index}} of {{total}}",
+    "navigationLabel": "Testimonial navigation"
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "I'm always open to discussing new opportunities, interesting projects, or just having a chat about technology",
+    "connect": "Let's Connect",
+    "connectDescription": "Whether you have a project in mind, want to discuss a potential collaboration, or simply want to say hello, I'd love to hear from you. Feel free to reach out through any of the channels below.",
+    "email": "Email",
+    "phone": "Phone",
+    "location": "Location",
+    "followMe": "Follow Me",
+    "whatsapp": {
+      "title": "Let's Chat on WhatsApp",
+      "ready": "Ready to discuss your project?",
+      "description": "Let's have a quick chat on WhatsApp! I'm available to discuss your project ideas, answer questions, or explore potential collaborations. Click the button below to start our conversation.",
+      "button": "Message me on WhatsApp",
+      "alternative": "Prefer other methods? You can also reach me via email or phone using the contact information on the left."
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Try again",
+    "close": "Close",
+    "save": "Save",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "next": "Next",
+    "previous": "Previous",
+    "viewMore": "View More",
+    "viewLess": "View Less"
+  }
+}

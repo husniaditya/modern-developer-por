@@ -1,0 +1,97 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Acerca de",
+    "skills": "Habilidades",
+    "projects": "Proyectos",
+    "milestones": "Experiencia",
+    "certificates": "Certificados",
+    "testimonials": "Testimonios",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "greeting": "Hola, soy",
+    "name": "Husni Aditya",
+    "title": "Senior Full Stack Developer",
+    "description": "Apasionado por crear experiencias digitales excepcionales a través de soluciones web innovadoras. Especializado en tecnologías modernas y arquitecturas escalables.",
+    "downloadResume": "Descargar CV",
+    "contactMe": "Contáctame"
+  },
+  "skills": {
+    "title": "Habilidades Técnicas",
+    "subtitle": "Tecnologías y herramientas que uso para dar vida a las ideas",
+    "categories": {
+      "languages": "Lenguajes de Programación",
+      "frameworks": "Frameworks y Librerías",
+      "databases": "Bases de Datos",
+      "tools": "Herramientas y Plataformas",
+      "cloud": "Cloud y DevOps"
+    }
+  },
+  "projects": {
+    "title": "Proyectos Destacados",
+    "subtitle": "Una muestra de mi trabajo reciente y contribuciones a varios proyectos",
+    "filters": {
+      "all": "Todos los Proyectos",
+      "fullStack": "Full Stack",
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "mobile": "Móvil"
+    },
+    "viewProject": "Ver Proyecto",
+    "sourceCode": "Código Fuente",
+    "liveDemo": "Demo en Vivo",
+    "code": "Código",
+    "featured": "Destacado"
+  },
+  "milestones": {
+    "title": {
+      "career": "Carrera",
+      "milestones": "Hitos"
+    },
+    "subtitle": "Logros clave, proyectos y momentos cruciales que han dado forma a mi trayectoria profesional"
+  },
+  "certificates": {
+    "title": "Certificados",
+    "subtitle": "Certificados profesionales que validan mi experiencia y compromiso con el aprendizaje continuo"
+  },
+  "testimonials": {
+    "title": "Lo que dice la gente",
+    "subtitle": "Testimonios de colegas, clientes y colaboradores con los que he trabajado",
+    "rating": "Calificación",
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "ariaLabel": "Testimonio {{index}} de {{total}}",
+    "navigationLabel": "Navegación de testimonios"
+  },
+  "contact": {
+    "title": "Ponte en contacto",
+    "subtitle": "Siempre estoy abierto a discutir nuevas oportunidades, proyectos interesantes o simplemente charlar sobre tecnología",
+    "connect": "Conectemos",
+    "connectDescription": "Ya sea que tengas un proyecto en mente, quieras discutir una posible colaboración, o simplemente quieras saludar, me encantaría saber de ti. No dudes en contactarme a través de cualquiera de los canales a continuación.",
+    "email": "Correo",
+    "phone": "Teléfono",
+    "location": "Ubicación",
+    "followMe": "Sígueme",
+    "whatsapp": {
+      "title": "Charlemos en WhatsApp",
+      "ready": "¿Listo para discutir tu proyecto?",
+      "description": "¡Tengamos una charla rápida en WhatsApp! Estoy disponible para discutir tus ideas de proyecto, responder preguntas o explorar posibles colaboraciones. Haz clic en el botón de abajo para iniciar nuestra conversación.",
+      "button": "Envíame un mensaje en WhatsApp",
+      "alternative": "¿Prefieres otros métodos? También puedes contactarme por correo o teléfono usando la información de contacto de la izquierda."
+    }
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Algo salió mal",
+    "retry": "Intentar de nuevo",
+    "close": "Cerrar",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "submit": "Enviar",
+    "next": "Siguiente",
+    "previous": "Anterior",
+    "viewMore": "Ver Más",
+    "viewLess": "Ver Menos"
+  }
+}

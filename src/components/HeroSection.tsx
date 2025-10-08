@@ -5,14 +5,16 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { ArrowDown, Download, LinkedinLogo, GithubLogo, Envelope } from '@phosphor-icons/react';
 import TypewriterEffect from './TypewriterEffect';
 import { smoothScrollTo } from '@/utils/scrollUtils';
+import { useTranslation } from 'react-i18next';
 
 const HeroSection = () => {
+  const { t } = useTranslation();
+  
   const jobTitles = [
     "Senior Full Stack Developer",
     "React & TypeScript Specialist", 
     "Backend Systems Engineer",
-    "Application Support Engineer",
-    "Cloud Solutions Developer"
+    "Application Support Engineer"
   ];
 
   const scrollToNext = () => {
@@ -112,9 +114,13 @@ const HeroSection = () => {
               }}
             >
               <Avatar className="w-36 h-36 ring-4 ring-primary ring-offset-4 ring-offset-background shadow-2xl">
-                <AvatarImage src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" alt="Professional Profile" />
+                <AvatarImage 
+                  src="/src/assets/images/profile/profile.webp" 
+                  alt="Professional Profile"
+                  className="object-cover object-center"
+                />
                 <AvatarFallback className="text-3xl font-bold bg-gradient-to-br from-primary to-accent text-white">
-                  JS
+                  HA
                 </AvatarFallback>
               </Avatar>
             </motion.div>
@@ -126,7 +132,7 @@ const HeroSection = () => {
               className="text-5xl sm:text-7xl font-bold bg-gradient-to-r from-foreground via-primary to-accent bg-clip-text text-transparent"
               variants={itemVariants}
             >
-              John Smith
+              {t('hero.greeting')} {t('hero.name')}
             </motion.h1>
             <motion.h2 
               className="text-2xl sm:text-4xl font-semibold text-primary min-h-[4rem] flex items-center justify-center"
@@ -142,9 +148,7 @@ const HeroSection = () => {
               className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed"
               variants={itemVariants}
             >
-              Passionate software engineer with <span className="font-semibold text-primary">7+ years</span> of experience crafting enterprise applications. 
-              Specialized in <span className="font-semibold text-accent">React, Node.js, and cloud technologies</span> with a proven track record of 
-              delivering scalable, user-centric solutions that drive business growth and innovation.
+              {t('hero.description')}
             </motion.p>
           </div>
 
@@ -166,7 +170,7 @@ const HeroSection = () => {
                 </Button>
               </motion.a>
               <motion.a
-                href="https://github.com/yourusername"
+                href="https://github.com/husniaditya"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1, rotate: -5 }}
@@ -177,7 +181,7 @@ const HeroSection = () => {
                 </Button>
               </motion.a>
               <motion.a
-                href="mailto:john.smith@email.com"
+                href="mailto:adityahusni90@gmail.com"
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -188,14 +192,14 @@ const HeroSection = () => {
             </div>
             <div className="flex items-center gap-4">
               <motion.a
-                href="/resume.pdf"
-                download
+                href="/src/assets/resume/resume - Husni Aditya.pdf"
+                download="Husni_Aditya_Resume.pdf"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
                 <Button className="group bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 transition-all duration-300">
                   <Download size={16} className="mr-2 group-hover:animate-bounce" />
-                  Download Resume
+                  {t('hero.downloadResume')}
                 </Button>
               </motion.a>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>

@@ -1,0 +1,97 @@
+{
+  "nav": {
+    "home": "首頁",
+    "about": "關於",
+    "skills": "技能",
+    "projects": "專案",
+    "milestones": "經歷",
+    "certificates": "證書",
+    "testimonials": "推薦",
+    "contact": "聯絡"
+  },
+  "hero": {
+    "greeting": "您好，我是",
+    "name": "Husni Aditya",
+    "title": "資深全端開發工程師",
+    "description": "熱衷於透過創新的網路解決方案創造卓越的數位體驗。專精於現代技術和可擴展架構。",
+    "downloadResume": "下載履歷",
+    "contactMe": "聯絡我"
+  },
+  "skills": {
+    "title": "技術技能",
+    "subtitle": "我用來實現想法的技術和工具",
+    "categories": {
+      "languages": "程式語言",
+      "frameworks": "框架和函式庫",
+      "databases": "資料庫",
+      "tools": "工具和平台",
+      "cloud": "雲端服務和DevOps"
+    }
+  },
+  "projects": {
+    "title": "精選專案",
+    "subtitle": "我最近的作品和對各種專案的貢獻展示",
+    "filters": {
+      "all": "所有專案",
+      "fullStack": "全端",
+      "backend": "後端",
+      "frontend": "前端",
+      "mobile": "行動裝置"
+    },
+    "viewProject": "檢視專案",
+    "sourceCode": "原始碼",
+    "liveDemo": "即時演示",
+    "code": "程式碼",
+    "featured": "精選"
+  },
+  "milestones": {
+    "title": {
+      "career": "職業",
+      "milestones": "里程碑"
+    },
+    "subtitle": "塑造我職業歷程的關鍵成就、專案和重要時刻"
+  },
+  "certificates": {
+    "title": "證書",
+    "subtitle": "驗證我的專業技能和持續學習承諾的專業證書"
+  },
+  "testimonials": {
+    "title": "他人評價",
+    "subtitle": "與我合作過的同事、客戶和合作夥伴的推薦",
+    "rating": "評分",
+    "previous": "上一個",
+    "next": "下一個",
+    "ariaLabel": "推薦 {{index}} / {{total}}",
+    "navigationLabel": "推薦導航"
+  },
+  "contact": {
+    "title": "聯絡我",
+    "subtitle": "我始終樂於討論新機會、有趣的專案，或只是聊聊技術",
+    "connect": "讓我們聯絡",
+    "connectDescription": "無論您有專案想法、想討論潛在合作，還是只想打個招呼，我都很樂意聽到您的消息。請隨時透過以下任何管道聯絡我。",
+    "email": "電子郵件",
+    "phone": "電話",
+    "location": "位置",
+    "followMe": "追蹤我",
+    "whatsapp": {
+      "title": "透過WhatsApp聊天",
+      "ready": "準備討論您的專案了嗎？",
+      "description": "讓我們在WhatsApp上快速聊聊！我可以討論您的專案想法、回答問題或探索潛在的合作。點擊下面的按鈕開始我們的對話。",
+      "button": "在WhatsApp上傳訊息給我",
+      "alternative": "偏好其他方式？您也可以使用左側的聯絡資訊透過電子郵件或電話聯絡我。"
+    }
+  },
+  "common": {
+    "loading": "載入中...",
+    "error": "發生錯誤",
+    "retry": "重試",
+    "close": "關閉",
+    "save": "儲存",
+    "cancel": "取消",
+    "submit": "提交",
+    "next": "下一個",
+    "previous": "上一個",
+    "viewMore": "檢視更多",
+    "viewLess": "檢視較少"
+  }
+}

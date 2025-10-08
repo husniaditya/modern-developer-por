@@ -4,10 +4,24 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ArrowSquareOut, GithubLogo, Globe } from '@phosphor-icons/react';
+import { useTranslation } from 'react-i18next';
+
+// Project images
+import chocomaidApp from '@/assets/images/projects/chocomaid_app.webp';
+import ciptasejatiApp from '@/assets/images/projects/ciptasejati_app.webp';
+import erpApp from '@/assets/images/projects/erp_app.webp';
+import maintenanceApp from '@/assets/images/projects/maintenance_app.webp';
+import parkingApp from '@/assets/images/projects/parking_app.webp';
+import productspecApp from '@/assets/images/projects/productspec_app.webp';
+import recruitmentApp from '@/assets/images/projects/recruitment_app.webp';
+import shipmentApp from '@/assets/images/projects/shipment_app.webp';
+import hrisApp from '@/assets/images/projects/369_hris_app.webp';
+import digitalApp from '@/assets/images/projects/digital_app.webp';
 
 interface Project {
   id: string;
   title: string;
+  year?: number;
   description: string;
   image: string;
   technologies: string[];
@@ -18,6 +32,7 @@ interface Project {
 }
 
 const ProjectsSection = () => {
+  const { t } = useTranslation();
   const [activeFilter, setActiveFilter] = useState('All');
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
@@ -25,77 +40,119 @@ const ProjectsSection = () => {
   const projects: Project[] = [
     {
       id: '1',
-      title: 'E-Commerce Platform',
-      description: 'Full-stack e-commerce solution with Stripe payments, inventory management, admin dashboard, and real-time order tracking.',
-      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop',
-      technologies: ['React', 'Node.js', 'PostgreSQL', 'Stripe', 'Redis'],
-      category: 'Full Stack',
-      liveUrl: 'https://ecommerce-demo.vercel.app',
-      githubUrl: 'https://github.com/username/ecommerce-platform',
+      title: 'Choco Maid AI Discord Bot',
+      year: 2025,
+      description: 'AI-powered Discord bot for managing communities, featuring moderation tools, fun commands, and seamless integration with external APIs including Youtube, Twitch, Clash Of Clans, Valorant, and more. Supports multiple languages (English, Indonesia, Germany, Spanish, Japanese, Chinese, French) with i18n.',
+      image: chocomaidApp,
+      technologies: ['React', 'Node.js', 'MySQL', 'MongoDB', 'Discord.js', 'Google API', 'YouTube API', 'Twitch API', 'Clash Of Clans API', 'Valorant API', 'Cloudflare', 'i18n'],
+      // fullstack, backend, frontend
+      category: 'Full Stack, Backend, Frontend',
+      liveUrl: 'https://chocomaid.xyz',
+      githubUrl: 'https://github.com/husniaditya/dc-ai_bot',
       featured: true
     },
     {
       id: '2',
-      title: 'Task Management SaaS',
-      description: 'Collaborative project management tool with real-time updates, team workspace, and advanced analytics dashboard.',
-      image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=300&fit=crop',
-      technologies: ['Next.js', 'TypeScript', 'Prisma', 'Socket.io', 'Tailwind'],
-      category: 'Full Stack',
-      liveUrl: 'https://taskmanager-pro.vercel.app',
-      githubUrl: 'https://github.com/username/task-manager',
+      title: 'Cipta Sejati Indonesia - Community Platform',
+      year: 2024,
+      description: 'Collaborative task management platform with real-time updates, user roles, and project tracking for teams. Including dashboard for member management and analytics.',
+      image: ciptasejatiApp,
+      technologies: ['PHP', 'MySQL', 'JavaScript', 'Bootstrap', 'jQuery', 'AJAX', 'Chart.js', 'Cloudflare'],
+      category: 'Full Stack, Backend, Frontend',
+      liveUrl: 'https://ciptasejatiindonesia.com',
+      githubUrl: 'https://github.com/husniaditya/ciptasejati',
       featured: true
     },
     {
       id: '3',
-      title: 'Weather Analytics Dashboard',
-      description: 'Real-time weather tracking with interactive maps, detailed forecasts, and climate data visualization.',
-      image: 'https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=400&h=300&fit=crop',
-      technologies: ['React', 'Chart.js', 'OpenWeather API', 'Mapbox', 'D3.js'],
-      category: 'Frontend',
-      liveUrl: 'https://weather-analytics.netlify.app',
-      githubUrl: 'https://github.com/username/weather-dashboard',
+      title: 'Enterprise Resouce Planning (ERP) System',
+      year: 2019,
+      description: 'Modular ERP system with inventory, sales, procurement, and accounting modules. Features include real-time reporting, multi-user roles, and integration with third-party services.',
+      image: erpApp,
+      technologies: ['C#', 'MySQL', 'PHP', 'Javascript', 'Bootstrap', 'jQuery', 'AJAX', 'Chart.js', 'Cloudflare'],
+      category: 'Full Stack, Frontend, Backend',
       featured: false
     },
     {
       id: '4',
-      title: 'Microservices API Gateway',
-      description: 'Scalable API gateway with authentication, rate limiting, load balancing, and comprehensive monitoring.',
-      image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=300&fit=crop',
-      technologies: ['Node.js', 'Express', 'Redis', 'Docker', 'Kong', 'Prometheus'],
-      category: 'Backend',
-      liveUrl: 'https://api-gateway-docs.herokuapp.com',
-      githubUrl: 'https://github.com/username/api-gateway',
+      title: 'Digital Library System',
+      year: 2018,
+      description: 'Scalable digital library system with advanced search, user management, and analytics features.',
+      image: digitalApp,
+      technologies: ['PHP', 'MySQL', 'JavaScript', 'Bootstrap', 'jQuery', 'AJAX', 'Chart.js', 'Cloudflare'],
+      category: 'Full Stack, Backend, Frontend',
       featured: false
     },
     {
       id: '5',
-      title: 'FinTech Mobile App',
-      description: 'Secure mobile banking with biometric auth, P2P transfers, investment tracking, and spending analytics.',
-      image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&h=300&fit=crop',
-      technologies: ['React Native', 'Firebase', 'Plaid API', 'Expo', 'TypeScript'],
-      category: 'Mobile',
-      liveUrl: 'https://fintech-app-demo.expo.dev',
-      githubUrl: 'https://github.com/username/fintech-mobile',
-      featured: true
+      title: 'Product Specification Management System',
+      year: 2018,
+      description: 'Comprehensive platform for managing product specifications, including version control, collaboration tools, and integration with design systems.',
+      image: productspecApp,
+      technologies: ['PHP', 'MySQL', 'JavaScript', 'Bootstrap', 'jQuery', 'AJAX', 'Chart.js', 'Cloudflare'],
+      category: 'Full Stack, Backend, Frontend',
+      featured: false
     },
     {
       id: '6',
-      title: 'DevOps Infrastructure',
-      description: 'Complete CI/CD pipeline with automated testing, containerized deployment, and monitoring stack.',
-      image: 'https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=400&h=300&fit=crop',
-      technologies: ['Jenkins', 'Docker', 'Kubernetes', 'AWS', 'Terraform', 'Grafana'],
-      category: 'DevOps',
-      liveUrl: 'https://devops-monitoring.aws.dev',
-      githubUrl: 'https://github.com/username/devops-pipeline',
+      title: 'Recruitment Management System',
+      year: 2018,
+      description: 'End-to-end recruitment management system with applicant tracking, interview scheduling, and reporting features.',
+      image: recruitmentApp,
+      technologies: ['PHP', 'MySQL', 'JavaScript', 'Bootstrap', 'jQuery', 'AJAX', 'Chart.js', 'Cloudflare'],
+      category: 'Full Stack, Backend, Frontend',
+      featured: false
+    },
+    {
+      id: '7',
+      title: 'Parking Management System',
+      year: 2018,
+      description: 'Comprehensive parking management system with real-time availability tracking, reservation management, and payment integration.',
+      image: parkingApp,
+      technologies: ['PHP', 'MySQL', 'JavaScript', 'Bootstrap', 'jQuery', 'AJAX', 'Chart.js', 'Cloudflare'],
+      category: 'Full Stack, Backend, Frontend',
+      featured: false
+    },
+    {
+      id: '8',
+      title: 'Shipment Management System',
+      year: 2018,
+      description: 'Robust shipment management system with real-time tracking, inventory management, and analytics features.',
+      image: shipmentApp,
+      technologies: ['PHP', 'MySQL', 'JavaScript', 'Bootstrap', 'jQuery', 'AJAX', 'Chart.js', 'Cloudflare'],
+      category: 'Full Stack, Backend, Frontend',
+      featured: false
+    },
+    { id: '9',
+      title: 'Maintenance Management System',
+      year: 2017,
+      description: 'Comprehensive maintenance management system with work order tracking, asset management, and reporting features.',
+      image: maintenanceApp,
+      technologies: ['PHP', 'MySQL', 'JavaScript', 'Bootstrap', 'jQuery', 'AJAX', 'Chart.js', 'Cloudflare'],
+      category: 'Full Stack, Backend, Frontend',
+      featured: false
+    },
+    { id: '10',
+      title: 'Human Resource Information System (HRIS)',
+      year: 2017,
+      description: 'Scalable HRIS with employee management, payroll processing, and performance tracking features.',
+      image: hrisApp,
+      technologies: ['PHP', 'MySQL', 'JavaScript', 'Bootstrap', 'jQuery', 'AJAX', 'Chart.js', 'Cloudflare'],
+      category: 'Full Stack, Backend, Frontend',
       featured: false
     }
   ];
 
-  const categories = ['All', 'Full Stack', 'Frontend', 'Backend', 'Mobile', 'DevOps'];
+  const categories = [
+    { key: 'All', label: t('projects.filters.all') },
+    { key: 'Full Stack', label: t('projects.filters.fullStack') },
+    { key: 'Frontend', label: t('projects.filters.frontend') },
+    { key: 'Backend', label: t('projects.filters.backend') }
+  ];
 
   const filteredProjects = activeFilter === 'All' 
     ? projects 
-    : projects.filter(project => project.category === activeFilter);
+    : projects.filter(project => project.category.includes(activeFilter));
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -138,9 +195,9 @@ const ProjectsSection = () => {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl font-bold text-foreground mb-4">Featured Projects</h2>
+          <h2 className="text-4xl font-bold text-foreground mb-4">{t('projects.title')}</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            A showcase of my recent work and contributions to various projects
+            {t('projects.subtitle')}
           </p>
         </motion.div>
 
@@ -153,9 +210,9 @@ const ProjectsSection = () => {
         >
           {categories.map((category) => (
             <motion.div
-              key={category}
+              key={category.key}
               variants={filterButtonVariants}
-              animate={activeFilter === category ? "active" : "inactive"}
+              animate={activeFilter === category.key ? "active" : "inactive"}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               transition={{
@@ -165,11 +222,11 @@ const ProjectsSection = () => {
               }}
             >
               <Button
-                variant={activeFilter === category ? 'default' : 'outline'}
-                onClick={() => setActiveFilter(category)}
+                variant={activeFilter === category.key ? 'default' : 'outline'}
+                onClick={() => setActiveFilter(category.key)}
                 className="transition-all"
               >
-                {category}
+                {category.label}
               </Button>
             </motion.div>
           ))}
@@ -239,7 +296,7 @@ const ProjectsSection = () => {
                         transition={{ delay: 0.3 }}
                       >
                         <Badge className="absolute top-4 left-4 bg-accent animate-pulse-glow">
-                          ⭐ Featured
+                          ⭐ {t('projects.featured')}
                         </Badge>
                       </motion.div>
                     )}
@@ -284,7 +341,7 @@ const ProjectsSection = () => {
                         >
                           <Button size="sm" variant="outline" className="w-full">
                             <Globe size={16} className="mr-2" />
-                            Live Demo
+                            {t('projects.liveDemo')}
                           </Button>
                         </motion.a>
                       )}
@@ -299,7 +356,7 @@ const ProjectsSection = () => {
                         >
                           <Button size="sm" variant="outline" className="w-full">
                             <GithubLogo size={16} className="mr-2" />
-                            Code
+                            {t('projects.code')}
                           </Button>
                         </motion.a>
                       )}

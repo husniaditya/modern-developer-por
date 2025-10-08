@@ -3,22 +3,25 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { List, X } from '@phosphor-icons/react';
 import { smoothScrollTo, getActiveSection } from '@/utils/scrollUtils';
+import { useTranslation } from 'react-i18next';
 import Logo from '@/components/Logo';
 import ThemeToggle from '@/components/ThemeToggle';
+import LanguageSelector from '@/components/LanguageSelector';
 
 const Navigation = () => {
+  const { t } = useTranslation();
   const [activeSection, setActiveSection] = useState('hero');
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   const sections = [
-    { id: 'hero', label: 'Home' },
-    { id: 'skills', label: 'Skills' },
-    { id: 'certifications', label: 'Certifications' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'milestones', label: 'Milestones' },
-    { id: 'testimonials', label: 'Testimonials' },
-    { id: 'contact', label: 'Contact' }
+    { id: 'hero', label: t('nav.home') },
+    { id: 'skills', label: t('nav.skills') },
+    { id: 'certifications', label: t('nav.certificates') },
+    { id: 'projects', label: t('nav.projects') },
+    { id: 'milestones', label: t('nav.milestones') },
+    { id: 'testimonials', label: t('nav.testimonials') },
+    { id: 'contact', label: t('nav.contact') }
   ];
 
   useEffect(() => {
@@ -81,7 +84,7 @@ const Navigation = () => {
           >
             <Logo size="md" />
             <div className="flex flex-col">
-              <h1 className="text-lg font-bold brand-gradient-text">DevPortfolio</h1>
+              <h1 className="text-lg font-bold brand-gradient-text">HusniAdityaDev</h1>
               <span className="text-xs text-muted-foreground">Full Stack Developer</span>
             </div>
           </motion.div>
@@ -126,7 +129,10 @@ const Navigation = () => {
                 </motion.div>
               ))}
             </div>
-            <ThemeToggle />
+            <div className="flex items-center space-x-2">
+              <LanguageSelector />
+              <ThemeToggle />
+            </div>
           </motion.div>
 
           {/* Mobile controls */}
@@ -136,6 +142,7 @@ const Navigation = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
+            <LanguageSelector />
             <ThemeToggle />
             <motion.div
               whileHover={{ scale: 1.1 }}

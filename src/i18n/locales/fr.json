@@ -1,0 +1,97 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "skills": "Compétences",
+    "projects": "Projets",
+    "milestones": "Expérience",
+    "certificates": "Certificats",
+    "testimonials": "Témoignages",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Salut, je suis",
+    "name": "Husni Aditya",
+    "title": "Développeur Full Stack Senior",
+    "description": "Passionné par la création d'expériences numériques exceptionnelles grâce à des solutions web innovantes. Spécialisé dans les technologies modernes et les architectures évolutives.",
+    "downloadResume": "Télécharger le CV",
+    "contactMe": "Contactez-moi"
+  },
+  "skills": {
+    "title": "Compétences Techniques",
+    "subtitle": "Technologies et outils que j'utilise pour donner vie aux idées",
+    "categories": {
+      "languages": "Langages de Programmation",
+      "frameworks": "Frameworks et Bibliothèques",
+      "databases": "Bases de Données",
+      "tools": "Outils et Plateformes",
+      "cloud": "Cloud et DevOps"
+    }
+  },
+  "projects": {
+    "title": "Projets en Vedette",
+    "subtitle": "Une vitrine de mon travail récent et de mes contributions à divers projets",
+    "filters": {
+      "all": "Tous les Projets",
+      "fullStack": "Full Stack",
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "mobile": "Mobile"
+    },
+    "viewProject": "Voir le Projet",
+    "sourceCode": "Code Source",
+    "liveDemo": "Démo en Direct",
+    "code": "Code",
+    "featured": "En Vedette"
+  },
+  "milestones": {
+    "title": {
+      "career": "Carrière",
+      "milestones": "Étapes"
+    },
+    "subtitle": "Réalisations clés, projets et moments cruciaux qui ont façonné mon parcours professionnel"
+  },
+  "certificates": {
+    "title": "Certificats",
+    "subtitle": "Certificats professionnels qui valident mon expertise et mon engagement envers l'apprentissage continu"
+  },
+  "testimonials": {
+    "title": "Ce que disent les gens",
+    "subtitle": "Témoignages de collègues, clients et collaborateurs avec qui j'ai travaillé",
+    "rating": "Note",
+    "previous": "Précédent",
+    "next": "Suivant",
+    "ariaLabel": "Témoignage {{index}} sur {{total}}",
+    "navigationLabel": "Navigation des témoignages"
+  },
+  "contact": {
+    "title": "Entrons en contact",
+    "subtitle": "Je suis toujours ouvert aux discussions sur de nouvelles opportunités, des projets intéressants ou simplement pour parler de technologie",
+    "connect": "Connectons-nous",
+    "connectDescription": "Que vous ayez un projet en tête, que vous souhaitiez discuter d'une collaboration potentielle, ou simplement dire bonjour, j'aimerais avoir de vos nouvelles. N'hésitez pas à me contacter via l'un des canaux ci-dessous.",
+    "email": "E-mail",
+    "phone": "Téléphone",
+    "location": "Localisation",
+    "followMe": "Suivez-moi",
+    "whatsapp": {
+      "title": "Discutons sur WhatsApp",
+      "ready": "Prêt à discuter de votre projet ?",
+      "description": "Ayons une discussion rapide sur WhatsApp ! Je suis disponible pour discuter de vos idées de projet, répondre aux questions ou explorer d'éventuelles collaborations. Cliquez sur le bouton ci-dessous pour commencer notre conversation.",
+      "button": "Envoyez-moi un message sur WhatsApp",
+      "alternative": "Vous préférez d'autres méthodes ? Vous pouvez aussi me joindre par e-mail ou téléphone en utilisant les informations de contact à gauche."
+    }
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Quelque chose s'est mal passé",
+    "retry": "Réessayer",
+    "close": "Fermer",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "submit": "Soumettre",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "viewMore": "Voir Plus",
+    "viewLess": "Voir Moins"
+  }
+}

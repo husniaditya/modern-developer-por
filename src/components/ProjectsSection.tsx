@@ -1,5 +1,5 @@
-import React, { useState, useRef } from 'react';
-import { motion, useInView, AnimatePresence } from 'framer-motion';
+import React, { useState, useRef, useMemo } from 'react';
+import { motion, useInView, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -29,6 +29,32 @@ interface Project {
   liveUrl?: string;
   githubUrl?: string;
   featured: boolean;
+}
+
+// Small helper component to add a smooth parallax effect to images on scroll
+function ParallaxImage({ src, alt }: { src: string; alt: string }) {
+  const ref = useRef<HTMLImageElement | null>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  // Move a bit as you scroll the card through the viewport
+  const y = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+
+  return (
+    <motion.img
+      ref={ref}
+      src={src}
+      alt={alt}
+      className="w-full h-48 object-cover transition-transform duration-500"
+      style={{ y }}
+      initial={{ clipPath: 'inset(0 0 100% 0)' }}
+      whileInView={{ clipPath: 'inset(0 0 0% 0)' }}
+      viewport={{ once: true, amount: 0.2 }}
+      whileHover={{ scale: 1.1 }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+    />
+  );
 }
 
 const ProjectsSection = () => {
@@ -192,7 +218,8 @@ const ProjectsSection = () => {
         <motion.div 
           className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-4xl font-bold text-foreground mb-4">{t('projects.title')}</h2>
@@ -205,7 +232,8 @@ const ProjectsSection = () => {
         <motion.div 
           className="flex flex-wrap justify-center gap-4 mb-12"
           initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           {categories.map((category) => (
@@ -243,21 +271,16 @@ const ProjectsSection = () => {
                 key={`${activeFilter}-${project.id}`}
                 variants={cardVariants}
                 initial="hidden"
-                animate="visible"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
                 exit="exit"
                 layout
-                transition={{ delay: index * 0.1 }}
+                transition={{ duration: 0.5, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
                 whileHover={{ y: -8, transition: { duration: 0.2 } }}
               >
                 <Card className="group project-card overflow-hidden hover-lift h-full glass-card">
                   <div className="relative overflow-hidden">
-                    <motion.img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-48 object-cover transition-transform duration-500"
-                      whileHover={{ scale: 1.1 }}
-                      transition={{ duration: 0.3 }}
-                    />
+                    <ParallaxImage src={project.image} alt={project.title} />
                     
                     {/* Overlay for demo/code links */}
                     <div className="project-overlay">

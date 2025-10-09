@@ -3,6 +3,7 @@ import { motion, useInView } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { useTranslation } from 'react-i18next';
+import GithubContributions from '@/components/GithubContributions';
 
 interface Skill {
   name: string;
@@ -138,6 +139,16 @@ const SkillsSection = () => {
               </Card>
             </motion.div>
           ))}
+        </motion.div>
+
+        {/* GitHub Contributions */}
+        <motion.div
+          className="mt-12"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <GithubContributions username="husniaditya" title={t('skills.contributionsTitle', { defaultValue: 'GitHub Contributions' })} />
         </motion.div>
       </div>
     </section>

@@ -153,7 +153,7 @@ const Navigation = () => {
                 size="sm"
                 onClick={() => setIsOpen(!isOpen)}
               >
-                <AnimatePresence mode="wait">
+                <AnimatePresence>
                   {isOpen ? (
                     <motion.div
                       key="close"

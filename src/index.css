@@ -273,33 +273,14 @@
               box-shadow 0.2s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
-/* Performance optimized cursor and animation elements */
-.cursor-element,
+/* Performance optimized parallax elements */
 .parallax-element {
   will-change: transform;
   transform: translateZ(0);
   backface-visibility: hidden;
   transition: none !important;
-  /* Force GPU acceleration for smooth movement */
   -webkit-transform: translateZ(0);
   -webkit-backface-visibility: hidden;
-}
-
-/* Section-specific cursor styling indicators */
-#hero {
-  cursor: none;
-}
-
-#skills {
-  cursor: none;
-}
-
-#projects {
-  cursor: none;
-}
-
-#contact {
-  cursor: none;
 }
 
 /* Performance optimizations for smooth scrolling */
@@ -312,7 +293,6 @@
     scroll-behavior: auto;
   }
   
-  .cursor-element,
   .parallax-element,
   .timeline-dot,
   .company-logo,
@@ -329,40 +309,7 @@
   }
 }
 
-/* Hardware acceleration for cursor elements - Optimized */
-.cursor-element {
-  will-change: transform;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  perspective: 1000px;
-  /* Force GPU acceleration */
-  -webkit-transform: translateZ(0);
-  -webkit-backface-visibility: hidden;
-  -webkit-perspective: 1000px;
-  /* Optimize for smooth movement */
-  transform-style: preserve-3d;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Hide default cursor on desktop when using custom cursor - Optimized */
-@media (min-width: 1024px) {
-  .cursor-none, 
-  .cursor-none * {
-    cursor: none !important;
-  }
-  
-  /* Force cursor hiding on all interactive elements */
-  button, a, [role="button"], .cursor-pointer, 
-  input, textarea, select, [tabindex] {
-    cursor: none !important;
-  }
-  
-  /* Disable pointer events on cursor elements to prevent interference */
-  .cursor-element {
-    pointer-events: none !important;
-  }
-}
+/* Removed custom cursor styles (MouseTracker removed) */
 
 /* Enhanced hover effects */
 .hover-lift:hover {

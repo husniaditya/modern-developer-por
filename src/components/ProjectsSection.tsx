@@ -54,7 +54,7 @@ const ProjectsSection = () => {
     {
       id: '2',
       title: 'Cipta Sejati Indonesia',
-      year: 2024,
+      year: 2023,
       description: t('projects.items.ciptasejati.description'),
       image: ciptasejatiApp,
       technologies: ['PHP', 'MySQL', 'JavaScript', 'Bootstrap', 'jQuery', 'AJAX', 'Chart.js', 'Cloudflare'],

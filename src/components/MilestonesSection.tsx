@@ -112,7 +112,7 @@ const MilestonesSection: React.FC = () => {
     },
     {
       year: '2017',
-      title: 'Software Developer',
+      title: 'Software Engineer',
       company: 'PT. Mega Marine Pride',
       companyLogo: megaMarineLogo,
       illustration: megaMarineImage,
@@ -126,7 +126,7 @@ const MilestonesSection: React.FC = () => {
           name: 'Enterprise Resource Planning (ERP) Application',
           description: t('milestones.items.megaMarine.projects.erp.description'),
           tech: ['C#', 'PHP', 'MySQL', 'jQuery', 'Bootstrap', 'Chart.js', 'Cloudflare', 'Ajax', 'JavaScript'],
-          impact: t('milestones.items.megaMarine.projects.erp.impact')
+          impact: t('milestones.items.megaMarine.projects.erp.impact'),
         },
         {
           name: 'Maintenance Management System',
@@ -196,7 +196,7 @@ const MilestonesSection: React.FC = () => {
     },
     {
       year: '2016',
-      title: 'Junior Software Developer',
+      title: 'Software Developer',
       company: 'PT. 3.6.9. Group',
       companyLogo: threeSixNineLogo,
       illustration: threeSixNineImage,

@@ -26,10 +26,14 @@ const LanguageSelector = () => {
   const { i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
 
-  const currentLanguage = languages.find(lang => lang.code === i18n.language) || languages[0];
+  // Normalize language (strip region like en-US to 'en')
+  const normalizedLang = (i18n.language || '').split('-')[0] || 'en';
+  const currentLanguage = languages.find(lang => lang.code === normalizedLang) || languages[0];
 
   const changeLanguage = (languageCode: string) => {
     i18n.changeLanguage(languageCode);
+    // Persist explicitly in case detector config changes
+    try { localStorage.setItem('i18nextLng', languageCode); } catch {}
     setIsOpen(false);
   };
 
@@ -121,7 +125,7 @@ const LanguageSelector = () => {
                         flex items-center space-x-3 p-3 rounded-lg cursor-pointer transition-all duration-200
                         hover:bg-gradient-to-r hover:from-primary/10 hover:to-accent/10
                         hover:shadow-md hover:scale-[1.02]
-                        ${i18n.language === language.code 
+                        ${normalizedLang === language.code 
                           ? 'bg-gradient-to-r from-primary/20 to-accent/20 border border-primary/30 shadow-lg' 
                           : 'hover:bg-secondary/50'
                         }
@@ -130,10 +134,10 @@ const LanguageSelector = () => {
                       {/* Flag with pulse effect for active language */}
                       <motion.span 
                         className="text-xl"
-                        animate={i18n.language === language.code ? {
+                        animate={normalizedLang === language.code ? {
                           scale: [1, 1.1, 1],
                         } : {}}
-                        transition={i18n.language === language.code ? {
+                        transition={normalizedLang === language.code ? {
                           duration: 2,
                           repeat: Infinity,
                           ease: "easeInOut"
@@ -149,7 +153,7 @@ const LanguageSelector = () => {
                       
                       <div className="flex flex-col">
                         <span className={`text-sm font-medium ${
-                          i18n.language === language.code 
+                          normalizedLang === language.code 
                             ? 'text-primary font-semibold' 
                             : 'text-foreground'
                         }`}>
@@ -161,7 +165,7 @@ const LanguageSelector = () => {
                       </div>
                       
                       {/* Active indicator */}
-                      {i18n.language === language.code && (
+                      {normalizedLang === language.code && (
                         <motion.div
                           initial={{ scale: 0 }}
                           animate={{ scale: 1 }}

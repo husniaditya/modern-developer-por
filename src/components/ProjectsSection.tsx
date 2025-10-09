@@ -1,4 +1,4 @@
-import React, { useState, useRef, useMemo } from 'react';
+import React, { useState, useRef, useMemo, useEffect } from 'react';
 import { motion, useInView, AnimatePresence, useScroll, useTransform, useSpring, useReducedMotion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -32,39 +32,78 @@ interface Project {
 }
 
 // Small helper component to add a smooth parallax effect to images on scroll
-function ParallaxImage({ src, alt }: { src: string; alt: string }) {
+function ParallaxImage({ src, alt, priority = false }: { src: string; alt: string; priority?: boolean }) {
   const ref = useRef<HTMLDivElement | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const [imgError, setImgError] = useState(false);
+  useEffect(() => {
+    const mql = window.matchMedia('(max-width: 640px)');
+    const update = () => setIsMobile(mql.matches);
+    update();
+    mql.addEventListener?.('change', update);
+    return () => mql.removeEventListener?.('change', update);
+  }, []);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
   });
   // Move a bit as you scroll the card through the viewport
   const prefersReducedMotion = useReducedMotion();
-  const rawY = useTransform(scrollYProgress, [0, 1], [-16, 16]);
-  const y = prefersReducedMotion
-    ? 0
-    : useSpring(rawY, { stiffness: 140, damping: 24, mass: 0.15 });
+  // Smooth the progress itself, then map to pixels for extra fluidity
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 70,
+    damping: 28,
+    mass: 0.2,
+    restDelta: 0.001,
+    restSpeed: 0.001,
+  });
+  // Smoothstep easing to avoid twitchy starts/stops
+  const easedProgress = useTransform(smoothProgress, (v) => v * v * (3 - 2 * v));
+  const delta = isMobile ? 12 : 20;
+  const y = prefersReducedMotion ? 0 : useTransform(easedProgress, [0, 1], [-delta, delta]);
+
+  // When reduced motion is preferred, render a static image to ensure accessibility
+  if (prefersReducedMotion) {
+    return (
+      <div className="relative w-full h-48 overflow-hidden">
+        {imgError ? (
+          <div className="w-full h-full bg-muted/40" aria-hidden="true" />
+        ) : (
+          <img
+            src={src}
+            alt={alt}
+            className="w-full h-full object-cover"
+            loading={priority ? 'eager' : 'lazy'}
+            decoding="async"
+            sizes="100vw"
+            {...(priority ? { fetchPriority: 'high' as const } : {})}
+            draggable={false}
+            onError={() => setImgError(true)}
+          />
+        )}
+      </div>
+    );
+  }
 
   return (
     <motion.div
       ref={ref}
-      className="relative w-full h-48 overflow-hidden parallax-element"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      style={{ willChange: 'opacity', contain: 'layout paint', backfaceVisibility: 'hidden' }}
+      className="relative w-full h-48 overflow-hidden"
+      initial={false}
+      viewport={{ amount: 0.01 }}
+      style={{ willChange: 'opacity', backfaceVisibility: 'hidden' }}
     >
       <motion.img
         src={src}
         alt={alt}
         className="w-full h-full object-cover transform-gpu"
-        style={{ y, willChange: 'transform' }}
-        loading="lazy"
+        style={{ y, scale: 1.06, willChange: 'transform' }}
+        loading={priority ? 'eager' : 'lazy'}
         decoding="async"
         sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-        fetchPriority="low"
+        {...(priority ? { fetchPriority: 'high' as const } : {})}
         draggable={false}
+        onError={() => setImgError(true)}
       />
     </motion.div>
   );
@@ -293,7 +332,7 @@ const ProjectsSection = () => {
               >
                 <Card className="group project-card overflow-hidden hover-lift h-full glass-card">
                   <div className="relative overflow-hidden">
-                    <ParallaxImage src={project.image} alt={project.title} />
+                    <ParallaxImage src={project.image} alt={project.title} priority={index === 0} />
                     
                     {/* Overlay for demo/code links */}
                     <div className="project-overlay">

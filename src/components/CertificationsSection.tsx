@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Trophy, Calendar } from '@phosphor-icons/react';
@@ -105,8 +106,16 @@ const CertificationsSection = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {certifications.map((cert) => (
-            <Card key={cert.id} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+          {certifications.map((cert, idx) => (
+            <motion.div
+              key={cert.id}
+              initial={{ opacity: 0, y: 24, scale: 0.98 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, delay: 0.05 * idx, ease: [0.22, 1, 0.36, 1] }}
+              className="h-full"
+            >
+              <Card className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-full">
               <div className="relative overflow-hidden rounded-t-lg">
                 <img 
                   src={cert.image} 
@@ -142,6 +151,7 @@ const CertificationsSection = () => {
                 </div>
               </CardContent>
             </Card>
+            </motion.div>
           ))}
         </div>
       </div>

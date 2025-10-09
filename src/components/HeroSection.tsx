@@ -7,6 +7,8 @@ import TypewriterEffect from './TypewriterEffect';
 import { smoothScrollTo } from '@/utils/scrollUtils';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '@/contexts/ThemeContext';
+import profileImg from '@/assets/images/profile/profile.webp';
+import resumePdf from '@/assets/resume/resume - Husni Aditya.pdf';
 
 const HeroSection = () => {
   const { t } = useTranslation();
@@ -387,7 +389,7 @@ const HeroSection = () => {
             >
               <Avatar className="w-36 h-36 ring-4 ring-primary ring-offset-4 ring-offset-background shadow-2xl">
                 <AvatarImage 
-                  src="/src/assets/images/profile/profile.webp" 
+                  src={profileImg} 
                   alt="Professional Profile"
                   className="object-cover object-center"
                 />
@@ -464,7 +466,7 @@ const HeroSection = () => {
             </div>
             <div className="flex items-center gap-4">
               <motion.a
-                href="/src/assets/resume/resume - Husni Aditya.pdf"
+                href={resumePdf}
                 download="Husni_Aditya_Resume.pdf"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}

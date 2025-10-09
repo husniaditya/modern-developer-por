@@ -82,7 +82,10 @@ const HeroSection = () => {
   };
 
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section
+      id="hero"
+      className="min-h-[calc(100svh)] flex items-start md:items-center justify-center relative overflow-hidden pt-[calc(var(--nav-h,64px)+16px)] md:pt-[calc(var(--nav-h,64px)+32px)]"
+    >
       {/* Light theme modern background */}
       {theme === 'light' && (
         <div className="absolute inset-0 overflow-hidden">
@@ -367,7 +370,7 @@ const HeroSection = () => {
       </div>
       )}
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
+  <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 relative z-10">
         <motion.div 
           className="text-center space-y-8"
           variants={containerVariants}

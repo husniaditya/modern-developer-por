@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { useTranslation } from 'react-i18next';
 
 interface Skill {
   name: string;
@@ -10,6 +11,7 @@ interface Skill {
 }
 
 const SkillsSection = () => {
+  const { t } = useTranslation();
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
 
@@ -22,17 +24,22 @@ const SkillsSection = () => {
     { name: 'Node.js', level: 88, category: 'Backend' },
     { name: 'Express.js', level: 85, category: 'Backend' },
     { name: 'PostgreSQL', level: 80, category: 'Backend' },
-    { name: 'MongoDB', level: 78, category: 'Backend' },
-    { name: 'Python', level: 72, category: 'Backend' },
-    { name: 'AWS', level: 82, category: 'Cloud & DevOps' },
-    { name: 'Docker', level: 78, category: 'Cloud & DevOps' },
-    { name: 'Kubernetes', level: 70, category: 'Cloud & DevOps' },
+    { name: 'MongoDB', level: 72, category: 'Backend' },
+    { name: 'PHP', level: 90, category: 'Backend' },
+    { name: 'SQL', level: 78, category: 'Backend' },
     { name: 'Git', level: 90, category: 'Tools & Others' },
+    { name: 'Postman', level: 90, category: 'Tools & Others' },
     { name: 'Figma', level: 75, category: 'Tools & Others' },
-    { name: 'Jest', level: 80, category: 'Tools & Others' }
+    { name: 'Jira', level: 90, category: 'Tools & Others' },
+    { name: 'Microsoft Azure', level: 90, category: 'Tools & Others' },
+    { name: 'Docker', level: 70, category: 'Tools & Others' }
   ];
 
-  const categories = ['Frontend', 'Backend', 'Cloud & DevOps', 'Tools & Others'];
+  const categories = [
+    { key: 'Frontend', label: t('skills.categories.frontend') },
+    { key: 'Backend', label: t('skills.categories.backend') },
+    { key: 'Tools & Others', label: t('skills.categories.tools') }
+  ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -70,27 +77,27 @@ const SkillsSection = () => {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl font-bold text-foreground mb-4">Skills & Expertise</h2>
+          <h2 className="text-4xl font-bold text-foreground mb-4">{t('skills.title')}</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            A comprehensive overview of my technical skills and proficiency levels
+            {t('skills.subtitle')}
           </p>
         </motion.div>
 
         <motion.div 
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
           {categories.map((category, categoryIndex) => (
-            <motion.div key={category} variants={cardVariants}>
+            <motion.div key={category.key} variants={cardVariants}>
               <Card className="p-6 hover:shadow-lg transition-shadow duration-300">
                 <CardHeader className="pb-4">
-                  <CardTitle className="text-xl text-primary">{category}</CardTitle>
+                  <CardTitle className="text-xl text-primary">{category.label}</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {skills
-                    .filter(skill => skill.category === category)
+                    .filter(skill => skill.category === category.key)
                     .map((skill, skillIndex) => (
                       <motion.div 
                         key={skill.name} 

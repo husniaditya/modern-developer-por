@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, Trophy, Target, Code, Rocket, Users, ChartLine, Building, Star, Medal, Lightning } from '@phosphor-icons/react';
+import { useTranslation } from 'react-i18next';
 import developerWorkspace from '@/assets/images/developer-workspace.svg';
 import seniorDevIllustration from '@/assets/images/senior-dev-illustration.svg';
 import techLeadIllustration from '@/assets/images/tech-lead-illustration.svg';
 import fullStackIllustration from '@/assets/images/full-stack-illustration.svg';
 import frontendDevIllustration from '@/assets/images/frontend-dev-illustration.svg';
-import companyLogo1 from '@/assets/images/company-logo-1.svg';
-import companyLogo2 from '@/assets/images/company-logo-2.svg';
-import companyLogo3 from '@/assets/images/company-logo-3.svg';
-import companyLogo4 from '@/assets/images/company-logo-4.svg';
+// Company logos and images
+import wilmarLogo from '@/assets/images/career/wilmar_logo.webp';
+import wilmarImage from '@/assets/images/career/wilmar.webp';
+import megaMarineLogo from '@/assets/images/career/megamarinpride_logo.webp';
+import megaMarineImage from '@/assets/images/career/megamarinepride.webp';
+import threeSixNineLogo from '@/assets/images/career/369_logo.webp';
+import threeSixNineImage from '@/assets/images/career/369.webp';
 
 // New sample parallax images
 import codingWorkspace from '@/assets/images/coding-workspace.svg';
@@ -45,220 +49,195 @@ interface Milestone {
   illustration?: string;
 }
 
-const milestones: Milestone[] = [
-  {
-    year: '2024',
-    title: 'Senior Full Stack Developer',
-    company: 'TechCorp Solutions',
-    companyLogo: companyLogo1,
-    illustration: teamLeadership,
-    duration: 'Jan 2024 - Present',
-    location: 'San Francisco, CA',
-    description: 'Promoted to senior role, leading development of enterprise applications and mentoring junior developers.',
-    icon: <Trophy size={24} weight="duotone" />,
-    color: 'from-purple-500 to-pink-500',
-    projects: [
-      {
-        name: 'Enterprise Dashboard',
-        description: 'Real-time analytics platform for enterprise clients',
-        tech: ['React', 'TypeScript', 'Node.js', 'PostgreSQL'],
-        impact: '40% improvement in data visualization efficiency'
-      },
-      {
-        name: 'Microservices Architecture',
-        description: 'Migrated monolithic application to microservices',
-        tech: ['Docker', 'Kubernetes', 'Redis', 'GraphQL'],
-        impact: '60% reduction in deployment time'
-      },
-      {
-        name: 'AI-Powered Chatbot',
-        description: 'Customer service automation with natural language processing',
-        tech: ['Python', 'TensorFlow', 'FastAPI', 'MongoDB'],
-        impact: '70% reduction in customer support tickets'
-      }
-    ],
-    achievements: [
-      {
-        text: 'Led team of 8 developers across 3 major projects',
-        icon: <Users size={16} weight="duotone" />,
-        highlight: true
-      },
-      {
-        text: 'Mentored 4 junior developers to promotion',
-        icon: <Star size={16} weight="duotone" />
-      },
-      {
-        text: 'Implemented CI/CD pipeline reducing bugs by 45%',
-        icon: <Lightning size={16} weight="duotone" />
-      },
-      {
-        text: 'Achieved 99.9% uptime across all production systems',
-        icon: <Medal size={16} weight="duotone" />,
-        highlight: true
-      }
-    ]
-  },
-  {
-    year: '2023',
-    title: 'Tech Lead',
-    company: 'InnovateHub Inc.',
-    companyLogo: companyLogo2,
-    illustration: serverArchitecture,
-    duration: 'Mar 2023 - Dec 2023',
-    location: 'Austin, TX',
-    description: 'Led a team of 5 developers in delivering multiple high-impact projects using modern web technologies.',
-    icon: <Target size={24} weight="duotone" />,
-    color: 'from-blue-500 to-cyan-500',
-    projects: [
-      {
-        name: 'E-commerce Platform',
-        description: 'Complete redesign of online shopping experience',
-        tech: ['Next.js', 'Tailwind', 'Stripe', 'Prisma'],
-        impact: '120% increase in conversion rates'
-      },
-      {
-        name: 'Mobile Banking App',
-        description: 'Cross-platform financial services application',
-        tech: ['React Native', 'Redux', 'Firebase', 'Biometrics'],
-        impact: '500K+ active users within 6 months'
-      },
-      {
-        name: 'Data Visualization Tool',
-        description: 'Interactive charts and reporting dashboard',
-        tech: ['D3.js', 'WebGL', 'Express', 'InfluxDB'],
-        impact: 'Processed 10M+ data points in real-time'
-      }
-    ],
-    achievements: [
-      {
-        text: 'Delivered 5 major projects on time and under budget',
-        icon: <Trophy size={16} weight="duotone" />,
-        highlight: true
-      },
-      {
-        text: 'Established coding standards and best practices',
-        icon: <Code size={16} weight="duotone" />
-      },
-      {
-        text: 'Reduced technical debt by 35% through refactoring',
-        icon: <Lightning size={16} weight="duotone" />
-      },
-      {
-        text: 'Won "Innovation Award" for breakthrough solutions',
-        icon: <Medal size={16} weight="duotone" />,
-        highlight: true
-      }
-    ]
-  },
-  {
-    year: '2022',
-    title: 'Full Stack Developer',
-    company: 'WebSolutions Pro',
-    companyLogo: companyLogo3,
-    illustration: mobileDevelopment,
-    duration: 'Jun 2022 - Feb 2023',
-    location: 'Seattle, WA',
-    description: 'Transitioned to full-stack development, mastering both frontend and backend technologies.',
-    icon: <Code size={24} weight="duotone" />,
-    color: 'from-green-500 to-emerald-500',
-    projects: [
-      {
-        name: 'Social Media Platform',
-        description: 'Community-driven content sharing application',
-        tech: ['Vue.js', 'Laravel', 'MySQL', 'AWS S3'],
-        impact: '50K+ registered users in first quarter'
-      },
-      {
-        name: 'Inventory Management System',
-        description: 'Real-time stock tracking for retail chains',
-        tech: ['Angular', 'Spring Boot', 'Apache Kafka', 'ElasticSearch'],
-        impact: '30% reduction in inventory discrepancies'
-      },
-      {
-        name: 'Learning Management System',
-        description: 'Online education platform with video streaming',
-        tech: ['React', 'Django', 'FFmpeg', 'CDN'],
-        impact: '10K+ students enrolled across 50+ courses'
-      }
-    ],
-    achievements: [
-      {
-        text: 'Mastered 6 new programming languages and frameworks',
-        icon: <Star size={16} weight="duotone" />,
-        highlight: true
-      },
-      {
-        text: 'Implemented automated testing achieving 95% coverage',
-        icon: <Lightning size={16} weight="duotone" />
-      },
-      {
-        text: 'Optimized database queries for 50% faster response',
-        icon: <ChartLine size={16} weight="duotone" />
-      },
-      {
-        text: 'Received "Developer of the Year" recognition',
-        icon: <Medal size={16} weight="duotone" />,
-        highlight: true
-      }
-    ]
-  },
-  {
-    year: '2021',
-    title: 'Frontend Developer',
-    company: 'StartupVenture',
-    companyLogo: companyLogo4,
-    illustration: codingWorkspace,
-    duration: 'Aug 2021 - May 2022',
-    location: 'Boston, MA',
-    description: 'Began my journey as a Frontend Developer, focusing on React and modern JavaScript frameworks.',
-    icon: <Calendar size={24} weight="duotone" />,
-    color: 'from-orange-500 to-red-500',
-    projects: [
-      {
-        name: 'Corporate Website',
-        description: 'Responsive company website with CMS integration',
-        tech: ['React', 'SCSS', 'Strapi', 'Netlify'],
-        impact: '200% increase in organic traffic'
-      },
-      {
-        name: 'Task Management App',
-        description: 'Collaborative project management tool',
-        tech: ['JavaScript', 'Express.js', 'Socket.io', 'MongoDB'],
-        impact: 'Adopted by 20+ teams internally'
-      },
-      {
-        name: 'Portfolio Showcase',
-        description: 'Interactive portfolio for creative professionals',
-        tech: ['HTML5', 'CSS3', 'GSAP', 'Three.js'],
-        impact: 'Featured in 5+ design galleries'
-      }
-    ],
-    achievements: [
-      {
-        text: 'Completed 15+ frontend projects successfully',
-        icon: <Trophy size={16} weight="duotone" />,
-        highlight: true
-      },
-      {
-        text: 'Learned modern development tools and workflows',
-        icon: <Star size={16} weight="duotone" />
-      },
-      {
-        text: 'Built first production application from scratch',
-        icon: <Rocket size={16} weight="duotone" />
-      },
-      {
-        text: 'Earned "Rising Star" award in first 6 months',
-        icon: <Medal size={16} weight="duotone" />,
-        highlight: true
-      }
-    ]
-  }
-];
+
 
 const MilestonesSection: React.FC = () => {
+  const { t } = useTranslation();
+  
+  const milestones: Milestone[] = [
+    {
+      year: '2020',
+      title: 'Application Management Specialist',
+      company: 'Wilmar International Limited',
+      companyLogo: wilmarLogo,
+      illustration: wilmarImage,
+      duration: t('milestones.items.wilmar.duration'),
+      location: t('milestones.items.wilmar.location'),
+      description: t('milestones.items.wilmar.description'),
+      icon: <Trophy size={24} weight="duotone" />,
+      color: 'from-purple-500 to-pink-500',
+      projects: [
+        {
+          name: 'Payroll Management System',
+          description: t('milestones.items.wilmar.projects.payroll.description'),
+          tech: ['SQL Server', 'Postman', 'Terraform', 'Jira', 'Slack', 'Azure Blob Storage', 'Graylog', 'Sentry'],
+          impact: t('milestones.items.wilmar.projects.payroll.impact')
+        },
+        {
+          name: 'Bunching Management System',
+          description: t('milestones.items.wilmar.projects.bunching.description'),
+          tech: ['SQL Server', 'Postman', 'Terraform', 'Jira', 'Slack', 'Azure Blob Storage', 'Graylog', 'Sentry'],
+          impact: t('milestones.items.wilmar.projects.bunching.impact')
+        },
+        {
+          name: 'Field Inspection Mobile App',
+          description: t('milestones.items.wilmar.projects.fieldInspection.description'),
+          tech: ['SQL Server', 'Postman', 'Terraform', 'Jira', 'Slack', 'Azure Blob Storage', 'Graylog', 'Sentry'],
+          impact: t('milestones.items.wilmar.projects.fieldInspection.impact')
+        },
+        {
+          name: 'Patrolling Management System',
+          description: t('milestones.items.wilmar.projects.patrolling.description'),
+          tech: ['SQL Server', 'Postman', 'Terraform', 'Jira', 'Slack', 'Azure Blob Storage', 'Graylog', 'Sentry'],
+          impact: t('milestones.items.wilmar.projects.patrolling.impact')
+        },
+        {
+          name: 'Grading Bunch System',
+          description: t('milestones.items.wilmar.projects.gradingBunch.description'),
+          tech: ['SQL Server', 'Postman', 'Terraform', 'Jira', 'Slack', 'Azure Blob Storage', 'Graylog', 'Sentry'],
+          impact: t('milestones.items.wilmar.projects.gradingBunch.impact')
+        }
+      ],
+      achievements: [
+        {
+          text: t('milestones.items.wilmar.achievements.teamLead'),
+          icon: <Users size={16} weight="duotone" />,
+          highlight: true
+        },
+        {
+          text: t('milestones.items.wilmar.achievements.monitoring'),
+          icon: <ChartLine size={16} weight="duotone" />
+        }
+      ]
+    },
+    {
+      year: '2017',
+      title: 'Software Engineer',
+      company: 'PT. Mega Marine Pride',
+      companyLogo: megaMarineLogo,
+      illustration: megaMarineImage,
+      duration: t('milestones.items.megaMarine.duration'),
+      location: t('milestones.items.megaMarine.location'),
+      description: t('milestones.items.megaMarine.description'),
+      icon: <Target size={24} weight="duotone" />,
+      color: 'from-blue-500 to-cyan-500',
+      projects: [
+        {
+          name: 'Enterprise Resource Planning (ERP) Application',
+          description: t('milestones.items.megaMarine.projects.erp.description'),
+          tech: ['C#', 'PHP', 'MySQL', 'jQuery', 'Bootstrap', 'Chart.js', 'Cloudflare', 'Ajax', 'JavaScript'],
+          impact: t('milestones.items.megaMarine.projects.erp.impact'),
+        },
+        {
+          name: 'Maintenance Management System',
+          description: t('milestones.items.megaMarine.projects.maintenance.description'),
+          tech: ['PHP', 'MySQL', 'jQuery', 'Bootstrap', 'Chart.js', 'Cloudflare', 'Ajax', 'JavaScript'],
+          impact: t('milestones.items.megaMarine.projects.maintenance.impact')
+        },
+        {
+          name: 'Shipment Tracking System',
+          description: t('milestones.items.megaMarine.projects.shipping.description'),
+          tech: ['PHP', 'MySQL', 'jQuery', 'Bootstrap', 'Chart.js', 'Cloudflare', 'Ajax', 'JavaScript'],
+          impact: t('milestones.items.megaMarine.projects.shipping.impact')
+        },
+        {
+          name: 'Parking Management System',
+          description: t('milestones.items.megaMarine.projects.parking.description'),
+          tech: ['PHP', 'MySQL', 'jQuery', 'Bootstrap', 'Chart.js', 'Cloudflare', 'Ajax', 'JavaScript'],
+          impact: t('milestones.items.megaMarine.projects.parking.impact')
+        },
+        {
+          name: 'Recruitment System',
+          description: t('milestones.items.megaMarine.projects.recruitment.description'),
+          tech: ['PHP', 'MySQL', 'jQuery', 'Bootstrap', 'Chart.js', 'Cloudflare', 'Ajax', 'JavaScript'],
+          impact: t('milestones.items.megaMarine.projects.recruitment.impact')
+        },
+        {
+          name: 'Product Specification System',
+          description: t('milestones.items.megaMarine.projects.productSpec.description'),
+          tech: ['PHP', 'MySQL', 'jQuery', 'Bootstrap', 'Chart.js', 'Cloudflare', 'Ajax', 'JavaScript'],
+          impact: t('milestones.items.megaMarine.projects.productSpec.impact')
+        },
+        {
+          name: 'Digital Library System',
+          description: t('milestones.items.megaMarine.projects.digitalLibrary.description'),
+          tech: ['PHP', 'MySQL', 'jQuery', 'Bootstrap', 'Chart.js', 'Cloudflare', 'Ajax', 'JavaScript'],
+          impact: t('milestones.items.megaMarine.projects.digitalLibrary.impact')
+        }
+      ],
+      achievements: [
+        {
+          text: t('milestones.items.megaMarine.achievements.delivered'),
+          icon: <Trophy size={16} weight="duotone" />,
+          highlight: true
+        },
+        {
+          text: t('milestones.items.megaMarine.achievements.standards'),
+          icon: <Code size={16} weight="duotone" />
+        },
+        {
+          text: t('milestones.items.megaMarine.achievements.technicalDebt'),
+          icon: <Lightning size={16} weight="duotone" />
+        },
+        {
+          text: t('milestones.items.megaMarine.achievements.innovation'),
+          icon: <Medal size={16} weight="duotone" />,
+          highlight: true
+        },
+        {
+          text: t('milestones.items.megaMarine.achievements.agile'),
+          icon: <Calendar size={16} weight="duotone" />
+        },
+        {
+          text: t('milestones.items.megaMarine.achievements.performance'),
+          icon: <ChartLine size={16} weight="duotone" />
+        }
+      ]
+    },
+    {
+      year: '2016',
+      title: 'Software Developer',
+      company: 'PT. 3.6.9. Group',
+      companyLogo: threeSixNineLogo,
+      illustration: threeSixNineImage,
+      duration: t('milestones.items.threeSixNine.duration'),
+      location: t('milestones.items.threeSixNine.location'),
+      description: t('milestones.items.threeSixNine.description'),
+      icon: <Code size={24} weight="duotone" />,
+      color: 'from-green-500 to-emerald-500',
+      projects: [
+        {
+          name: 'HRIS Application',
+          description: t('milestones.items.threeSixNine.projects.hris.description'),
+          tech: ['PHP', 'MySQL', 'jQuery', 'Bootstrap', 'Chart.js', 'Ajax', 'JavaScript'],
+          impact: t('milestones.items.threeSixNine.projects.hris.impact')
+        }
+      ],
+      achievements: [
+        {
+          text: t('milestones.items.threeSixNine.achievements.mastered'),
+          icon: <Star size={16} weight="duotone" />,
+          highlight: true
+        },
+        {
+          text: t('milestones.items.threeSixNine.achievements.testing'),
+          icon: <Lightning size={16} weight="duotone" />
+        },
+        {
+          text: t('milestones.items.threeSixNine.achievements.database'),
+          icon: <ChartLine size={16} weight="duotone" />
+        },
+        {
+          text: t('milestones.items.threeSixNine.achievements.recognition'),
+          icon: <Medal size={16} weight="duotone" />,
+          highlight: true
+        }
+      ]
+    }
+  ];
+  
   const containerVariants = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: 80 },
     visible: {
       opacity: 1,
       transition: {
@@ -335,10 +314,10 @@ const MilestonesSection: React.FC = () => {
           className="text-center mb-10 sm:mb-12 lg:mb-16"
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
-            Career <span className="brand-gradient-text">Milestones</span>
+            {t('milestones.title.career')} <span className="brand-gradient-text">{t('milestones.title.milestones')}</span>
           </h2>
           <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-2">
-            Key achievements, projects, and pivotal moments that have shaped my professional journey
+            {t('milestones.subtitle')}
           </p>
         </motion.div>
 
@@ -352,136 +331,7 @@ const MilestonesSection: React.FC = () => {
           {/* Timeline line */}
           <div className="absolute left-6 sm:left-8 md:left-1/2 top-0 bottom-0 w-0.5 sm:w-1 timeline-line transform md:-translate-x-1/2"></div>
 
-          {/* Floating Developer Workspace Image - Right - Optimized */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 10 }}
-            whileInView={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ 
-              duration: 1, 
-              ease: "easeOut",
-              delay: 0.3 
-            }}
-            viewport={{ once: true }}
-            className="hidden lg:block absolute top-20 right-10 xl:right-20 w-80 h-52 z-0"
-          >
-            <div className="relative w-full h-full">
-              <motion.img
-                src={codingWorkspace}
-                alt="Coding workspace illustration"
-                className="w-full h-full object-contain opacity-20 dark:opacity-10"
-                animate={{ 
-                  y: [0, -3, 0]
-                }}
-                transition={{ 
-                  duration: 12, 
-                  repeat: Infinity, 
-                  ease: "easeInOut",
-                  delay: 1
-                }}
-              />
-              {/* Single reduced particle */}
-              <motion.div
-                className="absolute top-4 left-4 w-1 h-1 bg-primary rounded-full opacity-30"
-                animate={{ 
-                  scale: [1, 1.1, 1],
-                  opacity: [0.3, 0.4, 0.3]
-                }}
-                transition={{ 
-                  duration: 6, 
-                  repeat: Infinity
-                }}
-              />
-            </div>
-          </motion.div>
 
-          {/* Additional floating image - Server Architecture - Left Side - Optimized */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9, x: -10 }}
-            whileInView={{ opacity: 1, scale: 1, x: 0 }}
-            transition={{ 
-              duration: 1, 
-              ease: "easeOut",
-              delay: 0.8 
-            }}
-            viewport={{ once: true }}
-            className="hidden lg:block absolute top-96 left-5 xl:left-15 w-72 h-48 z-0"
-          >
-            <div className="relative w-full h-full">
-              <motion.img
-                src={serverArchitecture}
-                alt="Server architecture illustration"
-                className="w-full h-full object-contain opacity-15 dark:opacity-8"
-                animate={{ 
-                  y: [0, -4, 0]
-                }}
-                transition={{ 
-                  duration: 14, 
-                  repeat: Infinity, 
-                  ease: "easeInOut",
-                  delay: 2
-                }}
-              />
-            </div>
-          </motion.div>
-
-          {/* Floating Code Elements - Left - Simplified */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9, x: -10 }}
-            whileInView={{ opacity: 1, scale: 1, x: 0 }}
-            transition={{ 
-              duration: 1, 
-              ease: "easeOut",
-              delay: 0.5 
-            }}
-            viewport={{ once: true }}
-            className="hidden lg:block absolute top-80 left-10 xl:left-20 w-60 h-40 z-0"
-          >
-            <div className="relative w-full h-full opacity-8 dark:opacity-4">
-              {/* Simplified code symbol */}
-              <motion.div
-                className="absolute top-20 left-8 text-2xl font-mono text-primary opacity-20"
-                animate={{ 
-                  opacity: [0.1, 0.2, 0.1]
-                }}
-                transition={{ 
-                  duration: 10, 
-                  repeat: Infinity
-                }}
-              >
-                {"</>"}
-              </motion.div>
-            </div>
-          </motion.div>
-
-          {/* Mobile Development Image - Bottom Right - Optimized */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 10 }}
-            whileInView={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ 
-              duration: 1, 
-              ease: "easeOut",
-              delay: 1.2 
-            }}
-            viewport={{ once: true }}
-            className="hidden lg:block absolute bottom-20 right-5 xl:right-15 w-60 h-40 z-0"
-          >
-            <div className="relative w-full h-full">
-              <motion.img
-                src={mobileDevelopment}
-                alt="Mobile development illustration"
-                className="w-full h-full object-contain opacity-12 dark:opacity-6"
-                animate={{ 
-                  y: [0, -2, 0]
-                }}
-                transition={{ 
-                  duration: 16, 
-                  repeat: Infinity, 
-                  ease: "easeInOut",
-                  delay: 4
-                }}
-              />
-            </div>
-          </motion.div>
 
           <div className="space-y-12 sm:space-y-16 lg:space-y-20 relative z-10">
             {milestones.map((milestone, index) => (
@@ -492,132 +342,106 @@ const MilestonesSection: React.FC = () => {
                   index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
                 }`}
               >
-                {/* Parallax illustration - optimized for smoother animations */}
+                {/* Background illustration behind the milestone */}
                 {milestone.illustration && (
                   <motion.div
-                    className={`hidden lg:block absolute z-0 parallax-element ${
-                      index % 2 === 0 
-                        ? 'right-10 xl:right-20' 
-                        : 'left-10 xl:left-20'
-                    }`}
-                    style={{
-                      top: `${80 + index * 50}px`,
-                      willChange: 'transform'
-                    }}
-                    initial={{ opacity: 0, scale: 0.9, x: index % 2 === 0 ? 30 : -30 }}
-                    whileInView={{ opacity: 1, scale: 1, x: 0 }}
+                    className="absolute inset-0 z-0 overflow-hidden"
+                    initial={{ opacity: 0, scale: 1.1 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ 
-                      duration: 0.8, 
+                      duration: 1.2, 
                       ease: "easeOut",
-                      delay: index * 0.2 
+                      delay: index * 0.1 
                     }}
                     viewport={{ once: true, margin: "-50px" }}
                   >
-                    <div className="relative w-80 h-60">
+                    <div className="absolute inset-0">
                       <motion.img
                         src={milestone.illustration}
-                        alt={`${milestone.title} illustration`}
-                        className="w-full h-full object-contain opacity-25 dark:opacity-15"
+                        alt={`${milestone.title} background`}
+                        className="w-full h-full object-cover opacity-100 dark:opacity-100"
+                        style={{
+                          maskImage: 'radial-gradient(circle at center, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.1) 80%, transparent 100%)',
+                          WebkitMaskImage: 'radial-gradient(circle at center, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.1) 80%, transparent 100%)'
+                        }}
                         animate={{ 
-                          y: [0, -2, 0]
+                          scale: [1, 1.02, 1]
                         }}
                         transition={{ 
-                          duration: 8 + index * 2, 
+                          duration: 15 + index * 3, 
                           repeat: Infinity, 
                           ease: "easeInOut",
-                          delay: index
+                          delay: index * 2
                         }}
                       />
                       
-                      {/* Single optimized floating particle */}
-                      <motion.div
-                        className="absolute top-8 left-8 w-1.5 h-1.5 rounded-full opacity-20"
-                        style={{
-                          background: `var(--primary)`
-                        }}
-                        animate={{ 
-                          scale: [1, 1.1, 1],
-                          opacity: [0.2, 0.3, 0.2]
-                        }}
-                        transition={{ 
-                          duration: 4, 
-                          repeat: Infinity, 
-                          delay: index * 0.8 
-                        }}
-                      />
+                      {/* Gradient overlay to ensure text readability */}
+                      <div className={`absolute inset-0 bg-gradient-to-r ${milestone.color} opacity-5`}></div>
+                      <div className="absolute inset-0 bg-background/20 dark:bg-background/40"></div>
                     </div>
                   </motion.div>
                 )}
-                {/* Enhanced Timeline dot with company logo */}
-                <div className="absolute left-6 sm:left-8 md:left-1/2 transform md:-translate-x-1/2 z-20 mt-4 sm:mt-6">
-                  <motion.div
-                    className="relative flex items-center justify-center"
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    {/* Outer ring with gradient */}
-                    <motion.div
-                      className={`w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 rounded-full bg-gradient-to-r ${milestone.color} p-1 shadow-lg`}
-                      initial={{ scale: 0 }}
-                      whileInView={{ scale: 1 }}
-                      transition={{ 
-                        duration: 0.6, 
-                        ease: "easeOut",
-                        delay: index * 0.1 
-                      }}
-                      viewport={{ once: true }}
-                    >
-                      {/* Company logo container */}
-                      <div className="w-full h-full bg-background rounded-full flex items-center justify-center p-1.5 sm:p-2 relative overflow-hidden">
-                        {milestone.companyLogo && (
-                          <motion.img
-                            src={milestone.companyLogo}
-                            alt={`${milestone.company} logo`}
-                            className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 object-contain company-logo"
-                            variants={logoVariants}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true }}
-                          />
-                        )}
-                        
-                        {/* Optimized animated pulse effect */}
-                        <motion.div
-                          className={`absolute inset-0 rounded-full bg-gradient-to-r ${milestone.color} opacity-15`}
-                          animate={{
-                            scale: [1, 1.05, 1],
-                            opacity: [0.1, 0.2, 0.1]
-                          }}
-                          transition={{
-                            duration: 6,
-                            repeat: Infinity,
-                            ease: "easeInOut",
-                            delay: index * 1.5
-                          }}
-                        />
-                      </div>
-                    </motion.div>
-                    
-                    {/* Year badge */}
-                    <motion.div
-                      className={`absolute -bottom-1 sm:-bottom-2 bg-gradient-to-r ${milestone.color} text-white text-xs font-bold px-2 py-1 rounded-full shadow-md`}
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ 
-                        duration: 0.5, 
-                        delay: index * 0.2 + 0.3 
-                      }}
-                      viewport={{ once: true }}
-                    >
-                      {milestone.year}
-                    </motion.div>
-                  </motion.div>
-                </div>
+
 
                 {/* Content card */}
                 <div className={`ml-20 sm:ml-24 lg:ml-32 md:ml-0 ${
-                  index % 2 === 0 ? 'md:mr-12 md:text-right' : 'md:ml-12'
-                } md:w-1/2 relative z-10`}>
+                  index % 2 === 0 ? 'md:mr-16 md:text-right' : 'md:ml-16'
+                } md:w-1/2 relative z-20`}>
+                  
+                  {/* Company logo floating at card's top corner */}
+                  <motion.div
+                    className={`absolute z-30 ${
+                      index % 2 === 0 
+                        ? '-right-8 sm:-right-10' 
+                        : '-left-8 sm:-left-10'
+                    } -top-8 sm:-top-10`}
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <div className="relative">
+                      <motion.div
+                        className={`w-14 h-14 sm:w-16 sm:h-16 lg:w-18 lg:h-18 rounded-full bg-gradient-to-r ${milestone.color} p-1 shadow-lg`}
+                        initial={{ scale: 0 }}
+                        whileInView={{ scale: 1 }}
+                        transition={{ 
+                          duration: 0.6, 
+                          ease: "easeOut",
+                          delay: index * 0.1 
+                        }}
+                        viewport={{ once: true }}
+                      >
+                        <div className="w-full h-full bg-background rounded-full flex items-center justify-center p-1.5 sm:p-2">
+                          {milestone.companyLogo && (
+                            <motion.img
+                              src={milestone.companyLogo}
+                              alt={`${milestone.company} logo`}
+                              className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 object-contain"
+                              variants={logoVariants}
+                              initial="hidden"
+                              whileInView="visible"
+                              viewport={{ once: true }}
+                            />
+                          )}
+                        </div>
+                      </motion.div>
+                      
+                      {/* Year badge at bottom center of logo */}
+                      <motion.div
+                        className="absolute -bottom-3 sm:-bottom-4 left-1/2 transform -translate-x-1/2"
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ 
+                          duration: 0.5, 
+                          delay: index * 0.2 + 0.3 
+                        }}
+                        viewport={{ once: true }}
+                      >
+                        <div className={`bg-gradient-to-r ${milestone.color} text-white text-xs font-bold px-2 py-1 rounded-full shadow-md whitespace-nowrap`}>
+                          {milestone.year}
+                        </div>
+                      </motion.div>
+                    </div>
+                  </motion.div>
                   <motion.div
                     className="glass-card p-4 sm:p-6 lg:p-8 rounded-xl sm:rounded-2xl hover-lift group relative overflow-hidden"
                     initial={{ opacity: 0, y: 20 }}
@@ -685,7 +509,7 @@ const MilestonesSection: React.FC = () => {
                             <Code size={16} className="sm:hidden" weight="duotone" />
                             <Code size={20} className="hidden sm:block" weight="duotone" />
                           </div>
-                          Key Projects
+                          {t('milestones.keyProjects')}
                         </motion.h4>
                         <div className="grid gap-4 sm:gap-6">
                           {milestone.projects.map((project, projectIndex) => (
@@ -753,7 +577,7 @@ const MilestonesSection: React.FC = () => {
                             <Medal size={16} className="sm:hidden" weight="duotone" />
                             <Medal size={20} className="hidden sm:block" weight="duotone" />
                           </div>
-                          Key Achievements
+                          {t('milestones.keyAchievements')}
                         </motion.h4>
                         <div className="grid gap-2 sm:gap-3">
                           {milestone.achievements.map((achievement, achievementIndex) => (

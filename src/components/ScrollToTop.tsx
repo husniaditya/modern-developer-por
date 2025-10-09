@@ -21,7 +21,13 @@ const ScrollToTop = () => {
   }, []);
 
   const scrollToTop = () => {
-    smoothScrollTo('home');
+    const targetId = 'hero';
+    const el = document.getElementById(targetId);
+    if (el) {
+      smoothScrollTo(targetId);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   return (

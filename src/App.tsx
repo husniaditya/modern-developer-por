@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Toaster } from '@/components/ui/sonner';
 import { ThemeProvider } from '@/contexts/ThemeContext';
+import '@/i18n';
 import Navigation from '@/components/Navigation';
 import HeroSection from '@/components/HeroSection';
 import SkillsSection from '@/components/SkillsSection';
@@ -92,7 +93,7 @@ function App() {
               viewport={{ once: true }}
               className="text-lg font-medium"
             >
-              &copy; 2024 DevPortfolio. Crafted with passion.
+              &copy; 2025 HusniAdityaDev. Crafted with passion.
             </motion.p>
             <motion.p 
               className="text-sm mt-2 opacity-80"

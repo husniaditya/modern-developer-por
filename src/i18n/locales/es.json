@@ -1,0 +1,270 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Acerca de",
+    "skills": "Habilidades",
+    "projects": "Proyectos",
+    "milestones": "Experiencia",
+    "certificates": "Certificados",
+    "testimonials": "Testimonios",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "greeting": "Hola, soy",
+    "name": "Husni Aditya",
+    "title": "Senior Full Stack Developer",
+    "description": "Apasionado por crear experiencias digitales excepcionales a través de soluciones web innovadoras. Especializado en tecnologías modernas y arquitecturas escalables.",
+    "downloadResume": "Descargar CV",
+    "contactMe": "Contáctame"
+  },
+  "skills": {
+    "title": "Habilidades Técnicas",
+    "subtitle": "Tecnologías y herramientas que uso para dar vida a las ideas",
+    "categories": {
+      "languages": "Lenguajes de Programación",
+      "frameworks": "Frameworks y Librerías",
+      "databases": "Bases de Datos",
+      "tools": "Herramientas y Plataformas",
+      "cloud": "Cloud y DevOps"
+    }
+  },
+  "projects": {
+    "title": "Proyectos Destacados",
+    "subtitle": "Una muestra de mi trabajo reciente y contribuciones a varios proyectos",
+    "filters": {
+      "all": "Todos los Proyectos",
+      "fullStack": "Full Stack",
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "mobile": "Móvil"
+    },
+    "viewProject": "Ver Proyecto",
+    "sourceCode": "Código Fuente",
+    "liveDemo": "Demo en Vivo",
+    "code": "Código",
+    "featured": "Destacado",
+    "github": "GitHub",
+    "items": {
+      "chocomaid": {
+        "title": "Choco Maid AI Discord Bot",
+        "description": "Bot de Discord potenciado por IA para gestionar comunidades, con herramientas de moderación, comandos divertidos e integración perfecta con APIs externas como YouTube, Twitch, Clash Of Clans, Valorant y más. Soporta múltiples idiomas (inglés, indonesio, alemán, español, japonés, chino, francés) con i18n.",
+        "category": "Full Stack, Backend, Frontend"
+      },
+      "ciptasejati": {
+        "title": "Cipta Sejati Indonesia - Plataforma Comunitaria",
+        "description": "Plataforma colaborativa de gestión de tareas con actualizaciones en tiempo real, roles de usuario y seguimiento de proyectos para equipos. Incluye dashboard para gestión de miembros y análisis.",
+        "category": "Full Stack, Backend, Frontend"
+      },
+      "erp": {
+        "title": "Sistema de Planificación de Recursos Empresariales (ERP)",
+        "description": "Sistema ERP modular con módulos de inventario, ventas, adquisiciones y contabilidad. Las características incluyen informes en tiempo real, roles multi-usuario e integración con servicios de terceros.",
+        "category": "Full Stack, Frontend, Backend"
+      },
+      "digitalLibrary": {
+        "title": "Sistema de Biblioteca Digital",
+        "description": "Sistema de biblioteca digital escalable con búsqueda avanzada, gestión de usuarios y características de análisis.",
+        "category": "Full Stack, Backend, Frontend"
+      },
+      "productSpec": {
+        "title": "Sistema de Gestión de Especificaciones de Producto",
+        "description": "Plataforma integral para gestionar especificaciones de productos, incluyendo control de versiones, herramientas de colaboración e integración con sistemas de diseño.",
+        "category": "Full Stack, Backend, Frontend"
+      },
+      "recruitment": {
+        "title": "Sistema de Gestión de Reclutamiento",
+        "description": "Sistema integral de gestión de reclutamiento con seguimiento de candidatos, programación de entrevistas y características de informes.",
+        "category": "Full Stack, Backend, Frontend"
+      },
+      "parking": {
+        "title": "Sistema de Gestión de Estacionamiento",
+        "description": "Sistema integral de gestión de estacionamiento con seguimiento de disponibilidad en tiempo real, gestión de reservas e integración de pagos.",
+        "category": "Full Stack, Backend, Frontend"
+      },
+      "shipment": {
+        "title": "Sistema de Gestión de Envíos",
+        "description": "Sistema robusto de gestión de envíos con seguimiento en tiempo real, gestión de inventario y características de análisis.",
+        "category": "Full Stack, Backend, Frontend"
+      },
+      "maintenance": {
+        "title": "Sistema de Gestión de Mantenimiento",
+        "description": "Sistema integral de gestión de mantenimiento con seguimiento de órdenes de trabajo, gestión de activos y características de informes.",
+        "category": "Full Stack, Backend, Frontend"
+      },
+      "hris": {
+        "title": "Sistema de Información de Recursos Humanos (HRIS)",
+        "description": "HRIS escalable con gestión de empleados, procesamiento de nóminas y características de seguimiento de rendimiento.",
+        "category": "Full Stack, Backend, Frontend"
+      }
+    }
+  },
+  "milestones": {
+    "title": {
+      "career": "Carrera",
+      "milestones": "Hitos"
+    },
+    "subtitle": "Logros clave, proyectos y momentos cruciales que han dado forma a mi trayectoria profesional",
+    "duration": "Duración",
+    "location": "Ubicación",
+    "projects": "Proyectos",
+    "achievements": "Logros",
+    "technologies": "Tecnologías Utilizadas",
+    "impact": "Impacto",
+    "keyProjects": "Proyectos Clave",
+    "keyAchievements": "Logros Clave",
+    "items": {
+      "wilmar": {
+        "title": "Especialista en Gestión de Aplicaciones",
+        "company": "Wilmar International",
+        "duration": "Marzo 2020 - Presente / 5 Años",
+        "location": "Multivision Tower, Jakarta Selatan",
+        "description": "Proporcionar soporte técnico para aplicaciones de software, solución de problemas, garantizar la estabilidad del sistema y servir como puente entre usuarios finales y equipos de desarrollo.",
+        "projects": {
+          "payroll": {
+            "name": "Sistema de Nóminas",
+            "description": "Aplicación web para gestionar flujos de trabajo y procesos generales, integrando varias funciones empresariales",
+            "impact": "40% mejora en la eficiencia de visualización de datos"
+          },
+          "bunching": {
+            "name": "Sistema de Agrupación",
+            "description": "Aplicación web para gestionar procesos de agrupación",
+            "impact": "70% mejora en la eficiencia de agrupación"
+          },
+          "fieldInspection": {
+            "name": "Inspección de Campo",
+            "description": "App móvil para inspecciones e informes en el sitio",
+            "impact": "50% reducción en tiempo de inspección"
+          },
+          "patrolling": {
+            "name": "Sistema de Patrullaje",
+            "description": "App móvil para gestión de patrullas e informes",
+            "impact": "70% reducción en tiempo de respuesta de patrulla"
+          },
+          "gradingBunch": {
+            "name": "Grupo de Calificación",
+            "description": "Aplicación web para gestionar calificaciones y evaluaciones",
+            "impact": "60% reducción en tiempo de calificación"
+          }
+        },
+        "achievements": {
+          "teamLead": "Dirigió equipo de 25+ sitios en regiones globales",
+          "monitoring": "Implementó monitoreo reduciendo el tiempo de inactividad en 30%"
+        }
+      },
+      "megaMarine": {
+        "title": "Ingeniero de Software",
+        "company": "PT. Mega Marine Pride",
+        "duration": "Sept 2017 - Feb 2020 / 3 Años",
+        "location": "Pasuruan, Jawa Timur",
+        "description": "Dirigió un equipo de 5 desarrolladores en la entrega de múltiples proyectos de alto impacto utilizando tecnologías web modernas.",
+        "projects": {
+          "erp": {
+            "name": "Sistema ERP de Inventario TI",
+            "description": "Aplicación web para gestionar flujos de trabajo y procesos generales, integrando varias funciones empresariales, incluyendo finanzas, RR.HH., adquisiciones, stock y despacho aduanero",
+            "impact": "50% aumento en eficiencia operacional, errores reducidos y capacidades de informes mejoradas, llevando a mejor toma de decisiones, ahorro de costos y productividad mejorada"
+          },
+          "maintenance": {
+            "name": "Sistema de Tickets de Mantenimiento",
+            "description": "Plataforma web para gestionar solicitudes de mantenimiento",
+            "impact": "30% reducción en tiempo de respuesta, seguimiento mejorado e informes"
+          },
+          "shipping": {
+            "name": "App de Logística de Envíos",
+            "description": "App web para seguimiento de envíos en tiempo real, gestión de inventario",
+            "impact": "20% aumento en eficiencia de entrega, errores reducidos, satisfacción del cliente mejorada"
+          },
+          "parking": {
+            "name": "Sistema de Gestión de Estacionamiento",
+            "description": "Aplicación web para gestionar espacios de estacionamiento y reservas",
+            "impact": "25% aumento en utilización de espacios de estacionamiento, congestión reducida, experiencia de usuario mejorada, seguridad mejorada y operaciones optimizadas"
+          },
+          "recruitment": {
+            "name": "Portal de Reclutamiento",
+            "description": "Plataforma web para publicaciones de trabajo y seguimiento de candidatos",
+            "impact": "35% reducción en tiempo de contratación, experiencia de candidato mejorada, colaboración mejorada entre RR.HH. y gerentes de contratación"
+          },
+          "productSpec": {
+            "name": "Sistema de Especificaciones de Producto",
+            "description": "Aplicación web para gestionar especificaciones de productos y cumplimiento",
+            "impact": "35% reducción en tiempo al mercado para nuevos productos, colaboración mejorada entre equipos"
+          },
+          "digitalLibrary": {
+            "name": "Sistema de Biblioteca Digital",
+            "description": "Aplicación web para gestionar activos digitales y recursos",
+            "impact": "50% aumento en accesibilidad de recursos, participación de usuario mejorada, gestión de contenido mejorada"
+          }
+        },
+        "achievements": {
+          "delivered": "Entregó 7 proyectos principales a tiempo y dentro del presupuesto",
+          "standards": "Estableció estándares de codificación y mejores prácticas",
+          "technicalDebt": "Redujo la deuda técnica en 35% mediante refactorización",
+          "innovation": "Ganó \"Premio a la Innovación\" por soluciones innovadoras",
+          "agile": "Lideró la adopción de metodologías Ágiles",
+          "performance": "Mejoró el rendimiento de aplicaciones en 40% mediante optimización"
+        }
+      },
+      "threeSixNine": {
+        "title": "Desarrollador de Software",
+        "company": "PT. 3.6.9. Group",
+        "duration": "Ene 2016 - Sept 2017 / 1.5 Años",
+        "location": "Darmo Park II, Surabaya",
+        "description": "Contribuyó al desarrollo full-stack de aplicaciones web, enfocándose en el rendimiento del frontend y la experiencia del usuario.",
+        "projects": {
+          "hris": {
+            "name": "Sistema de Gestión de Recursos Humanos",
+            "description": "Autoservicio de empleados y automatización de nóminas",
+            "impact": "5K+ usuarios registrados en el primer trimestre"
+          }
+        },
+        "achievements": {
+          "mastered": "Dominó lenguajes de programación y frameworks",
+          "testing": "Implementó pruebas automatizadas logrando 95% de cobertura",
+          "database": "Optimizó consultas de base de datos para respuesta 50% más rápida",
+          "recognition": "Recibió reconocimiento \"Desarrollador del Año\""
+        }
+      }
+    }
+  },
+  "certificates": {
+    "title": "Certificados",
+    "subtitle": "Certificados profesionales que validan mi experiencia y compromiso con el aprendizaje continuo"
+  },
+  "testimonials": {
+    "title": "Lo que dice la gente",
+    "subtitle": "Testimonios de colegas, clientes y colaboradores con los que he trabajado",
+    "rating": "Calificación",
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "ariaLabel": "Testimonio {{index}} de {{total}}",
+    "navigationLabel": "Navegación de testimonios"
+  },
+  "contact": {
+    "title": "Ponte en contacto",
+    "subtitle": "Siempre estoy abierto a discutir nuevas oportunidades, proyectos interesantes o simplemente charlar sobre tecnología",
+    "connect": "Conectemos",
+    "connectDescription": "Ya sea que tengas un proyecto en mente, quieras discutir una posible colaboración, o simplemente quieras saludar, me encantaría saber de ti. No dudes en contactarme a través de cualquiera de los canales a continuación.",
+    "email": "Correo",
+    "phone": "Teléfono",
+    "location": "Ubicación",
+    "followMe": "Sígueme",
+    "whatsapp": {
+      "title": "Charlemos en WhatsApp",
+      "ready": "¿Listo para discutir tu proyecto?",
+      "description": "¡Tengamos una charla rápida en WhatsApp! Estoy disponible para discutir tus ideas de proyecto, responder preguntas o explorar posibles colaboraciones. Haz clic en el botón de abajo para iniciar nuestra conversación.",
+      "button": "Envíame un mensaje en WhatsApp",
+      "alternative": "¿Prefieres otros métodos? También puedes contactarme por correo o teléfono usando la información de contacto de la izquierda."
+    }
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Algo salió mal",
+    "retry": "Intentar de nuevo",
+    "close": "Cerrar",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "submit": "Enviar",
+    "next": "Siguiente",
+    "previous": "Anterior",
+    "viewMore": "Ver Más",
+    "viewLess": "Ver Menos"
+  }
+}

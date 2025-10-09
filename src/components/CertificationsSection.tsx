@@ -2,6 +2,17 @@ import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Trophy, Calendar } from '@phosphor-icons/react';
+import { useTranslation } from 'react-i18next';
+
+// Certificate images
+import aiDataScienceCert from '@/assets/images/certificates/ai for data science.webp';
+import aiDeveloperCert from '@/assets/images/certificates/ai for developer.webp';
+import phpCert from '@/assets/images/certificates/php.webp';
+import javascriptCert from '@/assets/images/certificates/javascript.webp';
+import sqlCert from '@/assets/images/certificates/sql.webp';
+import htmlCert from '@/assets/images/certificates/html.webp';
+import cssCert from '@/assets/images/certificates/css.webp';
+import jqueryCert from '@/assets/images/certificates/jquery.webp';
 
 interface Certification {
   id: string;
@@ -10,57 +21,76 @@ interface Certification {
   date: string;
   credentialId?: string;
   status: 'active' | 'expired';
+  image: string;
 }
 
 const CertificationsSection = () => {
+  const { t } = useTranslation();
+  
   const certifications: Certification[] = [
     {
       id: '1',
-      title: 'AWS Certified Solutions Architect',
-      issuer: 'Amazon Web Services',
-      date: '2023',
-      credentialId: 'AWS-CSA-2023-001',
-      status: 'active'
+      title: 'LLM-Based Tools and Gemini API Integration for Data Science',
+      issuer: 'Hacktiv8',
+      date: '2025',
+      status: 'active',
+      image: aiDataScienceCert
     },
     {
       id: '2', 
-      title: 'Google Cloud Professional Developer',
-      issuer: 'Google Cloud',
-      date: '2023',
-      credentialId: 'GCP-PD-2023-002',
-      status: 'active'
+      title: 'LLM-Based Tools and Gemini API Integration for Developers',
+      issuer: 'Hacktiv8',
+      date: '2025',
+      status: 'active',
+      image: aiDeveloperCert
     },
     {
       id: '3',
-      title: 'React Developer Certification',
-      issuer: 'Meta',
-      date: '2022',
-      credentialId: 'META-REACT-2022-003',
-      status: 'active'
+      title: 'PHP Tutorial Course',
+      issuer: 'Sololearn',
+      date: '2019',
+      status: 'active',
+      image: phpCert
     },
     {
       id: '4',
-      title: 'Certified Kubernetes Administrator',
-      issuer: 'Cloud Native Computing Foundation',
-      date: '2022',
-      credentialId: 'CKA-2022-004',
-      status: 'active'
+      title: 'Javascript Tutorial Course',
+      issuer: 'Sololearn',
+      date: '2019',
+      status: 'active',
+      image: javascriptCert
     },
     {
       id: '5',
-      title: 'MongoDB Certified Developer',
-      issuer: 'MongoDB University',
-      date: '2021',
-      credentialId: 'MONGO-DEV-2021-005',
-      status: 'active'
+      title: 'SQL Fundamentals Course',
+      issuer: 'Sololearn',
+      date: '2019',
+      status: 'active',
+      image: sqlCert
     },
     {
       id: '6',
-      title: 'Scrum Master Certified',
-      issuer: 'Scrum Alliance',
-      date: '2021',
-      credentialId: 'CSM-2021-006',
-      status: 'active'
+      title: 'HTML Tutorial Course',
+      issuer: 'Sololearn',
+      date: '2019',
+      status: 'active',
+      image: htmlCert
+    },
+    {
+      id: '7',
+      title: 'CSS Tutorial Course',
+      issuer: 'Sololearn',
+      date: '2019',
+      status: 'active',
+      image: cssCert
+    },
+    {
+      id: '8',
+      title: 'jQuery Tutorial Course',
+      issuer: 'Sololearn',
+      date: '2019',
+      status: 'active',
+      image: jqueryCert
     }
   ];
 
@@ -68,21 +98,30 @@ const CertificationsSection = () => {
     <section id="certifications" className="py-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-foreground mb-4">Certifications</h2>
+          <h2 className="text-4xl font-bold text-foreground mb-4">{t('certificates.title')}</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Professional certifications that validate my expertise and commitment to continuous learning
+            {t('certificates.subtitle')}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {certifications.map((cert) => (
             <Card key={cert.id} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <div className="relative overflow-hidden rounded-t-lg">
+                <img 
+                  src={cert.image} 
+                  alt={cert.title}
+                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute top-4 right-4">
+                  <Badge variant={cert.status === 'active' ? 'default' : 'secondary'}>
+                    {t(`certificates.status.${cert.status}`)}
+                  </Badge>
+                </div>
+              </div>
               <CardHeader className="pb-4">
                 <div className="flex items-start justify-between">
                   <Trophy size={32} className="text-primary flex-shrink-0" />
-                  <Badge variant={cert.status === 'active' ? 'default' : 'secondary'}>
-                    {cert.status}
-                  </Badge>
                 </div>
                 <CardTitle className="text-lg leading-tight group-hover:text-primary transition-colors">
                   {cert.title}
@@ -97,7 +136,7 @@ const CertificationsSection = () => {
                   </div>
                   {cert.credentialId && (
                     <p className="text-sm text-muted-foreground">
-                      ID: {cert.credentialId}
+                      {t('certificates.credentialId')}: {cert.credentialId}
                     </p>
                   )}
                 </div>

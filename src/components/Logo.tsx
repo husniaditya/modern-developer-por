@@ -38,9 +38,10 @@ export default function Logo({ size = 'md', className = '' }: LogoProps) {
           transition={{ duration: 2, ease: "easeInOut" }}
         />
         
-        {/* Inner design - stylized initials */}
+        {/* Inner design - stylized initials 'H' and 'A' */}
+        {/* H: two verticals with a middle connector */}
         <motion.path
-          d="M30 35 L30 65 M30 35 L45 35 M30 50 L40 50"
+          d="M30 35 L30 65 M45 35 L45 65 M30 50 L45 50"
           stroke="currentColor"
           strokeWidth="3"
           strokeLinecap="round"
@@ -49,9 +50,10 @@ export default function Logo({ size = 'md', className = '' }: LogoProps) {
           animate={{ pathLength: 1 }}
           transition={{ duration: 1.5, delay: 0.5, ease: "easeInOut" }}
         />
-        
+
+        {/* A: two legs meeting at top with a crossbar */}
         <motion.path
-          d="M55 35 L55 65 M55 35 L70 65 M70 35 L70 65"
+          d="M60 65 L67.5 35 M75 65 L67.5 35 M62 50 L73 50"
           stroke="currentColor"
           strokeWidth="3"
           strokeLinecap="round"

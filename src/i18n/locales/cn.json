@@ -1,0 +1,270 @@
+{
+  "nav": {
+    "home": "首頁",
+    "about": "關於",
+    "skills": "技能",
+    "projects": "專案",
+    "milestones": "經歷",
+    "certificates": "證書",
+    "testimonials": "推薦",
+    "contact": "聯絡"
+  },
+  "hero": {
+    "greeting": "您好，我是",
+    "name": "Husni Aditya",
+    "title": "資深全端開發工程師",
+    "description": "熱衷於透過創新的網路解決方案創造卓越的數位體驗。專精於現代技術和可擴展架構。",
+    "downloadResume": "下載履歷",
+    "contactMe": "聯絡我"
+  },
+  "skills": {
+    "title": "技術技能",
+    "subtitle": "我用來實現想法的技術和工具",
+    "categories": {
+      "languages": "程式語言",
+      "frameworks": "框架和函式庫",
+      "databases": "資料庫",
+      "tools": "工具和平台",
+      "cloud": "雲端服務和DevOps"
+    }
+  },
+  "projects": {
+    "title": "精選專案",
+    "subtitle": "我最近的作品和對各種專案的貢獻展示",
+    "filters": {
+      "all": "所有專案",
+      "fullStack": "全端",
+      "backend": "後端",
+      "frontend": "前端",
+      "mobile": "行動裝置"
+    },
+    "viewProject": "檢視專案",
+    "sourceCode": "原始碼",
+    "liveDemo": "即時演示",
+    "code": "程式碼",
+    "featured": "精選",
+    "github": "GitHub",
+    "items": {
+      "chocomaid": {
+        "title": "Choco Maid AI Discord Bot",
+        "description": "AI驅動的Discord機器人，用於管理社群，具備審核工具、趣味指令，以及與YouTube、Twitch、Clash Of Clans、Valorant等外部API的無縫整合。支援多種語言（英語、印尼語、德語、西班牙語、日語、中文、法語）並具備i18n國際化功能。",
+        "category": "全端, 後端, 前端"
+      },
+      "ciptasejati": {
+        "title": "Cipta Sejati Indonesia - 社群平台",
+        "description": "協作任務管理平台，具備即時更新、使用者角色和團隊專案追蹤功能。包含成員管理和分析的儀表板。",
+        "category": "全端, 後端, 前端"
+      },
+      "erp": {
+        "title": "企業資源規劃（ERP）系統",
+        "description": "模組化ERP系統，包含庫存、銷售、採購和會計模組。功能包括即時報告、多使用者角色和第三方服務整合。",
+        "category": "全端, 前端, 後端"
+      },
+      "digitalLibrary": {
+        "title": "數位圖書館系統",
+        "description": "可擴展的數位圖書館系統，具備進階搜尋、使用者管理和分析功能。",
+        "category": "全端, 後端, 前端"
+      },
+      "productSpec": {
+        "title": "產品規格管理系統",
+        "description": "用於管理產品規格的綜合平台，包括版本控制、協作工具和與設計系統的整合。",
+        "category": "全端, 後端, 前端"
+      },
+      "recruitment": {
+        "title": "招募管理系統",
+        "description": "端到端招募管理系統，具備應徵者追蹤、面試排程和報告功能。",
+        "category": "全端, 後端, 前端"
+      },
+      "parking": {
+        "title": "停車場管理系統",
+        "description": "綜合停車場管理系統，具備即時可用性追蹤、預約管理和付款整合。",
+        "category": "全端, 後端, 前端"
+      },
+      "shipment": {
+        "title": "貨運管理系統",
+        "description": "強大的貨運管理系統，具備即時追蹤、庫存管理和分析功能。",
+        "category": "全端, 後端, 前端"
+      },
+      "maintenance": {
+        "title": "維護管理系統",
+        "description": "綜合維護管理系統，具備工作單追蹤、資產管理和報告功能。",
+        "category": "全端, 後端, 前端"
+      },
+      "hris": {
+        "title": "人力資源資訊系統（HRIS）",
+        "description": "可擴展的HRIS，具備員工管理、薪資處理和績效追蹤功能。",
+        "category": "全端, 後端, 前端"
+      }
+    }
+  },
+  "milestones": {
+    "title": {
+      "career": "職業",
+      "milestones": "里程碑"
+    },
+    "subtitle": "塑造我職業歷程的關鍵成就、專案和重要時刻",
+    "duration": "期間",
+    "location": "地點",
+    "projects": "專案",
+    "achievements": "成就",
+    "technologies": "使用技術",
+    "impact": "影響",
+    "keyProjects": "關鍵專案",
+    "keyAchievements": "主要成就",
+    "items": {
+      "wilmar": {
+        "title": "應用程式管理專員",
+        "company": "Wilmar International",
+        "duration": "2020年3月 - 現在 / 5年",
+        "location": "Multivision Tower, Jakarta Selatan",
+        "description": "提供軟體應用程式的技術支援，故障排除，確保系統穩定性，並作為最終使用者和開發團隊之間的橋樑。",
+        "projects": {
+          "payroll": {
+            "name": "薪資系統",
+            "description": "用於管理整體工作流程和流程的網路應用程式，整合各種業務功能",
+            "impact": "數據視覺化效率提升40%"
+          },
+          "bunching": {
+            "name": "分組系統",
+            "description": "用於管理分組流程的網路應用程式",
+            "impact": "分組效率提升70%"
+          },
+          "fieldInspection": {
+            "name": "現場檢查",
+            "description": "用於現場檢查和報告的行動應用程式",
+            "impact": "檢查時間減少50%"
+          },
+          "patrolling": {
+            "name": "巡邏系統",
+            "description": "用於巡邏管理和報告的行動應用程式",
+            "impact": "巡邏回應時間減少70%"
+          },
+          "gradingBunch": {
+            "name": "評分組",
+            "description": "用於管理評分和評估的網路應用程式",
+            "impact": "評分時間減少60%"
+          }
+        },
+        "achievements": {
+          "teamLead": "領導全球地區25+站點的團隊",
+          "monitoring": "實施監控，將停機時間減少30%"
+        }
+      },
+      "megaMarine": {
+        "title": "軟體工程師",
+        "company": "PT. Mega Marine Pride",
+        "duration": "2017年9月 - 2020年2月 / 3年",
+        "location": "Pasuruan, Jawa Timur",
+        "description": "領導5名開發人員團隊，使用現代網路技術交付多個高影響力專案。",
+        "projects": {
+          "erp": {
+            "name": "ERP IT庫存系統",
+            "description": "用於管理整體工作流程和流程的網路應用程式，整合各種業務功能，包括財務、人力資源、採購、庫存和海關清關",
+            "impact": "營運效率提升50%，錯誤減少，報告能力改善，導致更好的決策制定、成本節約和生產力提升"
+          },
+          "maintenance": {
+            "name": "維護票務系統",
+            "description": "用於管理維護請求的網路平台",
+            "impact": "回應時間減少30%，追蹤和報告改善"
+          },
+          "shipping": {
+            "name": "貨運物流應用程式",
+            "description": "用於即時貨物追蹤、庫存管理的網路應用程式",
+            "impact": "交付效率提升20%，錯誤減少，客戶滿意度提升"
+          },
+          "parking": {
+            "name": "停車場管理系統",
+            "description": "用於管理停車位和預約的網路應用程式",
+            "impact": "停車位利用率提升25%，減少擁塞，改善使用者體驗，增強安全性，簡化作業"
+          },
+          "recruitment": {
+            "name": "招募入口網站",
+            "description": "用於職位發布和應徵者追蹤的網路平台",
+            "impact": "招聘時間減少35%，改善應徵者體驗，增強人力資源和招聘經理之間的協作"
+          },
+          "productSpec": {
+            "name": "產品規格系統",
+            "description": "用於管理產品規格和合規性的網路應用程式",
+            "impact": "新產品上市時間減少35%，改善團隊間協作"
+          },
+          "digitalLibrary": {
+            "name": "數位圖書館系統",
+            "description": "用於管理數位資產和資源的網路應用程式",
+            "impact": "資源可訪問性提升50%，改善使用者參與度，增強內容管理"
+          }
+        },
+        "achievements": {
+          "delivered": "按時按預算交付7個主要專案",
+          "standards": "建立編碼標準和最佳實踐",
+          "technicalDebt": "透過重構減少35%的技術債務",
+          "innovation": "獲得突破性解決方案「創新獎」",
+          "agile": "主導敏捷方法論的採用",
+          "performance": "透過優化改善40%的應用程式效能"
+        }
+      },
+      "threeSixNine": {
+        "title": "軟體開發人員",
+        "company": "PT. 3.6.9. Group",
+        "duration": "2016年1月 - 2017年9月 / 1.5年",
+        "location": "Darmo Park II, Surabaya",
+        "description": "參與網路應用程式的全端開發，專注於前端效能和使用者體驗。",
+        "projects": {
+          "hris": {
+            "name": "人力資源管理系統",
+            "description": "員工自助服務和薪資自動化",
+            "impact": "第一季度註冊使用者超過5K"
+          }
+        },
+        "achievements": {
+          "mastered": "精通程式語言和框架",
+          "testing": "實施自動化測試，達到95%覆蓋率",
+          "database": "優化資料庫查詢，回應速度提升50%",
+          "recognition": "獲得「年度開發人員」表彰"
+        }
+      }
+    }
+  },
+  "certificates": {
+    "title": "證書",
+    "subtitle": "驗證我的專業技能和持續學習承諾的專業證書"
+  },
+  "testimonials": {
+    "title": "他人評價",
+    "subtitle": "與我合作過的同事、客戶和合作夥伴的推薦",
+    "rating": "評分",
+    "previous": "上一個",
+    "next": "下一個",
+    "ariaLabel": "推薦 {{index}} / {{total}}",
+    "navigationLabel": "推薦導航"
+  },
+  "contact": {
+    "title": "聯絡我",
+    "subtitle": "我始終樂於討論新機會、有趣的專案，或只是聊聊技術",
+    "connect": "讓我們聯絡",
+    "connectDescription": "無論您有專案想法、想討論潛在合作，還是只想打個招呼，我都很樂意聽到您的消息。請隨時透過以下任何管道聯絡我。",
+    "email": "電子郵件",
+    "phone": "電話",
+    "location": "位置",
+    "followMe": "追蹤我",
+    "whatsapp": {
+      "title": "透過WhatsApp聊天",
+      "ready": "準備討論您的專案了嗎？",
+      "description": "讓我們在WhatsApp上快速聊聊！我可以討論您的專案想法、回答問題或探索潛在的合作。點擊下面的按鈕開始我們的對話。",
+      "button": "在WhatsApp上傳訊息給我",
+      "alternative": "偏好其他方式？您也可以使用左側的聯絡資訊透過電子郵件或電話聯絡我。"
+    }
+  },
+  "common": {
+    "loading": "載入中...",
+    "error": "發生錯誤",
+    "retry": "重試",
+    "close": "關閉",
+    "save": "儲存",
+    "cancel": "取消",
+    "submit": "提交",
+    "next": "下一個",
+    "previous": "上一個",
+    "viewMore": "檢視更多",
+    "viewLess": "檢視較少"
+  }
+}

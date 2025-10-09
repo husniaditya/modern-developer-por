@@ -1,5 +1,5 @@
 import React, { useState, useRef, useMemo } from 'react';
-import { motion, useInView, AnimatePresence, useScroll, useTransform } from 'framer-motion';
+import { motion, useInView, AnimatePresence, useScroll, useTransform, useSpring, useReducedMotion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -33,27 +33,40 @@ interface Project {
 
 // Small helper component to add a smooth parallax effect to images on scroll
 function ParallaxImage({ src, alt }: { src: string; alt: string }) {
-  const ref = useRef<HTMLImageElement | null>(null);
+  const ref = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
   });
   // Move a bit as you scroll the card through the viewport
-  const y = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+  const prefersReducedMotion = useReducedMotion();
+  const rawY = useTransform(scrollYProgress, [0, 1], [-16, 16]);
+  const y = prefersReducedMotion
+    ? 0
+    : useSpring(rawY, { stiffness: 140, damping: 24, mass: 0.15 });
 
   return (
-    <motion.img
+    <motion.div
       ref={ref}
-      src={src}
-      alt={alt}
-      className="w-full h-48 object-cover transition-transform duration-500"
-      style={{ y }}
-      initial={{ clipPath: 'inset(0 0 100% 0)' }}
-      whileInView={{ clipPath: 'inset(0 0 0% 0)' }}
+      className="relative w-full h-48 overflow-hidden parallax-element"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
       viewport={{ once: true, amount: 0.2 }}
-      whileHover={{ scale: 1.1 }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-    />
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      style={{ willChange: 'opacity', contain: 'layout paint', backfaceVisibility: 'hidden' }}
+    >
+      <motion.img
+        src={src}
+        alt={alt}
+        className="w-full h-full object-cover transform-gpu"
+        style={{ y, willChange: 'transform' }}
+        loading="lazy"
+        decoding="async"
+        sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+        fetchPriority="low"
+        draggable={false}
+      />
+    </motion.div>
   );
 }
 
@@ -265,7 +278,7 @@ const ProjectsSection = () => {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           layout
         >
-          <AnimatePresence mode="wait">
+          <AnimatePresence>
             {filteredProjects.map((project, index) => (
               <motion.div
                 key={`${activeFilter}-${project.id}`}
@@ -351,7 +364,10 @@ const ProjectsSection = () => {
                           transition={{ delay: 0.4 + techIndex * 0.1 }}
                           whileHover={{ scale: 1.05 }}
                         >
-                          <Badge variant="secondary" className="text-xs hover:bg-primary/10 transition-colors">
+                          <Badge
+                            variant="secondary"
+                            className="text-xs transition-colors border border-border/60 bg-muted/60 text-foreground/80 hover:bg-primary/10 hover:text-foreground"
+                          >
                             {tech}
                           </Badge>
                         </motion.div>

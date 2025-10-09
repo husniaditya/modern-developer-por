@@ -1,5 +1,4 @@
-import React, { createContext, useContext, useEffect } from 'react';
-import { useKV } from '@github/spark/hooks';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 type Theme = 'light' | 'dark';
 
@@ -11,20 +10,15 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useKV<Theme>('theme-preference', 'light');
-
-  // Initialize from localStorage (in case useKV doesn't have it yet)
-  useEffect(() => {
+  const [theme, setTheme] = useState<Theme>(() => {
     try {
       const saved = localStorage.getItem('theme-preference');
-      if (saved === 'light' || saved === 'dark') {
-        setTheme(saved as Theme);
-      }
+      if (saved === 'light' || saved === 'dark') return saved;
     } catch {
       // ignore read errors
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    return 'light';
+  });
 
   useEffect(() => {
     const root = document.documentElement;

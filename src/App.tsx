@@ -12,16 +12,16 @@ import MilestonesSection from '@/components/MilestonesSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import ContactSection from '@/components/ContactSection';
 import ScrollToTop from '@/components/ScrollToTop';
-import MouseTracker from '@/components/MouseTracker';
+// MouseTracker removed
 
 function App() {
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
       const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrolled = (winScroll / height) * 100;
+      const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
       setScrollProgress(scrolled);
     };
 
@@ -40,7 +40,7 @@ function App() {
   return (
     <ThemeProvider>
       <motion.div 
-        className="min-h-screen bg-background scroll-smooth transition-colors duration-300 cursor-none lg:cursor-none"
+        className="min-h-screen bg-background scroll-smooth transition-colors duration-300"
         variants={pageVariants}
         initial="initial"
         animate="animate"
@@ -49,8 +49,7 @@ function App() {
           ease: [0.4, 0.0, 0.2, 1]
         }}
       >
-        {/* Mouse Tracker */}
-        <MouseTracker />
+  {/* Mouse Tracker removed */}
         
         {/* Scroll Progress Bar */}
         <motion.div

@@ -46,7 +46,7 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <h4 className="font-medium text-foreground">{t('contact.phone')}</h4>
-                  <p className="text-muted-foreground">+62 877 0246 2220</p>
+                  <p className="text-muted-foreground">+62 851-5648-0762</p>
                 </div>
               </div>
 
@@ -78,7 +78,7 @@ const ContactSection = () => {
                   variant="outline" 
                   size="icon" 
                   className="rounded-full hover:bg-purple-50 hover:border-purple-300"
-                  onClick={() => window.open('tel:+6287702462220', '_blank')}
+                  onClick={() => window.open('tel:+6285156480762', '_blank')}
                 >
                   <Phone size={20} className="text-purple-600" />
                 </Button>
@@ -103,7 +103,7 @@ const ContactSection = () => {
                   size="icon" 
                   className="rounded-full hover:bg-green-50 hover:border-green-400"
                   onClick={() => {
-                    const phoneNumber = "+6287702462220";
+                    const phoneNumber = "+6285156480762";
                     const message = "Hi Husni! I found your portfolio and would like to connect.";
                     const whatsappUrl = `https://wa.me/${phoneNumber.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(message)}`;
                     window.open(whatsappUrl, '_blank');
@@ -141,7 +141,7 @@ const ContactSection = () => {
                 </p>
                 <Button 
                   onClick={() => {
-                    const phoneNumber = "+6287702462220";
+                    const phoneNumber = "+6285156480762";
                     const message = "Hi Husni! I'm interested in discussing a project with you.";
                     const whatsappUrl = `https://wa.me/${phoneNumber.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(message)}`;
                     window.open(whatsappUrl, '_blank');

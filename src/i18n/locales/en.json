@@ -39,7 +39,61 @@
     "viewProject": "View Project",
     "sourceCode": "Source Code",
     "liveDemo": "Live Demo",
-    "github": "GitHub"
+    "github": "GitHub",
+    "code": "Code",
+    "featured": "Featured",
+    "items": {
+      "chocomaid": {
+        "title": "Choco Maid AI Discord Bot",
+        "description": "AI-powered Discord bot for managing communities, featuring moderation tools, fun commands, and seamless integration with external APIs including Youtube, Twitch, Clash Of Clans, Valorant, and more. Supports multiple languages (English, Indonesia, Germany, Spanish, Japanese, Chinese, French) with i18n.",
+        "category": "Full Stack, Backend, Frontend"
+      },
+      "ciptasejati": {
+        "title": "Cipta Sejati Indonesia - Community Platform",
+        "description": "Collaborative task management platform with real-time updates, user roles, and project tracking for teams. Including dashboard for member management and analytics.",
+        "category": "Full Stack, Backend, Frontend"
+      },
+      "erp": {
+        "title": "Enterprise Resource Planning (ERP) System",
+        "description": "Modular ERP system with inventory, sales, procurement, and accounting modules. Features include real-time reporting, multi-user roles, and integration with third-party services.",
+        "category": "Full Stack, Frontend, Backend"
+      },
+      "digitalLibrary": {
+        "title": "Digital Library System",
+        "description": "Scalable digital library system with advanced search, user management, and analytics features.",
+        "category": "Full Stack, Backend, Frontend"
+      },
+      "productSpec": {
+        "title": "Product Specification Management System",
+        "description": "Comprehensive platform for managing product specifications, including version control, collaboration tools, and integration with design systems.",
+        "category": "Full Stack, Backend, Frontend"
+      },
+      "recruitment": {
+        "title": "Recruitment Management System",
+        "description": "End-to-end recruitment management system with applicant tracking, interview scheduling, and reporting features.",
+        "category": "Full Stack, Backend, Frontend"
+      },
+      "parking": {
+        "title": "Parking Management System",
+        "description": "Comprehensive parking management system with real-time availability tracking, reservation management, and payment integration.",
+        "category": "Full Stack, Backend, Frontend"
+      },
+      "shipment": {
+        "title": "Shipment Management System",
+        "description": "Robust shipment management system with real-time tracking, inventory management, and analytics features.",
+        "category": "Full Stack, Backend, Frontend"
+      },
+      "maintenance": {
+        "title": "Maintenance Management System",
+        "description": "Comprehensive maintenance management system with work order tracking, asset management, and reporting features.",
+        "category": "Full Stack, Backend, Frontend"
+      },
+      "hris": {
+        "title": "Human Resource Information System (HRIS)",
+        "description": "Scalable HRIS with employee management, payroll processing, and performance tracking features.",
+        "category": "Full Stack, Backend, Frontend"
+      }
+    }
   },
   "milestones": {
     "title": {
@@ -52,7 +106,121 @@
     "projects": "Projects",
     "achievements": "Achievements",
     "technologies": "Technologies Used",
-    "impact": "Impact"
+    "impact": "Impact",
+    "keyProjects": "Key Projects",
+    "keyAchievements": "Key Achievements",
+    "items": {
+      "wilmar": {
+        "title": "Application Management Specialist",
+        "company": "Wilmar International",
+        "duration": "March 2020 - Present / 5 Years",
+        "location": "Multivision Tower, Jakarta Selatan",
+        "description": "Provide technical support for software applications, troubleshooting issues, ensuring system stability, and serving as a bridge between end-users and development teams.",
+        "projects": {
+          "payroll": {
+            "name": "Payroll System",
+            "description": "Web-based application for managing overall workflow and processes, integrating various business functions",
+            "impact": "40% improvement in data visualization efficiency"
+          },
+          "bunching": {
+            "name": "Bunching System",
+            "description": "Web-based application for managing bunching processes",
+            "impact": "70% improvement in bunching efficiency"
+          },
+          "fieldInspection": {
+            "name": "Field Inspection",
+            "description": "Mobile app for on-site inspections and reporting",
+            "impact": "50% reduction in inspection time"
+          },
+          "patrolling": {
+            "name": "Patrolling System",
+            "description": "Mobile app for patrol management and reporting",
+            "impact": "70% reduction in patrol response time"
+          },
+          "gradingBunch": {
+            "name": "Grading Bunch",
+            "description": "Web-based application for managing grading and assessments",
+            "impact": "60% reduction in grading time"
+          }
+        },
+        "achievements": {
+          "teamLead": "Led team of 25+ sites across global regions",
+          "monitoring": "Implemented monitoring reducing downtime by 30%"
+        }
+      },
+      "megaMarine": {
+        "title": "Software Engineer",
+        "company": "PT. Mega Marine Pride",
+        "duration": "Sept 2017 - Feb 2020 / 3 Years",
+        "location": "Pasuruan, Jawa Timur",
+        "description": "Led a team of 5 developers in delivering multiple high-impact projects using modern web technologies.",
+        "projects": {
+          "erp": {
+            "name": "ERP IT Inventory System",
+            "description": "Web-based application for managing overall workflow and processes, integrating various business functions, including finance, HR, procurement, stock, and customs clearance",
+            "impact": "50% increase in operational efficiency, reduced errors, and improved reporting capabilities, leading to better decision-making, cost savings, and enhanced productivity"
+          },
+          "maintenance": {
+            "name": "Maintenance Ticket System",
+            "description": "Web-based platform for managing maintenance requests",
+            "impact": "30% reduction in response time, improved tracking, and reporting"
+          },
+          "shipping": {
+            "name": "Shipping Logistics App",
+            "description": "Web app for real-time shipment tracking, inventory management",
+            "impact": "20% increase in delivery efficiency, reduced errors, improved customer satisfaction"
+          },
+          "parking": {
+            "name": "Parking Management System",
+            "description": "Web-based application for managing parking spaces and reservations",
+            "impact": "25% increase in parking space utilization, reduced congestion, improved user experience, enhanced security, and streamlined operations"
+          },
+          "recruitment": {
+            "name": "Recruitment Portal",
+            "description": "Web-based platform for job postings and applicant tracking",
+            "impact": "35% reduction in time-to-hire, improved candidate experience, enhanced collaboration between HR and hiring managers"
+          },
+          "productSpec": {
+            "name": "Product Specification System",
+            "description": "Web-based application for managing product specifications and compliance",
+            "impact": "35% reduction in time-to-market for new products, improved collaboration between teams"
+          },
+          "digitalLibrary": {
+            "name": "Digital Library System",
+            "description": "Web-based application for managing digital assets and resources",
+            "impact": "50% increase in resource accessibility, improved user engagement, enhanced content management"
+          }
+        },
+        "achievements": {
+          "delivered": "Delivered 7 major projects on time and under budget",
+          "standards": "Established coding standards and best practices",
+          "technicalDebt": "Reduced technical debt by 35% through refactoring",
+          "innovation": "Won \"Innovation Award\" for breakthrough solutions",
+          "agile": "Spearheaded adoption of Agile methodologies",
+          "performance": "Improved application performance by 40% through optimization"
+        }
+      },
+      "threeSixNine": {
+        "title": "Software Developer",
+        "company": "PT. 3.6.9. Group",
+        "duration": "Jan 2016 - Sept 2017 / 1.5 Years",
+        "location": "Darmo Park II, Surabaya",
+        "description": "Contributed to full-stack development of web applications, focusing on frontend performance and user experience.",
+        "projects": {
+          "hris": {
+            "name": "Human Resource Management System",
+            "description": "Employee self-service and payroll automation",
+            "impact": "5K+ registered users in first quarter"
+          }
+        },
+        "achievements": {
+          "mastered": "Mastered programming languages and frameworks",
+          "testing": "Implemented automated testing achieving 95% coverage",
+          "database": "Optimized database queries for 50% faster response",
+          "recognition": "Received \"Developer of the Year\" recognition"
+        }
+      }
+    }
   },
   "certificates": {
     "title": "Certificates",

@@ -9,15 +9,17 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Globe, CaretDown } from '@phosphor-icons/react';
+import ReactCountryFlag from 'react-country-flag';
 
+// Use country codes for reliable SVG flags across platforms (Windows shows emoji flags as letter pairs)
 const languages = [
-  { code: 'en', name: 'English', flag: '🇺🇸' },
-  { code: 'id', name: 'Bahasa Indonesia', flag: '🇮🇩' },
-  { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
-  { code: 'es', name: 'Español', flag: '🇪🇸' },
-  { code: 'fr', name: 'Français', flag: '🇫🇷' },
-  { code: 'ja', name: '日本語', flag: '🇯🇵' },
-  { code: 'zh', name: '繁體中文', flag: '��' },
+  { code: 'en', name: 'English', country: 'US' },
+  { code: 'id', name: 'Bahasa Indonesia', country: 'ID' },
+  { code: 'de', name: 'Deutsch', country: 'DE' },
+  { code: 'es', name: 'Español', country: 'ES' },
+  { code: 'fr', name: 'Français', country: 'FR' },
+  { code: 'ja', name: '日本語', country: 'JP' },
+  { code: 'cn', name: '繁體中文', country: 'TW' },
 ];
 
 const LanguageSelector = () => {
@@ -72,7 +74,12 @@ const LanguageSelector = () => {
                   damping: 20
                 }}
               >
-                {currentLanguage.flag}
+                <ReactCountryFlag
+                  countryCode={currentLanguage.country}
+                  svg
+                  aria-label={currentLanguage.name}
+                  style={{ width: '1.25rem', height: '1.25rem' }}
+                />
               </motion.span>
               
               {/* Animated chevron */}
@@ -132,7 +139,12 @@ const LanguageSelector = () => {
                           ease: "easeInOut"
                         } : {}}
                       >
-                        {language.flag}
+                        <ReactCountryFlag
+                          countryCode={language.country}
+                          svg
+                          aria-label={language.name}
+                          style={{ width: '1.25rem', height: '1.25rem' }}
+                        />
                       </motion.span>
                       
                       <div className="flex flex-col">

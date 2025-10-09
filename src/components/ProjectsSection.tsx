@@ -40,105 +40,105 @@ const ProjectsSection = () => {
   const projects: Project[] = [
     {
       id: '1',
-      title: 'Choco Maid AI Discord Bot',
+      title: 'Chocomaid AI Discord Bot',
       year: 2025,
-      description: 'AI-powered Discord bot for managing communities, featuring moderation tools, fun commands, and seamless integration with external APIs including Youtube, Twitch, Clash Of Clans, Valorant, and more. Supports multiple languages (English, Indonesia, Germany, Spanish, Japanese, Chinese, French) with i18n.',
+      description: t('projects.items.chocomaid.description'),
       image: chocomaidApp,
       technologies: ['React', 'Node.js', 'MySQL', 'MongoDB', 'Discord.js', 'Google API', 'YouTube API', 'Twitch API', 'Clash Of Clans API', 'Valorant API', 'Cloudflare', 'i18n'],
       // fullstack, backend, frontend
-      category: 'Full Stack, Backend, Frontend',
+      category: t('projects.items.chocomaid.category'),
       liveUrl: 'https://chocomaid.xyz',
       githubUrl: 'https://github.com/husniaditya/dc-ai_bot',
       featured: true
     },
     {
       id: '2',
-      title: 'Cipta Sejati Indonesia - Community Platform',
+      title: 'Cipta Sejati Indonesia',
       year: 2024,
-      description: 'Collaborative task management platform with real-time updates, user roles, and project tracking for teams. Including dashboard for member management and analytics.',
+      description: t('projects.items.ciptasejati.description'),
       image: ciptasejatiApp,
       technologies: ['PHP', 'MySQL', 'JavaScript', 'Bootstrap', 'jQuery', 'AJAX', 'Chart.js', 'Cloudflare'],
-      category: 'Full Stack, Backend, Frontend',
+      category: t('projects.items.ciptasejati.category'),
       liveUrl: 'https://ciptasejatiindonesia.com',
       githubUrl: 'https://github.com/husniaditya/ciptasejati',
       featured: true
     },
     {
       id: '3',
-      title: 'Enterprise Resouce Planning (ERP) System',
+      title: 'ERP Application',
       year: 2019,
-      description: 'Modular ERP system with inventory, sales, procurement, and accounting modules. Features include real-time reporting, multi-user roles, and integration with third-party services.',
+      description: t('projects.items.erp.description'),
       image: erpApp,
       technologies: ['C#', 'MySQL', 'PHP', 'Javascript', 'Bootstrap', 'jQuery', 'AJAX', 'Chart.js', 'Cloudflare'],
-      category: 'Full Stack, Frontend, Backend',
+      category: t('projects.items.erp.category'),
       featured: false
     },
     {
       id: '4',
       title: 'Digital Library System',
       year: 2018,
-      description: 'Scalable digital library system with advanced search, user management, and analytics features.',
+      description: t('projects.items.digitalLibrary.description'),
       image: digitalApp,
       technologies: ['PHP', 'MySQL', 'JavaScript', 'Bootstrap', 'jQuery', 'AJAX', 'Chart.js', 'Cloudflare'],
-      category: 'Full Stack, Backend, Frontend',
+      category: t('projects.items.digitalLibrary.category'),
       featured: false
     },
     {
       id: '5',
-      title: 'Product Specification Management System',
+      title: 'Product Specification System',
       year: 2018,
-      description: 'Comprehensive platform for managing product specifications, including version control, collaboration tools, and integration with design systems.',
+      description: t('projects.items.productSpec.description'),
       image: productspecApp,
       technologies: ['PHP', 'MySQL', 'JavaScript', 'Bootstrap', 'jQuery', 'AJAX', 'Chart.js', 'Cloudflare'],
-      category: 'Full Stack, Backend, Frontend',
+      category: t('projects.items.productSpec.category'),
       featured: false
     },
     {
       id: '6',
-      title: 'Recruitment Management System',
+      title: 'Recruitment System',
       year: 2018,
-      description: 'End-to-end recruitment management system with applicant tracking, interview scheduling, and reporting features.',
+      description: t('projects.items.recruitment.description'),
       image: recruitmentApp,
       technologies: ['PHP', 'MySQL', 'JavaScript', 'Bootstrap', 'jQuery', 'AJAX', 'Chart.js', 'Cloudflare'],
-      category: 'Full Stack, Backend, Frontend',
+      category: t('projects.items.recruitment.category'),
       featured: false
     },
     {
       id: '7',
       title: 'Parking Management System',
       year: 2018,
-      description: 'Comprehensive parking management system with real-time availability tracking, reservation management, and payment integration.',
+      description: t('projects.items.parking.description'),
       image: parkingApp,
       technologies: ['PHP', 'MySQL', 'JavaScript', 'Bootstrap', 'jQuery', 'AJAX', 'Chart.js', 'Cloudflare'],
-      category: 'Full Stack, Backend, Frontend',
+      category: t('projects.items.parking.category'),
       featured: false
     },
     {
       id: '8',
-      title: 'Shipment Management System',
+      title: 'Shipment Tracking System',
       year: 2018,
-      description: 'Robust shipment management system with real-time tracking, inventory management, and analytics features.',
+      description: t('projects.items.shipment.description'),
       image: shipmentApp,
       technologies: ['PHP', 'MySQL', 'JavaScript', 'Bootstrap', 'jQuery', 'AJAX', 'Chart.js', 'Cloudflare'],
-      category: 'Full Stack, Backend, Frontend',
+      category: t('projects.items.shipment.category'),
       featured: false
     },
     { id: '9',
       title: 'Maintenance Management System',
       year: 2017,
-      description: 'Comprehensive maintenance management system with work order tracking, asset management, and reporting features.',
+      description: t('projects.items.maintenance.description'),
       image: maintenanceApp,
       technologies: ['PHP', 'MySQL', 'JavaScript', 'Bootstrap', 'jQuery', 'AJAX', 'Chart.js', 'Cloudflare'],
-      category: 'Full Stack, Backend, Frontend',
+      category: t('projects.items.maintenance.category'),
       featured: false
     },
     { id: '10',
-      title: 'Human Resource Information System (HRIS)',
+      title: 'HRIS Application',
       year: 2017,
-      description: 'Scalable HRIS with employee management, payroll processing, and performance tracking features.',
+      description: t('projects.items.hris.description'),
       image: hrisApp,
       technologies: ['PHP', 'MySQL', 'JavaScript', 'Bootstrap', 'jQuery', 'AJAX', 'Chart.js', 'Cloudflare'],
-      category: 'Full Stack, Backend, Frontend',
+      category: t('projects.items.hris.category'),
       featured: false
     }
   ];
@@ -302,9 +302,16 @@ const ProjectsSection = () => {
                     )}
                   </div>
                   <CardHeader>
-                    <CardTitle className="group-hover:text-primary transition-colors brand-gradient-text">
-                      {project.title}
-                    </CardTitle>
+                    <div className="flex items-center justify-between">
+                      <CardTitle className="group-hover:text-primary transition-colors brand-gradient-text">
+                        {project.title}
+                      </CardTitle>
+                      {project.year && (
+                        <Badge variant="outline" className="text-xs font-medium">
+                          {project.year}
+                        </Badge>
+                      )}
+                    </div>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <p className="text-muted-foreground text-sm leading-relaxed">

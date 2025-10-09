@@ -42,14 +42,187 @@
     "sourceCode": "Quellcode",
     "liveDemo": "Live-Demo",
     "code": "Code",
-    "featured": "Empfohlen"
+    "featured": "Empfohlen",
+    "github": "GitHub",
+    "items": {
+      "chocomaid": {
+        "title": "Choco Maid AI Discord Bot",
+        "description": "KI-gestützter Discord-Bot für Community-Management mit Moderationstools, unterhaltsamen Befehlen und nahtloser Integration externer APIs wie YouTube, Twitch, Clash Of Clans, Valorant und mehr. Unterstützt mehrere Sprachen (Englisch, Indonesisch, Deutsch, Spanisch, Japanisch, Chinesisch, Französisch) mit i18n.",
+        "category": "Full Stack, Backend, Frontend"
+      },
+      "ciptasejati": {
+        "title": "Cipta Sejati Indonesia - Community-Plattform",
+        "description": "Kollaborative Aufgabenmanagement-Plattform mit Echtzeit-Updates, Benutzerrollen und Projekt-Tracking für Teams. Inklusive Dashboard für Mitgliederverwaltung und Analysen.",
+        "category": "Full Stack, Backend, Frontend"
+      },
+      "erp": {
+        "title": "Enterprise Resource Planning (ERP) System",
+        "description": "Modulares ERP-System mit Inventar-, Verkaufs-, Beschaffungs- und Buchhaltungsmodulen. Features umfassen Echtzeit-Berichterstattung, Multi-User-Rollen und Integration mit Drittanbieterdiensten.",
+        "category": "Full Stack, Frontend, Backend"
+      },
+      "digitalLibrary": {
+        "title": "Digitales Bibliothekssystem",
+        "description": "Skalierbares digitales Bibliothekssystem mit erweiterten Such-, Benutzerverwaltungs- und Analysefunktionen.",
+        "category": "Full Stack, Backend, Frontend"
+      },
+      "productSpec": {
+        "title": "Produktspezifikations-Managementsystem",
+        "description": "Umfassende Plattform für die Verwaltung von Produktspezifikationen, einschließlich Versionskontrolle, Kollaborationstools und Integration mit Designsystemen.",
+        "category": "Full Stack, Backend, Frontend"
+      },
+      "recruitment": {
+        "title": "Rekrutierungs-Managementsystem",
+        "description": "End-to-End-Rekrutierungs-Managementsystem mit Bewerberverfolgung, Terminplanung für Interviews und Berichtsfunktionen.",
+        "category": "Full Stack, Backend, Frontend"
+      },
+      "parking": {
+        "title": "Parkplatz-Managementsystem",
+        "description": "Umfassendes Parkplatz-Managementsystem mit Echtzeit-Verfügbarkeitsverfolgung, Reservierungsverwaltung und Zahlungsintegration.",
+        "category": "Full Stack, Backend, Frontend"
+      },
+      "shipment": {
+        "title": "Versand-Managementsystem",
+        "description": "Robustes Versand-Managementsystem mit Echtzeit-Tracking, Inventarverwaltung und Analysefunktionen.",
+        "category": "Full Stack, Backend, Frontend"
+      },
+      "maintenance": {
+        "title": "Wartungs-Managementsystem",
+        "description": "Umfassendes Wartungs-Managementsystem mit Arbeitsauftragsverfolgung, Asset-Management und Berichtsfunktionen.",
+        "category": "Full Stack, Backend, Frontend"
+      },
+      "hris": {
+        "title": "Human Resource Information System (HRIS)",
+        "description": "Skalierbares HRIS mit Mitarbeiterverwaltung, Gehaltsabrechnung und Leistungsverfolgungsfunktionen.",
+        "category": "Full Stack, Backend, Frontend"
+      }
+    }
   },
   "milestones": {
     "title": {
       "career": "Karriere",
       "milestones": "Meilensteine"
     },
-    "subtitle": "Wichtige Erfolge, Projekte und entscheidende Momente, die meinen beruflichen Werdegang geprägt haben"
+    "subtitle": "Wichtige Erfolge, Projekte und entscheidende Momente, die meinen beruflichen Werdegang geprägt haben",
+    "duration": "Dauer",
+    "location": "Standort",
+    "projects": "Projekte",
+    "achievements": "Erfolge",
+    "technologies": "Verwendete Technologien",
+    "impact": "Auswirkung",
+    "keyProjects": "Hauptprojekte",
+    "keyAchievements": "Haupterfolge",
+    "items": {
+      "wilmar": {
+        "title": "Anwendungsmanagement-Spezialist",
+        "company": "Wilmar International",
+        "duration": "März 2020 - Aktuell / 5 Jahre",
+        "location": "Multivision Tower, Jakarta Selatan",
+        "description": "Technischen Support für Softwareanwendungen bereitstellen, Probleme beheben, Systemstabilität gewährleisten und als Brücke zwischen Endbenutzern und Entwicklungsteams fungieren.",
+        "projects": {
+          "payroll": {
+            "name": "Gehaltsabrechnungssystem",
+            "description": "Webbasierte Anwendung zur Verwaltung von Workflows und Prozessen insgesamt, Integration verschiedener Geschäftsfunktionen",
+            "impact": "40% Verbesserung der Datenvisualisierungseffizienz"
+          },
+          "bunching": {
+            "name": "Bündelungssystem",
+            "description": "Webbasierte Anwendung zur Verwaltung von Bündelungsprozessen",
+            "impact": "70% Verbesserung der Bündelungseffizienz"
+          },
+          "fieldInspection": {
+            "name": "Feldinspektion",
+            "description": "Mobile App für Vor-Ort-Inspektionen und Berichte",
+            "impact": "50% Reduzierung der Inspektionszeit"
+          },
+          "patrolling": {
+            "name": "Patrouillensystem",
+            "description": "Mobile App für Patrouillenmanagement und Berichte",
+            "impact": "70% Reduzierung der Patrouillen-Reaktionszeit"
+          },
+          "gradingBunch": {
+            "name": "Bewertungsgruppe",
+            "description": "Webbasierte Anwendung zur Verwaltung von Bewertungen und Assessments",
+            "impact": "60% Reduzierung der Bewertungszeit"
+          }
+        },
+        "achievements": {
+          "teamLead": "Team von 25+ Standorten in globalen Regionen geleitet",
+          "monitoring": "Monitoring implementiert, das Ausfallzeiten um 30% reduziert"
+        }
+      },
+      "megaMarine": {
+        "title": "Software Engineer",
+        "company": "PT. Mega Marine Pride",
+        "duration": "Sept 2017 - Feb 2020 / 3 Jahre",
+        "location": "Pasuruan, Jawa Timur",
+        "description": "Ein Team von 5 Entwicklern bei der Bereitstellung mehrerer hochimpaktreicher Projekte mit modernen Webtechnologien geleitet.",
+        "projects": {
+          "erp": {
+            "name": "ERP IT Inventarsystem",
+            "description": "Webbasierte Anwendung zur Verwaltung von Workflows und Prozessen insgesamt, Integration verschiedener Geschäftsfunktionen einschließlich Finanzen, HR, Beschaffung, Lager und Zollabfertigung",
+            "impact": "50% Steigerung der operativen Effizienz, reduzierte Fehler und verbesserte Berichtsfähigkeiten, führend zu besserer Entscheidungsfindung, Kosteneinsparungen und erhöhter Produktivität"
+          },
+          "maintenance": {
+            "name": "Wartungsticket-System",
+            "description": "Webbasierte Plattform zur Verwaltung von Wartungsanfragen",
+            "impact": "30% Reduzierung der Reaktionszeit, verbesserte Verfolgung und Berichterstattung"
+          },
+          "shipping": {
+            "name": "Versandlogistik-App",
+            "description": "Web-App für Echtzeit-Sendungsverfolgung, Inventarverwaltung",
+            "impact": "20% Steigerung der Liefereffizienz, reduzierte Fehler, verbesserte Kundenzufriedenheit"
+          },
+          "parking": {
+            "name": "Parkplatz-Managementsystem",
+            "description": "Webbasierte Anwendung zur Verwaltung von Parkplätzen und Reservierungen",
+            "impact": "25% Steigerung der Parkplatznutzung, reduzierte Staus, verbesserte Benutzererfahrung, erhöhte Sicherheit und optimierte Abläufe"
+          },
+          "recruitment": {
+            "name": "Rekrutierungsportal",
+            "description": "Webbasierte Plattform für Stellenausschreibungen und Bewerberverfolgung",
+            "impact": "35% Reduzierung der Einstellungszeit, verbesserte Kandidatenerfahrung, verstärkte Zusammenarbeit zwischen HR und Einstellungsmanagern"
+          },
+          "productSpec": {
+            "name": "Produktspezifikationssystem",
+            "description": "Webbasierte Anwendung zur Verwaltung von Produktspezifikationen und Compliance",
+            "impact": "35% Reduzierung der Markteinführungszeit für neue Produkte, verbesserte Teamzusammenarbeit"
+          },
+          "digitalLibrary": {
+            "name": "Digitales Bibliothekssystem",
+            "description": "Webbasierte Anwendung zur Verwaltung digitaler Assets und Ressourcen",
+            "impact": "50% Steigerung der Ressourcenzugänglichkeit, verbesserte Benutzerinteraktion, verbessertes Content-Management"
+          }
+        },
+        "achievements": {
+          "delivered": "7 Großprojekte termingerecht und budgetgerecht geliefert",
+          "standards": "Coding-Standards und Best Practices etabliert",
+          "technicalDebt": "Technische Schulden um 35% durch Refactoring reduziert",
+          "innovation": "\"Innovation Award\" für bahnbrechende Lösungen gewonnen",
+          "agile": "Einführung agiler Methoden vorangetrieben",
+          "performance": "Anwendungsleistung um 40% durch Optimierung verbessert"
+        }
+      },
+      "threeSixNine": {
+        "title": "Software Developer",
+        "company": "PT. 3.6.9. Group",
+        "duration": "Jan 2016 - Sept 2017 / 1,5 Jahre",
+        "location": "Darmo Park II, Surabaya",
+        "description": "Zur Full-Stack-Entwicklung von Webanwendungen beigetragen, mit Fokus auf Frontend-Performance und Benutzererfahrung.",
+        "projects": {
+          "hris": {
+            "name": "Human Resource Management System",
+            "description": "Mitarbeiter-Selbstbedienung und Gehaltsabrechnung-Automatisierung",
+            "impact": "5K+ registrierte Benutzer im ersten Quartal"
+          }
+        },
+        "achievements": {
+          "mastered": "Programmiersprachen und Frameworks gemeistert",
+          "testing": "Automatisierte Tests implementiert mit 95% Abdeckung",
+          "database": "Datenbankabfragen für 50% schnellere Antwort optimiert",
+          "recognition": "\"Developer of the Year\" Anerkennung erhalten"
+        }
+      }
+    }
   },
   "certificates": {
     "title": "Zertifikate",

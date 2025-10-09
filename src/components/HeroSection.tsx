@@ -14,7 +14,7 @@ const HeroSection = () => {
     "Senior Full Stack Developer",
     "React & TypeScript Specialist", 
     "Backend Systems Engineer",
-    "Application Support Engineer"
+    "Application Management Specialist"
   ];
 
   const scrollToNext = () => {
@@ -159,7 +159,7 @@ const HeroSection = () => {
           >
             <div className="flex items-center gap-4">
               <motion.a
-                href="https://linkedin.com/in/yourprofile"
+                href="https://www.linkedin.com/in/husni-aditya-5b9065123/"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1, rotate: 5 }}

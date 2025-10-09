@@ -42,14 +42,187 @@
     "sourceCode": "Code Source",
     "liveDemo": "Démo en Direct",
     "code": "Code",
-    "featured": "En Vedette"
+    "featured": "En Vedette",
+    "github": "GitHub",
+    "items": {
+      "chocomaid": {
+        "title": "Choco Maid AI Discord Bot",
+        "description": "Bot Discord alimenté par l'IA pour gérer les communautés, avec des outils de modération, des commandes amusantes et une intégration transparente avec des APIs externes incluant YouTube, Twitch, Clash Of Clans, Valorant, et plus. Supporte plusieurs langues (anglais, indonésien, allemand, espagnol, japonais, chinois, français) avec i18n.",
+        "category": "Full Stack, Backend, Frontend"
+      },
+      "ciptasejati": {
+        "title": "Cipta Sejati Indonesia - Plateforme Communautaire",
+        "description": "Plateforme collaborative de gestion des tâches avec mises à jour en temps réel, rôles utilisateur et suivi de projet pour les équipes. Comprend un tableau de bord pour la gestion des membres et les analyses.",
+        "category": "Full Stack, Backend, Frontend"
+      },
+      "erp": {
+        "title": "Système de Planification des Ressources d'Entreprise (ERP)",
+        "description": "Système ERP modulaire avec modules d'inventaire, ventes, approvisionnement et comptabilité. Les fonctionnalités incluent des rapports en temps réel, des rôles multi-utilisateurs et l'intégration avec des services tiers.",
+        "category": "Full Stack, Frontend, Backend"
+      },
+      "digitalLibrary": {
+        "title": "Système de Bibliothèque Numérique",
+        "description": "Système de bibliothèque numérique évolutif avec recherche avancée, gestion des utilisateurs et fonctionnalités d'analyse.",
+        "category": "Full Stack, Backend, Frontend"
+      },
+      "productSpec": {
+        "title": "Système de Gestion des Spécifications Produits",
+        "description": "Plateforme complète pour gérer les spécifications produits, incluant le contrôle de version, les outils de collaboration et l'intégration avec les systèmes de design.",
+        "category": "Full Stack, Backend, Frontend"
+      },
+      "recruitment": {
+        "title": "Système de Gestion du Recrutement",
+        "description": "Système de gestion du recrutement de bout en bout avec suivi des candidats, planification d'entretiens et fonctionnalités de rapport.",
+        "category": "Full Stack, Backend, Frontend"
+      },
+      "parking": {
+        "title": "Système de Gestion de Stationnement",
+        "description": "Système complet de gestion de stationnement avec suivi de disponibilité en temps réel, gestion des réservations et intégration de paiement.",
+        "category": "Full Stack, Backend, Frontend"
+      },
+      "shipment": {
+        "title": "Système de Gestion d'Expédition",
+        "description": "Système robuste de gestion d'expédition avec suivi en temps réel, gestion d'inventaire et fonctionnalités d'analyse.",
+        "category": "Full Stack, Backend, Frontend"
+      },
+      "maintenance": {
+        "title": "Système de Gestion de Maintenance",
+        "description": "Système complet de gestion de maintenance avec suivi des ordres de travail, gestion d'actifs et fonctionnalités de rapport.",
+        "category": "Full Stack, Backend, Frontend"
+      },
+      "hris": {
+        "title": "Système d'Information des Ressources Humaines (SIRH)",
+        "description": "SIRH évolutif avec gestion des employés, traitement des paies et fonctionnalités de suivi des performances.",
+        "category": "Full Stack, Backend, Frontend"
+      }
+    }
   },
   "milestones": {
     "title": {
       "career": "Carrière",
       "milestones": "Étapes"
     },
-    "subtitle": "Réalisations clés, projets et moments cruciaux qui ont façonné mon parcours professionnel"
+    "subtitle": "Réalisations clés, projets et moments cruciaux qui ont façonné mon parcours professionnel",
+    "duration": "Durée",
+    "location": "Lieu",
+    "projects": "Projets",
+    "achievements": "Réalisations",
+    "technologies": "Technologies Utilisées",
+    "impact": "Impact",
+    "keyProjects": "Projets Clés",
+    "keyAchievements": "Réalisations Clés",
+    "items": {
+      "wilmar": {
+        "title": "Spécialiste en Gestion d'Applications",
+        "company": "Wilmar International",
+        "duration": "Mars 2020 - Présent / 5 Ans",
+        "location": "Multivision Tower, Jakarta Selatan",
+        "description": "Fournir un support technique pour les applications logicielles, dépanner les problèmes, assurer la stabilité du système et servir de pont entre les utilisateurs finaux et les équipes de développement.",
+        "projects": {
+          "payroll": {
+            "name": "Système de Paie",
+            "description": "Application web pour gérer les flux de travail et processus globaux, intégrant diverses fonctions métier",
+            "impact": "40% d'amélioration de l'efficacité de visualisation des données"
+          },
+          "bunching": {
+            "name": "Système de Regroupement",
+            "description": "Application web pour gérer les processus de regroupement",
+            "impact": "70% d'amélioration de l'efficacité de regroupement"
+          },
+          "fieldInspection": {
+            "name": "Inspection de Terrain",
+            "description": "App mobile pour inspections et rapports sur site",
+            "impact": "50% de réduction du temps d'inspection"
+          },
+          "patrolling": {
+            "name": "Système de Patrouille",
+            "description": "App mobile pour gestion de patrouilles et rapports",
+            "impact": "70% de réduction du temps de réponse de patrouille"
+          },
+          "gradingBunch": {
+            "name": "Groupe de Notation",
+            "description": "Application web pour gérer les notations et évaluations",
+            "impact": "60% de réduction du temps de notation"
+          }
+        },
+        "achievements": {
+          "teamLead": "A dirigé une équipe de 25+ sites dans des régions mondiales",
+          "monitoring": "A implémenté la surveillance réduisant les temps d'arrêt de 30%"
+        }
+      },
+      "megaMarine": {
+        "title": "Ingénieur Logiciel",
+        "company": "PT. Mega Marine Pride",
+        "duration": "Sept 2017 - Fév 2020 / 3 Ans",
+        "location": "Pasuruan, Jawa Timur",
+        "description": "A dirigé une équipe de 5 développeurs dans la livraison de plusieurs projets à fort impact utilisant des technologies web modernes.",
+        "projects": {
+          "erp": {
+            "name": "Système ERP d'Inventaire IT",
+            "description": "Application web pour gérer les flux de travail et processus globaux, intégrant diverses fonctions métier, y compris finances, RH, approvisionnement, stock et dédouanement",
+            "impact": "50% d'augmentation de l'efficacité opérationnelle, erreurs réduites et capacités de rapport améliorées, menant à une meilleure prise de décision, économies de coûts et productivité améliorée"
+          },
+          "maintenance": {
+            "name": "Système de Tickets de Maintenance",
+            "description": "Plateforme web pour gérer les demandes de maintenance",
+            "impact": "30% de réduction du temps de réponse, suivi et rapports améliorés"
+          },
+          "shipping": {
+            "name": "App de Logistique d'Expédition",
+            "description": "App web pour suivi d'expédition en temps réel, gestion d'inventaire",
+            "impact": "20% d'augmentation de l'efficacité de livraison, erreurs réduites, satisfaction client améliorée"
+          },
+          "parking": {
+            "name": "Système de Gestion de Stationnement",
+            "description": "Application web pour gérer les espaces de stationnement et réservations",
+            "impact": "25% d'augmentation de l'utilisation des espaces de stationnement, congestion réduite, expérience utilisateur améliorée, sécurité renforcée et opérations rationalisées"
+          },
+          "recruitment": {
+            "name": "Portail de Recrutement",
+            "description": "Plateforme web pour offres d'emploi et suivi des candidats",
+            "impact": "35% de réduction du temps d'embauche, expérience candidat améliorée, collaboration renforcée entre RH et responsables d'embauche"
+          },
+          "productSpec": {
+            "name": "Système de Spécifications Produits",
+            "description": "Application web pour gérer les spécifications produits et conformité",
+            "impact": "35% de réduction du temps de mise sur le marché pour nouveaux produits, collaboration améliorée entre équipes"
+          },
+          "digitalLibrary": {
+            "name": "Système de Bibliothèque Numérique",
+            "description": "Application web pour gérer les actifs numériques et ressources",
+            "impact": "50% d'augmentation de l'accessibilité des ressources, engagement utilisateur amélioré, gestion de contenu renforcée"
+          }
+        },
+        "achievements": {
+          "delivered": "A livré 7 projets majeurs à temps et dans le budget",
+          "standards": "A établi des normes de codage et meilleures pratiques",
+          "technicalDebt": "A réduit la dette technique de 35% par refactorisation",
+          "innovation": "A remporté le \"Prix d'Innovation\" pour solutions révolutionnaires",
+          "agile": "A mené l'adoption des méthodologies Agiles",
+          "performance": "A amélioré les performances d'application de 40% par optimisation"
+        }
+      },
+      "threeSixNine": {
+        "title": "Développeur Logiciel",
+        "company": "PT. 3.6.9. Group",
+        "duration": "Jan 2016 - Sept 2017 / 1,5 Ans",
+        "location": "Darmo Park II, Surabaya",
+        "description": "A contribué au développement full-stack d'applications web, se concentrant sur les performances frontend et l'expérience utilisateur.",
+        "projects": {
+          "hris": {
+            "name": "Système de Gestion des Ressources Humaines",
+            "description": "Libre-service employé et automatisation de la paie",
+            "impact": "5K+ utilisateurs enregistrés au premier trimestre"
+          }
+        },
+        "achievements": {
+          "mastered": "A maîtrisé les langages de programmation et frameworks",
+          "testing": "A implémenté des tests automatisés atteignant 95% de couverture",
+          "database": "A optimisé les requêtes de base de données pour une réponse 50% plus rapide",
+          "recognition": "A reçu la reconnaissance \"Développeur de l'Année\""
+        }
+      }
+    }
   },
   "certificates": {
     "title": "Certificats",

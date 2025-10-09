@@ -49,189 +49,193 @@ interface Milestone {
   illustration?: string;
 }
 
-const milestones: Milestone[] = [
-  {
-    year: '2020',
-    title: 'Application Management Specialist',
-    company: 'Wilmar International',
-    companyLogo: wilmarLogo,
-    illustration: wilmarImage,
-    duration: 'March 2020 - Present / 5 Years',
-    location: 'Multivision Tower, Jakarta Selatan',
-    description: 'Provide technical support for software applications, troubleshooting issues, ensuring system stability, and serving as a bridge between end-users and development teams.',
-    icon: <Trophy size={24} weight="duotone" />,
-    color: 'from-purple-500 to-pink-500',
-    projects: [
-      {
-        name: 'Payroll System',
-        description: 'Web-based application for managing overall workflow and processes, integrating various business functions',
-        tech: ['SQL Server', 'Postman', 'Terraform', 'Jira', 'Slack', 'Azure Blob Storage', 'Graylog', 'Sentry'],
-        impact: '40% improvement in data visualization efficiency'
-      },
-      {
-        name: 'Bunching System',
-        description: 'Web-based application for managing bunching processes',
-        tech: ['SQL Server', 'Postman', 'Terraform', 'Jira', 'Slack', 'Azure Blob Storage', 'Graylog', 'Sentry'],
-        impact: '70% improvement in bunching efficiency'
-      },
-      {
-        name: 'Field Inspection',
-        description: 'Mobile app for on-site inspections and reporting',
-        tech: ['SQL Server', 'Postman', 'Terraform', 'Jira', 'Slack', 'Azure Blob Storage', 'Graylog', 'Sentry'],
-        impact: '50% reduction in inspection time'
-      },
-      {
-        name: 'Patrolling System',
-        description: 'Mobile app for patrol management and reporting',
-        tech: ['SQL Server', 'Postman', 'Terraform', 'Jira', 'Slack', 'Azure Blob Storage', 'Graylog', 'Sentry'],
-        impact: '70% reduction in patrol response time'
-      },
-      {
-        name: 'Grading Bunch',
-        description: 'Web-based application for managing grading and assessments',
-        tech: ['SQL Server', 'Postman', 'Terraform', 'Jira', 'Slack', 'Azure Blob Storage', 'Graylog', 'Sentry'],
-        impact: '60% reduction in grading time'
-      }
-    ],
-    achievements: [
-      {
-        text: 'Led team of 25+ sites across global regions',
-        icon: <Users size={16} weight="duotone" />,
-        highlight: true
-      },
-      {
-        text: 'Implemented monitoring reducing downtime by 30%',
-        icon: <ChartLine size={16} weight="duotone" />
-      }
-    ]
-  },
-  {
-    year: '2017',
-    title: 'Software Engineer',
-    company: 'PT. Mega Marine Pride',
-    companyLogo: megaMarineLogo,
-    illustration: megaMarineImage,
-    duration: 'Sept 2017 - Feb 2020 / 3 Years',
-    location: 'Pasuruan, Jawa Timur',
-    description: 'Led a team of 5 developers in delivering multiple high-impact projects using modern web technologies.',
-    icon: <Target size={24} weight="duotone" />,
-    color: 'from-blue-500 to-cyan-500',
-    projects: [
-      {
-        name: 'ERP IT Inventory System',
-        description: 'Web-based application for managing overall workflow and processes, integrating various business functions, including finance, HR, procurement, stock, and customs clearance',
-        tech: ['C#', 'PHP', 'MySQL', 'jQuery', 'Bootstrap', 'Chart.js', 'Cloudflare', 'Ajax', 'JavaScript'],
-        impact: '50% increase in operational efficiency, reduced errors, and improved reporting capabilities, leading to better decision-making, cost savings, and enhanced productivity'
-      },
-      {
-        name: 'Maintenance Ticket System',
-        description: 'Web-based platform for managing maintenance requests',
-        tech: ['PHP', 'MySQL', 'jQuery', 'Bootstrap', 'Chart.js', 'Cloudflare', 'Ajax', 'JavaScript'],
-        impact: '30% reduction in response time, improved tracking, and reporting'
-      },
-      {
-        name: 'Shipping Logistics App',
-        description: 'Web app for real-time shipment tracking, inventory management',
-        tech: ['PHP', 'MySQL', 'jQuery', 'Bootstrap', 'Chart.js', 'Cloudflare', 'Ajax', 'JavaScript'],
-        impact: '20% increase in delivery efficiency, reduced errors, improved customer satisfaction'
-      },
-      {
-        name: 'Parking Management System',
-        description: 'Web-based application for managing parking spaces and reservations',
-        tech: ['PHP', 'MySQL', 'jQuery', 'Bootstrap', 'Chart.js', 'Cloudflare', 'Ajax', 'JavaScript'],
-        impact: '25% increase in parking space utilization, reduced congestion, improved user experience, enhanced security, and streamlined operations'
-      },
-      {
-        name: 'Recruitment Portal',
-        description: 'Web-based platform for job postings and applicant tracking',
-        tech: ['PHP', 'MySQL', 'jQuery', 'Bootstrap', 'Chart.js', 'Cloudflare', 'Ajax', 'JavaScript'],
-        impact: '35% reduction in time-to-hire, improved candidate experience, enhanced collaboration between HR and hiring managers'
-      },
-      {
-        name: 'Product Specification System',
-        description: 'Web-based application for managing product specifications and compliance',
-        tech: ['PHP', 'MySQL', 'jQuery', 'Bootstrap', 'Chart.js', 'Cloudflare', 'Ajax', 'JavaScript'],
-        impact: '35% reduction in time-to-market for new products, improved collaboration between teams'
-      },
-      {
-        name: 'Digital Library System',
-        description: 'Web-based application for managing digital assets and resources',
-        tech: ['PHP', 'MySQL', 'jQuery', 'Bootstrap', 'Chart.js', 'Cloudflare', 'Ajax', 'JavaScript'],
-        impact: '50% increase in resource accessibility, improved user engagement, enhanced content management'
-      }
-    ],
-    achievements: [
-      {
-        text: 'Delivered 7 major projects on time and under budget',
-        icon: <Trophy size={16} weight="duotone" />,
-        highlight: true
-      },
-      {
-        text: 'Established coding standards and best practices',
-        icon: <Code size={16} weight="duotone" />
-      },
-      {
-        text: 'Reduced technical debt by 35% through refactoring',
-        icon: <Lightning size={16} weight="duotone" />
-      },
-      {
-        text: 'Won "Innovation Award" for breakthrough solutions',
-        icon: <Medal size={16} weight="duotone" />,
-        highlight: true
-      },
-      {
-        text: 'Spearheaded adoption of Agile methodologies',
-        icon: <Calendar size={16} weight="duotone" />
-      },
-      { text: 'Improved application performance by 40% through optimization',
-        icon: <ChartLine size={16} weight="duotone" />
-      }
-    ]
-  },
-  {
-    year: '2016',
-    title: 'Software Developer',
-    company: 'PT. 3.6.9. Group',
-    companyLogo: threeSixNineLogo,
-    illustration: threeSixNineImage,
-    duration: 'Jan 2016 - Sept 2017 / 1.5 Years',
-    location: 'Darmo Park II, Surabaya',
-    description: 'Contributed to full-stack development of web applications, focusing on frontend performance and user experience.',
-    icon: <Code size={24} weight="duotone" />,
-    color: 'from-green-500 to-emerald-500',
-    projects: [
-      {
-        name: 'Human Resource Management System',
-        description: 'Employee self-service and payroll automation',
-        tech: ['PHP', 'MySQL', 'jQuery', 'Bootstrap', 'Chart.js', 'Ajax', 'JavaScript'],
-        impact: '5K+ registered users in first quarter'
-      }
-    ],
-    achievements: [
-      {
-        text: 'Mastered programming languages and frameworks',
-        icon: <Star size={16} weight="duotone" />,
-        highlight: true
-      },
-      {
-        text: 'Implemented automated testing achieving 95% coverage',
-        icon: <Lightning size={16} weight="duotone" />
-      },
-      {
-        text: 'Optimized database queries for 50% faster response',
-        icon: <ChartLine size={16} weight="duotone" />
-      },
-      {
-        text: 'Received "Developer of the Year" recognition',
-        icon: <Medal size={16} weight="duotone" />,
-        highlight: true
-      }
-    ]
-  }
-];
+
 
 const MilestonesSection: React.FC = () => {
   const { t } = useTranslation();
+  
+  const milestones: Milestone[] = [
+    {
+      year: '2020',
+      title: 'Application Management Specialist',
+      company: 'Wilmar International Limited',
+      companyLogo: wilmarLogo,
+      illustration: wilmarImage,
+      duration: t('milestones.items.wilmar.duration'),
+      location: t('milestones.items.wilmar.location'),
+      description: t('milestones.items.wilmar.description'),
+      icon: <Trophy size={24} weight="duotone" />,
+      color: 'from-purple-500 to-pink-500',
+      projects: [
+        {
+          name: 'Payroll Management System',
+          description: t('milestones.items.wilmar.projects.payroll.description'),
+          tech: ['SQL Server', 'Postman', 'Terraform', 'Jira', 'Slack', 'Azure Blob Storage', 'Graylog', 'Sentry'],
+          impact: t('milestones.items.wilmar.projects.payroll.impact')
+        },
+        {
+          name: 'Bunching Management System',
+          description: t('milestones.items.wilmar.projects.bunching.description'),
+          tech: ['SQL Server', 'Postman', 'Terraform', 'Jira', 'Slack', 'Azure Blob Storage', 'Graylog', 'Sentry'],
+          impact: t('milestones.items.wilmar.projects.bunching.impact')
+        },
+        {
+          name: 'Field Inspection Mobile App',
+          description: t('milestones.items.wilmar.projects.fieldInspection.description'),
+          tech: ['SQL Server', 'Postman', 'Terraform', 'Jira', 'Slack', 'Azure Blob Storage', 'Graylog', 'Sentry'],
+          impact: t('milestones.items.wilmar.projects.fieldInspection.impact')
+        },
+        {
+          name: 'Patrolling Management System',
+          description: t('milestones.items.wilmar.projects.patrolling.description'),
+          tech: ['SQL Server', 'Postman', 'Terraform', 'Jira', 'Slack', 'Azure Blob Storage', 'Graylog', 'Sentry'],
+          impact: t('milestones.items.wilmar.projects.patrolling.impact')
+        },
+        {
+          name: 'Grading Bunch System',
+          description: t('milestones.items.wilmar.projects.gradingBunch.description'),
+          tech: ['SQL Server', 'Postman', 'Terraform', 'Jira', 'Slack', 'Azure Blob Storage', 'Graylog', 'Sentry'],
+          impact: t('milestones.items.wilmar.projects.gradingBunch.impact')
+        }
+      ],
+      achievements: [
+        {
+          text: t('milestones.items.wilmar.achievements.teamLead'),
+          icon: <Users size={16} weight="duotone" />,
+          highlight: true
+        },
+        {
+          text: t('milestones.items.wilmar.achievements.monitoring'),
+          icon: <ChartLine size={16} weight="duotone" />
+        }
+      ]
+    },
+    {
+      year: '2017',
+      title: 'Software Developer',
+      company: 'PT. Mega Marine Pride',
+      companyLogo: megaMarineLogo,
+      illustration: megaMarineImage,
+      duration: t('milestones.items.megaMarine.duration'),
+      location: t('milestones.items.megaMarine.location'),
+      description: t('milestones.items.megaMarine.description'),
+      icon: <Target size={24} weight="duotone" />,
+      color: 'from-blue-500 to-cyan-500',
+      projects: [
+        {
+          name: 'Enterprise Resource Planning (ERP) Application',
+          description: t('milestones.items.megaMarine.projects.erp.description'),
+          tech: ['C#', 'PHP', 'MySQL', 'jQuery', 'Bootstrap', 'Chart.js', 'Cloudflare', 'Ajax', 'JavaScript'],
+          impact: t('milestones.items.megaMarine.projects.erp.impact')
+        },
+        {
+          name: 'Maintenance Management System',
+          description: t('milestones.items.megaMarine.projects.maintenance.description'),
+          tech: ['PHP', 'MySQL', 'jQuery', 'Bootstrap', 'Chart.js', 'Cloudflare', 'Ajax', 'JavaScript'],
+          impact: t('milestones.items.megaMarine.projects.maintenance.impact')
+        },
+        {
+          name: 'Shipment Tracking System',
+          description: t('milestones.items.megaMarine.projects.shipping.description'),
+          tech: ['PHP', 'MySQL', 'jQuery', 'Bootstrap', 'Chart.js', 'Cloudflare', 'Ajax', 'JavaScript'],
+          impact: t('milestones.items.megaMarine.projects.shipping.impact')
+        },
+        {
+          name: 'Parking Management System',
+          description: t('milestones.items.megaMarine.projects.parking.description'),
+          tech: ['PHP', 'MySQL', 'jQuery', 'Bootstrap', 'Chart.js', 'Cloudflare', 'Ajax', 'JavaScript'],
+          impact: t('milestones.items.megaMarine.projects.parking.impact')
+        },
+        {
+          name: 'Recruitment System',
+          description: t('milestones.items.megaMarine.projects.recruitment.description'),
+          tech: ['PHP', 'MySQL', 'jQuery', 'Bootstrap', 'Chart.js', 'Cloudflare', 'Ajax', 'JavaScript'],
+          impact: t('milestones.items.megaMarine.projects.recruitment.impact')
+        },
+        {
+          name: 'Product Specification System',
+          description: t('milestones.items.megaMarine.projects.productSpec.description'),
+          tech: ['PHP', 'MySQL', 'jQuery', 'Bootstrap', 'Chart.js', 'Cloudflare', 'Ajax', 'JavaScript'],
+          impact: t('milestones.items.megaMarine.projects.productSpec.impact')
+        },
+        {
+          name: 'Digital Library System',
+          description: t('milestones.items.megaMarine.projects.digitalLibrary.description'),
+          tech: ['PHP', 'MySQL', 'jQuery', 'Bootstrap', 'Chart.js', 'Cloudflare', 'Ajax', 'JavaScript'],
+          impact: t('milestones.items.megaMarine.projects.digitalLibrary.impact')
+        }
+      ],
+      achievements: [
+        {
+          text: t('milestones.items.megaMarine.achievements.delivered'),
+          icon: <Trophy size={16} weight="duotone" />,
+          highlight: true
+        },
+        {
+          text: t('milestones.items.megaMarine.achievements.standards'),
+          icon: <Code size={16} weight="duotone" />
+        },
+        {
+          text: t('milestones.items.megaMarine.achievements.technicalDebt'),
+          icon: <Lightning size={16} weight="duotone" />
+        },
+        {
+          text: t('milestones.items.megaMarine.achievements.innovation'),
+          icon: <Medal size={16} weight="duotone" />,
+          highlight: true
+        },
+        {
+          text: t('milestones.items.megaMarine.achievements.agile'),
+          icon: <Calendar size={16} weight="duotone" />
+        },
+        {
+          text: t('milestones.items.megaMarine.achievements.performance'),
+          icon: <ChartLine size={16} weight="duotone" />
+        }
+      ]
+    },
+    {
+      year: '2016',
+      title: 'Junior Software Developer',
+      company: 'PT. 3.6.9. Group',
+      companyLogo: threeSixNineLogo,
+      illustration: threeSixNineImage,
+      duration: t('milestones.items.threeSixNine.duration'),
+      location: t('milestones.items.threeSixNine.location'),
+      description: t('milestones.items.threeSixNine.description'),
+      icon: <Code size={24} weight="duotone" />,
+      color: 'from-green-500 to-emerald-500',
+      projects: [
+        {
+          name: 'HRIS Application',
+          description: t('milestones.items.threeSixNine.projects.hris.description'),
+          tech: ['PHP', 'MySQL', 'jQuery', 'Bootstrap', 'Chart.js', 'Ajax', 'JavaScript'],
+          impact: t('milestones.items.threeSixNine.projects.hris.impact')
+        }
+      ],
+      achievements: [
+        {
+          text: t('milestones.items.threeSixNine.achievements.mastered'),
+          icon: <Star size={16} weight="duotone" />,
+          highlight: true
+        },
+        {
+          text: t('milestones.items.threeSixNine.achievements.testing'),
+          icon: <Lightning size={16} weight="duotone" />
+        },
+        {
+          text: t('milestones.items.threeSixNine.achievements.database'),
+          icon: <ChartLine size={16} weight="duotone" />
+        },
+        {
+          text: t('milestones.items.threeSixNine.achievements.recognition'),
+          icon: <Medal size={16} weight="duotone" />,
+          highlight: true
+        }
+      ]
+    }
+  ];
+  
   const containerVariants = {
     hidden: { opacity: 80 },
     visible: {
@@ -505,7 +509,7 @@ const MilestonesSection: React.FC = () => {
                             <Code size={16} className="sm:hidden" weight="duotone" />
                             <Code size={20} className="hidden sm:block" weight="duotone" />
                           </div>
-                          Key Projects
+                          {t('milestones.keyProjects')}
                         </motion.h4>
                         <div className="grid gap-4 sm:gap-6">
                           {milestone.projects.map((project, projectIndex) => (
@@ -573,7 +577,7 @@ const MilestonesSection: React.FC = () => {
                             <Medal size={16} className="sm:hidden" weight="duotone" />
                             <Medal size={20} className="hidden sm:block" weight="duotone" />
                           </div>
-                          Key Achievements
+                          {t('milestones.keyAchievements')}
                         </motion.h4>
                         <div className="grid gap-2 sm:gap-3">
                           {milestone.achievements.map((achievement, achievementIndex) => (

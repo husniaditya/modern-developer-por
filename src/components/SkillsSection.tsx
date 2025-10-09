@@ -29,7 +29,10 @@ const SkillsSection = () => {
     { name: 'SQL', level: 78, category: 'Backend' },
     { name: 'Git', level: 90, category: 'Tools & Others' },
     { name: 'Postman', level: 90, category: 'Tools & Others' },
-    { name: 'Figma', level: 75, category: 'Tools & Others' }
+    { name: 'Figma', level: 75, category: 'Tools & Others' },
+    { name: 'Jira', level: 90, category: 'Tools & Others' },
+    { name: 'Microsoft Azure', level: 90, category: 'Tools & Others' },
+    { name: 'Docker', level: 70, category: 'Tools & Others' }
   ];
 
   const categories = [

@@ -42,14 +42,187 @@
     "sourceCode": "ソースコード",
     "liveDemo": "ライブデモ",
     "code": "コード",
-    "featured": "注目"
+    "featured": "注目",
+    "github": "GitHub",
+    "items": {
+      "chocomaid": {
+        "title": "Choco Maid AI Discord Bot",
+        "description": "コミュニティ管理のためのAI搭載Discordボット。モデレーションツール、楽しいコマンド、YouTube、Twitch、Clash Of Clans、Valorantなどの外部APIとのシームレスな統合を特徴とします。i18nにより複数言語（英語、インドネシア語、ドイツ語、スペイン語、日本語、中国語、フランス語）をサポート。",
+        "category": "フルスタック, バックエンド, フロントエンド"
+      },
+      "ciptasejati": {
+        "title": "Cipta Sejati Indonesia - コミュニティプラットフォーム",
+        "description": "リアルタイム更新、ユーザーロール、チーム向けプロジェクト追跡機能を備えた協力的タスク管理プラットフォーム。メンバー管理と分析のためのダッシュボードを含む。",
+        "category": "フルスタック, バックエンド, フロントエンド"
+      },
+      "erp": {
+        "title": "エンタープライズリソースプランニング（ERP）システム",
+        "description": "在庫、販売、調達、会計モジュールを持つモジュラーERPシステム。リアルタイムレポート、マルチユーザーロール、サードパーティサービスとの統合を特徴とします。",
+        "category": "フルスタック, フロントエンド, バックエンド"
+      },
+      "digitalLibrary": {
+        "title": "デジタル図書館システム",
+        "description": "高度な検索、ユーザー管理、分析機能を備えたスケーラブルなデジタル図書館システム。",
+        "category": "フルスタック, バックエンド, フロントエンド"
+      },
+      "productSpec": {
+        "title": "製品仕様管理システム",
+        "description": "バージョン管理、コラボレーションツール、デザインシステムとの統合を含む製品仕様管理のための包括的プラットフォーム。",
+        "category": "フルスタック, バックエンド, フロントエンド"
+      },
+      "recruitment": {
+        "title": "採用管理システム",
+        "description": "応募者追跡、面接スケジューリング、レポート機能を備えたエンドツーエンド採用管理システム。",
+        "category": "フルスタック, バックエンド, フロントエンド"
+      },
+      "parking": {
+        "title": "駐車場管理システム",
+        "description": "リアルタイム利用可能性追跡、予約管理、決済統合を備えた包括的駐車場管理システム。",
+        "category": "フルスタック, バックエンド, フロントエンド"
+      },
+      "shipment": {
+        "title": "出荷管理システム",
+        "description": "リアルタイム追跡、在庫管理、分析機能を備えた堅牢な出荷管理システム。",
+        "category": "フルスタック, バックエンド, フロントエンド"
+      },
+      "maintenance": {
+        "title": "保守管理システム",
+        "description": "作業指示追跡、資産管理、レポート機能を備えた包括的保守管理システム。",
+        "category": "フルスタック, バックエンド, フロントエンド"
+      },
+      "hris": {
+        "title": "人事情報システム（HRIS）",
+        "description": "従業員管理、給与処理、パフォーマンス追跡機能を備えたスケーラブルHRIS。",
+        "category": "フルスタック, バックエンド, フロントエンド"
+      }
+    }
   },
   "milestones": {
     "title": {
       "career": "キャリア",
       "milestones": "マイルストーン"
     },
-    "subtitle": "私のプロフェッショナルな歩みを形作った主要な成果、プロジェクト、重要な瞬間"
+    "subtitle": "私のプロフェッショナルな歩みを形作った主要な成果、プロジェクト、重要な瞬間",
+    "duration": "期間",
+    "location": "場所",
+    "projects": "プロジェクト",
+    "achievements": "成果",
+    "technologies": "使用技術",
+    "impact": "影響",
+    "keyProjects": "主要プロジェクト",
+    "keyAchievements": "主要な成果",
+    "items": {
+      "wilmar": {
+        "title": "アプリケーション管理スペシャリスト",
+        "company": "Wilmar International",
+        "duration": "2020年3月 - 現在 / 5年",
+        "location": "Multivision Tower, Jakarta Selatan",
+        "description": "ソフトウェアアプリケーションの技術サポートを提供し、問題のトラブルシューティング、システムの安定性確保、エンドユーザーと開発チーム間の橋渡し役を務める。",
+        "projects": {
+          "payroll": {
+            "name": "給与システム",
+            "description": "全体的なワークフローとプロセスを管理し、様々なビジネス機能を統合するWebベースアプリケーション",
+            "impact": "データ可視化効率40%向上"
+          },
+          "bunching": {
+            "name": "バンチングシステム",
+            "description": "バンチングプロセスを管理するWebベースアプリケーション",
+            "impact": "バンチング効率70%向上"
+          },
+          "fieldInspection": {
+            "name": "現場検査",
+            "description": "現場での検査とレポート作成のためのモバイルアプリ",
+            "impact": "検査時間50%短縮"
+          },
+          "patrolling": {
+            "name": "パトロールシステム",
+            "description": "パトロール管理とレポート作成のためのモバイルアプリ",
+            "impact": "パトロール対応時間70%短縮"
+          },
+          "gradingBunch": {
+            "name": "グレーディングバンチ",
+            "description": "評価とアセスメントを管理するWebベースアプリケーション",
+            "impact": "評価時間60%短縮"
+          }
+        },
+        "achievements": {
+          "teamLead": "グローバル地域の25+サイトのチームを率いた",
+          "monitoring": "ダウンタイムを30%削減するモニタリングを実装"
+        }
+      },
+      "megaMarine": {
+        "title": "ソフトウェアエンジニア",
+        "company": "PT. Mega Marine Pride",
+        "duration": "2017年9月 - 2020年2月 / 3年",
+        "location": "Pasuruan, Jawa Timur",
+        "description": "モダンなWeb技術を使用して複数の高インパクトプロジェクトを提供する5名の開発者チームを率いた。",
+        "projects": {
+          "erp": {
+            "name": "ERP ITインベントリシステム",
+            "description": "財務、HR、調達、在庫、通関を含む様々なビジネス機能を統合し、全体的なワークフローとプロセスを管理するWebベースアプリケーション",
+            "impact": "運用効率50%向上、エラー削減、レポート機能改善により、より良い意思決定、コスト削減、生産性向上を実現"
+          },
+          "maintenance": {
+            "name": "メンテナンスチケットシステム",
+            "description": "メンテナンス要求を管理するWebベースプラットフォーム",
+            "impact": "応答時間30%短縮、追跡とレポート改善"
+          },
+          "shipping": {
+            "name": "配送ロジスティクスアプリ",
+            "description": "リアルタイム出荷追跡、在庫管理のためのWebアプリ",
+            "impact": "配送効率20%向上、エラー削減、顧客満足度向上"
+          },
+          "parking": {
+            "name": "駐車場管理システム",
+            "description": "駐車スペースと予約を管理するWebベースアプリケーション",
+            "impact": "駐車スペース利用率25%向上、渋滞削減、ユーザー体験改善、セキュリティ強化、業務効率化"
+          },
+          "recruitment": {
+            "name": "採用ポータル",
+            "description": "求人投稿と応募者追跡のためのWebベースプラットフォーム",
+            "impact": "採用時間35%短縮、候補者体験改善、HRと採用マネージャー間のコラボレーション強化"
+          },
+          "productSpec": {
+            "name": "製品仕様システム",
+            "description": "製品仕様とコンプライアンスを管理するWebベースアプリケーション",
+            "impact": "新製品の市場投入時間35%短縮、チーム間のコラボレーション改善"
+          },
+          "digitalLibrary": {
+            "name": "デジタル図書館システム",
+            "description": "デジタル資産とリソースを管理するWebベースアプリケーション",
+            "impact": "リソースアクセシビリティ50%向上、ユーザーエンゲージメント改善、コンテンツ管理強化"
+          }
+        },
+        "achievements": {
+          "delivered": "7つの主要プロジェクトを期限内予算内で納品",
+          "standards": "コーディング標準とベストプラクティスを確立",
+          "technicalDebt": "リファクタリングにより技術的負債を35%削減",
+          "innovation": "画期的ソリューションで「イノベーション賞」受賞",
+          "agile": "アジャイル手法の採用を主導",
+          "performance": "最適化によりアプリケーションパフォーマンスを40%改善"
+        }
+      },
+      "threeSixNine": {
+        "title": "ソフトウェア開発者",
+        "company": "PT. 3.6.9. Group",
+        "duration": "2016年1月 - 2017年9月 / 1.5年",
+        "location": "Darmo Park II, Surabaya",
+        "description": "フロントエンドパフォーマンスとユーザー体験に焦点を当てたWebアプリケーションのフルスタック開発に貢献。",
+        "projects": {
+          "hris": {
+            "name": "人事管理システム",
+            "description": "従業員セルフサービスと給与自動化",
+            "impact": "第1四半期に5K+のユーザー登録"
+          }
+        },
+        "achievements": {
+          "mastered": "プログラミング言語とフレームワークをマスター",
+          "testing": "95%のカバレッジを達成する自動テストを実装",
+          "database": "データベースクエリを最適化し50%高速な応答を実現",
+          "recognition": "「年間最優秀開発者」の表彰を受賞"
+        }
+      }
+    }
   },
   "certificates": {
     "title": "資格",

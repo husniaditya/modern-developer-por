@@ -50,7 +50,59 @@
     "liveDemo": "Demo Langsung",
     "code": "Kode",
     "featured": "Unggulan",
-    "github": "GitHub"
+    "github": "GitHub",
+    "items": {
+      "chocomaid": {
+        "title": "Choco Maid AI Discord Bot",
+        "description": "Bot Discord bertenaga AI untuk mengelola komunitas, menampilkan alat moderasi, perintah menyenangkan, dan integrasi mulus dengan API eksternal termasuk Youtube, Twitch, Clash Of Clans, Valorant, dan lainnya. Mendukung banyak bahasa (English, Indonesia, Germany, Spanish, Japanese, Chinese, French) dengan i18n.",
+        "category": "Full Stack, Backend, Frontend"
+      },
+      "ciptasejati": {
+        "title": "Cipta Sejati Indonesia - Platform Komunitas",
+        "description": "Platform manajemen tugas kolaboratif dengan pembaruan real-time, peran pengguna, dan pelacakan proyek untuk tim. Termasuk dashboard untuk manajemen anggota dan analitik.",
+        "category": "Full Stack, Backend, Frontend"
+      },
+      "erp": {
+        "title": "Sistem Enterprise Resource Planning (ERP)",
+        "description": "Sistem ERP modular dengan modul inventori, penjualan, pengadaan, dan akuntansi. Fitur termasuk pelaporan real-time, peran multi-pengguna, dan integrasi dengan layanan pihak ketiga.",
+        "category": "Full Stack, Frontend, Backend"
+      },
+      "digitalLibrary": {
+        "title": "Sistem Perpustakaan Digital",
+        "description": "Sistem perpustakaan digital yang dapat diskalakan dengan pencarian lanjutan, manajemen pengguna, dan fitur analitik.",
+        "category": "Full Stack, Backend, Frontend"
+      },
+      "productSpec": {
+        "title": "Sistem Manajemen Spesifikasi Produk",
+        "description": "Platform komprehensif untuk mengelola spesifikasi produk, termasuk kontrol versi, alat kolaborasi, dan integrasi dengan sistem desain.",
+        "category": "Full Stack, Backend, Frontend"
+      },
+      "recruitment": {
+        "title": "Sistem Manajemen Rekrutmen",
+        "description": "Sistem manajemen rekrutmen end-to-end dengan pelacakan pelamar, penjadwalan wawancara, dan fitur pelaporan.",
+        "category": "Full Stack, Backend, Frontend"
+      },
+      "parking": {
+        "title": "Sistem Manajemen Parkir",
+        "description": "Sistem manajemen parkir komprehensif dengan pelacakan ketersediaan real-time, manajemen reservasi, dan integrasi pembayaran.",
+        "category": "Full Stack, Backend, Frontend"
+      },
+      "shipment": {
+        "title": "Sistem Manajemen Pengiriman",
+        "description": "Sistem manajemen pengiriman yang kuat dengan pelacakan real-time, manajemen inventori, dan fitur analitik.",
+        "category": "Full Stack, Backend, Frontend"
+      },
+      "maintenance": {
+        "title": "Sistem Manajemen Pemeliharaan",
+        "description": "Sistem manajemen pemeliharaan komprehensif dengan pelacakan perintah kerja, manajemen aset, dan fitur pelaporan.",
+        "category": "Full Stack, Backend, Frontend"
+      },
+      "hris": {
+        "title": "Sistem Informasi Sumber Daya Manusia (HRIS)",
+        "description": "HRIS yang dapat diskalakan dengan manajemen karyawan, pemrosesan gaji, dan fitur pelacakan kinerja.",
+        "category": "Full Stack, Backend, Frontend"
+      }
+    }
   },
   "milestones": {
     "title": {
@@ -63,7 +115,121 @@
     "projects": "Proyek",
     "achievements": "Pencapaian",
     "technologies": "Teknologi yang Digunakan",
-    "impact": "Dampak"
+    "impact": "Dampak",
+    "keyProjects": "Proyek Utama",
+    "keyAchievements": "Pencapaian Utama",
+    "items": {
+      "wilmar": {
+        "title": "Spesialis Manajemen Aplikasi",
+        "company": "Wilmar International",
+        "duration": "Maret 2020 - Sekarang / 5 Tahun",
+        "location": "Multivision Tower, Jakarta Selatan",
+        "description": "Memberikan dukungan teknis untuk aplikasi perangkat lunak, mengatasi masalah, memastikan stabilitas sistem, dan berperan sebagai jembatan antara pengguna akhir dan tim pengembangan.",
+        "projects": {
+          "payroll": {
+            "name": "Sistem Penggajian",
+            "description": "Aplikasi berbasis web untuk mengelola alur kerja dan proses keseluruhan, mengintegrasikan berbagai fungsi bisnis",
+            "impact": "40% peningkatan efisiensi visualisasi data"
+          },
+          "bunching": {
+            "name": "Sistem Pengelompokan",
+            "description": "Aplikasi berbasis web untuk mengelola proses pengelompokan",
+            "impact": "70% peningkatan efisiensi pengelompokan"
+          },
+          "fieldInspection": {
+            "name": "Inspeksi Lapangan",
+            "description": "Aplikasi mobile untuk inspeksi dan pelaporan di lokasi",
+            "impact": "50% pengurangan waktu inspeksi"
+          },
+          "patrolling": {
+            "name": "Sistem Patroli",
+            "description": "Aplikasi mobile untuk manajemen patroli dan pelaporan",
+            "impact": "70% pengurangan waktu respons patroli"
+          },
+          "gradingBunch": {
+            "name": "Penilaian Kelompok",
+            "description": "Aplikasi berbasis web untuk mengelola penilaian dan asesmen",
+            "impact": "60% pengurangan waktu penilaian"
+          }
+        },
+        "achievements": {
+          "teamLead": "Memimpin tim 25+ situs di seluruh wilayah global",
+          "monitoring": "Mengimplementasikan monitoring yang mengurangi downtime sebesar 30%"
+        }
+      },
+      "megaMarine": {
+        "title": "Software Engineer",
+        "company": "PT. Mega Marine Pride",
+        "duration": "Sept 2017 - Feb 2020 / 3 Tahun",
+        "location": "Pasuruan, Jawa Timur",
+        "description": "Memimpin tim yang terdiri dari 5 developer dalam menyelesaikan beberapa proyek berdampak tinggi menggunakan teknologi web modern.",
+        "projects": {
+          "erp": {
+            "name": "Sistem ERP IT Inventori",
+            "description": "Aplikasi berbasis web untuk mengelola alur kerja dan proses keseluruhan, mengintegrasikan berbagai fungsi bisnis, termasuk keuangan, HR, pengadaan, stok, dan bea cukai",
+            "impact": "50% peningkatan efisiensi operasional, mengurangi kesalahan, dan meningkatkan kemampuan pelaporan, yang mengarah pada pengambilan keputusan yang lebih baik, penghematan biaya, dan peningkatan produktivitas"
+          },
+          "maintenance": {
+            "name": "Sistem Tiket Pemeliharaan",
+            "description": "Platform berbasis web untuk mengelola permintaan pemeliharaan",
+            "impact": "30% pengurangan waktu respons, peningkatan pelacakan, dan pelaporan"
+          },
+          "shipping": {
+            "name": "Aplikasi Logistik Pengiriman",
+            "description": "Aplikasi web untuk pelacakan pengiriman real-time, manajemen inventori",
+            "impact": "20% peningkatan efisiensi pengiriman, mengurangi kesalahan, meningkatkan kepuasan pelanggan"
+          },
+          "parking": {
+            "name": "Sistem Manajemen Parkir",
+            "description": "Aplikasi berbasis web untuk mengelola ruang parkir dan reservasi",
+            "impact": "25% peningkatan utilisasi ruang parkir, mengurangi kemacetan, meningkatkan pengalaman pengguna, meningkatkan keamanan, dan merampingkan operasi"
+          },
+          "recruitment": {
+            "name": "Portal Rekrutmen",
+            "description": "Platform berbasis web untuk posting pekerjaan dan pelacakan pelamar",
+            "impact": "35% pengurangan waktu perekrutan, meningkatkan pengalaman kandidat, meningkatkan kolaborasi antara HR dan manajer perekrutan"
+          },
+          "productSpec": {
+            "name": "Sistem Spesifikasi Produk",
+            "description": "Aplikasi berbasis web untuk mengelola spesifikasi produk dan kepatuhan",
+            "impact": "35% pengurangan waktu ke pasar untuk produk baru, meningkatkan kolaborasi antar tim"
+          },
+          "digitalLibrary": {
+            "name": "Sistem Perpustakaan Digital",
+            "description": "Aplikasi berbasis web untuk mengelola aset dan sumber daya digital",
+            "impact": "50% peningkatan aksesibilitas sumber daya, meningkatkan keterlibatan pengguna, meningkatkan manajemen konten"
+          }
+        },
+        "achievements": {
+          "delivered": "Menyelesaikan 7 proyek besar tepat waktu dan sesuai anggaran",
+          "standards": "Menetapkan standar coding dan praktik terbaik",
+          "technicalDebt": "Mengurangi utang teknis sebesar 35% melalui refactoring",
+          "innovation": "Memenangkan \"Innovation Award\" untuk solusi terobosan",
+          "agile": "Memimpin adopsi metodologi Agile",
+          "performance": "Meningkatkan kinerja aplikasi sebesar 40% melalui optimisasi"
+        }
+      },
+      "threeSixNine": {
+        "title": "Software Developer",
+        "company": "PT. 3.6.9. Group",
+        "duration": "Jan 2016 - Sept 2017 / 1.5 Tahun",
+        "location": "Darmo Park II, Surabaya",
+        "description": "Berkontribusi pada pengembangan full-stack aplikasi web, fokus pada kinerja frontend dan pengalaman pengguna.",
+        "projects": {
+          "hris": {
+            "name": "Sistem Manajemen Sumber Daya Manusia",
+            "description": "Layanan mandiri karyawan dan otomatisasi penggajian",
+            "impact": "5K+ pengguna terdaftar di kuartal pertama"
+          }
+        },
+        "achievements": {
+          "mastered": "Menguasai bahasa pemrograman dan framework",
+          "testing": "Mengimplementasikan pengujian otomatis mencapai cakupan 95%",
+          "database": "Mengoptimalkan query database untuk respons 50% lebih cepat",
+          "recognition": "Menerima pengakuan \"Developer of the Year\""
+        }
+      }
+    }
   },
   "certificates": {
     "title": "Sertifikat",

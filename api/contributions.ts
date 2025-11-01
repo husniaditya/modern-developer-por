@@ -24,7 +24,9 @@ export default async function handler(req: Request): Promise<Response> {
   const user = searchParams.get('user');
   if (!user) return new Response('Missing ?user=', { status: 400 });
 
-  const token = process.env.GITHUB_TOKEN;
+  // Edge runtime doesn't provide Node's global `process` type, so access via globalThis for TS safety.
+  const env = (globalThis as any)?.process?.env as Record<string, string> | undefined;
+  const token = env?.GITHUB_TOKEN;
   if (!token) return new Response('Missing GITHUB_TOKEN', { status: 500 });
 
   const gh = await fetch('https://api.github.com/graphql', {

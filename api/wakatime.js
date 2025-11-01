@@ -142,6 +142,29 @@ export default async function handler(req, res) {
         };
       }
 
+      // Last-resort fallback: if user is brand new and all_time + since_today + last_6_months are empty,
+      // use stats/last_7_days so the response isn't blank on day 1.
+      try {
+        const total = Number(data?.total_seconds || data?.grand_total?.total_seconds || 0);
+        const emptyBreakdowns = (!Array.isArray(data?.languages) || data.languages.length === 0)
+          && (!Array.isArray(data?.editors) || data.editors.length === 0)
+          && (!Array.isArray(data?.projects) || data.projects.length === 0);
+        if (total === 0 && emptyBreakdowns) {
+          const s7 = await fetchStats('last_7_days', API_KEY).catch(() => null);
+          const d7 = s7?.data || s7 || null;
+          if (d7) {
+            data = {
+              total_seconds: Number(d7?.total_seconds || d7?.grand_total?.total_seconds || 0),
+              human_readable_total: d7?.human_readable_total || d7?.grand_total?.human_readable_total || toHuman(d7?.grand_total?.total_seconds || 0),
+              languages: d7?.languages || [],
+              editors: d7?.editors || [],
+              projects: d7?.projects || [],
+              is_up_to_date: false,
+            };
+          }
+        }
+      } catch { /* ignore */ }
+
       // Also fetch last_7_days to provide weekday bars even in all_time mode
       const last7 = await fetchSummaries('last_7_days', API_KEY).catch(() => ({ data: [] }));
       const days = last7?.data || [];

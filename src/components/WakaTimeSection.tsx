@@ -57,7 +57,24 @@ export default function WakaTimeSection({ embed = false }: { embed?: boolean }) 
   };
 
   const primaryColor = useCssColor('--primary', '#4f46e5');
+  const accentColor = useCssColor('--accent', '#22d3ee');
   const axisColor = useCssColor('--muted-foreground', '#6b7280');
+
+  // Animation helpers
+  const listVariants = useMemo(() => ({
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.06 } },
+  }), []);
+  const itemVariants = useMemo(() => ({
+    hidden: { opacity: 0, y: 6 },
+    visible: { opacity: 1, y: 0 },
+  }), []);
+  // Re-trigger bar animation when data changes
+  const barAnimKey = useMemo(() => (summary?.weekdays ?? []).map(d => d?.total_seconds || 0).join(','), [summary]);
+  const gradientId = useMemo(() => `wk-grad-${Math.random().toString(36).slice(2)}` , []);
+  const listAnimKey = useMemo(() => (summary?.languages ?? []).map(l => l?.name).join('|'), [summary]);
+  const editorsKey = useMemo(() => (summary?.editors ?? []).map(e => e?.name).join('|'), [summary]);
+  const projectsKey = useMemo(() => (summary?.projects ?? []).map(p => p?.name).join('|'), [summary]);
 
   useEffect(() => {
     if (!shareUrl) return;
@@ -142,18 +159,20 @@ export default function WakaTimeSection({ embed = false }: { embed?: boolean }) 
             {!error && topLangs.length === 0 && (
               <p className="text-sm text-muted-foreground">{t('wakatime.noData')}</p>
             )}
-            {topLangs.map((l) => {
-              const pct = typeof l.percent === 'number' ? l.percent : undefined;
-              return (
-                <div key={l.name} className="space-y-1">
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium">{l.name}</span>
-                    <span className="text-xs text-muted-foreground">{l.digital ?? formatHhMm(l.total_seconds)}</span>
-                  </div>
-                  <Progress value={pct ?? 0} className="h-2" />
-                </div>
-              );
-            })}
+            <motion.div key={listAnimKey} initial="hidden" animate="visible" variants={listVariants}>
+              {topLangs.map((l) => {
+                const pct = typeof l.percent === 'number' ? l.percent : undefined;
+                return (
+                  <motion.div key={l.name} className="space-y-1" variants={itemVariants} transition={{ duration: 0.35 }}>
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm font-medium">{l.name}</span>
+                      <span className="text-xs text-muted-foreground">{l.digital ?? formatHhMm(l.total_seconds)}</span>
+                    </div>
+                    <Progress value={pct ?? 0} className="h-2" />
+                  </motion.div>
+                );
+              })}
+            </motion.div>
           </CardContent>
         </Card>
 
@@ -162,20 +181,24 @@ export default function WakaTimeSection({ embed = false }: { embed?: boolean }) 
             <CardTitle>{t('wakatime.breakdown')}</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
-            <div className="flex flex-wrap gap-2">
+            <motion.div className="flex flex-wrap gap-2" key={editorsKey} initial="hidden" animate="visible" variants={listVariants}>
               {(summary?.editors ?? []).slice(0, 4).map((e) => (
-                <Badge key={e.name} variant="secondary" className="border border-border/60 bg-muted/60">
-                  {e.name} · {e.digital ?? formatHhMm(e.total_seconds)}
-                </Badge>
+                <motion.span key={e.name} variants={itemVariants} transition={{ duration: 0.35 }}>
+                  <Badge variant="secondary" className="border border-border/60 bg-muted/60">
+                    {e.name} · {e.digital ?? formatHhMm(e.total_seconds)}
+                  </Badge>
+                </motion.span>
               ))}
-            </div>
-            <div className="flex flex-wrap gap-2">
+            </motion.div>
+            <motion.div className="flex flex-wrap gap-2" key={projectsKey} initial="hidden" animate="visible" variants={listVariants}>
               {(summary?.projects ?? []).slice(0, 4).map((p) => (
-                <Badge key={p.name} variant="outline">
-                  {p.name} · {p.digital ?? formatHhMm(p.total_seconds)}
-                </Badge>
+                <motion.span key={p.name} variants={itemVariants} transition={{ duration: 0.35 }}>
+                  <Badge variant="outline">
+                    {p.name} · {p.digital ?? formatHhMm(p.total_seconds)}
+                  </Badge>
+                </motion.span>
               ))}
-            </div>
+            </motion.div>
           </CardContent>
         </Card>
 
@@ -190,7 +213,13 @@ export default function WakaTimeSection({ embed = false }: { embed?: boolean }) 
             ) : (
               <div className="h-48 w-full">
                 <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={weeklyData} margin={{ left: -10, right: 0, top: 10, bottom: 0 }}>
+                  <BarChart key={barAnimKey} data={weeklyData} margin={{ left: -10, right: 0, top: 10, bottom: 0 }}>
+                    <defs>
+                      <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor={accentColor} stopOpacity={0.95} />
+                        <stop offset="100%" stopColor={primaryColor} stopOpacity={0.95} />
+                      </linearGradient>
+                    </defs>
                     <XAxis dataKey="name" tickLine={false} axisLine={false} interval={0} tick={{ fontSize: 12, fill: axisColor }} />
                     <YAxis hide domain={[0, 'dataMax']} />
                     <Tooltip
@@ -207,7 +236,15 @@ export default function WakaTimeSection({ embed = false }: { embed?: boolean }) 
                         return null;
                       }}
                     />
-                    <Bar dataKey="seconds" radius={[4, 4, 0, 0]} fill={primaryColor} />
+                    <Bar
+                      dataKey="seconds"
+                      radius={[6, 6, 0, 0]}
+                      fill={`url(#${gradientId})`}
+                      isAnimationActive
+                      animationBegin={150}
+                      animationDuration={800}
+                      animationEasing="ease-out"
+                    />
                   </BarChart>
                 </ResponsiveContainer>
               </div>

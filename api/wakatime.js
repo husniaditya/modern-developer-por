@@ -79,6 +79,22 @@ async function fetchAllTimeSinceToday(apiKey) {
   return res.json();
 }
 
+async function fetchStatsRange(range, apiKey) {
+  const url = new URL(`https://wakatime.com/api/v1/users/current/stats/${range}`);
+  const auth = Buffer.from(`${apiKey}:`).toString('base64');
+  const res = await fetch(url, {
+    headers: {
+      Authorization: `Basic ${auth}`,
+      Accept: 'application/json',
+    },
+  });
+  if (!res.ok) {
+    const text = await res.text().catch(() => '');
+    throw new Error(`Upstream ${res.status}: ${text.slice(0, 200)}`);
+  }
+  return res.json();
+}
+
 function normalizeStatsEntities(list) {
   const entries = (list || []).map((it) => ({ name: it.name, total_seconds: it.total_seconds || 0 }));
   const grand = entries.reduce((a, e) => a + e.total_seconds, 0) || 0;
@@ -138,14 +154,26 @@ export default async function handler(req, res) {
         total_seconds: d?.grand_total?.total_seconds || 0,
       };
     });
+    // Fallback aggregates from a shorter range if all_time arrays are empty
+    let fallbackAgg = null;
+    if (!Array.isArray(sdata?.languages) || sdata.languages.length === 0) {
+      try {
+        const shortStats = await fetchStatsRange('last_30_days', API_KEY).catch(() => null) ||
+                            await fetchStatsRange('last_7_days', API_KEY).catch(() => null);
+        fallbackAgg = shortStats?.data || null;
+      } catch {
+        // ignore; we'll just keep arrays empty
+      }
+    }
+
     const out = {
       human_readable_total:
         sdata?.human_readable_total || sdata?.human_readable_total_including_other_language || allTimeFallback?.digital || toHuman(sdata?.total_seconds || 0),
       total_seconds:
         sdata?.total_seconds || sdata?.total_seconds_including_other_language || allTimeFallback?.total_seconds || 0,
-      languages: normalizeStatsEntities(sdata?.languages),
-      editors: normalizeStatsEntities(sdata?.editors),
-      projects: normalizeStatsEntities(sdata?.projects),
+      languages: normalizeStatsEntities((sdata?.languages && sdata.languages.length ? sdata.languages : fallbackAgg?.languages) || []),
+      editors: normalizeStatsEntities((sdata?.editors && sdata.editors.length ? sdata.editors : fallbackAgg?.editors) || []),
+      projects: normalizeStatsEntities((sdata?.projects && sdata.projects.length ? sdata.projects : fallbackAgg?.projects) || []),
       weekdays,
       period: 'all_time',
       range: { start: days[0]?.range?.start, end: days[days.length - 1]?.range?.end },

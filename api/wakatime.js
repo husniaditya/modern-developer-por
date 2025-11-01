@@ -47,6 +47,38 @@ async function fetchStatsAllTime(apiKey) {
   return res.json();
 }
 
+// Poll all_time stats briefly because for free plans WakaTime calculates
+// ranges >= 1 year on first request in the background. During that time
+// totals and arrays can be empty even though data exists.
+async function fetchStatsAllTimeWithRetry(apiKey, { tries = 3, delayMs = 1500 } = {}) {
+  let out = await fetchStatsAllTime(apiKey);
+  for (let i = 1; i < tries; i++) {
+    const d = out?.data || {};
+    if (d.is_up_to_date || (typeof d.percent_calculated === 'number' && d.percent_calculated >= 100)) {
+      break;
+    }
+    await new Promise((r) => setTimeout(r, delayMs));
+    out = await fetchStatsAllTime(apiKey);
+  }
+  return out;
+}
+
+async function fetchAllTimeSinceToday(apiKey) {
+  const url = new URL('https://wakatime.com/api/v1/users/current/all_time_since_today');
+  const auth = Buffer.from(`${apiKey}:`).toString('base64');
+  const res = await fetch(url, {
+    headers: {
+      Authorization: `Basic ${auth}`,
+      Accept: 'application/json',
+    },
+  });
+  if (!res.ok) {
+    const text = await res.text().catch(() => '');
+    throw new Error(`Upstream ${res.status}: ${text.slice(0, 200)}`);
+  }
+  return res.json();
+}
+
 function normalizeStatsEntities(list) {
   const entries = (list || []).map((it) => ({ name: it.name, total_seconds: it.total_seconds || 0 }));
   const grand = entries.reduce((a, e) => a + e.total_seconds, 0) || 0;
@@ -79,9 +111,19 @@ export default async function handler(req, res) {
 
   // We currently always return all-time aggregates + last_7_days weekdays
   try {
-    // Fetch all-time stats for aggregates
-    const stats = await fetchStatsAllTime(API_KEY);
+    // Fetch all-time stats for aggregates (retry a couple times so cache can warm)
+    const stats = await fetchStatsAllTimeWithRetry(API_KEY, { tries: 3, delayMs: 1200 });
     const sdata = stats?.data || {};
+    // Fallback to all_time_since_today for total when all_time not ready yet
+    let allTimeFallback = null;
+    if (!sdata?.total_seconds && !sdata?.human_readable_total) {
+      try {
+        const all = await fetchAllTimeSinceToday(API_KEY);
+        allTimeFallback = all?.data || null;
+      } catch {
+        // ignore fallback errors; we still return the weekly data
+      }
+    }
     // Fetch last 7 days for weekly bars
     const json = await fetchSummaries('last_7_days', API_KEY);
     const days = json?.data || [];
@@ -97,8 +139,10 @@ export default async function handler(req, res) {
       };
     });
     const out = {
-      human_readable_total: sdata?.human_readable_total || toHuman(sdata?.total_seconds || 0),
-      total_seconds: sdata?.total_seconds || 0,
+      human_readable_total:
+        sdata?.human_readable_total || sdata?.human_readable_total_including_other_language || allTimeFallback?.digital || toHuman(sdata?.total_seconds || 0),
+      total_seconds:
+        sdata?.total_seconds || sdata?.total_seconds_including_other_language || allTimeFallback?.total_seconds || 0,
       languages: normalizeStatsEntities(sdata?.languages),
       editors: normalizeStatsEntities(sdata?.editors),
       projects: normalizeStatsEntities(sdata?.projects),

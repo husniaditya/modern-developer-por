@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { getWakaShareUrl, fetchWakaSummary, type WakaSummary } from '@/lib/wakatime';
 import { useTranslation } from 'react-i18next';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
+import { useTheme } from '@/contexts/ThemeContext';
 
 function formatHhMm(totalSeconds?: number, fallback?: string) {
   if (!totalSeconds) return fallback ?? '-';
@@ -17,9 +18,37 @@ function formatHhMm(totalSeconds?: number, fallback?: string) {
 
 export default function WakaTimeSection({ embed = false }: { embed?: boolean }) {
   const { t, i18n } = useTranslation();
+  const { theme } = useTheme();
   const [summary, setSummary] = useState<WakaSummary | null>(null);
   const [error, setError] = useState<string | null>(null);
   const shareUrl = getWakaShareUrl();
+
+  // Resolve a CSS variable (e.g. --primary) to an actual color string usable by SVG attributes.
+  const useCssColor = (cssVarName: string, fallback: string) => {
+    const [color, setColor] = useState<string>(fallback);
+    useEffect(() => {
+      try {
+        const root = document.documentElement;
+        const raw = getComputedStyle(root).getPropertyValue(cssVarName).trim();
+        if (raw) {
+          // shadcn tokens are "H S% L%" for HSL; wrap in hsl() if it looks like one
+          const isHslTriplet = /%/.test(raw);
+          setColor(isHslTriplet ? `hsl(${raw})` : raw);
+        } else {
+          setColor(fallback);
+        }
+      } catch {
+        setColor(fallback);
+      }
+      // reference theme so the linter understands why this effect depends on it
+      void theme;
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [cssVarName, fallback, theme]);
+    return color;
+  };
+
+  const primaryColor = useCssColor('--primary', '#4f46e5');
+  const axisColor = useCssColor('--muted-foreground', '#6b7280');
 
   useEffect(() => {
     if (!shareUrl) return;
@@ -153,7 +182,7 @@ export default function WakaTimeSection({ embed = false }: { embed?: boolean }) 
               <div className="h-48 w-full">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={weeklyData} margin={{ left: -10, right: 0, top: 10, bottom: 0 }}>
-                    <XAxis dataKey="name" tickLine={false} axisLine={false} interval={0} tick={{ fontSize: 12, fill: 'hsl(var(--muted-foreground))' }} />
+                    <XAxis dataKey="name" tickLine={false} axisLine={false} interval={0} tick={{ fontSize: 12, fill: axisColor }} />
                     <YAxis hide domain={[0, 'dataMax']} />
                     <Tooltip
                       cursor={{ fill: 'transparent' }}
@@ -169,7 +198,7 @@ export default function WakaTimeSection({ embed = false }: { embed?: boolean }) 
                         return null;
                       }}
                     />
-                    <Bar dataKey="seconds" radius={[4, 4, 0, 0]} fill="hsl(var(--primary))" />
+                    <Bar dataKey="seconds" radius={[4, 4, 0, 0]} fill={primaryColor} />
                   </BarChart>
                 </ResponsiveContainer>
               </div>

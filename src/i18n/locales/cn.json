@@ -257,6 +257,7 @@
   "common": {
     "loading": "載入中...",
     "error": "發生錯誤",
+    "example": "例如",
     "retry": "重試",
     "close": "關閉",
     "save": "儲存",
@@ -266,5 +267,18 @@
     "previous": "上一個",
     "viewMore": "檢視更多",
     "viewLess": "檢視較少"
+  },
+  "wakatime": {
+    "title": "編碼活動",
+    "subtitle": "最近 7 天 • 總計 {{total}}",
+    "allTime": "全部時間",
+    "last7Days": "最近 7 天",
+    "totalLabel": "總計",
+    "topLanguages": "熱門語言",
+    "breakdown": "明細",
+    "weeklyActivity": "每週活動",
+    "noData": "沒有資料。",
+    "tip404": "提示：請使用以此結尾的 WakaTime 公開分享 JSON 連結",
+    "notConfigured": "尚未設定 WakaTime。請將 VITE_WAKATIME_SHARE_URL（或 VITE_WAKATIME_API）設為公開分享的 JSON URL。"
   }
 }

@@ -11,8 +11,10 @@ export interface WakaSummary {
   languages?: WakaEntity[];
   editors?: WakaEntity[];
   projects?: WakaEntity[];
+  weekdays?: Array<{ date?: string; weekday?: string; total_seconds: number }>;
   range?: { start?: string; end?: string; timezone?: string };
   cachedAt?: string;
+  period?: string; // e.g., 'all_time', 'last_7_days'
 }
 
 // Accepts a share JSON URL. Never pass a secret API key to the client.
@@ -50,14 +52,41 @@ export async function fetchWakaSummary(shareUrl: string, signal?: AbortSignal): 
   // Share JSON formats vary: sometimes the payload is the summary itself,
   // other times it's nested under "data".
   const data = json?.data ?? json;
+
+  // Derive weekdays either from serverless (already aggregated) or from raw days arrays in share JSON.
+  let weekdays: Array<{ date?: string; weekday?: string; total_seconds: number }> | undefined = undefined;
+  let period: string | undefined = (data as any)?.period;
+  if (Array.isArray(json?.data)) {
+    // WakaTime official response: data is an array of days
+    weekdays = (json.data as any[]).map((d: any) => {
+      const dateStr = d?.range?.date || d?.range?.start || d?.range?.end;
+      const total = d?.grand_total?.total_seconds ?? 0;
+      return { date: dateStr, total_seconds: total };
+    });
+    // heuristics: most public shares default to last 7 days
+    if (!period && (json.data as any[]).length === 7) period = 'last_7_days';
+  } else if (Array.isArray((data as any)?.weekdays)) {
+    weekdays = (data as any).weekdays as any[];
+  } else if (Array.isArray((data as any)?.days)) {
+    // Some share URLs nest daily entries under data.days
+    const days = (data as any).days as any[];
+    weekdays = days.map((d: any) => {
+      const dateStr = d?.range?.date || d?.range?.start || d?.range?.end || d?.date;
+      const total = d?.grand_total?.total_seconds ?? d?.total_seconds ?? 0;
+      return { date: dateStr, total_seconds: total };
+    });
+    if (!period && days.length === 7) period = 'last_7_days';
+  }
   return {
     human_readable_total: data?.human_readable_total ?? data?.grand_total?.human_readable_total,
     total_seconds: data?.total_seconds ?? data?.grand_total?.total_seconds,
     languages: data?.languages ?? [],
     editors: data?.editors ?? [],
     projects: data?.projects ?? [],
+    weekdays,
     range: data?.range ?? undefined,
     cachedAt: new Date().toISOString(),
+    period,
   } as WakaSummary;
 }
 

@@ -262,6 +262,7 @@
   "common": {
     "loading": "Memuat...",
     "error": "Ada yang salah",
+    "example": "misalnya",
     "retry": "Coba lagi",
     "close": "Tutup",
     "save": "Simpan",
@@ -271,5 +272,18 @@
     "previous": "Sebelumnya",
     "viewMore": "Lihat Lebih",
     "viewLess": "Lihat Kurang"
+  },
+  "wakatime": {
+    "title": "Aktivitas Koding",
+    "subtitle": "7 hari terakhir • Total {{total}}",
+    "allTime": "Sepanjang waktu",
+    "last7Days": "7 hari terakhir",
+    "totalLabel": "Total",
+    "topLanguages": "Bahasa Teratas",
+    "breakdown": "Rincian",
+    "weeklyActivity": "Aktivitas Mingguan",
+    "noData": "Tidak ada data.",
+    "tip404": "Tips: Gunakan tautan berbagi publik WakaTime berformat JSON yang berakhir dengan",
+    "notConfigured": "WakaTime belum dikonfigurasi. Setel VITE_WAKATIME_SHARE_URL (atau VITE_WAKATIME_API) ke URL JSON berbagi publik."
   }
 }

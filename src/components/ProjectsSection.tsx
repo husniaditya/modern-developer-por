@@ -1,10 +1,12 @@
-import React, { useState, useRef, useMemo, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, useInView, AnimatePresence, useScroll, useTransform, useSpring, useReducedMotion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ArrowSquareOut, GithubLogo, Globe } from '@phosphor-icons/react';
+import { GithubLogo, Globe } from '@phosphor-icons/react';
 import { useTranslation } from 'react-i18next';
+import { injectJsonLd } from '@/lib/seo';
+import { getFallbackFor } from '@/lib/assets';
 
 // Project images
 import chocomaidApp from '@/assets/images/projects/chocomaid_app.webp';
@@ -32,7 +34,7 @@ interface Project {
 }
 
 // Small helper component to add a smooth parallax effect to images on scroll
-function ParallaxImage({ src, alt, priority = false }: { src: string; alt: string; priority?: boolean }) {
+function ParallaxImage({ src, alt, priority = false, fallback }: { src: string; alt: string; priority?: boolean; fallback?: string }) {
   const ref = useRef<HTMLDivElement | null>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [imgError, setImgError] = useState(false);
@@ -60,7 +62,9 @@ function ParallaxImage({ src, alt, priority = false }: { src: string; alt: strin
   // Smoothstep easing to avoid twitchy starts/stops
   const easedProgress = useTransform(smoothProgress, (v) => v * v * (3 - 2 * v));
   const delta = isMobile ? 12 : 20;
-  const y = prefersReducedMotion ? 0 : useTransform(easedProgress, [0, 1], [-delta, delta]);
+  // Always create the motion value to avoid conditional hook calls
+  const yMotion = useTransform(easedProgress, [0, 1], [-delta, delta]);
+  const y = prefersReducedMotion ? 0 : yMotion;
 
   // When reduced motion is preferred, render a static image to ensure accessibility
   if (prefersReducedMotion) {
@@ -69,17 +73,20 @@ function ParallaxImage({ src, alt, priority = false }: { src: string; alt: strin
         {imgError ? (
           <div className="w-full h-full bg-muted/40" aria-hidden="true" />
         ) : (
-          <img
-            src={src}
-            alt={alt}
-            className="w-full h-full object-cover"
-            loading={priority ? 'eager' : 'lazy'}
-            decoding="async"
-            sizes="100vw"
-            {...(priority ? { fetchPriority: 'high' as const } : {})}
-            draggable={false}
-            onError={() => setImgError(true)}
-          />
+          <picture>
+            <source type="image/webp" srcSet={src} />
+            <img
+              src={fallback ?? src}
+              alt={alt}
+              className="w-full h-full object-cover"
+              loading={priority ? 'eager' : 'lazy'}
+              decoding="async"
+              sizes="100vw"
+              {...(priority ? { fetchPriority: 'high' as const } : {})}
+              draggable={false}
+              onError={() => setImgError(true)}
+            />
+          </picture>
         )}
       </div>
     );
@@ -93,18 +100,21 @@ function ParallaxImage({ src, alt, priority = false }: { src: string; alt: strin
       viewport={{ amount: 0.01 }}
       style={{ willChange: 'opacity', backfaceVisibility: 'hidden' }}
     >
-      <motion.img
-        src={src}
-        alt={alt}
-        className="w-full h-full object-cover transform-gpu"
-        style={{ y, scale: 1.06, willChange: 'transform' }}
-        loading={priority ? 'eager' : 'lazy'}
-        decoding="async"
-        sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-        {...(priority ? { fetchPriority: 'high' as const } : {})}
-        draggable={false}
-        onError={() => setImgError(true)}
-      />
+      <picture>
+        <source type="image/webp" srcSet={src} />
+        <motion.img
+          src={fallback ?? src}
+          alt={alt}
+          className="w-full h-full object-cover transform-gpu"
+          style={{ y, scale: 1.06, willChange: 'transform' }}
+          loading={priority ? 'eager' : 'lazy'}
+          decoding="async"
+          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+          {...(priority ? { fetchPriority: 'high' as const } : {})}
+          draggable={false}
+          onError={() => setImgError(true)}
+        />
+      </picture>
     </motion.div>
   );
 }
@@ -113,7 +123,8 @@ const ProjectsSection = () => {
   const { t } = useTranslation();
   const [activeFilter, setActiveFilter] = useState('All');
   const sectionRef = useRef<HTMLElement>(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
+  // Initialize intersection observer for section animations (value not used directly)
+  useInView(sectionRef, { once: true, amount: 0.2 });
 
   const projects: Project[] = [
     {
@@ -232,16 +243,29 @@ const ProjectsSection = () => {
     ? projects 
     : projects.filter(project => project.category.includes(activeFilter));
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        delayChildren: 0.3,
-        staggerChildren: 0.1
-      }
+  // Inject JSON-LD once for all projects
+  useEffect(() => {
+    try {
+      const siteUrl = (import.meta as any).env?.VITE_SITE_URL || window.location.href;
+      const graph = projects.map((p) => ({
+        '@type': 'CreativeWork',
+        name: p.title,
+        description: p.description,
+        url: p.liveUrl ?? siteUrl,
+        sameAs: p.githubUrl ? [p.githubUrl] : undefined,
+        image: new URL(p.image, window.location.origin).toString(),
+        datePublished: p.year ? `${p.year}-01-01` : undefined,
+      }));
+      injectJsonLd('ld-projects', {
+        '@context': 'https://schema.org',
+        '@graph': graph,
+      });
+    } catch {
+      // no-op
     }
-  };
+    // only once on mount
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const cardVariants = {
     hidden: { y: 50, opacity: 0 },
@@ -332,7 +356,7 @@ const ProjectsSection = () => {
               >
                 <Card className="group project-card overflow-hidden hover-lift h-full glass-card">
                   <div className="relative overflow-hidden">
-                    <ParallaxImage src={project.image} alt={project.title} priority={index === 0} />
+                    <ParallaxImage src={project.image} fallback={getFallbackFor(project.image)} alt={project.title} priority={index === 0} />
                     
                     {/* Overlay for demo/code links */}
                     <div className="project-overlay">

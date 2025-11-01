@@ -7,6 +7,9 @@
         "dev": "vite",
         "kill": "fuser -k 5000/tcp",
         "build": "tsc -b --noCheck && vite build",
+        "assets:fallbacks": "node scripts/generate-jpeg-fallbacks.mjs",
+        "start:waka-proxy": "node scripts/wakatime-proxy-server.mjs",
+        "postbuild": "node scripts/generate-sitemap.mjs",
         "lint": "eslint .",
         "optimize": "vite optimize",
         "preview": "vite preview"
@@ -89,6 +92,8 @@
         "eslint-plugin-react-hooks": "^5.2.0",
         "eslint-plugin-react-refresh": "^0.4.19",
         "globals": "^16.0.0",
+    "dotenv": "^16.4.5",
+        "sharp": "^0.33.5",
         "tailwindcss": "^4.1.11",
         "typescript": "~5.7.2",
         "typescript-eslint": "^8.38.0",

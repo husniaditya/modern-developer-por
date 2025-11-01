@@ -1,11 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Envelope, Phone, MapPin, LinkedinLogo, GithubLogo, InstagramLogo, WhatsappLogo } from '@phosphor-icons/react';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'sonner';
 
 const ContactSection = () => {
   const { t } = useTranslation();
+
+  const bookingUrl: string | undefined = (import.meta as any).env?.VITE_BOOKING_URL;
+
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText('adityahusni90@gmail.com');
+      toast.success('Email copied to clipboard');
+    } catch {
+      toast.error('Unable to copy. Please copy manually.');
+    }
+  };
 
   return (
     <section id="contact" className="py-20">
@@ -119,6 +131,23 @@ const ContactSection = () => {
                 >
                   <InstagramLogo size={20} className="text-pink-600" />
                 </Button>
+                {/* Actions with text */}
+                <Button 
+                  variant="secondary"
+                  onClick={handleCopyEmail}
+                  className="rounded-full"
+                >
+                  Copy email
+                </Button>
+                {bookingUrl && (
+                  <Button 
+                    variant="default"
+                    onClick={() => window.open(bookingUrl, '_blank')}
+                    className="rounded-full"
+                  >
+                    Book a call
+                  </Button>
+                )}
               </div>
             </div>
           </div>
@@ -158,6 +187,12 @@ const ContactSection = () => {
                 <p className="text-sm text-muted-foreground text-center">
                   {t('contact.whatsapp.alternative')}
                 </p>
+                <div className="flex flex-wrap justify-center gap-3 mt-4">
+                  <Button variant="outline" onClick={handleCopyEmail}>Copy email</Button>
+                  {bookingUrl && (
+                    <Button onClick={() => window.open(bookingUrl, '_blank')}>Book a call</Button>
+                  )}
+                </div>
               </div>
             </CardContent>
           </Card>

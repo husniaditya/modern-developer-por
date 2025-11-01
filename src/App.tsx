@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Toaster } from '@/components/ui/sonner';
 import { ThemeProvider } from '@/contexts/ThemeContext';
 import '@/i18n';
+import { setMetaTags, injectJsonLd } from '@/lib/seo';
 import Navigation from '@/components/Navigation';
 import HeroSection from '@/components/HeroSection';
 import SkillsSection from '@/components/SkillsSection';
@@ -12,12 +13,42 @@ import MilestonesSection from '@/components/MilestonesSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import ContactSection from '@/components/ContactSection';
 import ScrollToTop from '@/components/ScrollToTop';
+import profileImg from '@/assets/images/profile/profile.webp';
 // MouseTracker removed
 
 function App() {
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
+    // Default SEO meta
+    const siteUrl = (import.meta as any).env?.VITE_SITE_URL || window.location.href;
+    const title = 'Husni Aditya — Senior Full Stack Developer';
+    const description = 'Portfolio of Husni Aditya, a Senior Full Stack Developer specializing in React, TypeScript, Node.js, and scalable systems.';
+    setMetaTags({
+      title,
+      description,
+      url: siteUrl,
+      image: profileImg,
+      siteName: 'HusniAdityaDev',
+      type: 'website',
+    });
+
+    // Person JSON-LD
+    const ldPerson = {
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: 'Husni Aditya',
+      url: siteUrl,
+      jobTitle: 'Senior Full Stack Developer',
+      email: 'mailto:adityahusni90@gmail.com',
+      sameAs: [
+        'https://github.com/husniaditya',
+        'https://www.linkedin.com/in/husni-aditya-5b9065123/'
+      ],
+      image: new URL(profileImg, window.location.origin).toString(),
+    };
+    injectJsonLd('ld-person', ldPerson);
+
     const handleScroll = () => {
       const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
       const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;

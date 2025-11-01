@@ -9,21 +9,8 @@ function toHuman(seconds) {
   return `${m}m`;
 }
 
-function aggregateEntities(days, key) {
-  const map = new Map();
-  for (const d of days || []) {
-    for (const item of d[key] || []) {
-      const name = item.name || 'Unknown';
-      const prev = map.get(name) || 0;
-      map.set(name, prev + (item.total_seconds || 0));
-    }
-  }
-  const entries = Array.from(map.entries()).map(([name, total_seconds]) => ({ name, total_seconds }));
-  const grand = entries.reduce((acc, e) => acc + e.total_seconds, 0) || 0;
-  return entries
-    .map((e) => ({ ...e, percent: grand ? (e.total_seconds * 100) / grand : 0, digital: toHuman(e.total_seconds) }))
-    .sort((a, b) => b.total_seconds - a.total_seconds);
-}
+// aggregateEntities was used for summaries; replaced by all-time stats. Keeping a similar
+// helper for stats lists (normalizeStatsEntities) below.
 
 async function fetchSummaries(rangeParam, apiKey) {
   const url = new URL('https://wakatime.com/api/v1/users/current/summaries');
@@ -42,6 +29,30 @@ async function fetchSummaries(rangeParam, apiKey) {
     throw new Error(`Upstream ${res.status}: ${text.slice(0, 200)}`);
   }
   return res.json();
+}
+
+async function fetchStatsAllTime(apiKey) {
+  const url = new URL('https://wakatime.com/api/v1/users/current/stats/all_time');
+  const auth = Buffer.from(`${apiKey}:`).toString('base64');
+  const res = await fetch(url, {
+    headers: {
+      Authorization: `Basic ${auth}`,
+      Accept: 'application/json',
+    },
+  });
+  if (!res.ok) {
+    const text = await res.text().catch(() => '');
+    throw new Error(`Upstream ${res.status}: ${text.slice(0, 200)}`);
+  }
+  return res.json();
+}
+
+function normalizeStatsEntities(list) {
+  const entries = (list || []).map((it) => ({ name: it.name, total_seconds: it.total_seconds || 0 }));
+  const grand = entries.reduce((a, e) => a + e.total_seconds, 0) || 0;
+  return entries
+    .map((e) => ({ ...e, percent: grand ? (e.total_seconds * 100) / grand : 0, digital: toHuman(e.total_seconds) }))
+    .sort((a, b) => b.total_seconds - a.total_seconds);
 }
 
 export default async function handler(req, res) {
@@ -66,17 +77,33 @@ export default async function handler(req, res) {
     return;
   }
 
-  const range = req.query?.range || 'last_7_days';
+  // We currently always return all-time aggregates + last_7_days weekdays
   try {
-    const json = await fetchSummaries(range, API_KEY);
+    // Fetch all-time stats for aggregates
+    const stats = await fetchStatsAllTime(API_KEY);
+    const sdata = stats?.data || {};
+    // Fetch last 7 days for weekly bars
+    const json = await fetchSummaries('last_7_days', API_KEY);
     const days = json?.data || [];
-    const totalSeconds = days.reduce((acc, d) => acc + (d.grand_total?.total_seconds || 0), 0);
+    const weekdayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    const weekdays = days.map((d) => {
+      const dateStr = d?.range?.date || d?.range?.start || d?.range?.end;
+      const date = dateStr ? new Date(dateStr) : null;
+      const w = date ? weekdayNames[date.getUTCDay()] : undefined;
+      return {
+        date: dateStr,
+        weekday: w,
+        total_seconds: d?.grand_total?.total_seconds || 0,
+      };
+    });
     const out = {
-      human_readable_total: toHuman(totalSeconds),
-      total_seconds: totalSeconds,
-      languages: aggregateEntities(days, 'languages'),
-      editors: aggregateEntities(days, 'editors'),
-      projects: aggregateEntities(days, 'projects'),
+      human_readable_total: sdata?.human_readable_total || toHuman(sdata?.total_seconds || 0),
+      total_seconds: sdata?.total_seconds || 0,
+      languages: normalizeStatsEntities(sdata?.languages),
+      editors: normalizeStatsEntities(sdata?.editors),
+      projects: normalizeStatsEntities(sdata?.projects),
+      weekdays,
+      period: 'all_time',
       range: { start: days[0]?.range?.start, end: days[days.length - 1]?.range?.end },
       cachedAt: new Date().toISOString(),
     };

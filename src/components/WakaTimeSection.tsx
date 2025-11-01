@@ -4,6 +4,8 @@ import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import { motion } from 'framer-motion';
 import { getWakaShareUrl, fetchWakaSummary, type WakaSummary } from '@/lib/wakatime';
+import { useTranslation } from 'react-i18next';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
 function formatHhMm(totalSeconds?: number, fallback?: string) {
   if (!totalSeconds) return fallback ?? '-';
@@ -14,6 +16,7 @@ function formatHhMm(totalSeconds?: number, fallback?: string) {
 }
 
 export default function WakaTimeSection({ embed = false }: { embed?: boolean }) {
+  const { t, i18n } = useTranslation();
   const [summary, setSummary] = useState<WakaSummary | null>(null);
   const [error, setError] = useState<string | null>(null);
   const shareUrl = getWakaShareUrl();
@@ -38,6 +41,28 @@ export default function WakaTimeSection({ embed = false }: { embed?: boolean }) 
     return [...langs].sort((a, b) => (b.total_seconds ?? 0) - (a.total_seconds ?? 0)).slice(0, 5);
   }, [summary]);
 
+  // Aggregate last-7-days into weekday buckets (Mon..Sun) like WakaTime dashboard
+  const weeklyData = useMemo(() => {
+    const buckets = Array.from({ length: 7 }, (_, i) => ({ idx: i, seconds: 0 })); // 0=Sun .. 6=Sat
+    for (const d of summary?.weekdays ?? []) {
+      if (!d) continue;
+      const date = d.date ? new Date(d.date) : undefined;
+      const dow = date ? date.getUTCDay() : undefined;
+      if (typeof dow === 'number') buckets[dow].seconds += d.total_seconds || 0;
+    }
+    // Order to Monday..Sunday like WakaTime UI
+    const order = [1, 2, 3, 4, 5, 6, 0];
+    const labelFor = (dow: number) => {
+      // build a stable date that corresponds to the desired weekday index
+      const base = new Date(Date.UTC(2023, 0, 1)); // 2023-01-01 is Sunday
+      const delta = (dow - base.getUTCDay() + 7) % 7;
+      const d = new Date(base);
+      d.setUTCDate(base.getUTCDate() + delta);
+      return d.toLocaleDateString(i18n.language, { weekday: 'short' });
+    };
+    return order.map((i) => ({ name: labelFor(i), seconds: buckets[i].seconds }));
+  }, [summary, i18n.language]);
+
   const header = (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -47,10 +72,11 @@ export default function WakaTimeSection({ embed = false }: { embed?: boolean }) 
       className={embed ? 'mb-6' : 'mb-8 text-center'}
     >
       <h2 className={embed ? 'text-2xl font-semibold text-foreground' : 'text-4xl font-bold text-foreground mb-2'}>
-        Coding Activity
+        {t('wakatime.title')}
       </h2>
       <p className="text-muted-foreground">
-        Last 7 days • Total {summary?.human_readable_total ?? formatHhMm(summary?.total_seconds, '-')}
+        {t(summary?.period === 'all_time' ? 'wakatime.allTime' : 'wakatime.last7Days')} • {t('wakatime.totalLabel')} {' '}
+        {summary?.human_readable_total ?? formatHhMm(summary?.total_seconds, '-')}
       </p>
     </motion.div>
   );
@@ -61,7 +87,7 @@ export default function WakaTimeSection({ embed = false }: { embed?: boolean }) 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <Card>
           <CardHeader>
-            <CardTitle>Top Languages</CardTitle>
+            <CardTitle>{t('wakatime.topLanguages')}</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             {error && (
@@ -69,14 +95,14 @@ export default function WakaTimeSection({ embed = false }: { embed?: boolean }) 
                 <p className="text-sm text-red-600">{error}</p>
                 {String(error).includes('404') && (
                   <p className="text-xs text-muted-foreground">
-                    Tip: Use a WakaTime public share JSON link ending with <code>.json</code>, for example
+                    {t('wakatime.tip404')} <code>.json</code>, {t('common.example', { defaultValue: 'for example' })}
                     {' '}<code>https://wakatime.com/share/@you/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.json</code>
                   </p>
                 )}
               </div>
             )}
             {!error && topLangs.length === 0 && (
-              <p className="text-sm text-muted-foreground">No data.</p>
+              <p className="text-sm text-muted-foreground">{t('wakatime.noData')}</p>
             )}
             {topLangs.map((l) => {
               const pct = typeof l.percent === 'number' ? l.percent : undefined;
@@ -95,7 +121,7 @@ export default function WakaTimeSection({ embed = false }: { embed?: boolean }) 
 
         <Card>
           <CardHeader>
-            <CardTitle>Breakdown</CardTitle>
+            <CardTitle>{t('wakatime.breakdown')}</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
             <div className="flex flex-wrap gap-2">
@@ -112,6 +138,42 @@ export default function WakaTimeSection({ embed = false }: { embed?: boolean }) 
                 </Badge>
               ))}
             </div>
+          </CardContent>
+        </Card>
+
+        {/* Weekly activity bar chart (aggregate by weekday Mon..Sun) */}
+        <Card className="lg:col-span-2">
+          <CardHeader>
+            <CardTitle>{t('wakatime.weeklyActivity')}</CardTitle>
+          </CardHeader>
+          <CardContent>
+            {weeklyData.filter((d) => d.seconds > 0).length === 0 ? (
+              <p className="text-sm text-muted-foreground">{t('wakatime.noData')}</p>
+            ) : (
+              <div className="h-48 w-full">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart data={weeklyData} margin={{ left: -10, right: 0, top: 10, bottom: 0 }}>
+                    <XAxis dataKey="name" tickLine={false} axisLine={false} interval={0} tick={{ fontSize: 12, fill: 'hsl(var(--muted-foreground))' }} />
+                    <YAxis hide domain={[0, 'dataMax']} />
+                    <Tooltip
+                      cursor={{ fill: 'transparent' }}
+                      content={({ active, payload, label }: any) => {
+                        if (active && payload && payload.length) {
+                          const secs = payload[0]?.payload?.seconds || 0;
+                          return (
+                            <div className="rounded-md bg-popover px-2 py-1 text-xs shadow border border-border">
+                              <span className="font-medium">{label}:</span> {formatHhMm(secs, '0m')}
+                            </div>
+                          );
+                        }
+                        return null;
+                      }}
+                    />
+                    <Bar dataKey="seconds" radius={[4, 4, 0, 0]} fill="hsl(var(--primary))" />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            )}
           </CardContent>
         </Card>
       </div>
@@ -133,9 +195,7 @@ export default function WakaTimeSection({ embed = false }: { embed?: boolean }) 
               <CardTitle>WakaTime</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground">
-                WakaTime is not configured. Set VITE_WAKATIME_SHARE_URL (or VITE_WAKATIME_API) to a public share JSON URL.
-              </p>
+              <p className="text-muted-foreground">{t('wakatime.notConfigured')}</p>
             </CardContent>
           </Card>
         </div>

@@ -29,17 +29,9 @@ function toHuman(seconds) {
   return `${m}m`;
 }
 
-function aggregateEntities(days, key) {
-  const map = new Map();
-  for (const d of days || []) {
-    for (const item of d[key] || []) {
-      const name = item.name || 'Unknown';
-      const prev = map.get(name) || 0;
-      map.set(name, prev + (item.total_seconds || 0));
-    }
-  }
-  const entries = Array.from(map.entries()).map(([name, total_seconds]) => ({ name, total_seconds }));
-  const grand = entries.reduce((acc, e) => acc + e.total_seconds, 0) || 0;
+function normalizeStatsEntities(list) {
+  const entries = (list || []).map((it) => ({ name: it.name, total_seconds: it.total_seconds || 0 }));
+  const grand = entries.reduce((a, e) => a + e.total_seconds, 0) || 0;
   return entries
     .map((e) => ({ ...e, percent: grand ? (e.total_seconds * 100) / grand : 0, digital: toHuman(e.total_seconds) }))
     .sort((a, b) => b.total_seconds - a.total_seconds);
@@ -50,6 +42,22 @@ async function fetchSummaries(rangeParam) {
   if (rangeParam) url.searchParams.set('range', rangeParam);
   else url.searchParams.set('range', 'last_7_days');
 
+  const auth = Buffer.from(`${API_KEY}:`).toString('base64');
+  const res = await fetch(url, {
+    headers: {
+      Authorization: `Basic ${auth}`,
+      Accept: 'application/json',
+    },
+  });
+  if (!res.ok) {
+    const text = await res.text().catch(() => '');
+    throw new Error(`Upstream ${res.status}: ${text.slice(0, 200)}`);
+  }
+  return res.json();
+}
+
+async function fetchStatsAllTime() {
+  const url = new URL('https://wakatime.com/api/v1/users/current/stats/all_time');
   const auth = Buffer.from(`${API_KEY}:`).toString('base64');
   const res = await fetch(url, {
     headers: {
@@ -83,17 +91,29 @@ function handler(req, res) {
     return res.end(JSON.stringify({ error: 'Not Found' }));
   }
 
-  const range = url.searchParams.get('range') || 'last_7_days';
-  fetchSummaries(range)
-    .then((json) => {
+  Promise.all([fetchStatsAllTime(), fetchSummaries('last_7_days')])
+    .then(([stats, json]) => {
+      const sdata = stats?.data || {};
       const days = json?.data || [];
-      const totalSeconds = days.reduce((acc, d) => acc + (d.grand_total?.total_seconds || 0), 0);
+      const weekdayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+      const weekdays = days.map((d) => {
+        const dateStr = d?.range?.date || d?.range?.start || d?.range?.end;
+        const date = dateStr ? new Date(dateStr) : null;
+        const w = date ? weekdayNames[date.getUTCDay()] : undefined;
+        return {
+          date: dateStr,
+          weekday: w,
+          total_seconds: d?.grand_total?.total_seconds || 0,
+        };
+      });
       const out = {
-        human_readable_total: toHuman(totalSeconds),
-        total_seconds: totalSeconds,
-        languages: aggregateEntities(days, 'languages'),
-        editors: aggregateEntities(days, 'editors'),
-        projects: aggregateEntities(days, 'projects'),
+        human_readable_total: sdata?.human_readable_total || toHuman(sdata?.total_seconds || 0),
+        total_seconds: sdata?.total_seconds || 0,
+        languages: normalizeStatsEntities(sdata?.languages),
+        editors: normalizeStatsEntities(sdata?.editors),
+        projects: normalizeStatsEntities(sdata?.projects),
+        weekdays,
+        period: 'all_time',
         range: { start: days[0]?.range?.start, end: days[days.length - 1]?.range?.end },
         cachedAt: new Date().toISOString(),
       };

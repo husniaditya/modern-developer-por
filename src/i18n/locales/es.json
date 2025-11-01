@@ -257,6 +257,7 @@
   "common": {
     "loading": "Cargando...",
     "error": "Algo salió mal",
+    "example": "por ejemplo",
     "retry": "Intentar de nuevo",
     "close": "Cerrar",
     "save": "Guardar",
@@ -266,5 +267,18 @@
     "previous": "Anterior",
     "viewMore": "Ver Más",
     "viewLess": "Ver Menos"
+  },
+  "wakatime": {
+    "title": "Actividad de Código",
+    "subtitle": "Últimos 7 días • Total {{total}}",
+    "allTime": "Todo el tiempo",
+    "last7Days": "Últimos 7 días",
+    "totalLabel": "Total",
+    "topLanguages": "Lenguajes Principales",
+    "breakdown": "Desglose",
+    "weeklyActivity": "Actividad Semanal",
+    "noData": "Sin datos.",
+    "tip404": "Consejo: Usa un enlace público de WakaTime en formato JSON que termine con",
+    "notConfigured": "WakaTime no está configurado. Establece VITE_WAKATIME_SHARE_URL (o VITE_WAKATIME_API) a una URL pública JSON de compartición."
   }
 }

@@ -17,7 +17,8 @@ async function fetchSummaries(rangeParam, apiKey) {
   if (rangeParam) url.searchParams.set('range', rangeParam);
   else url.searchParams.set('range', 'last_7_days');
 
-  const auth = Buffer.from(`${apiKey}:`).toString('base64');
+  // Per WakaTime docs, Basic auth should be base64(apiKey) without trailing colon
+  const auth = Buffer.from(`${apiKey}`).toString('base64');
   const res = await fetch(url, {
     headers: {
       Authorization: `Basic ${auth}`,
@@ -31,69 +32,14 @@ async function fetchSummaries(rangeParam, apiKey) {
   return res.json();
 }
 
-async function fetchStatsAllTime(apiKey) {
-  const url = new URL('https://wakatime.com/api/v1/users/current/stats/all_time');
-  const auth = Buffer.from(`${apiKey}:`).toString('base64');
-  const res = await fetch(url, {
-    headers: {
-      Authorization: `Basic ${auth}`,
-      Accept: 'application/json',
-    },
-  });
-  if (!res.ok) {
-    const text = await res.text().catch(() => '');
-    throw new Error(`Upstream ${res.status}: ${text.slice(0, 200)}`);
-  }
-  return res.json();
-}
+// async function fetchStatsAllTime(apiKey) { /* unused */ }
 
-// Poll all_time stats briefly because for free plans WakaTime calculates
-// ranges >= 1 year on first request in the background. During that time
-// totals and arrays can be empty even though data exists.
-async function fetchStatsAllTimeWithRetry(apiKey, { tries = 3, delayMs = 1500 } = {}) {
-  let out = await fetchStatsAllTime(apiKey);
-  for (let i = 1; i < tries; i++) {
-    const d = out?.data || {};
-    if (d.is_up_to_date || (typeof d.percent_calculated === 'number' && d.percent_calculated >= 100)) {
-      break;
-    }
-    await new Promise((r) => setTimeout(r, delayMs));
-    out = await fetchStatsAllTime(apiKey);
-  }
-  return out;
-}
+// Note: all_time helpers kept for reference in case we switch back.
 
-async function fetchAllTimeSinceToday(apiKey) {
-  const url = new URL('https://wakatime.com/api/v1/users/current/all_time_since_today');
-  const auth = Buffer.from(`${apiKey}:`).toString('base64');
-  const res = await fetch(url, {
-    headers: {
-      Authorization: `Basic ${auth}`,
-      Accept: 'application/json',
-    },
-  });
-  if (!res.ok) {
-    const text = await res.text().catch(() => '');
-    throw new Error(`Upstream ${res.status}: ${text.slice(0, 200)}`);
-  }
-  return res.json();
-}
+// async function fetchStatsAllTimeWithRetry(apiKey, { tries = 3, delayMs = 1500 } = {}) { /* unused */ }
+// async function fetchAllTimeSinceToday(apiKey) { /* unused */ }
 
-async function fetchStatsRange(range, apiKey) {
-  const url = new URL(`https://wakatime.com/api/v1/users/current/stats/${range}`);
-  const auth = Buffer.from(`${apiKey}:`).toString('base64');
-  const res = await fetch(url, {
-    headers: {
-      Authorization: `Basic ${auth}`,
-      Accept: 'application/json',
-    },
-  });
-  if (!res.ok) {
-    const text = await res.text().catch(() => '');
-    throw new Error(`Upstream ${res.status}: ${text.slice(0, 200)}`);
-  }
-  return res.json();
-}
+// async function fetchStatsRange(range, apiKey) { /* unused */ }
 
 function normalizeStatsEntities(list) {
   const entries = (list || []).map((it) => ({ name: it.name, total_seconds: it.total_seconds || 0 }));
@@ -125,22 +71,9 @@ export default async function handler(req, res) {
     return;
   }
 
-  // We currently always return all-time aggregates + last_7_days weekdays
+  // Return last_7_days aggregates + weekday bars
   try {
-    // Fetch all-time stats for aggregates (retry a couple times so cache can warm)
-    const stats = await fetchStatsAllTimeWithRetry(API_KEY, { tries: 3, delayMs: 1200 });
-    const sdata = stats?.data || {};
-    // Fallback to all_time_since_today for total when all_time not ready yet
-    let allTimeFallback = null;
-    if (!sdata?.total_seconds && !sdata?.human_readable_total) {
-      try {
-        const all = await fetchAllTimeSinceToday(API_KEY);
-        allTimeFallback = all?.data || null;
-      } catch {
-        // ignore fallback errors; we still return the weekly data
-      }
-    }
-    // Fetch last 7 days for weekly bars
+    // Fetch last 7 days summaries (single source of truth)
     const json = await fetchSummaries('last_7_days', API_KEY);
     const days = json?.data || [];
     const weekdayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
@@ -154,28 +87,28 @@ export default async function handler(req, res) {
         total_seconds: d?.grand_total?.total_seconds || 0,
       };
     });
-    // Fallback aggregates from a shorter range if all_time arrays are empty
-    let fallbackAgg = null;
-    if (!Array.isArray(sdata?.languages) || sdata.languages.length === 0) {
-      try {
-        const shortStats = await fetchStatsRange('last_30_days', API_KEY).catch(() => null) ||
-                            await fetchStatsRange('last_7_days', API_KEY).catch(() => null);
-        fallbackAgg = shortStats?.data || null;
-      } catch {
-        // ignore; we'll just keep arrays empty
+    // Aggregate entities across the 7 daily summaries
+    const sumEntities = (key) => {
+      const map = new Map();
+      for (const d of days) {
+        for (const e of d?.[key] || []) {
+          if (!e?.name) continue;
+          map.set(e.name, (map.get(e.name) || 0) + (e.total_seconds || 0));
+        }
       }
-    }
+      return Array.from(map, ([name, total_seconds]) => ({ name, total_seconds }));
+    };
+
+    const totalSeconds = days.reduce((acc, d) => acc + (d?.grand_total?.total_seconds || 0), 0);
 
     const out = {
-      human_readable_total:
-        sdata?.human_readable_total || sdata?.human_readable_total_including_other_language || allTimeFallback?.digital || toHuman(sdata?.total_seconds || 0),
-      total_seconds:
-        sdata?.total_seconds || sdata?.total_seconds_including_other_language || allTimeFallback?.total_seconds || 0,
-      languages: normalizeStatsEntities((sdata?.languages && sdata.languages.length ? sdata.languages : fallbackAgg?.languages) || []),
-      editors: normalizeStatsEntities((sdata?.editors && sdata.editors.length ? sdata.editors : fallbackAgg?.editors) || []),
-      projects: normalizeStatsEntities((sdata?.projects && sdata.projects.length ? sdata.projects : fallbackAgg?.projects) || []),
+      human_readable_total: toHuman(totalSeconds),
+      total_seconds: totalSeconds,
+      languages: normalizeStatsEntities(sumEntities('languages')),
+      editors: normalizeStatsEntities(sumEntities('editors')),
+      projects: normalizeStatsEntities(sumEntities('projects')),
       weekdays,
-      period: 'all_time',
+      period: 'last_7_days',
       range: { start: days[0]?.range?.start, end: days[days.length - 1]?.range?.end },
       cachedAt: new Date().toISOString(),
     };

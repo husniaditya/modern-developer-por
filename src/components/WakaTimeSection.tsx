@@ -23,24 +23,33 @@ export default function WakaTimeSection({ embed = false }: { embed?: boolean }) 
   const [error, setError] = useState<string | null>(null);
   const shareUrl = getWakaShareUrl();
 
-  // Resolve a CSS variable (e.g. --primary) to an actual color string usable by SVG attributes.
+  // Resolve a CSS variable (e.g. --primary) to a concrete rgb(...) for SVG attributes.
+  // Handles OKLCH/HSL tokens by letting the browser compute the final sRGB color.
   const useCssColor = (cssVarName: string, fallback: string) => {
     const [color, setColor] = useState<string>(fallback);
     useEffect(() => {
       try {
-        const root = document.documentElement;
-        const raw = getComputedStyle(root).getPropertyValue(cssVarName).trim();
-        if (raw) {
-          // shadcn tokens are "H S% L%" for HSL; wrap in hsl() if it looks like one
-          const isHslTriplet = /%/.test(raw);
-          setColor(isHslTriplet ? `hsl(${raw})` : raw);
-        } else {
+        const raw = getComputedStyle(document.documentElement).getPropertyValue(cssVarName).trim();
+        if (!raw) {
           setColor(fallback);
+          return;
         }
+        // Wrap triplet form (e.g. "210 40% 50%") with hsl(...); pass through oklch()/hsl()/rgb()/hex.
+        const candidate = /%/.test(raw) && !/^hsl\(/i.test(raw) && !/^oklch\(/i.test(raw)
+          ? `hsl(${raw})`
+          : raw;
+        // Use a probe element so the browser converts any supported color space to rgb(...)
+        const probe = document.createElement('span');
+        probe.style.color = candidate as any;
+        probe.style.display = 'none';
+        document.body.appendChild(probe);
+        const resolved = getComputedStyle(probe).color; // typically rgb(r, g, b)
+        probe.remove();
+        setColor(resolved || candidate || fallback);
       } catch {
         setColor(fallback);
       }
-      // reference theme so the linter understands why this effect depends on it
+      // tie to theme so color recomputes on theme switch
       void theme;
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [cssVarName, fallback, theme]);

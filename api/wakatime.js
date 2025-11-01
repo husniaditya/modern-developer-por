@@ -32,14 +32,58 @@ async function fetchSummaries(rangeParam, apiKey) {
   return res.json();
 }
 
-// async function fetchStatsAllTime(apiKey) { /* unused */ }
+// Generic stats fetcher for ranges like 'all_time', 'last_6_months', 'last_year', etc.
+async function fetchStats(range, apiKey) {
+  const url = new URL(`https://wakatime.com/api/v1/users/current/stats/${encodeURIComponent(range)}`);
+  const auth = Buffer.from(`${apiKey}`).toString('base64');
+  const res = await fetch(url, {
+    headers: {
+      Authorization: `Basic ${auth}`,
+      Accept: 'application/json',
+    },
+  });
+  if (!res.ok) {
+    const text = await res.text().catch(() => '');
+    throw new Error(`Upstream ${res.status}: ${text.slice(0, 200)}`);
+  }
+  return res.json();
+}
 
-// Note: all_time helpers kept for reference in case we switch back.
+// Poll all_time stats briefly; WakaTime sometimes needs time to compute long ranges.
+async function fetchStatsAllTimeWithRetry(apiKey, { tries = 3, delayMs = 1500 } = {}) {
+  let lastErr;
+  for (let i = 0; i < tries; i++) {
+    try {
+      const json = await fetchStats('all_time', apiKey);
+      const data = json?.data || json;
+      const langs = Array.isArray(data?.languages) ? data.languages : [];
+      const editors = Array.isArray(data?.editors) ? data.editors : [];
+      const projects = Array.isArray(data?.projects) ? data.projects : [];
+      const ready = data?.is_up_to_date !== false && (langs.length + editors.length + projects.length) > 0;
+      if (ready) return data;
+      // not ready yet → fall through to sleep/retry
+    } catch (e) {
+      lastErr = e;
+    }
+    if (i < tries - 1) await new Promise((r) => setTimeout(r, delayMs));
+  }
+  if (lastErr) throw lastErr;
+  throw new Error('All-time stats not ready');
+}
 
-// async function fetchStatsAllTimeWithRetry(apiKey, { tries = 3, delayMs = 1500 } = {}) { /* unused */ }
-// async function fetchAllTimeSinceToday(apiKey) { /* unused */ }
-
-// async function fetchStatsRange(range, apiKey) { /* unused */ }
+// Fallback for totals when all_time stats aren't ready
+async function fetchAllTimeSinceToday(apiKey) {
+  const url = new URL('https://wakatime.com/api/v1/users/current/all_time_since_today');
+  const auth = Buffer.from(`${apiKey}`).toString('base64');
+  const res = await fetch(url, {
+    headers: { Authorization: `Basic ${auth}`, Accept: 'application/json' },
+  });
+  if (!res.ok) {
+    const text = await res.text().catch(() => '');
+    throw new Error(`Upstream ${res.status}: ${text.slice(0, 200)}`);
+  }
+  return res.json();
+}
 
 function normalizeStatsEntities(list) {
   const entries = (list || []).map((it) => ({ name: it.name, total_seconds: it.total_seconds || 0 }));
@@ -71,9 +115,60 @@ export default async function handler(req, res) {
     return;
   }
 
-  // Return last_7_days aggregates + weekday bars
+  // Support period selection via ?period=... or ?range=...
+  const periodParam = (req.query?.period || req.query?.range || 'last_7_days') + '';
+
   try {
-    // Fetch last 7 days summaries (single source of truth)
+    if (periodParam === 'all_time' || periodParam === 'all') {
+      // Try official all_time first, with a short retry loop
+      let data;
+      try {
+        data = await fetchStatsAllTimeWithRetry(API_KEY, { tries: 3, delayMs: 1500 });
+      } catch {
+        // Fallback: totals from all_time_since_today, breakdowns from last_6_months
+        const [fallbackTotalsJson, fallbackBreakdownJson] = await Promise.all([
+          fetchAllTimeSinceToday(API_KEY).catch(() => null),
+          fetchStats('last_6_months', API_KEY).catch(() => null),
+        ]);
+        const totals = fallbackTotalsJson?.data || {};
+        const breakdown = fallbackBreakdownJson?.data || {};
+        data = {
+          total_seconds: Number(totals?.total_seconds || 0),
+          human_readable_total: totals?.text || (totals?.human_readable_total) || toHuman(totals?.total_seconds || 0),
+          languages: breakdown?.languages || [],
+          editors: breakdown?.editors || [],
+          projects: breakdown?.projects || [],
+          is_up_to_date: false,
+        };
+      }
+
+      // Also fetch last_7_days to provide weekday bars even in all_time mode
+      const last7 = await fetchSummaries('last_7_days', API_KEY).catch(() => ({ data: [] }));
+      const days = last7?.data || [];
+      const weekdayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+      const weekdays = days.map((d) => {
+        const dateStr = d?.range?.date || d?.range?.start || d?.range?.end;
+        const date = dateStr ? new Date(dateStr) : null;
+        const w = date ? weekdayNames[date.getUTCDay()] : undefined;
+        return { date: dateStr, weekday: w, total_seconds: d?.grand_total?.total_seconds || 0 };
+      });
+
+      const out = {
+        human_readable_total: data?.human_readable_total || toHuman(data?.total_seconds || 0),
+        total_seconds: Number(data?.total_seconds || data?.grand_total?.total_seconds || 0),
+        languages: normalizeStatsEntities(data?.languages || []),
+        editors: normalizeStatsEntities(data?.editors || []),
+        projects: normalizeStatsEntities(data?.projects || []),
+        weekdays,
+        period: 'all_time',
+        range: undefined,
+        cachedAt: new Date().toISOString(),
+      };
+      res.status(200).json(out);
+      return;
+    }
+
+    // Default: last_7_days aggregates + weekday bars
     const json = await fetchSummaries('last_7_days', API_KEY);
     const days = json?.data || [];
     const weekdayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];

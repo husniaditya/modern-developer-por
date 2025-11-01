@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { motion, useInView } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { useTranslation } from 'react-i18next';
@@ -14,8 +14,6 @@ interface Skill {
 
 const SkillsSection = () => {
   const { t } = useTranslation();
-  const sectionRef = useRef<HTMLElement>(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
 
   const skills: Skill[] = [
     { name: 'React', level: 95, category: 'Frontend' },
@@ -71,12 +69,16 @@ const SkillsSection = () => {
   };
 
   return (
-    <section id="skills" ref={sectionRef} className="py-20 bg-secondary/30">
+    <section
+      id="skills"
+      className="py-20 bg-secondary/30 scroll-mt-[calc(var(--nav-h,72px)+12px)]"
+    >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
           className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-4xl font-bold text-foreground mb-4">{t('skills.title')}</h2>
@@ -89,7 +91,8 @@ const SkillsSection = () => {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           variants={containerVariants}
           initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
         >
           {categories.map((category, categoryIndex) => (
             <motion.div key={category.key} variants={cardVariants}>
@@ -106,6 +109,9 @@ const SkillsSection = () => {
                         className="space-y-2"
                         variants={skillVariants}
                         custom={skillIndex}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.2 }}
                       >
                         <div className="flex justify-between items-center">
                           <span className="font-medium">{skill.name}</span>
@@ -115,7 +121,8 @@ const SkillsSection = () => {
                           <motion.div
                             className="skill-bar h-3 rounded-full relative"
                             initial={{ width: 0 }}
-                            animate={isInView ? { width: `${skill.level}%` } : { width: 0 }}
+                            whileInView={{ width: `${skill.level}%` }}
+                            viewport={{ once: true, amount: 0.2 }}
                             transition={{ 
                               duration: 2, 
                               delay: categoryIndex * 0.15 + skillIndex * 0.08,
@@ -125,7 +132,8 @@ const SkillsSection = () => {
                             <motion.div
                               className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
                               initial={{ x: '-100%' }}
-                              animate={isInView ? { x: '100%' } : { x: '-100%' }}
+                              whileInView={{ x: '100%' }}
+                              viewport={{ once: true, amount: 0.2 }}
                               transition={{
                                 duration: 1.5,
                                 delay: categoryIndex * 0.15 + skillIndex * 0.08 + 0.5,
@@ -146,7 +154,8 @@ const SkillsSection = () => {
         <motion.div
           className="mt-12"
           initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           <GithubContributions username="husniaditya" title={t('skills.contributionsTitle', { defaultValue: 'GitHub Contributions' })} />
@@ -156,7 +165,8 @@ const SkillsSection = () => {
         <motion.div
           className="mt-8"
           initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
           <WakaTimeSection embed />

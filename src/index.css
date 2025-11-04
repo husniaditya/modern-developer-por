@@ -11,6 +11,31 @@
   }
 }
 
+/* Print styles */
+@media print {
+  /* Hide everything except printable resume */
+  body > #root > div > *:not(.printable-resume) {
+    display: none !important;
+  }
+  
+  /* Ensure print resume is visible */
+  .printable-resume {
+    display: block !important;
+  }
+  
+  /* Hide screen-only elements */
+  nav, footer, .scroll-to-top, header {
+    display: none !important;
+  }
+  
+  /* Optimize print layout */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+}
+
 :root {
   /* Light theme - Personal brand colors */
   --background: oklch(1 0 0);

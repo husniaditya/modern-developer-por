@@ -2,17 +2,53 @@ import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { ArrowDown, Download, LinkedinLogo, GithubLogo, Envelope } from '@phosphor-icons/react';
+import { ArrowDown, Download, LinkedinLogo, GithubLogo, Envelope, Printer } from '@phosphor-icons/react';
 import TypewriterEffect from './TypewriterEffect';
 import { smoothScrollTo } from '@/utils/scrollUtils';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '@/contexts/ThemeContext';
 import profileImg from '@/assets/images/profile/profile.webp';
-import resumePdf from '@/assets/resume/resume - Husni Aditya.pdf';
+
+// Import all language-specific resumes
+import resumeEN from '@/assets/resume/resume - Husni Aditya_EN.pdf';
+import resumeID from '@/assets/resume/resume - Husni Aditya_ID.pdf';
+import resumeFR from '@/assets/resume/resume - Husni Aditya_FR.pdf';
+import resumeES from '@/assets/resume/resume - Husni Aditya_ES.pdf';
+import resumeDE from '@/assets/resume/resume - Husni Aditya_DE.pdf';
+import resumeCN from '@/assets/resume/resume - Husni Aditya_CN.pdf';
+import resumeJA from '@/assets/resume/resume - Husni Aditya_JA.pdf';
 
 const HeroSection = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { theme } = useTheme();
+
+  // Get the appropriate resume based on current language
+  const getResumePdf = () => {
+    const languageMap: Record<string, string> = {
+      'en': resumeEN,
+      'id': resumeID,
+      'fr': resumeFR,
+      'es': resumeES,
+      'de': resumeDE,
+      'cn': resumeCN,
+      'ja': resumeJA,
+    };
+    return languageMap[i18n.language] || resumeEN;
+  };
+
+  const getResumeFilename = () => {
+    const languageNames: Record<string, string> = {
+      'en': 'English',
+      'id': 'Indonesian',
+      'fr': 'French',
+      'es': 'Spanish',
+      'de': 'German',
+      'cn': 'Chinese',
+      'ja': 'Japanese',
+    };
+    const lang = languageNames[i18n.language] || 'English';
+    return `Husni_Aditya_Resume_${lang}.pdf`;
+  };
 
   // Generate random stars for the GitHub Spark effect
   const stars = useMemo(() => {
@@ -48,6 +84,10 @@ const HeroSection = () => {
 
   const scrollToNext = () => {
     smoothScrollTo('skills');
+  };
+
+  const handlePrint = () => {
+    window.print();
   };
 
   // Animation variants
@@ -467,10 +507,10 @@ const HeroSection = () => {
                 </Button>
               </motion.a>
             </div>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 flex-wrap justify-center">
               <motion.a
-                href={resumePdf}
-                download="Husni_Aditya_Resume.pdf"
+                href={getResumePdf()}
+                download={getResumeFilename()}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -480,8 +520,18 @@ const HeroSection = () => {
                 </Button>
               </motion.a>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button 
+                  variant="outline" 
+                  onClick={handlePrint}
+                  className="group border-primary/50 hover:border-primary hover:bg-primary/10"
+                >
+                  <Printer size={16} className="mr-2 group-hover:animate-bounce" />
+                  {t('hero.printResume')}
+                </Button>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Button variant="outline" onClick={scrollToNext} className="border-accent/50 hover:border-accent hover:bg-accent/10">
-                  View My Work
+                  {t('hero.viewMyWork')}
                 </Button>
               </motion.div>
             </div>

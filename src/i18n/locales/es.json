@@ -15,6 +15,8 @@
     "title": "Senior Full Stack Developer",
     "description": "Apasionado por crear experiencias digitales excepcionales a través de soluciones web innovadoras. Especializado en tecnologías modernas y arquitecturas escalables.",
     "downloadResume": "Descargar CV",
+    "printResume": "Imprimir CV",
+    "viewMyWork": "Ver mi trabajo",
     "contactMe": "Contáctame"
   },
   "skills": {
@@ -52,7 +54,7 @@
       },
       "ciptasejati": {
         "title": "Cipta Sejati Indonesia - Plataforma Comunitaria",
-        "description": "Plataforma colaborativa de gestión de tareas con actualizaciones en tiempo real, roles de usuario y seguimiento de proyectos para equipos. Incluye dashboard para gestión de miembros y análisis.",
+        "description": "Plataforma de gestión integral basada en la nube diseñada para una gran federación de artes marciales con 17 dojos en diferentes ciudades y una base de miembros que supera los 10,000 estudiantes e instructores. Sirve como el sistema nervioso central para toda la organización, optimizando las operaciones de membresía, gestión de instalaciones y supervisión financiera.",
         "category": "Full Stack, Backend, Frontend"
       },
       "erp": {
@@ -280,5 +282,51 @@
     "noData": "Sin datos.",
     "tip404": "Consejo: Usa un enlace público de WakaTime en formato JSON que termine con",
     "notConfigured": "WakaTime no está configurado. Establece VITE_WAKATIME_SHARE_URL (o VITE_WAKATIME_API) a una URL pública JSON de compartición."
+  },
+  "printResume": {
+    "summary": "Desarrollador Full Stack Senior innovador con más de 9 años de experiencia construyendo aplicaciones web escalables. Experto en React, TypeScript, Node.js, PHP, SQL, y tecnologías en la nube. Historial probado liderando equipos de desarrollo y entregando soluciones a nivel empresarial. Apasionado por el código limpio, la optimización del rendimiento y la creación de experiencias de usuario excepcionales.",
+    "sections": {
+      "skills": "Habilidades Técnicas",
+      "experience": "Experiencia Profesional",
+      "projects": "Proyectos Destacados",
+      "education": "Educación",
+      "languages": "Idiomas",
+      "certifications": "Certificaciones"
+    },
+    "labels": {
+      "technologies": "Tecnologías"
+    },
+    "experience": {
+      "wilmar": "Liderando la gestión de aplicaciones empresariales, optimización de sistemas e iniciativas de transformación digital. Gestionando infraestructura en la nube de Azure y coordinando con equipos de desarrollo globales.",
+      "megaMarine": "Desarrollé y mantuve aplicaciones web full-stack para logística marítima. Construí módulos ERP para gestión de inventario, seguimiento de envíos e informes financieros.",
+      "group369": "Construí soluciones empresariales personalizadas incluyendo HRIS, ERP y sistemas de biblioteca digital. Colaboré con equipos multifuncionales para entregar aplicaciones escalables."
+    },
+    "projects": {
+      "chocomaidBot": "Bot de Discord multifuncional impulsado por IA con transmisión de música, integraciones de juegos y funciones de gestión de servidor.",
+      "ciptaSejati": "Plataforma de gestión integral basada en la nube diseñada para una gran federación de artes marciales con 17 dojos en diferentes ciudades y una base de miembros que supera los 10,000 estudiantes e instructores. Sirve como el sistema nervioso central para toda la organización, optimizando las operaciones de membresía, gestión de instalaciones y supervisión financiera.",
+      "erpApp": "Sistema de planificación de recursos empresariales para empresa manufacturera gestionando inventario, ventas, compras y módulos contables. Las características incluyen informes en tiempo real, roles multiusuario e integración con servicios de terceros.",
+      "digitalLibrary": "Sistema de biblioteca digital escalable con búsqueda avanzada, gestión de usuarios y funciones de análisis.",
+      "hrisApp": "Sistema de Información de Recursos Humanos gestionando datos de empleados, asistencia, nómina y evaluaciones de desempeño.",
+      "productSpec": "Sistema de gestión de productos para documentar especificaciones técnicas e información de cumplimiento.",
+      "recruitment": "Sistema de gestión de reclutamiento para publicación de empleos, seguimiento de candidatos y programación de entrevistas.",
+      "parking": "Sistema de gestión de estacionamiento con seguimiento de vehículos, procesamiento de pagos y asignación de espacios.",
+      "shipment": "Sistema de seguimiento de envíos para gestión logística con seguimiento en tiempo real y actualizaciones de entrega.",
+      "maintenance": "Sistema de gestión de mantenimiento para seguimiento de equipos, órdenes de trabajo y programación de mantenimiento preventivo."
+    },
+    "education": {
+      "remark": {
+        "incomplete": "Incompleto"
+      }
+    },
+    "languages": {
+      "proficiency": {
+        "intermediate": "Intermedio",
+        "native": "Nativo"
+      }
+    },
+    "footer": {
+      "generated": "Generado desde el portafolio",
+      "lastUpdated": "Última actualización"
+    }
   }
 }

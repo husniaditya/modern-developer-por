@@ -15,6 +15,8 @@
     "title": "Senior Full Stack Developer",
     "description": "Passionate about creating exceptional digital experiences through innovative web solutions. Specialized in modern technologies and scalable architectures.",
     "downloadResume": "Download Resume",
+    "printResume": "Print Resume",
+    "viewMyWork": "View My Work",
     "contactMe": "Contact Me"
   },
   "skills": {
@@ -50,7 +52,7 @@
       },
       "ciptasejati": {
         "title": "Cipta Sejati Indonesia - Community Platform",
-        "description": "Collaborative task management platform with real-time updates, user roles, and project tracking for teams. Including dashboard for member management and analytics.",
+        "description": "Comprehensive, cloud-based management platform designed for a large martial arts federation with 17 dojos across different cities and a membership base exceeding 10,000 students and instructors. It serves as the central nervous system for the entire organization, streamlining operations for membership, facility management, and financial oversight.",
         "category": "Full Stack, Backend, Frontend"
       },
       "erp": {
@@ -285,5 +287,51 @@
     "noData": "No data.",
     "tip404": "Tip: Use a WakaTime public share JSON link ending with",
     "notConfigured": "WakaTime is not configured. Set VITE_WAKATIME_SHARE_URL (or VITE_WAKATIME_API) to a public share JSON URL."
+  },
+  "printResume": {
+    "summary": "Innovative Senior Full Stack Developer with 9+ years of experience building scalable web applications. Expert in React, TypeScript, Node.js, PHP, SQL, and cloud technologies. Proven track record in leading development teams and delivering enterprise-level solutions. Passionate about clean code, performance optimization, and creating exceptional user experiences.",
+    "sections": {
+      "skills": "Technical Skills",
+      "experience": "Professional Experience",
+      "projects": "Featured Projects",
+      "education": "Education",
+      "languages": "Languages",
+      "certifications": "Certifications"
+    },
+    "labels": {
+      "technologies": "Technologies"
+    },
+    "experience": {
+      "wilmar": "Leading enterprise application management, system optimization, and digital transformation initiatives. Managing Azure cloud infrastructure and coordinating with global development teams.",
+      "megaMarine": "Developed and maintained full-stack web applications for marine logistics. Built ERP modules for inventory management, shipment tracking, and financial reporting.",
+      "group369": "Built custom enterprise solutions including HRIS, ERP, and digital library systems. Collaborated with cross-functional teams to deliver scalable applications."
+    },
+    "projects": {
+      "chocomaidBot": "Multi-functional AI-powered Discord bot with music streaming, game integrations, and server management features.",
+      "ciptaSejati": "Comprehensive, cloud-based management platform designed for a large martial arts federation with 17 dojos across different cities and a membership base exceeding 10,000 students and instructors. It serves as the central nervous system for the entire organization, streamlining operations for membership, facility management, and financial oversight.",
+      "erpApp": "Enterprise Resource Planning system for manufacturing company managing nventory, sales, procurement, and accounting modules. Features include real-time reporting, multi-user roles, and integration with third-party services.",
+      "digitalLibrary": "Scalable digital library system with advanced search, user management, and analytics features.",
+      "hrisApp": "Human Resource Information System managing employee data, attendance, payroll, and performance reviews.",
+      "productSpec": "Product management system for documenting technical specifications and compliance information.",
+      "recruitment": "Recruitment management system for job posting, applicant tracking, and interview scheduling.",
+      "parking": "Parking management system with vehicle tracking, payment processing, and space allocation.",
+      "shipment": "Shipment tracking system for logistics management with real-time tracking and delivery updates.",
+      "maintenance": "Maintenance management system for equipment tracking, work orders, and preventive maintenance scheduling."
+    },
+    "education": {
+      "remark": {
+        "incomplete": "Incomplete"
+      }
+    },
+    "languages": {
+      "proficiency": {
+        "intermediate": "Intermediate",
+        "native": "Native"
+      }
+    },
+    "footer": {
+      "generated": "Generated from portfolio",
+      "lastUpdated": "Last updated"
+    }
   }
 }

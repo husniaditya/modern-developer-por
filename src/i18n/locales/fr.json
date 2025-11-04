@@ -15,6 +15,8 @@
     "title": "Développeur Full Stack Senior",
     "description": "Passionné par la création d'expériences numériques exceptionnelles grâce à des solutions web innovantes. Spécialisé dans les technologies modernes et les architectures évolutives.",
     "downloadResume": "Télécharger le CV",
+    "printResume": "Imprimer le CV",
+    "viewMyWork": "Voir mon travail",
     "contactMe": "Contactez-moi"
   },
   "skills": {
@@ -52,7 +54,7 @@
       },
       "ciptasejati": {
         "title": "Cipta Sejati Indonesia - Plateforme Communautaire",
-        "description": "Plateforme collaborative de gestion des tâches avec mises à jour en temps réel, rôles utilisateur et suivi de projet pour les équipes. Comprend un tableau de bord pour la gestion des membres et les analyses.",
+        "description": "Plateforme de gestion complète basée sur le cloud conçue pour une grande fédération d'arts martiaux avec 17 dojos dans différentes villes et une base de membres dépassant 10 000 étudiants et instructeurs. Elle sert de système nerveux central pour l'ensemble de l'organisation, rationalisant les opérations d'adhésion, de gestion des installations et de supervision financière.",
         "category": "Full Stack, Backend, Frontend"
       },
       "erp": {
@@ -269,16 +271,62 @@
     "viewLess": "Voir Moins"
   },
   "wakatime": {
-    "title": "Activité de code",
+    "title": "Activité de Codage",
     "subtitle": "7 derniers jours • Total {{total}}",
     "allTime": "Tout le temps",
     "last7Days": "7 derniers jours",
     "totalLabel": "Total",
-    "topLanguages": "Langages principaux",
+    "topLanguages": "Langages Principaux",
     "breakdown": "Répartition",
-    "weeklyActivity": "Activité hebdomadaire",
+    "weeklyActivity": "Activité Hebdomadaire",
     "noData": "Aucune donnée.",
-    "tip404": "Astuce : utilisez un lien de partage WakaTime public au format JSON se terminant par",
-    "notConfigured": "WakaTime n’est pas configuré. Définissez VITE_WAKATIME_SHARE_URL (ou VITE_WAKATIME_API) sur une URL JSON de partage public."
+    "tip404": "Astuce: Utilisez un lien JSON de partage public WakaTime se terminant par",
+    "notConfigured": "WakaTime n'est pas configuré. Définissez VITE_WAKATIME_SHARE_URL (ou VITE_WAKATIME_API) sur une URL JSON de partage public."
+  },
+  "printResume": {
+    "summary": "Développeur Full Stack Senior innovant avec plus de 9 ans d'expérience dans la création d'applications web évolutives. Expert en React, TypeScript, Node.js, PHP, SQL et technologies cloud. Bilan prouvé dans la direction d'équipes de développement et la livraison de solutions de niveau entreprise. Passionné par le code propre, l'optimisation des performances et la création d'expériences utilisateur exceptionnelles.",
+    "sections": {
+      "skills": "Compétences Techniques",
+      "experience": "Expérience Professionnelle",
+      "projects": "Projets Vedettes",
+      "education": "Formation",
+      "languages": "Langues",
+      "certifications": "Certifications"
+    },
+    "labels": {
+      "technologies": "Technologies"
+    },
+    "experience": {
+      "wilmar": "Direction de la gestion des applications d'entreprise, de l'optimisation des systèmes et des initiatives de transformation numérique. Gestion de l'infrastructure cloud Azure et coordination avec les équipes de développement mondiales.",
+      "megaMarine": "Développement et maintenance d'applications web full-stack pour la logistique maritime. Construction de modules ERP pour la gestion des stocks, le suivi des expéditions et les rapports financiers.",
+      "group369": "Construction de solutions d'entreprise personnalisées incluant SIRH, ERP et systèmes de bibliothèque numérique. Collaboration avec des équipes interfonctionnelles pour livrer des applications évolutives."
+    },
+    "projects": {
+      "chocomaidBot": "Bot Discord multifonctionnel alimenté par l'IA avec streaming musical, intégrations de jeux et fonctionnalités de gestion de serveur.",
+      "ciptaSejati": "Plateforme de gestion complète basée sur le cloud conçue pour une grande fédération d'arts martiaux avec 17 dojos dans différentes villes et une base de membres dépassant 10 000 étudiants et instructeurs. Elle sert de système nerveux central pour l'ensemble de l'organisation, rationalisant les opérations d'adhésion, de gestion des installations et de supervision financière.",
+      "erpApp": "Système de planification des ressources d'entreprise pour une entreprise de fabrication gérant l'inventaire, les ventes, les achats et les modules comptables. Les fonctionnalités incluent le reporting en temps réel, les rôles multi-utilisateurs et l'intégration avec des services tiers.",
+      "digitalLibrary": "Système de bibliothèque numérique évolutif avec recherche avancée, gestion des utilisateurs et fonctionnalités d'analyse.",
+      "hrisApp": "Système d'information des ressources humaines gérant les données des employés, les présences, la paie et les évaluations de performance.",
+      "productSpec": "Système de gestion de produits pour documenter les spécifications techniques et les informations de conformité.",
+      "recruitment": "Système de gestion du recrutement pour la publication d'offres d'emploi, le suivi des candidats et la planification des entretiens.",
+      "parking": "Système de gestion de parking avec suivi des véhicules, traitement des paiements et allocation d'espaces.",
+      "shipment": "Système de suivi des expéditions pour la gestion logistique avec suivi en temps réel et mises à jour de livraison.",
+      "maintenance": "Système de gestion de la maintenance pour le suivi des équipements, les ordres de travail et la planification de la maintenance préventive."
+    },
+    "education": {
+      "remark": {
+        "incomplete": "Incomplet"
+      }
+    },
+    "languages": {
+      "proficiency": {
+        "intermediate": "Intermédiaire",
+        "native": "Natif"
+      }
+    },
+    "footer": {
+      "generated": "Généré depuis le portfolio",
+      "lastUpdated": "Dernière mise à jour"
+    }
   }
 }

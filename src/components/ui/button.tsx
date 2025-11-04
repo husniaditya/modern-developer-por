@@ -10,16 +10,16 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90",
+          "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90 dark:hover:bg-primary dark:hover:brightness-125 dark:hover:shadow-[0_0_20px_rgba(147,51,234,0.3)]",
         destructive:
-          "bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
+          "bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60 dark:hover:bg-destructive/80 dark:hover:brightness-110 dark:hover:shadow-[0_0_15px_rgba(239,68,68,0.3)]",
         outline:
-          "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
+          "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-accent/30 dark:hover:border-accent/50 dark:hover:shadow-[0_0_15px_rgba(6,182,212,0.2)]",
         secondary:
-          "bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80",
+          "bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80 dark:hover:bg-secondary/90 dark:hover:brightness-125",
         ghost:
-          "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
-        link: "text-primary underline-offset-4 hover:underline",
+          "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/30 dark:hover:brightness-110",
+        link: "text-primary underline-offset-4 hover:underline dark:hover:brightness-125",
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",

@@ -13,6 +13,8 @@ import MilestonesSection from '@/components/MilestonesSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import ContactSection from '@/components/ContactSection';
 import ScrollToTop from '@/components/ScrollToTop';
+import PrintableResume from '@/components/PrintableResume';
+import { getSkillsData, getProjectsData, getCertificationsData, getMilestonesData, getEducation, getLanguages, getContactDetails } from '@/lib/portfolioData';
 import profileImg from '@/assets/images/profile/profile.webp';
 // MouseTracker removed
 
@@ -139,6 +141,17 @@ function App() {
 
         <Toaster position="bottom-right" />
         <ScrollToTop />
+        
+        {/* Printable Resume - Hidden on screen, visible only when printing */}
+        <PrintableResume
+          skills={getSkillsData()}
+          projects={getProjectsData()}
+          certifications={getCertificationsData()}
+          milestones={getMilestonesData()}
+          education={getEducation()}
+          languages={getLanguages()}
+          contacts={getContactDetails()}
+        />
       </motion.div>
     </ThemeProvider>
   );

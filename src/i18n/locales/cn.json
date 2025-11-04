@@ -15,6 +15,8 @@
     "title": "資深全端開發工程師",
     "description": "熱衷於透過創新的網路解決方案創造卓越的數位體驗。專精於現代技術和可擴展架構。",
     "downloadResume": "下載履歷",
+    "printResume": "列印履歷",
+    "viewMyWork": "查看我的作品",
     "contactMe": "聯絡我"
   },
   "skills": {
@@ -52,7 +54,7 @@
       },
       "ciptasejati": {
         "title": "Cipta Sejati Indonesia - 社群平台",
-        "description": "協作任務管理平台，具備即時更新、使用者角色和團隊專案追蹤功能。包含成員管理和分析的儀表板。",
+        "description": "為大型武術聯盟設計的全面雲端管理平台，擁有分佈在不同城市的17個道場，會員基礎超過10,000名學生和教練。它作為整個組織的中樞神經系統，簡化會員管理、設施管理和財務監督的運營。",
         "category": "全端, 後端, 前端"
       },
       "erp": {
@@ -280,5 +282,51 @@
     "noData": "沒有資料。",
     "tip404": "提示：請使用以此結尾的 WakaTime 公開分享 JSON 連結",
     "notConfigured": "尚未設定 WakaTime。請將 VITE_WAKATIME_SHARE_URL（或 VITE_WAKATIME_API）設為公開分享的 JSON URL。"
+  },
+  "printResume": {
+    "summary": "创新的高级全栈开发人员，拥有9年以上构建可扩展Web应用程序的经验。精通React、TypeScript、Node.js、PHP、SQL、和云技术。在领导开发团队和交付企业级解决方案方面拥有良好的记录。热衷于简洁的代码、性能优化和创造卓越的用户体验。",
+    "sections": {
+      "skills": "技术技能",
+      "experience": "工作经历",
+      "projects": "精选项目",
+      "education": "教育背景",
+      "languages": "语言能力",
+      "certifications": "证书"
+    },
+    "labels": {
+      "technologies": "技术"
+    },
+    "experience": {
+      "wilmar": "领导企业应用管理、系统优化和数字化转型计划。管理Azure云基础设施并与全球开发团队协调。",
+      "megaMarine": "开发和维护海运物流的全栈Web应用程序。构建用于库存管理、货运跟踪和财务报告的ERP模块。",
+      "group369": "构建定制企业解决方案，包括HRIS、ERP和数字图书馆系统。与跨职能团队合作交付可扩展的应用程序。"
+    },
+    "projects": {
+      "chocomaidBot": "具有音乐流媒体、游戏集成和服务器管理功能的多功能AI驱动Discord机器人。",
+      "ciptaSejati": "為大型武術聯盟設計的全面雲端管理平台，擁有分佈在不同城市的17個道場，會員基礎超過10,000名學生和教練。它作為整個組織的中樞神經系統，簡化會員管理、設施管理和財務監督的運營。",
+      "erpApp": "製造企業的企業資源規劃系統，管理庫存、銷售、採購和會計模組。功能包括實時報告、多用戶角色和第三方服務集成。",
+      "digitalLibrary": "可擴展的數字圖書館系統，具有高級搜索、用戶管理和分析功能。",
+      "hrisApp": "管理員工數據、考勤、工資單和績效評估的人力資源信息系統。",
+      "productSpec": "用於記錄技術規格和合規性信息的產品管理系統。",
+      "recruitment": "招聘管理系統，用於職位發布、申請人跟踪和面試安排。",
+      "parking": "停車管理系統，具有車輛跟踪、支付處理和空間分配功能。",
+      "shipment": "物流管理的貨運跟踪系統，具有實時跟踪和交付更新功能。",
+      "maintenance": "維護管理系統，用於設備跟踪、工作訂單和預防性維護調度。"
+    },
+    "education": {
+      "remark": {
+        "incomplete": "未完成"
+      }
+    },
+    "languages": {
+      "proficiency": {
+        "intermediate": "中級",
+        "native": "母語"
+      }
+    },
+    "footer": {
+      "generated": "從作品集生成",
+      "lastUpdated": "最后更新"
+    }
   }
 }

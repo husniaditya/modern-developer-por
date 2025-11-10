@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { motion } from 'framer-motion';
 import { getWakaShareUrl, fetchWakaSummary, type WakaSummary } from '@/lib/wakatime';
 import { useTranslation } from 'react-i18next';
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, Legend } from 'recharts';
 import { useTheme } from '@/contexts/ThemeContext';
 
 function formatHhMm(totalSeconds?: number, fallback?: string) {
@@ -59,6 +59,10 @@ export default function WakaTimeSection({ embed = false }: { embed?: boolean }) 
   const primaryColor = useCssColor('--primary', '#4f46e5');
   const accentColor = useCssColor('--accent', '#22d3ee');
   const axisColor = useCssColor('--muted-foreground', '#6b7280');
+
+  // Color palette for pie chart
+  const COLORS = ['#8b5cf6', '#06b6d4', '#10b981', '#f59e0b', '#ef4444', '#ec4899', '#6366f1', '#14b8a6'];
+
 
   // Animation helpers
   const listVariants = useMemo(() => ({
@@ -139,8 +143,8 @@ export default function WakaTimeSection({ embed = false }: { embed?: boolean }) 
   const inner = (
     <>
       {header}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <Card>
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <Card className="lg:col-span-9">
           <CardHeader>
             <CardTitle>{t('wakatime.topLanguages')}</CardTitle>
           </CardHeader>
@@ -159,51 +163,122 @@ export default function WakaTimeSection({ embed = false }: { embed?: boolean }) 
             {!error && topLangs.length === 0 && (
               <p className="text-sm text-muted-foreground">{t('wakatime.noData')}</p>
             )}
-            <motion.div key={listAnimKey} initial="hidden" animate="visible" variants={listVariants}>
-              {topLangs.map((l) => {
-                const pct = typeof l.percent === 'number' ? l.percent : undefined;
-                return (
-                  <motion.div key={l.name} className="space-y-1" variants={itemVariants} transition={{ duration: 0.35 }}>
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm font-medium">{l.name}</span>
-                      <span className="text-xs text-muted-foreground">{l.digital ?? formatHhMm(l.total_seconds)}</span>
-                    </div>
-                    <Progress value={pct ?? 0} className="h-2" />
-                  </motion.div>
-                );
-              })}
-            </motion.div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Pie chart */}
+              {topLangs.length > 0 && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="flex items-center justify-center"
+                >
+                  <ResponsiveContainer width="100%" height={240}>
+                    <PieChart>
+                      <Pie
+                        data={topLangs}
+                        cx="50%"
+                        cy="50%"
+                        labelLine={false}
+                        label={({ name, percent }) => `${name} ${(percent || 0).toFixed(0)}%`}
+                        outerRadius={80}
+                        fill="#8884d8"
+                        dataKey="total_seconds"
+                        animationBegin={0}
+                        animationDuration={800}
+                      >
+                        {topLangs.map((entry, index) => (
+                          <Cell key={`cell-${entry.name}`} fill={COLORS[index % COLORS.length]} />
+                        ))}
+                      </Pie>
+                      <Tooltip
+                        content={({ active, payload }: any) => {
+                          if (active && payload && payload.length) {
+                            const data = payload[0].payload;
+                            return (
+                              <div className="rounded-md bg-popover px-3 py-2 text-sm shadow-lg border border-border">
+                                <p className="font-medium">{data.name}</p>
+                                <p className="text-muted-foreground">
+                                  {data.digital ?? formatHhMm(data.total_seconds)} 
+                                  {typeof data.percent === 'number' && ` (${data.percent.toFixed(1)}%)`}
+                                </p>
+                              </div>
+                            );
+                          }
+                          return null;
+                        }}
+                      />
+                    </PieChart>
+                  </ResponsiveContainer>
+                </motion.div>
+              )}
+
+              {/* Progress bars */}
+              <motion.div key={listAnimKey} initial="hidden" animate="visible" variants={listVariants} className="space-y-4">
+                {topLangs.map((l) => {
+                  const pct = typeof l.percent === 'number' ? l.percent : undefined;
+                  return (
+                    <motion.div key={l.name} className="space-y-1" variants={itemVariants} transition={{ duration: 0.35 }}>
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-medium">{l.name}</span>
+                        <span className="text-xs text-muted-foreground">{l.digital ?? formatHhMm(l.total_seconds)}</span>
+                      </div>
+                      <Progress value={pct ?? 0} className="h-2" />
+                    </motion.div>
+                  );
+                })}
+              </motion.div>
+            </div>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="lg:col-span-3">
           <CardHeader>
             <CardTitle>{t('wakatime.breakdown')}</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-3">
-            <motion.div className="flex flex-wrap gap-2" key={editorsKey} initial="hidden" animate="visible" variants={listVariants}>
-              {(summary?.editors ?? []).slice(0, 4).map((e) => (
-                <motion.span key={e.name} variants={itemVariants} transition={{ duration: 0.35 }}>
-                  <Badge variant="secondary" className="border border-border/60 bg-muted/60">
-                    {e.name} · {e.digital ?? formatHhMm(e.total_seconds)}
-                  </Badge>
-                </motion.span>
-              ))}
-            </motion.div>
-            <motion.div className="flex flex-wrap gap-2" key={projectsKey} initial="hidden" animate="visible" variants={listVariants}>
-              {(summary?.projects ?? []).slice(0, 4).map((p) => (
-                <motion.span key={p.name} variants={itemVariants} transition={{ duration: 0.35 }}>
-                  <Badge variant="outline">
-                    {p.name} · {p.digital ?? formatHhMm(p.total_seconds)}
-                  </Badge>
-                </motion.span>
-              ))}
-            </motion.div>
+          <CardContent className="space-y-4">
+            {/* Editors */}
+            {(summary?.editors ?? []).length > 0 && (
+              <div className="space-y-2">
+                <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+                  {t('wakatime.editors', { defaultValue: 'Editors' })}
+                </h4>
+                <motion.div className="flex flex-wrap gap-2" key={editorsKey} initial="hidden" animate="visible" variants={listVariants}>
+                  {(summary?.editors ?? []).slice(0, 6).map((e) => (
+                    <motion.span key={e.name} variants={itemVariants} transition={{ duration: 0.35 }}>
+                      <Badge variant="secondary" className="border border-border/60 bg-muted/60">
+                        {e.name} · {e.digital ?? formatHhMm(e.total_seconds)}
+                        {typeof e.percent === 'number' && ` (${e.percent.toFixed(0)}%)`}
+                      </Badge>
+                    </motion.span>
+                  ))}
+                </motion.div>
+              </div>
+            )}
+            
+            {/* Projects */}
+            {(summary?.projects ?? []).length > 0 && (
+              <div className="space-y-2">
+                <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+                  {t('wakatime.projects', { defaultValue: 'Projects' })}
+                </h4>
+                <motion.div className="flex flex-wrap gap-2" key={projectsKey} initial="hidden" animate="visible" variants={listVariants}>
+                  {(summary?.projects ?? []).slice(0, 8).map((p) => (
+                    <motion.span key={p.name} variants={itemVariants} transition={{ duration: 0.35 }}>
+                      <Badge variant="outline">
+                        {p.name} · {p.digital ?? formatHhMm(p.total_seconds)}
+                        {typeof p.percent === 'number' && ` (${p.percent.toFixed(0)}%)`}
+                      </Badge>
+                    </motion.span>
+                  ))}
+                </motion.div>
+              </div>
+            )}
           </CardContent>
         </Card>
 
         {/* Weekly activity bar chart (aggregate by weekday Mon..Sun) */}
-        <Card className="lg:col-span-2">
+        <Card className="lg:col-span-12">
           <CardHeader>
             <CardTitle>{t('wakatime.weeklyActivity')}</CardTitle>
           </CardHeader>

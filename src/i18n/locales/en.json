@@ -52,7 +52,7 @@
       },
       "ciptasejati": {
         "title": "Cipta Sejati Indonesia - Community Platform",
-        "description": "Comprehensive, cloud-based management platform designed for a large martial arts federation with 17 dojos across different cities and a membership base exceeding 10,000 students and instructors. It serves as the central nervous system for the entire organization, streamlining operations for membership, facility management, and financial oversight.",
+        "description": "Comprehensive, cloud-based management platform designed for a large martial arts federation with 63 dojos across different cities and a membership base exceeding 10,000 students and instructors. It serves as the central nervous system for the entire organization, streamlining operations for membership, facility management, and financial oversight.",
         "category": "Full Stack, Backend, Frontend"
       },
       "erp": {
@@ -282,6 +282,8 @@
     "last7Days": "Last 7 days",
     "totalLabel": "Total",
     "topLanguages": "Top Languages",
+    "editors": "Editors",
+    "projects": "Projects",
     "breakdown": "Breakdown",
     "weeklyActivity": "Weekly Activity",
     "noData": "No data.",
@@ -308,7 +310,7 @@
     },
     "projects": {
       "chocomaidBot": "Multi-functional AI-powered Discord bot with music streaming, game integrations, and server management features.",
-      "ciptaSejati": "Comprehensive, cloud-based management platform designed for a large martial arts federation with 17 dojos across different cities and a membership base exceeding 10,000 students and instructors. It serves as the central nervous system for the entire organization, streamlining operations for membership, facility management, and financial oversight.",
+      "ciptaSejati": "Comprehensive, cloud-based management platform designed for a large martial arts federation with 63 dojos across different cities and a membership base exceeding 10,000 students and instructors. It serves as the central nervous system for the entire organization, streamlining operations for membership, facility management, and financial oversight.",
       "erpApp": "Enterprise Resource Planning system for manufacturing company managing nventory, sales, procurement, and accounting modules. Features include real-time reporting, multi-user roles, and integration with third-party services.",
       "digitalLibrary": "Scalable digital library system with advanced search, user management, and analytics features.",
       "hrisApp": "Human Resource Information System managing employee data, attendance, payroll, and performance reviews.",

@@ -61,7 +61,7 @@
       },
       "ciptasejati": {
         "title": "Cipta Sejati Indonesia - Platform Komunitas",
-        "description": "Platform manajemen berbasis cloud yang komprehensif dirancang untuk federasi seni bela diri besar dengan 17 dojo di berbagai kota dan basis keanggotaan lebih dari 10.000 siswa dan instruktur. Platform ini berfungsi sebagai sistem pusat untuk seluruh organisasi, menyederhanakan operasi keanggotaan, manajemen fasilitas, dan pengawasan keuangan.",
+        "description": "Platform manajemen berbasis cloud yang komprehensif dirancang untuk federasi seni bela diri besar dengan 63 dojo di berbagai kota dan basis keanggotaan lebih dari 10.000 siswa dan instruktur. Platform ini berfungsi sebagai sistem pusat untuk seluruh organisasi, menyederhanakan operasi keanggotaan, manajemen fasilitas, dan pengawasan keuangan.",
         "category": "Full Stack, Backend, Frontend"
       },
       "erp": {
@@ -282,6 +282,8 @@
     "last7Days": "7 hari terakhir",
     "totalLabel": "Total",
     "topLanguages": "Bahasa Pemrograman Teratas",
+    "editors": "Editor",
+    "projects": "Proyek",
     "breakdown": "Rincian",
     "weeklyActivity": "Aktivitas Mingguan",
     "noData": "Tidak ada data.",
@@ -308,7 +310,7 @@
     },
     "projects": {
       "chocomaidBot": "Bot Discord bertenaga AI multi-fungsi dengan streaming musik, integrasi game, dan fitur manajemen server.",
-      "ciptaSejati": "Platform manajemen berbasis cloud yang komprehensif dirancang untuk federasi seni bela diri besar dengan 17 dojo di berbagai kota dan basis keanggotaan lebih dari 10.000 siswa dan instruktur. Platform ini berfungsi sebagai sistem pusat untuk seluruh organisasi, menyederhanakan operasi keanggotaan, manajemen fasilitas, dan pengawasan keuangan.",
+      "ciptaSejati": "Platform manajemen berbasis cloud yang komprehensif dirancang untuk federasi seni bela diri besar dengan 63 dojo di berbagai kota dan basis keanggotaan lebih dari 10.000 siswa dan instruktur. Platform ini berfungsi sebagai sistem pusat untuk seluruh organisasi, menyederhanakan operasi keanggotaan, manajemen fasilitas, dan pengawasan keuangan.",
       "erpApp": "Sistem Enterprise Resource Planning untuk perusahaan manufaktur yang mengelola inventori, penjualan, pengadaan, dan modul akuntansi. Fitur mencakup pelaporan real-time, peran multi-pengguna, dan integrasi dengan layanan pihak ketiga.",
       "digitalLibrary": "Sistem perpustakaan digital yang dapat diskalakan dengan pencarian lanjutan, manajemen pengguna, dan fitur analitik.",
       "hrisApp": "Sistem Informasi Sumber Daya Manusia yang mengelola data karyawan, kehadiran, penggajian, dan evaluasi kinerja.",

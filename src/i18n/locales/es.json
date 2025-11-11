@@ -54,7 +54,7 @@
       },
       "ciptasejati": {
         "title": "Cipta Sejati Indonesia - Plataforma Comunitaria",
-        "description": "Plataforma de gestión integral basada en la nube diseñada para una gran federación de artes marciales con 17 dojos en diferentes ciudades y una base de miembros que supera los 10,000 estudiantes e instructores. Sirve como el sistema nervioso central para toda la organización, optimizando las operaciones de membresía, gestión de instalaciones y supervisión financiera.",
+        "description": "Plataforma de gestión integral basada en la nube diseñada para una gran federación de artes marciales con 63 dojos en diferentes ciudades y una base de miembros que supera los 10,000 estudiantes e instructores. Sirve como el sistema nervioso central para toda la organización, optimizando las operaciones de membresía, gestión de instalaciones y supervisión financiera.",
         "category": "Full Stack, Backend, Frontend"
       },
       "erp": {
@@ -277,6 +277,8 @@
     "last7Days": "Últimos 7 días",
     "totalLabel": "Total",
     "topLanguages": "Lenguajes Principales",
+    "editors": "Editores",
+    "projects": "Proyectos",
     "breakdown": "Desglose",
     "weeklyActivity": "Actividad Semanal",
     "noData": "Sin datos.",
@@ -303,7 +305,7 @@
     },
     "projects": {
       "chocomaidBot": "Bot de Discord multifuncional impulsado por IA con transmisión de música, integraciones de juegos y funciones de gestión de servidor.",
-      "ciptaSejati": "Plataforma de gestión integral basada en la nube diseñada para una gran federación de artes marciales con 17 dojos en diferentes ciudades y una base de miembros que supera los 10,000 estudiantes e instructores. Sirve como el sistema nervioso central para toda la organización, optimizando las operaciones de membresía, gestión de instalaciones y supervisión financiera.",
+      "ciptaSejati": "Plataforma de gestión integral basada en la nube diseñada para una gran federación de artes marciales con 63 dojos en diferentes ciudades y una base de miembros que supera los 10,000 estudiantes e instructores. Sirve como el sistema nervioso central para toda la organización, optimizando las operaciones de membresía, gestión de instalaciones y supervisión financiera.",
       "erpApp": "Sistema de planificación de recursos empresariales para empresa manufacturera gestionando inventario, ventas, compras y módulos contables. Las características incluyen informes en tiempo real, roles multiusuario e integración con servicios de terceros.",
       "digitalLibrary": "Sistema de biblioteca digital escalable con búsqueda avanzada, gestión de usuarios y funciones de análisis.",
       "hrisApp": "Sistema de Información de Recursos Humanos gestionando datos de empleados, asistencia, nómina y evaluaciones de desempeño.",

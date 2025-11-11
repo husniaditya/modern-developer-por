@@ -54,7 +54,7 @@
       },
       "ciptasejati": {
         "title": "Cipta Sejati Indonesia - Plateforme Communautaire",
-        "description": "Plateforme de gestion complète basée sur le cloud conçue pour une grande fédération d'arts martiaux avec 17 dojos dans différentes villes et une base de membres dépassant 10 000 étudiants et instructeurs. Elle sert de système nerveux central pour l'ensemble de l'organisation, rationalisant les opérations d'adhésion, de gestion des installations et de supervision financière.",
+        "description": "Plateforme de gestion complète basée sur le cloud conçue pour une grande fédération d'arts martiaux avec 63 dojos dans différentes villes et une base de membres dépassant 10 000 étudiants et instructeurs. Elle sert de système nerveux central pour l'ensemble de l'organisation, rationalisant les opérations d'adhésion, de gestion des installations et de supervision financière.",
         "category": "Full Stack, Backend, Frontend"
       },
       "erp": {
@@ -277,6 +277,8 @@
     "last7Days": "7 derniers jours",
     "totalLabel": "Total",
     "topLanguages": "Langages Principaux",
+    "editors": "Éditeurs",
+    "projects": "Projets",
     "breakdown": "Répartition",
     "weeklyActivity": "Activité Hebdomadaire",
     "noData": "Aucune donnée.",
@@ -303,7 +305,7 @@
     },
     "projects": {
       "chocomaidBot": "Bot Discord multifonctionnel alimenté par l'IA avec streaming musical, intégrations de jeux et fonctionnalités de gestion de serveur.",
-      "ciptaSejati": "Plateforme de gestion complète basée sur le cloud conçue pour une grande fédération d'arts martiaux avec 17 dojos dans différentes villes et une base de membres dépassant 10 000 étudiants et instructeurs. Elle sert de système nerveux central pour l'ensemble de l'organisation, rationalisant les opérations d'adhésion, de gestion des installations et de supervision financière.",
+      "ciptaSejati": "Plateforme de gestion complète basée sur le cloud conçue pour une grande fédération d'arts martiaux avec 63 dojos dans différentes villes et une base de membres dépassant 10 000 étudiants et instructeurs. Elle sert de système nerveux central pour l'ensemble de l'organisation, rationalisant les opérations d'adhésion, de gestion des installations et de supervision financière.",
       "erpApp": "Système de planification des ressources d'entreprise pour une entreprise de fabrication gérant l'inventaire, les ventes, les achats et les modules comptables. Les fonctionnalités incluent le reporting en temps réel, les rôles multi-utilisateurs et l'intégration avec des services tiers.",
       "digitalLibrary": "Système de bibliothèque numérique évolutif avec recherche avancée, gestion des utilisateurs et fonctionnalités d'analyse.",
       "hrisApp": "Système d'information des ressources humaines gérant les données des employés, les présences, la paie et les évaluations de performance.",

@@ -54,7 +54,7 @@
       },
       "ciptasejati": {
         "title": "Cipta Sejati Indonesia - Community-Plattform",
-        "description": "Umfassende, cloudbasierte Management-Plattform für einen großen Kampfkunst-Verband mit 17 Dojos in verschiedenen Städten und einer Mitgliederbasis von über 10.000 Schülern und Instruktoren. Sie dient als zentrales Nervensystem für die gesamte Organisation und optimiert Vorgänge für Mitgliedschaft, Anlagenverwaltung und Finanzaufsicht.",
+        "description": "Umfassende, cloudbasierte Management-Plattform für einen großen Kampfkunst-Verband mit 63 Dojos in verschiedenen Städten und einer Mitgliederbasis von über 10.000 Schülern und Instruktoren. Sie dient als zentrales Nervensystem für die gesamte Organisation und optimiert Vorgänge für Mitgliedschaft, Anlagenverwaltung und Finanzaufsicht.",
         "category": "Full Stack, Backend, Frontend"
       },
       "erp": {
@@ -277,6 +277,8 @@
     "last7Days": "Letzte 7 Tage",
     "totalLabel": "Gesamt",
     "topLanguages": "Top-Sprachen",
+    "editors": "Editoren",
+    "projects": "Projekte",
     "breakdown": "Aufschlüsselung",
     "weeklyActivity": "Wöchentliche Aktivität",
     "noData": "Keine Daten.",
@@ -303,7 +305,7 @@
     },
     "projects": {
       "chocomaidBot": "Multifunktionaler KI-gesteuerter Discord-Bot mit Musik-Streaming, Spielintegrationen und Server-Management-Funktionen.",
-      "ciptaSejati": "Umfassende, cloudbasierte Management-Plattform für einen großen Kampfkunst-Verband mit 17 Dojos in verschiedenen Städten und einer Mitgliederbasis von über 10.000 Schülern und Instruktoren. Sie dient als zentrales Nervensystem für die gesamte Organisation und optimiert Vorgänge für Mitgliedschaft, Anlagenverwaltung und Finanzaufsicht.",
+      "ciptaSejati": "Umfassende, cloudbasierte Management-Plattform für einen großen Kampfkunst-Verband mit 63 Dojos in verschiedenen Städten und einer Mitgliederbasis von über 10.000 Schülern und Instruktoren. Sie dient als zentrales Nervensystem für die gesamte Organisation und optimiert Vorgänge für Mitgliedschaft, Anlagenverwaltung und Finanzaufsicht.",
       "erpApp": "Enterprise Resource Planning-System für Fertigungsunternehmen zur Verwaltung von Inventar, Vertrieb, Beschaffung und Buchhaltungsmodulen. Funktionen umfassen Echtzeit-Reporting, Mehrbenutzermodus und Integration mit Drittanbieterdiensten.",
       "digitalLibrary": "Skalierbares digitales Bibliothekssystem mit erweiterter Suche, Benutzerverwaltung und Analysefunktionen.",
       "hrisApp": "Personalinformationssystem zur Verwaltung von Mitarbeiterdaten, Anwesenheit, Gehaltsabrechnung und Leistungsbeurteilungen.",

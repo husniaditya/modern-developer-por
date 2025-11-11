@@ -186,6 +186,7 @@ export default function WakaTimeSection({ embed = false }: { embed?: boolean }) 
                         dataKey="total_seconds"
                         animationBegin={0}
                         animationDuration={800}
+                        style={{ fontSize: '13px' }}
                       >
                         {topLangs.map((entry, index) => (
                           <Cell key={`cell-${entry.name}`} fill={COLORS[index % COLORS.length]} />

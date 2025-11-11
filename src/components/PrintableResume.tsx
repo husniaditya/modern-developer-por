@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Envelope, Phone, MapPin, Globe, GithubLogo, LinkedinLogo, WhatsappLogo, InstagramLogo } from '@phosphor-icons/react';
 import { useTranslation } from 'react-i18next';
+import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from 'recharts';
+import { getWakaShareUrl, fetchWakaSummary, type WakaSummary } from '@/lib/wakatime';
 import profileImg from '@/assets/images/profile/profile.webp';
 
 // Import project images
@@ -37,6 +39,35 @@ interface PrintableResumeProps {
 
 const PrintableResume: React.FC<PrintableResumeProps> = ({ skills, projects, certifications, milestones, education, languages, contacts }) => {
   const { t } = useTranslation();
+  const [wakaData, setWakaData] = useState<WakaSummary | null>(null);
+  const shareUrl = getWakaShareUrl();
+
+  // Fetch WakaTime data for print
+  useEffect(() => {
+    if (!shareUrl) return;
+    const ctrl = new AbortController();
+    (async () => {
+      try {
+        const data = await fetchWakaSummary(shareUrl, ctrl.signal);
+        setWakaData(data);
+      } catch {
+        // Silent fail
+      }
+    })();
+    return () => ctrl.abort();
+  }, [shareUrl]);
+
+  // Helper function to format time
+  const formatTime = (totalSeconds?: number) => {
+    if (!totalSeconds) return '-';
+    const h = Math.floor(totalSeconds / 3600);
+    const m = Math.floor((totalSeconds % 3600) / 60);
+    if (h > 0) return `${h}h ${m}m`;
+    return `${m}m`;
+  };
+
+  // Color palette for charts
+  const CHART_COLORS = ['#8b5cf6', '#06b6d4', '#10b981', '#f59e0b', '#ef4444', '#ec4899', '#6366f1', '#14b8a6'];
   
   // Helper function to get project image
   const getProjectImage = (title: string) => {
@@ -112,9 +143,23 @@ const PrintableResume: React.FC<PrintableResumeProps> = ({ skills, projects, cer
   );
   
   return (
-    <div className="printable-resume hidden print:block">
+    <div className="printable-resume">
       <style>{`
+        /* Hide resume on screen, show on print */
+        .printable-resume {
+          position: absolute;
+          left: -9999px;
+          width: 8.5in;
+        }
+        
         @media print {
+          /* Bring resume back on screen for print */
+          .printable-resume {
+            position: static !important;
+            left: auto !important;
+            width: 100% !important;
+          }
+          
           @page {
             size: A4;
             margin: 0.5in;
@@ -570,6 +615,98 @@ const PrintableResume: React.FC<PrintableResumeProps> = ({ skills, projects, cer
             font-size: 9pt;
             line-height: 1.5;
           }
+
+          /* Coding Activity Section */
+          .coding-activity-section {
+            position: static;
+            visibility: visible;
+            width: auto;
+            margin-top: 12pt;
+            break-inside: avoid;
+          }
+
+          .coding-stats-grid {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 12pt;
+            margin-bottom: 12pt;
+          }
+
+        .coding-pie-chart {
+          background: #f9fafb;
+          padding: 10pt;
+          border-radius: 6pt;
+          border-left: 3pt solid #667eea;
+          min-height: 240px;
+        }
+        
+        .coding-pie-chart svg {
+          width: 100% !important;
+          height: 220px !important;
+        }          .coding-breakdown {
+            background: #f9fafb;
+            padding: 10pt;
+            border-radius: 6pt;
+            border-left: 3pt solid #764ba2;
+          }
+
+          .breakdown-section {
+            margin-bottom: 8pt;
+          }
+
+          .breakdown-section h4 {
+            font-size: 8.5pt;
+            font-weight: 700;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.5pt;
+            margin-bottom: 4pt;
+          }
+
+          .breakdown-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4pt;
+          }
+
+          .breakdown-badge {
+            background: white;
+            border: 1pt solid #e5e7eb;
+            padding: 3pt 6pt;
+            border-radius: 3pt;
+            font-size: 8pt;
+            color: #374151;
+            white-space: nowrap;
+          }
+
+          .weekly-chart-container {
+            background: #f9fafb;
+            padding: 10pt;
+            border-radius: 6pt;
+            border-left: 3pt solid #10b981;
+            min-height: 200px;
+          }
+          
+          .weekly-chart-container svg {
+            width: 100% !important;
+            height: 160px !important;
+          }
+
+          .coding-stats-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 8pt;
+          }
+
+          .total-time-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3pt 10pt;
+            border-radius: 12pt;
+            font-size: 9pt;
+            font-weight: 600;
+          }
         }
       `}</style>
 
@@ -694,6 +831,187 @@ const PrintableResume: React.FC<PrintableResumeProps> = ({ skills, projects, cer
         </div>
       </div>
 
+      {/* Coding Activity Section */}
+      {wakaData && shareUrl && (
+        <div className="coding-activity-section">
+          <div className="coding-stats-header">
+            <h2>{t('wakatime.title', { defaultValue: 'Coding Activity' })}</h2>
+            <span className="total-time-badge">
+              {wakaData.period === 'all_time' 
+                ? t('wakatime.allTime', { defaultValue: 'All Time' })
+                : t('wakatime.last7Days', { defaultValue: 'Last 7 Days' })} • {' '}
+              {wakaData.human_readable_total || formatTime(wakaData.total_seconds)}
+            </span>
+          </div>
+
+          <div className="coding-stats-grid">
+            {/* Top Languages - Pie Chart and Bars */}
+            <div className="coding-pie-chart">
+              <h3 style={{ fontSize: '9pt', marginTop: 0, marginBottom: '8pt', color: '#111827' }}>
+                {t('wakatime.topLanguages', { defaultValue: 'Top Languages' })}
+              </h3>
+              {wakaData.languages && wakaData.languages.length > 0 ? (
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12pt', alignItems: 'center' }}>
+                  {/* Pie Chart */}
+                  <ResponsiveContainer width="100%" height={200}>
+                    <PieChart>
+                      <Pie
+                        data={wakaData.languages.slice(0, 5)}
+                        cx="50%"
+                        cy="50%"
+                        outerRadius={120}
+                        dataKey="total_seconds"
+                        isAnimationActive={false}
+                      >
+                        {wakaData.languages.slice(0, 5).map((_, index) => (
+                          <Cell key={`cell-${index}`} fill={CHART_COLORS[index % CHART_COLORS.length]} />
+                        ))}
+                      </Pie>
+                    </PieChart>
+                  </ResponsiveContainer>
+                  
+                  {/* Horizontal Bars */}
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '5pt' }}>
+                    {wakaData.languages.slice(0, 5).map((lang, index) => (
+                      <div key={index}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '3pt' }}>
+                          <span style={{ fontSize: '8.5pt', fontWeight: 600, color: '#111827' }}>{lang.name}</span>
+                          <span style={{ fontSize: '8pt', color: '#6b7280' }}>{formatTime(lang.total_seconds)}</span>
+                        </div>
+                        <div style={{ 
+                          width: '100%', 
+                          height: '6pt', 
+                          background: '#e5e7eb', 
+                          borderRadius: '3pt',
+                          overflow: 'hidden'
+                        }}>
+                          <div style={{ 
+                            width: `${lang.percent || 0}%`, 
+                            height: '100%', 
+                            background: CHART_COLORS[index % CHART_COLORS.length],
+                            borderRadius: '3pt'
+                          }} />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <p style={{ fontSize: '9pt', color: '#6b7280' }}>No language data available</p>
+              )}
+            </div>
+
+            {/* Breakdown - Editors and Projects */}
+            <div className="coding-breakdown">
+              {/* Editors */}
+              {wakaData.editors && wakaData.editors.length > 0 && (
+                <div className="breakdown-section">
+                  <h4>{t('wakatime.editors', { defaultValue: 'Editors' })}</h4>
+                  <div className="breakdown-badges">
+                    {wakaData.editors.slice(0, 4).map((editor) => (
+                      <span key={editor.name} className="breakdown-badge">
+                        {editor.name} · {editor.digital || formatTime(editor.total_seconds)}
+                        {typeof editor.percent === 'number' && ` (${editor.percent.toFixed(0)}%)`}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Projects */}
+              {wakaData.projects && wakaData.projects.length > 0 && (
+                <div className="breakdown-section">
+                  <h4>{t('wakatime.projects', { defaultValue: 'Projects' })}</h4>
+                  <div className="breakdown-badges">
+                    {wakaData.projects.slice(0, 6).map((project) => (
+                      <span key={project.name} className="breakdown-badge">
+                        {project.name} · {project.digital || formatTime(project.total_seconds)}
+                        {typeof project.percent === 'number' && ` (${project.percent.toFixed(0)}%)`}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Weekly Activity Bar Chart */}
+          {wakaData.weekdays && wakaData.weekdays.length > 0 && (
+            <div className="weekly-chart-container">
+              <h3 style={{ fontSize: '10pt', marginTop: 0, marginBottom: '8pt', color: '#111827' }}>
+                {t('wakatime.weeklyActivity', { defaultValue: 'Weekly Activity' })}
+              </h3>
+              <ResponsiveContainer width="100%" height={160}>
+                <BarChart 
+                  data={wakaData.weekdays
+                    .sort((a, b) => {
+                      const weekdayOrder = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+                      const indexA = weekdayOrder.indexOf(a.weekday || '');
+                      const indexB = weekdayOrder.indexOf(b.weekday || '');
+                      return indexA - indexB;
+                    })
+                    .map(d => ({
+                      day: d.weekday || d.date?.substring(5) || '',
+                      hours: d.total_seconds / 3600,
+                      hoursLabel: d.total_seconds > 0 ? `${Math.round(d.total_seconds / 3600)}h` : ''
+                    }))} 
+                  margin={{ left: 0, right: 0, top: 15, bottom: 0 }}
+                >
+                  <XAxis 
+                    dataKey="day" 
+                    tickLine={false} 
+                    axisLine={false}
+                    tick={{ fontSize: 10, fill: '#6b7280' }}
+                  />
+                  <YAxis hide domain={[0, 'dataMax']} />
+                  <Bar 
+                    dataKey="hours" 
+                    fill="#667eea"
+                    radius={[4, 4, 0, 0]}
+                    isAnimationActive={false}
+                    label={(props: any) => {
+                      const { x, y, width, value } = props;
+                      if (value === 0) return <text />;
+                      return (
+                        <text 
+                          x={x + width / 2} 
+                          y={y - 5} 
+                          fill="#6b7280" 
+                          fontSize={10}
+                          textAnchor="middle"
+                        >
+                          {Math.round(value)}h
+                        </text>
+                      );
+                    }}
+                  />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Certifications */}
+      <div>
+        <h2>{t('printResume.sections.certifications')}</h2>
+        <div className="cert-grid">
+          {certifications.map((cert, index) => (
+            <div key={index} className="cert-item">
+              <img 
+                src={getCertificationImage(cert.title)} 
+                alt={cert.title}
+                className="cert-thumbnail"
+              />
+              <div className="cert-content">
+                <p>{cert.title}</p>
+                <p>{cert.issuer} • {cert.date}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* Featured Projects */}
       <div className="print-page-break">
         <h2>{t('printResume.sections.projects')}</h2>
@@ -721,26 +1039,6 @@ const PrintableResume: React.FC<PrintableResumeProps> = ({ skills, projects, cer
             </div>
           </div>
         ))}
-      </div>
-
-      {/* Certifications */}
-      <div className="print-no-break">
-        <h2>{t('printResume.sections.certifications')}</h2>
-        <div className="cert-grid">
-          {certifications.map((cert, index) => (
-            <div key={index} className="cert-item">
-              <img 
-                src={getCertificationImage(cert.title)} 
-                alt={cert.title}
-                className="cert-thumbnail"
-              />
-              <div className="cert-content">
-                <p>{cert.title}</p>
-                <p>{cert.issuer} • {cert.date}</p>
-              </div>
-            </div>
-          ))}
-        </div>
       </div>
 
       {/* Footer */}

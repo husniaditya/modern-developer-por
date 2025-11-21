@@ -136,7 +136,7 @@ export const getMilestonesData = () => [
     descriptionKey: 'printResume.experience.wilmar'
   },
   {
-    year: '2020',
+    year: '2017',
     title: 'Full Stack Developer',
     company: 'PT. Mega Marine Pride',
     duration: 'Sept 2017 - Feb 2020',

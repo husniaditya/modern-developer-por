@@ -8,6 +8,10 @@ import { useTranslation } from 'react-i18next';
 import { injectJsonLd } from '@/lib/seo';
 import { getFallbackFor } from '@/lib/assets';
 
+import DecryptedText from '@/components/ui/decrypted-text';
+import BlurText from '@/components/ui/blur-text';
+import GradientText from '@/components/ui/gradient-text';
+
 // Project images
 import chocomaidApp from '@/assets/images/projects/chocomaid_app.webp';
 import ciptasejatiApp from '@/assets/images/projects/ciptasejati_app.webp';
@@ -267,17 +271,38 @@ const ProjectsSection = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const cardVariants = {
-    hidden: { y: 50, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1
+  const cardAnimations = [
+    { 
+      hidden: { y: 40, opacity: 0, rotateX: 10 },
+      visible: { y: 0, opacity: 1, rotateX: 0 },
+      exit: { y: -20, opacity: 0, rotateX: -5 }
     },
-    exit: {
-      y: -20,
-      opacity: 0
-    }
-  };
+    { 
+      hidden: { scale: 0.85, opacity: 0, rotate: -5 },
+      visible: { scale: 1, opacity: 1, rotate: 0 },
+      exit: { scale: 0.9, opacity: 0, rotate: 3 }
+    },
+    { 
+      hidden: { x: -40, opacity: 0, rotateY: 15 },
+      visible: { x: 0, opacity: 1, rotateY: 0 },
+      exit: { x: 20, opacity: 0, rotateY: -10 }
+    },
+    { 
+      hidden: { y: 50, opacity: 0, skewY: 3 },
+      visible: { y: 0, opacity: 1, skewY: 0 },
+      exit: { y: -25, opacity: 0, skewY: -2 }
+    },
+    { 
+      hidden: { scale: 0.9, opacity: 0, rotateZ: 8 },
+      visible: { scale: 1, opacity: 1, rotateZ: 0 },
+      exit: { scale: 0.85, opacity: 0, rotateZ: -5 }
+    },
+    { 
+      hidden: { x: 40, opacity: 0, rotateX: -12 },
+      visible: { x: 0, opacity: 1, rotateX: 0 },
+      exit: { x: -20, opacity: 0, rotateX: 8 }
+    },
+  ];
 
   const filterButtonVariants = {
     active: {
@@ -298,10 +323,22 @@ const ProjectsSection = () => {
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl font-bold text-foreground mb-4">{t('projects.title')}</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            {t('projects.subtitle')}
-          </p>
+          <h2 className="text-4xl font-bold mb-4">
+            <GradientText>
+              <DecryptedText 
+                text={t('projects.title')} 
+                speed={30}
+                sequential={true}
+                animateOn="view"
+              />
+            </GradientText>
+          </h2>
+          <BlurText 
+            text={t('projects.subtitle')}
+            className="text-lg text-muted-foreground max-w-2xl mx-auto"
+            delay={50}
+            animateBy="words"
+          />
         </motion.div>
 
         {/* Filter Buttons */}
@@ -342,19 +379,21 @@ const ProjectsSection = () => {
           layout
         >
           <AnimatePresence>
-            {filteredProjects.map((project, index) => (
-              <motion.div
-                key={`${activeFilter}-${project.id}`}
-                variants={cardVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
-                exit="exit"
-                layout
-                transition={{ duration: 0.5, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ y: -8, transition: { duration: 0.2 } }}
-              >
-                <Card className="group project-card overflow-hidden hover-lift h-full glass-card">
+            {filteredProjects.map((project, index) => {
+              const animation = cardAnimations[index % cardAnimations.length];
+              return (
+                <motion.div
+                  key={`${activeFilter}-${project.id}`}
+                  variants={animation}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.2 }}
+                  exit="exit"
+                  layout
+                  transition={{ duration: 0.6, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                  whileHover={{ y: -8, transition: { duration: 0.2 } }}
+                >
+                  <Card className="group project-card overflow-hidden hover-lift h-full glass-card">
                   <div className="relative overflow-hidden">
                     <ParallaxImage src={project.image} fallback={getFallbackFor(project.image)} alt={project.title} priority={index === 0} />
                     
@@ -473,7 +512,8 @@ const ProjectsSection = () => {
                   </CardContent>
                 </Card>
               </motion.div>
-            ))}
+              );
+            })}
           </AnimatePresence>
         </motion.div>
       </div>

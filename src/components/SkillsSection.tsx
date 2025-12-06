@@ -1,6 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import DecryptedText from '@/components/ui/decrypted-text';
+import BlurText from '@/components/ui/blur-text';
+import GradientText from '@/components/ui/gradient-text';
 import { Badge } from '@/components/ui/badge';
 import { useTranslation } from 'react-i18next';
 import GithubContributions from '@/components/GithubContributions';
@@ -52,13 +55,31 @@ const SkillsSection = () => {
     }
   };
 
-  const cardVariants = {
-    hidden: { y: 50, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1
+  const cardVariants = [
+    {
+      hidden: { y: 50, opacity: 0, rotateX: 15 },
+      visible: {
+        y: 0,
+        opacity: 1,
+        rotateX: 0,
+      }
+    },
+    {
+      hidden: { scale: 0.8, opacity: 0 },
+      visible: {
+        scale: 1,
+        opacity: 1,
+      }
+    },
+    {
+      hidden: { x: 50, opacity: 0, rotate: 5 },
+      visible: {
+        x: 0,
+        opacity: 1,
+        rotate: 0,
+      }
     }
-  };
+  ];
 
   const skillVariants = {
     hidden: { x: -20, opacity: 0 },
@@ -81,10 +102,22 @@ const SkillsSection = () => {
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl font-bold text-foreground mb-4">{t('skills.title')}</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            {t('skills.subtitle')}
-          </p>
+          <h2 className="text-4xl font-bold mb-4">
+            <GradientText>
+              <DecryptedText 
+                text={t('skills.title')} 
+                speed={30}
+                sequential={true}
+                animateOn="view"
+              />
+            </GradientText>
+          </h2>
+          <BlurText 
+            text={t('skills.subtitle')}
+            className="text-lg text-muted-foreground max-w-2xl mx-auto"
+            delay={50}
+            animateBy="words"
+          />
         </motion.div>
 
         <motion.div 
@@ -95,26 +128,32 @@ const SkillsSection = () => {
           viewport={{ once: true, amount: 0.15 }}
         >
           {categories.map((category, categoryIndex) => (
-            <motion.div key={category.key} variants={cardVariants}>
-              <Card className="p-6 hover:shadow-lg transition-shadow duration-300">
-                <CardHeader className="pb-4">
-                  <CardTitle className="text-xl text-primary">{category.label}</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  {skills
-                    .filter(skill => skill.category === category.key)
-                    .map((skill, skillIndex) => (
-                      <motion.div 
-                        key={skill.name} 
-                        className="space-y-2"
-                        variants={skillVariants}
-                        custom={skillIndex}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, amount: 0.2 }}
-                      >
-                        <div className="flex justify-between items-center">
-                          <span className="font-medium">{skill.name}</span>
+            <motion.div 
+              key={category.key} 
+              variants={cardVariants[categoryIndex % cardVariants.length]}
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <Card className="w-full h-full hover:shadow-lg transition-shadow duration-300">
+                <div className="p-6">
+                  <CardHeader className="pb-4 px-0 pt-0">
+                    <CardTitle className="text-xl text-primary">{category.label}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4 px-0 pb-0">
+                    {skills
+                      .filter(skill => skill.category === category.key)
+                      .map((skill, skillIndex) => (
+                        <motion.div 
+                          key={skill.name} 
+                          className="space-y-2"
+                          variants={skillVariants}
+                          custom={skillIndex}
+                          initial="hidden"
+                          whileInView="visible"
+                          viewport={{ once: true, amount: 0.2 }}
+                        >
+                          <div className="flex justify-between items-center">
+                            <span className="font-medium">{skill.name}</span>
                           <Badge variant="secondary">{skill.level}%</Badge>
                         </div>
                         <div className="w-full bg-muted rounded-full h-3 overflow-hidden relative">
@@ -144,7 +183,8 @@ const SkillsSection = () => {
                         </div>
                       </motion.div>
                     ))}
-                </CardContent>
+                  </CardContent>
+                </div>
               </Card>
             </motion.div>
           ))}

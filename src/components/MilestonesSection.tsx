@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, Trophy, Target, Code, Rocket, Users, ChartLine, Building, Star, Medal, Lightning } from '@phosphor-icons/react';
 import { useTranslation } from 'react-i18next';
+import GradientText from '@/components/ui/gradient-text';
 import developerWorkspace from '@/assets/images/developer-workspace.svg';
 import seniorDevIllustration from '@/assets/images/senior-dev-illustration.svg';
 import techLeadIllustration from '@/assets/images/tech-lead-illustration.svg';
 import fullStackIllustration from '@/assets/images/full-stack-illustration.svg';
 import frontendDevIllustration from '@/assets/images/frontend-dev-illustration.svg';
+import DecryptedText from '@/components/ui/decrypted-text';
+import BlurText from '@/components/ui/blur-text';
+
 // Company logos and images
 import wilmarLogo from '@/assets/images/career/wilmar_logo.webp';
 import wilmarImage from '@/assets/images/career/wilmar.webp';
@@ -314,11 +318,21 @@ const MilestonesSection: React.FC = () => {
           className="text-center mb-10 sm:mb-12 lg:mb-16"
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
-            {t('milestones.title.career')} <span className="brand-gradient-text">{t('milestones.title.milestones')}</span>
+            <GradientText>
+              <DecryptedText 
+                text={`${t('milestones.title.career')} ${t('milestones.title.milestones')}`}
+                speed={30}
+                sequential={true}
+                animateOn="view"
+              />
+            </GradientText>
           </h2>
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-2">
-            {t('milestones.subtitle')}
-          </p>
+          <BlurText 
+            text={t('milestones.subtitle')}
+            className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-2"
+            delay={50}
+            animateBy="words"
+          />
         </motion.div>
 
         <motion.div

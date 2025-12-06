@@ -1,11 +1,12 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import GradientText from '@/components/ui/gradient-text';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import { motion } from 'framer-motion';
 import { getWakaShareUrl, fetchWakaSummary, type WakaSummary } from '@/lib/wakatime';
 import { useTranslation } from 'react-i18next';
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, Legend } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import { useTheme } from '@/contexts/ThemeContext';
 
 function formatHhMm(totalSeconds?: number, fallback?: string) {
@@ -130,8 +131,10 @@ export default function WakaTimeSection({ embed = false }: { embed?: boolean }) 
       transition={{ duration: 0.6 }}
       className={embed ? 'mb-6' : 'mb-8 text-center'}
     >
-      <h2 className={embed ? 'text-2xl font-semibold text-foreground' : 'text-4xl font-bold text-foreground mb-2'}>
-        {t('wakatime.title')}
+      <h2 className={embed ? 'text-2xl font-semibold' : 'text-4xl font-bold mb-2'}>
+        <GradientText>
+          {t('wakatime.title')}
+        </GradientText>
       </h2>
       <p className="text-muted-foreground">
         {t(summary?.period === 'all_time' ? 'wakatime.allTime' : 'wakatime.last7Days')} • {t('wakatime.totalLabel')} {' '}
@@ -235,8 +238,8 @@ export default function WakaTimeSection({ embed = false }: { embed?: boolean }) 
 
         <Card className="lg:col-span-3">
           <CardHeader>
-            <CardTitle>{t('wakatime.breakdown')}</CardTitle>
-          </CardHeader>
+              <CardTitle>{t('wakatime.breakdown')}</CardTitle>
+            </CardHeader>
           <CardContent className="space-y-4">
             {/* Editors */}
             {(summary?.editors ?? []).length > 0 && (
@@ -281,8 +284,8 @@ export default function WakaTimeSection({ embed = false }: { embed?: boolean }) 
         {/* Weekly activity bar chart (aggregate by weekday Mon..Sun) */}
         <Card className="lg:col-span-12">
           <CardHeader>
-            <CardTitle>{t('wakatime.weeklyActivity')}</CardTitle>
-          </CardHeader>
+              <CardTitle>{t('wakatime.weeklyActivity')}</CardTitle>
+            </CardHeader>
           <CardContent>
             {weeklyData.filter((d) => d.seconds > 0).length === 0 ? (
               <p className="text-sm text-muted-foreground">{t('wakatime.noData')}</p>

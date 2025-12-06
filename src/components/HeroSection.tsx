@@ -1,9 +1,13 @@
-import React, { useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { ArrowDown, Download, LinkedinLogo, GithubLogo, Envelope, Printer } from '@phosphor-icons/react';
-import TypewriterEffect from './TypewriterEffect';
+import TiltedCard from '@/components/ui/tilted-card';
+import LetterGlitch from '@/components/ui/letter-glitch';
+import { GridScan } from '@/components/ui/grid-scan';
+import GlassIcons, { GlassIconsItem } from '@/components/ui/glass-icons';
+import { ArrowDown, Download, LinkedinLogo, GithubLogo, Envelope, Printer, Eye } from '@phosphor-icons/react';
+import DecryptedText from '@/components/ui/decrypted-text';
+import GradientText from '@/components/ui/gradient-text';
 import { smoothScrollTo } from '@/utils/scrollUtils';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '@/contexts/ThemeContext';
@@ -49,31 +53,6 @@ const HeroSection = () => {
     const lang = languageNames[i18n.language] || 'English';
     return `Husni_Aditya_Resume_${lang}.pdf`;
   };
-
-  // Generate random stars for the GitHub Spark effect
-  const stars = useMemo(() => {
-    return Array.from({ length: 150 }, (_, i) => ({
-      id: i,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      size: Math.random() * 4 + 0.5,
-      duration: Math.random() * 4 + 1.5,
-      delay: Math.random() * 3,
-      opacity: Math.random() * 0.7 + 0.3,
-      variant: Math.random() > 0.5 ? 'star' : 'circle',
-    }));
-  }, []);
-
-  // Generate shooting stars
-  const shootingStars = useMemo(() => {
-    return Array.from({ length: 5 }, (_, i) => ({
-      id: i,
-      startX: Math.random() * 100,
-      startY: Math.random() * 30,
-      duration: Math.random() * 3 + 2,
-      delay: Math.random() * 8 + i * 3,
-    }));
-  }, []);
   
   const jobTitles = [
     "Senior Full Stack Developer",
@@ -82,12 +61,87 @@ const HeroSection = () => {
     "Application Management Specialist"
   ];
 
-  const scrollToNext = () => {
-    smoothScrollTo('skills');
+  const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
+  const [key, setKey] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTitleIndex((prev) => (prev + 1) % jobTitles.length);
+      setKey((prev) => prev + 1);
+    }, 4000); // Change title every 4 seconds
+
+    return () => clearInterval(interval);
+  }, [jobTitles.length]);
+
+  const glassIconItems: GlassIconsItem[] = [
+    {
+      icon: <LinkedinLogo size={16} weight="fill" />,
+      color: 'blue',
+      label: 'LinkedIn',
+      customClass: 'linkedin-icon'
+    },
+    {
+      icon: <GithubLogo size={16} weight="fill" />,
+      color: 'purple',
+      label: 'GitHub',
+      customClass: 'github-icon'
+    },
+    {
+      icon: <Envelope size={16} weight="fill" />,
+      color: 'red',
+      label: 'Email',
+      customClass: 'email-icon'
+    },
+    {
+      icon: <Download size={16} weight="fill" />,
+      color: 'green',
+      label: t('hero.downloadResume'),
+      customClass: 'download-icon'
+    },
+    {
+      icon: <Printer size={16} weight="fill" />,
+      color: 'indigo',
+      label: t('hero.printResume'),
+      customClass: 'print-icon'
+    },
+    {
+      icon: <Eye size={16} weight="fill" />,
+      color: 'orange',
+      label: t('hero.viewMyWork'),
+      customClass: 'view-icon'
+    }
+  ];
+
+  const handleIconClick = (index: number) => {
+    switch (index) {
+      case 0: // LinkedIn
+        window.open('https://www.linkedin.com/in/husni-aditya-5b9065123/', '_blank');
+        break;
+      case 1: // GitHub
+        window.open('https://github.com/husniaditya', '_blank');
+        break;
+      case 2: // Email
+        window.location.href = 'mailto:adityahusni90@gmail.com';
+        break;
+      case 3: // Download Resume
+        {
+          const link = document.createElement('a');
+          link.href = getResumePdf();
+          link.download = getResumeFilename();
+          link.click();
+        }
+        break;
+      case 4: // Print Resume
+        window.print();
+        break;
+      case 5: // View My Work
+        smoothScrollTo('skills');
+        break;
+    }
   };
 
-  const handlePrint = () => {
-    window.print();
+  const scrollToNext = () => {
+    smoothScrollTo('skills');
   };
 
   // Animation variants
@@ -110,304 +164,59 @@ const HeroSection = () => {
     }
   };
 
-  const avatarVariants = {
-    hidden: { scale: 0, opacity: 0 },
-    visible: {
-      scale: 1,
-      opacity: 1
-    },
-    hover: {
-      scale: 1.05
-    }
-  };
-
   return (
     <section
       id="hero"
       className="min-h-[calc(100svh)] flex items-start md:items-center justify-center relative overflow-hidden pt-[calc(var(--nav-h,72px)+8px)] md:pt-[calc(var(--nav-h,72px)+32px)] scroll-mt-[calc(var(--nav-h,72px)+8px)]"
     >
-      {/* Light theme modern background */}
+      {/* Light theme - GridScan background */}
       {theme === 'light' && (
-        <div className="absolute inset-0 overflow-hidden">
-          {/* Gradient mesh base */}
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `
-                radial-gradient(60rem 60rem at 10% -10%, rgba(59,130,246,.14), transparent 60%),
-                radial-gradient(40rem 40rem at 90% 10%, rgba(236,72,153,.10), transparent 60%),
-                radial-gradient(30rem 30rem at 20% 80%, rgba(56,189,248,.12), transparent 60%),
-                radial-gradient(24rem 24rem at 80% 80%, rgba(168,85,247,.10), transparent 60%),
-                linear-gradient(to bottom right, #f7fbff, #eef6ff)
-              `,
-              backgroundRepeat: 'no-repeat',
-            }}
+        <div className="absolute inset-0">
+          <GridScan
+            lineThickness={1.5}
+            linesColor="#3b82f6"
+            scanColor="#ec4899"
+            scanOpacity={0.3}
+            gridScale={0.15}
+            lineStyle="solid"
+            lineJitter={0}
+            scanDirection="pingpong"
+            enablePost={true}
+            bloomIntensity={0.3}
+            bloomThreshold={0.8}
+            bloomSmoothing={0.5}
+            chromaticAberration={0.001}
+            noiseIntensity={0.02}
+            scanGlow={0.4}
+            scanSoftness={2}
+            scanPhaseTaper={0.85}
+            scanDuration={3.0}
+            scanDelay={1.5}
+            enableGyro={false}
+            scanOnClick={false}
+            className="opacity-40"
           />
-
-          {/* Animated soft blobs */}
-          <motion.div
-            className="absolute -top-16 -left-20 w-72 h-72 rounded-full blur-3xl opacity-35 bg-gradient-to-br from-sky-300 to-blue-400"
-            animate={{ x: [0, 40, 0], y: [0, 20, 0], scale: [1, 1.06, 1] }}
-            transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-          />
-          <motion.div
-            className="absolute -bottom-12 -right-12 w-80 h-80 rounded-full blur-3xl opacity-30 bg-gradient-to-br from-fuchsia-300 to-pink-300"
-            animate={{ x: [0, -35, 0], y: [0, -25, 0], scale: [1, 1.07, 1] }}
-            transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
-          />
-          <motion.div
-            className="absolute top-1/3 left-1/4 w-64 h-64 rounded-full blur-3xl opacity-25 bg-gradient-to-br from-cyan-300 to-teal-300"
-            animate={{ x: [0, 25, 0], y: [0, -20, 0], scale: [1, 1.05, 1] }}
-            transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
-          />
-
-          {/* Light-only sparkles (yellow/orange/red) */}
-          {stars.map((star) => {
-            const palette = ['#facc15', '#fb923c', '#f87171']; // yellow, orange, red
-            const color = palette[star.id % 3];
-            return (
-              <motion.div
-                key={`light-sparkle-${star.id}`}
-                className="absolute"
-                style={{
-                  left: `${star.x}%`,
-                  top: `${star.y}%`,
-                  width: `${star.size}px`,
-                  height: `${star.size}px`,
-                  color,
-                }}
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{
-                  opacity: [0, star.opacity, 0],
-                  scale: [0, 1, 0],
-                  rotate: star.variant === 'star' ? [0, 180, 360] : 0,
-                }}
-                transition={{
-                  duration: star.duration,
-                  delay: star.delay,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-              >
-                {star.variant === 'star' ? (
-                  <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
-                    <path
-                      d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"
-                      fill="currentColor"
-                      style={{ filter: 'drop-shadow(0 0 5px currentColor)' }}
-                    />
-                  </svg>
-                ) : (
-                  <div
-                    className="w-full h-full rounded-full"
-                    style={{
-                      backgroundColor: color,
-                      boxShadow: `0 0 8px ${color}`,
-                    }}
-                  />
-                )}
-              </motion.div>
-            );
-          })}
-
-          {/* Subtle dotted grid overlay */}
-          <div className="absolute inset-0 pointer-events-none opacity-[0.05]">
-            <div
-              className="w-full h-full"
-              style={{
-                backgroundImage: 'radial-gradient(#334155 1px, transparent 1px)',
-                backgroundSize: '18px 18px',
-                backgroundPosition: '0 0',
-              }}
-            />
-          </div>
-
-          {/* Soft vignette for depth */}
-          <div className="absolute inset-0 bg-gradient-radial from-transparent via-white/40 to-white" />
+          {/* Light overlay for better readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/40 to-white/60" />
         </div>
       )}
 
-      {/* Dark theme keeps the original animated background */}
+      {/* Dark theme - LetterGlitch background */}
       {theme === 'dark' && (
-      <div className="absolute inset-0 overflow-hidden bg-gradient-to-br from-gray-950 via-gray-900 to-gray-800/50">
-        {/* GitHub Spark-style animated starfield background - vibrant in dark */}
-        
-        {/* Twinkling stars - subtle in light theme, vibrant in dark theme */}
-        {stars.map((star) => (
-          <motion.div
-            key={star.id}
-            className="absolute"
-            style={{
-              left: `${star.x}%`,
-              top: `${star.y}%`,
-              width: `${star.size}px`,
-              height: `${star.size}px`,
-            }}
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{
-              opacity: [0, star.opacity, 0],
-              scale: [0, 1, 0],
-              rotate: star.variant === 'star' ? [0, 180, 360] : 0,
-            }}
-            transition={{
-              duration: star.duration,
-              delay: star.delay,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          >
-            {star.variant === 'star' ? (
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                className="w-full h-full"
-              >
-                <path
-                  d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"
-                  className="fill-primary/60 dark:fill-cyan-400/90"
-                  style={{
-                    filter: 'drop-shadow(0 0 3px currentColor)',
-                  }}
-                />
-              </svg>
-            ) : (
-              <div 
-                className="w-full h-full rounded-full bg-accent/50 dark:bg-purple-400/90"
-                style={{
-                  boxShadow: '0 0 3px currentColor',
-                }}
-              />
-            )}
-          </motion.div>
-        ))}
-
-        {/* Shooting stars - only visible in dark mode */}
-        {shootingStars.map((star) => (
-          <motion.div
-            key={`shooting-${star.id}`}
-            className="absolute w-1 h-1 hidden dark:block"
-            style={{
-              left: `${star.startX}%`,
-              top: `${star.startY}%`,
-            }}
-            initial={{ opacity: 0, x: 0, y: 0 }}
-            animate={{
-              opacity: [0, 1, 1, 0],
-              x: [0, 300],
-              y: [0, 300],
-            }}
-            transition={{
-              duration: star.duration,
-              delay: star.delay,
-              repeat: Infinity,
-              repeatDelay: 5,
-              ease: "easeOut",
-            }}
-          >
-            <div className="relative">
-              <div className="w-1 h-1 rounded-full bg-cyan-300" 
-                style={{
-                  boxShadow: '0 0 10px rgba(34, 211, 238, 0.8), 0 0 20px rgba(34, 211, 238, 0.4)',
-                }}
-              />
-              <motion.div
-                className="absolute top-0 left-0 w-20 h-[2px] origin-left bg-gradient-to-r from-cyan-300/80 to-transparent"
-                style={{
-                  // Move opposite the star's direction (star moves 45deg down-right)
-                  // Tail should point up-left, hence -135deg (or 225deg)
-                  transform: 'rotate(-135deg)',
-                  filter: 'blur(1px)',
-                }}
-              />
-            </div>
-          </motion.div>
-        ))}
-
-        {/* Floating gradient orbs - subtle in light, vibrant in dark */}
-        <motion.div
-          className="absolute top-20 left-10 w-28 h-28 bg-primary/20 rounded-full blur-3xl dark:w-40 dark:h-40 dark:bg-cyan-500/30 dark:blur-3xl"
-          animate={{
-            x: [0, 50, 0],
-            y: [0, -30, 0],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div
-          className="absolute top-40 right-20 w-24 h-24 bg-accent/20 rounded-full blur-3xl dark:w-48 dark:h-48 dark:bg-purple-500/30 dark:blur-3xl"
-          animate={{
-            x: [0, -40, 0],
-            y: [0, 40, 0],
-            scale: [1, 1.3, 1],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div
-          className="absolute bottom-20 left-1/3 w-24 h-24 bg-primary/15 rounded-full blur-3xl dark:w-44 dark:h-44 dark:bg-blue-500/25 dark:blur-3xl"
-          animate={{
-            x: [0, 40, 0],
-            y: [0, -30, 0],
-            scale: [1, 1.15, 1],
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div
-          className="absolute bottom-20 right-1/4 w-20 h-20 bg-accent/15 rounded-full blur-3xl dark:w-36 dark:h-36 dark:bg-pink-500/25 dark:blur-3xl"
-          animate={{
-            x: [0, -30, 0],
-            y: [0, 25, 0],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            duration: 5,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-
-        {/* Animated grid overlay - very subtle in light, visible in dark */}
-        <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.08]">
-          <motion.div
-            className="w-full h-full text-primary/30 dark:text-cyan-400/50"
-            style={{
-              backgroundImage: `
-                linear-gradient(to right, currentColor 1px, transparent 1px),
-                linear-gradient(to bottom, currentColor 1px, transparent 1px)
-              `,
-              backgroundSize: '60px 60px',
-            }}
-            animate={{
-              backgroundPosition: ['0px 0px', '60px 60px'],
-            }}
-            transition={{
-              duration: 20,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-          />
-        </div>
-
-        {/* Radial gradient overlay for depth - adjusted for dark theme */}
-        <div className="absolute inset-0 bg-gradient-radial from-transparent via-gray-900/70 to-gray-950" />
-        
-        {/* Additional dark mode glow overlay */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-radial from-cyan-500/5 via-transparent to-transparent" />
-          <div className="absolute inset-0 bg-gradient-conic from-purple-500/5 via-transparent to-blue-500/5" style={{ left: '50%', top: '50%', transform: 'translate(-50%, -50%)' }} />
+          <div className="opacity-40">
+            <LetterGlitch
+              glitchColors={['#22d3ee', '#a78bfa', '#60a5fa', '#34d399']}
+              glitchSpeed={80}
+              centerVignette={false}
+              outerVignette={true}
+              smooth={true}
+              characters="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_+=<>?/[]{}|"
+            />
+          </div>
+          {/* Dark overlay for depth */}
+          <div className="absolute inset-0 bg-gradient-radial from-transparent via-gray-900/70 to-gray-950/90" />
         </div>
-      </div>
       )}
 
   <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-10 sm:pt-12 sm:pb-12 relative z-10">
@@ -422,25 +231,19 @@ const HeroSection = () => {
             className="flex justify-center"
             variants={itemVariants}
           >
-            <motion.div
-              variants={avatarVariants}
-              whileHover="hover"
-              transition={{
-                duration: 0.6,
-                ease: "easeOut"
-              }}
-            >
-              <Avatar className="w-36 h-36 ring-4 ring-primary ring-offset-4 ring-offset-background shadow-2xl">
-                <AvatarImage 
-                  src={profileImg} 
-                  alt="Professional Profile"
-                  className="object-cover object-center"
-                />
-                <AvatarFallback className="text-3xl font-bold bg-gradient-to-br from-primary to-accent text-white">
-                  HA
-                </AvatarFallback>
-              </Avatar>
-            </motion.div>
+            <TiltedCard
+              imageSrc={profileImg}
+              altText="Husni Aditya - Professional Profile"
+              captionText="Husni Aditya"
+              containerHeight="160px"
+              containerWidth="160px"
+              imageHeight="144px"
+              imageWidth="144px"
+              scaleOnHover={1.08}
+              rotateAmplitude={12}
+              showMobileWarning={false}
+              showTooltip={true}
+            />
           </motion.div>
 
           {/* Main Heading */}
@@ -455,85 +258,42 @@ const HeroSection = () => {
               className="text-2xl sm:text-4xl font-semibold min-h-[4rem] flex items-center justify-center text-slate-800 dark:text-primary"
               variants={itemVariants}
             >
-              <TypewriterEffect 
-                texts={jobTitles} 
-                speed={50}
-                pauseDuration={1500}
+              <DecryptedText 
+                key={key}
+                text={jobTitles[currentTitleIndex]}
+                speed={30}
+                sequential={true}
+                animateOn="view"
               />
             </motion.h2>
             <motion.p 
               className="text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed text-slate-600 dark:text-muted-foreground"
               variants={itemVariants}
             >
-              {t('hero.description')}
+              <GradientText>
+                {t('hero.description')}
+              </GradientText>
             </motion.p>
           </div>
 
           {/* Enhanced Social Links & CTA */}
           <motion.div 
-            className="flex flex-col sm:flex-row items-center justify-center gap-6"
+            className="flex flex-col items-center justify-center"
             variants={itemVariants}
           >
-            <div className="flex items-center gap-4">
-              <motion.a
-                href="https://www.linkedin.com/in/husni-aditya-5b9065123/"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Button variant="outline" size="icon" className="border-primary/30 hover:border-primary hover:bg-primary/10">
-                  <LinkedinLogo size={20} />
-                </Button>
-              </motion.a>
-              <motion.a
-                href="https://github.com/husniaditya"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.1, rotate: -5 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Button variant="outline" size="icon" className="border-primary/30 hover:border-primary hover:bg-primary/10">
-                  <GithubLogo size={20} />
-                </Button>
-              </motion.a>
-              <motion.a
-                href="mailto:adityahusni90@gmail.com"
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Button variant="outline" size="icon" className="border-primary/30 hover:border-primary hover:bg-primary/10">
-                  <Envelope size={20} />
-                </Button>
-              </motion.a>
-            </div>
-            <div className="flex items-center gap-4 flex-wrap justify-center">
-              <motion.a
-                href={getResumePdf()}
-                download={getResumeFilename()}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Button className="group bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 transition-all duration-300">
-                  <Download size={16} className="mr-2 group-hover:animate-bounce" />
-                  {t('hero.downloadResume')}
-                </Button>
-              </motion.a>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button 
-                  variant="outline" 
-                  onClick={handlePrint}
-                  className="group border-primary/50 hover:border-primary hover:bg-primary/10"
-                >
-                  <Printer size={16} className="mr-2 group-hover:animate-bounce" />
-                  {t('hero.printResume')}
-                </Button>
-              </motion.div>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button variant="outline" onClick={scrollToNext} className="border-accent/50 hover:border-accent hover:bg-accent/10">
-                  {t('hero.viewMyWork')}
-                </Button>
-              </motion.div>
+            <div 
+              onClick={(e) => {
+                const target = e.target as HTMLElement;
+                const button = target.closest('button');
+                if (button) {
+                  const buttons = button.parentElement?.querySelectorAll('button');
+                  const index = buttons ? Array.from(buttons).indexOf(button) : -1;
+                  if (index !== -1) handleIconClick(index);
+                }
+              }}
+              className="w-full flex justify-center"
+            >
+              <GlassIcons items={glassIconItems} className="w-auto inline-flex" />
             </div>
           </motion.div>
 

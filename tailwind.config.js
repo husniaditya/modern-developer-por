@@ -104,6 +104,46 @@ const defaultTheme = {
       'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
       'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
     },
+    animation: {
+      'star-movement-bottom': 'star-movement-bottom linear infinite alternate',
+      'star-movement-top': 'star-movement-top linear infinite alternate',
+      'star-glow-top': 'star-glow-top linear infinite',
+      'star-glow-right': 'star-glow-right linear infinite',
+      'star-glow-bottom': 'star-glow-bottom linear infinite',
+      'star-glow-left': 'star-glow-left linear infinite',
+      'gradient': 'gradient 8s linear infinite',
+    },
+    keyframes: {
+      'star-movement-bottom': {
+        '0%': { transform: 'translate(0%, 0%)', opacity: '1' },
+        '100%': { transform: 'translate(-100%, 0%)', opacity: '0' },
+      },
+      'star-movement-top': {
+        '0%': { transform: 'translate(0%, 0%)', opacity: '1' },
+        '100%': { transform: 'translate(100%, 0%)', opacity: '0' },
+      },
+      'star-glow-top': {
+        '0%': { transform: 'translateX(-100%)' },
+        '100%': { transform: 'translateX(200%)' },
+      },
+      'star-glow-right': {
+        '0%': { transform: 'translateY(-100%)' },
+        '100%': { transform: 'translateY(200%)' },
+      },
+      'star-glow-bottom': {
+        '0%': { transform: 'translateX(100%)' },
+        '100%': { transform: 'translateX(-200%)' },
+      },
+      'star-glow-left': {
+        '0%': { transform: 'translateY(100%)' },
+        '100%': { transform: 'translateY(-200%)' },
+      },
+      'gradient': {
+        '0%': { backgroundPosition: '0% 50%' },
+        '50%': { backgroundPosition: '100% 50%' },
+        '100%': { backgroundPosition: '0% 50%' },
+      },
+    },
   },
   spacing: {
     px: "var(--size-px)",

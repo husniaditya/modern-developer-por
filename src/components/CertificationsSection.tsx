@@ -4,6 +4,9 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Trophy, Calendar } from '@phosphor-icons/react';
 import { useTranslation } from 'react-i18next';
+import DecryptedText from '@/components/ui/decrypted-text';
+import BlurText from '@/components/ui/blur-text';
+import GradientText from '@/components/ui/gradient-text';
 
 // Certificate images
 import aiDataScienceCert from '@/assets/images/certificates/ai for data science.webp';
@@ -27,6 +30,15 @@ interface Certification {
 
 const CertificationsSection = () => {
   const { t } = useTranslation();
+  
+  const cardAnimations = [
+    { initial: { opacity: 0, y: 30, rotateY: -10 }, animate: { opacity: 1, y: 0, rotateY: 0 } },
+    { initial: { opacity: 0, scale: 0.85, rotate: -3 }, animate: { opacity: 1, scale: 1, rotate: 0 } },
+    { initial: { opacity: 0, x: -30, rotateZ: 5 }, animate: { opacity: 1, x: 0, rotateZ: 0 } },
+    { initial: { opacity: 0, y: 40, skewY: 2 }, animate: { opacity: 1, y: 0, skewY: 0 } },
+    { initial: { opacity: 0, scale: 0.9, rotateX: 10 }, animate: { opacity: 1, scale: 1, rotateX: 0 } },
+    { initial: { opacity: 0, x: 30, rotateY: 10 }, animate: { opacity: 1, x: 0, rotateY: 0 } },
+  ];
   
   const certifications: Certification[] = [
     {
@@ -99,23 +111,37 @@ const CertificationsSection = () => {
     <section id="certifications" className="py-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-foreground mb-4">{t('certificates.title')}</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            {t('certificates.subtitle')}
-          </p>
+          <h2 className="text-4xl font-bold mb-4">
+            <GradientText>
+              <DecryptedText 
+                text={t('certificates.title')} 
+                speed={30}
+                sequential={true}
+                animateOn="view"
+              />
+            </GradientText>
+          </h2>
+          <BlurText 
+            text={t('certificates.subtitle')}
+            className="text-lg text-muted-foreground max-w-2xl mx-auto"
+            delay={50}
+            animateBy="words"
+          />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {certifications.map((cert, idx) => (
-            <motion.div
-              key={cert.id}
-              initial={{ opacity: 0, y: 24, scale: 0.98 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.5, delay: 0.05 * idx, ease: [0.22, 1, 0.36, 1] }}
-              className="h-full"
-            >
-              <Card className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-full">
+          {certifications.map((cert, idx) => {
+            const animation = cardAnimations[idx % cardAnimations.length];
+            return (
+              <motion.div
+                key={cert.id}
+                initial={animation.initial}
+                whileInView={animation.animate}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.6, delay: 0.05 * idx, ease: [0.22, 1, 0.36, 1] }}
+                className="h-full"
+              >
+                <Card className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-full">
               <div className="relative overflow-hidden rounded-t-lg">
                 <img 
                   src={cert.image} 
@@ -152,7 +178,8 @@ const CertificationsSection = () => {
               </CardContent>
             </Card>
             </motion.div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

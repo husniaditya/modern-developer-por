@@ -4,6 +4,9 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Envelope, Phone, MapPin, LinkedinLogo, GithubLogo, InstagramLogo, WhatsappLogo } from '@phosphor-icons/react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
+import DecryptedText from '@/components/ui/decrypted-text';
+import BlurText from '@/components/ui/blur-text';
+import GradientText from '@/components/ui/gradient-text';
 
 const ContactSection = () => {
   const { t } = useTranslation();
@@ -23,10 +26,22 @@ const ContactSection = () => {
     <section id="contact" className="py-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-foreground mb-4">{t('contact.title')}</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            {t('contact.subtitle')}
-          </p>
+          <h2 className="text-4xl font-bold mb-4">
+            <GradientText>
+              <DecryptedText 
+                text={t('contact.title')} 
+                speed={30}
+                sequential={true}
+                animateOn="view"
+              />
+            </GradientText>
+          </h2>
+          <BlurText 
+            text={t('contact.subtitle')}
+            className="text-lg text-muted-foreground max-w-2xl mx-auto"
+            delay={50}
+            animateBy="words"
+          />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">

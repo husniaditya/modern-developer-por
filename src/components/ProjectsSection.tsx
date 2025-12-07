@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { motion, useInView, AnimatePresence, useScroll, useTransform, useSpring, useReducedMotion } from 'framer-motion';
+import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -11,6 +11,7 @@ import { getFallbackFor } from '@/lib/assets';
 import DecryptedText from '@/components/ui/decrypted-text';
 import BlurText from '@/components/ui/blur-text';
 import GradientText from '@/components/ui/gradient-text';
+import CardSwap, { Card as SwapCard } from '@/components/ui/card-swap';
 
 // Project images
 import chocomaidApp from '@/assets/images/projects/chocomaid_app.webp';
@@ -37,95 +38,9 @@ interface Project {
   featured: boolean;
 }
 
-// Small helper component to add a smooth parallax effect to images on scroll
-function ParallaxImage({ src, alt, priority = false, fallback }: { src: string; alt: string; priority?: boolean; fallback?: string }) {
-  const ref = useRef<HTMLDivElement | null>(null);
-  const [isMobile, setIsMobile] = useState(false);
-  const [imgError, setImgError] = useState(false);
-  useEffect(() => {
-    const mql = window.matchMedia('(max-width: 640px)');
-    const update = () => setIsMobile(mql.matches);
-    update();
-    mql.addEventListener?.('change', update);
-    return () => mql.removeEventListener?.('change', update);
-  }, []);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-  // Move a bit as you scroll the card through the viewport
-  const prefersReducedMotion = useReducedMotion();
-  // Smooth the progress itself, then map to pixels for extra fluidity
-  const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 70,
-    damping: 28,
-    mass: 0.2,
-    restDelta: 0.001,
-    restSpeed: 0.001,
-  });
-  // Smoothstep easing to avoid twitchy starts/stops
-  const easedProgress = useTransform(smoothProgress, (v) => v * v * (3 - 2 * v));
-  const delta = isMobile ? 12 : 20;
-  // Always create the motion value to avoid conditional hook calls
-  const yMotion = useTransform(easedProgress, [0, 1], [-delta, delta]);
-  const y = prefersReducedMotion ? 0 : yMotion;
-
-  // When reduced motion is preferred, render a static image to ensure accessibility
-  if (prefersReducedMotion) {
-    return (
-      <div className="relative w-full h-48 overflow-hidden">
-        {imgError ? (
-          <div className="w-full h-full bg-muted/40" aria-hidden="true" />
-        ) : (
-          <picture>
-            <source type="image/webp" srcSet={src} />
-            <img
-              src={fallback ?? src}
-              alt={alt}
-              className="w-full h-full object-cover"
-              loading={priority ? 'eager' : 'lazy'}
-              decoding="async"
-              sizes="100vw"
-              {...(priority ? { fetchPriority: 'high' as const } : {})}
-              draggable={false}
-              onError={() => setImgError(true)}
-            />
-          </picture>
-        )}
-      </div>
-    );
-  }
-
-  return (
-    <motion.div
-      ref={ref}
-      className="relative w-full h-48 overflow-hidden"
-      initial={false}
-      viewport={{ amount: 0.01 }}
-      style={{ willChange: 'opacity', backfaceVisibility: 'hidden' }}
-    >
-      <picture>
-        <source type="image/webp" srcSet={src} />
-        <motion.img
-          src={fallback ?? src}
-          alt={alt}
-          className="w-full h-full object-cover transform-gpu"
-          style={{ y, scale: 1.06, willChange: 'transform' }}
-          loading={priority ? 'eager' : 'lazy'}
-          decoding="async"
-          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-          {...(priority ? { fetchPriority: 'high' as const } : {})}
-          draggable={false}
-          onError={() => setImgError(true)}
-        />
-      </picture>
-    </motion.div>
-  );
-}
-
 const ProjectsSection = () => {
   const { t } = useTranslation();
-  const [activeFilter, setActiveFilter] = useState('All');
+  const [activeProjectIndex, setActiveProjectIndex] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
   // Initialize intersection observer for section animations (value not used directly)
   useInView(sectionRef, { once: true, amount: 0.2 });
@@ -236,16 +151,7 @@ const ProjectsSection = () => {
     }
   ];
 
-  const categories = [
-    { key: 'All', label: t('projects.filters.all') },
-    { key: 'Full Stack', label: t('projects.filters.fullStack') },
-    { key: 'Frontend', label: t('projects.filters.frontend') },
-    { key: 'Backend', label: t('projects.filters.backend') }
-  ];
-
-  const filteredProjects = activeFilter === 'All' 
-    ? projects 
-    : projects.filter(project => project.category.includes(activeFilter));
+  const filteredProjects = projects;
 
   // Inject JSON-LD once for all projects
   useEffect(() => {
@@ -270,48 +176,6 @@ const ProjectsSection = () => {
     // only once on mount
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const cardAnimations = [
-    { 
-      hidden: { y: 40, opacity: 0, rotateX: 10 },
-      visible: { y: 0, opacity: 1, rotateX: 0 },
-      exit: { y: -20, opacity: 0, rotateX: -5 }
-    },
-    { 
-      hidden: { scale: 0.85, opacity: 0, rotate: -5 },
-      visible: { scale: 1, opacity: 1, rotate: 0 },
-      exit: { scale: 0.9, opacity: 0, rotate: 3 }
-    },
-    { 
-      hidden: { x: -40, opacity: 0, rotateY: 15 },
-      visible: { x: 0, opacity: 1, rotateY: 0 },
-      exit: { x: 20, opacity: 0, rotateY: -10 }
-    },
-    { 
-      hidden: { y: 50, opacity: 0, skewY: 3 },
-      visible: { y: 0, opacity: 1, skewY: 0 },
-      exit: { y: -25, opacity: 0, skewY: -2 }
-    },
-    { 
-      hidden: { scale: 0.9, opacity: 0, rotateZ: 8 },
-      visible: { scale: 1, opacity: 1, rotateZ: 0 },
-      exit: { scale: 0.85, opacity: 0, rotateZ: -5 }
-    },
-    { 
-      hidden: { x: 40, opacity: 0, rotateX: -12 },
-      visible: { x: 0, opacity: 1, rotateX: 0 },
-      exit: { x: -20, opacity: 0, rotateX: 8 }
-    },
-  ];
-
-  const filterButtonVariants = {
-    active: {
-      scale: 1.05
-    },
-    inactive: {
-      scale: 1
-    }
-  };
 
   return (
     <section id="projects" ref={sectionRef} className="py-20 bg-secondary/30">
@@ -341,181 +205,245 @@ const ProjectsSection = () => {
           />
         </motion.div>
 
-        {/* Filter Buttons */}
-        <motion.div 
-          className="flex flex-wrap justify-center gap-4 mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          {categories.map((category) => (
-            <motion.div
-              key={category.key}
-              variants={filterButtonVariants}
-              animate={activeFilter === category.key ? "active" : "inactive"}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{
-                type: "spring",
-                stiffness: 300,
-                damping: 20
-              }}
+        {/* Two-Panel Layout */}
+        <div className="relative min-h-[600px]">
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
+            {/* Left Panel - Project Details */}
+            <motion.div 
+              className="w-full lg:w-[60%] space-y-6 lg:self-start lg:mt-[120px]"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6 }}
             >
-              <Button
-                variant={activeFilter === category.key ? 'default' : 'outline'}
-                onClick={() => setActiveFilter(category.key)}
-                className="transition-all"
-              >
-                {category.label}
-              </Button>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* Projects Grid */}
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          layout
-        >
-          <AnimatePresence>
-            {filteredProjects.map((project, index) => {
-              const animation = cardAnimations[index % cardAnimations.length];
-              return (
+              <AnimatePresence mode="wait">
                 <motion.div
-                  key={`${activeFilter}-${project.id}`}
-                  variants={animation}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.2 }}
-                  exit="exit"
-                  layout
-                  transition={{ duration: 0.6, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                  whileHover={{ y: -8, transition: { duration: 0.2 } }}
+                  key={filteredProjects[activeProjectIndex]?.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.4 }}
                 >
-                  <Card className="group project-card overflow-hidden hover-lift h-full glass-card">
-                  <div className="relative overflow-hidden">
-                    <ParallaxImage src={project.image} fallback={getFallbackFor(project.image)} alt={project.title} priority={index === 0} />
-                    
-                    {/* Overlay for demo/code links */}
-                    <div className="project-overlay">
-                      <div className="flex space-x-4">
-                        {project.liveUrl && (
+                  <Card className="overflow-hidden glass-card">
+                    <CardHeader>
+                      <div className="flex items-center justify-between flex-wrap gap-2">
+                        <CardTitle className="text-2xl md:text-3xl brand-gradient-text">
+                          {filteredProjects[activeProjectIndex]?.title}
+                        </CardTitle>
+                        {filteredProjects[activeProjectIndex]?.year && (
+                          <Badge variant="outline" className="text-sm font-medium">
+                            {filteredProjects[activeProjectIndex]?.year}
+                          </Badge>
+                        )}
+                      </div>
+                    </CardHeader>
+
+                    <CardContent className="space-y-6">
+                      {/* Description */}
+                      <p className="text-muted-foreground text-base leading-relaxed">
+                        {filteredProjects[activeProjectIndex]?.description}
+                      </p>
+
+                      {/* Category Badge */}
+                      <div>
+                        <Badge variant="secondary" className="text-sm">
+                          {filteredProjects[activeProjectIndex]?.category}
+                        </Badge>
+                      </div>
+
+                      {/* Technologies */}
+                      <div className="space-y-3">
+                        <h4 className="text-sm font-semibold text-foreground/80">
+                          {t('projects.technologies') || 'Technologies'}
+                        </h4>
+                        <div className="flex flex-wrap gap-2">
+                          {filteredProjects[activeProjectIndex]?.technologies.map((tech, techIndex) => (
+                            <motion.div
+                              key={tech}
+                              initial={{ opacity: 0, scale: 0.8 }}
+                              animate={{ opacity: 1, scale: 1 }}
+                              transition={{ delay: techIndex * 0.05 }}
+                              whileHover={{ scale: 1.05 }}
+                            >
+                              <Badge
+                                variant="secondary"
+                                className="text-xs transition-colors border border-border/60 bg-muted/60 text-foreground/80 hover:bg-primary/10 hover:text-foreground"
+                              >
+                                {tech}
+                              </Badge>
+                            </motion.div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Action Buttons */}
+                      <div className="flex gap-3 pt-2">
+                        {filteredProjects[activeProjectIndex]?.liveUrl && (
                           <motion.a
-                            href={project.liveUrl}
+                            href={filteredProjects[activeProjectIndex]?.liveUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.9 }}
-                            className="bg-white/20 backdrop-blur-sm p-3 rounded-full hover:bg-white/30 transition-all"
+                            className="flex-1"
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
                           >
-                            <Globe size={24} />
+                            <Button size="lg" className="w-full">
+                              <Globe size={20} className="mr-2" />
+                              {t('projects.liveDemo')}
+                            </Button>
                           </motion.a>
                         )}
-                        {project.githubUrl && (
+                        {filteredProjects[activeProjectIndex]?.githubUrl && (
                           <motion.a
-                            href={project.githubUrl}
+                            href={filteredProjects[activeProjectIndex]?.githubUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.9 }}
-                            className="bg-white/20 backdrop-blur-sm p-3 rounded-full hover:bg-white/30 transition-all"
+                            className="flex-1"
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
                           >
-                            <GithubLogo size={24} />
+                            <Button size="lg" variant="outline" className="w-full">
+                              <GithubLogo size={20} className="mr-2" />
+                              {t('projects.code')}
+                            </Button>
                           </motion.a>
                         )}
                       </div>
-                    </div>
-                    
-                    {project.featured && (
-                      <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.3 }}
-                      >
-                        <Badge className="absolute top-4 left-4 bg-accent animate-pulse-glow">
-                          ⭐ {t('projects.featured')}
-                        </Badge>
-                      </motion.div>
-                    )}
-                  </div>
-                  <CardHeader>
-                    <div className="flex items-center justify-between">
-                      <CardTitle className="group-hover:text-primary transition-colors brand-gradient-text">
-                        {project.title}
-                      </CardTitle>
-                      {project.year && (
-                        <Badge variant="outline" className="text-xs font-medium">
-                          {project.year}
-                        </Badge>
-                      )}
-                    </div>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <p className="text-muted-foreground text-sm leading-relaxed">
-                      {project.description}
-                    </p>
-                    
-                    {/* Technologies */}
-                    <div className="flex flex-wrap gap-2">
-                      {project.technologies.map((tech, techIndex) => (
-                        <motion.div
-                          key={tech}
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: 0.4 + techIndex * 0.1 }}
-                          whileHover={{ scale: 1.05 }}
-                        >
-                          <Badge
-                            variant="secondary"
-                            className="text-xs transition-colors border border-border/60 bg-muted/60 text-foreground/80 hover:bg-primary/10 hover:text-foreground"
-                          >
-                            {tech}
-                          </Badge>
-                        </motion.div>
-                      ))}
-                    </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              </AnimatePresence>
+            </motion.div>
 
-                    {/* Quick Action Buttons */}
-                    <div className="flex gap-2 pt-2">
-                      {project.liveUrl && (
-                        <motion.a
-                          href={project.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex-1"
-                          whileHover={{ scale: 1.02 }}
-                          whileTap={{ scale: 0.98 }}
-                        >
-                          <Button size="sm" variant="outline" className="w-full">
-                            <Globe size={16} className="mr-2" />
-                            {t('projects.liveDemo')}
-                          </Button>
-                        </motion.a>
-                      )}
-                      {project.githubUrl && (
-                        <motion.a
-                          href={project.githubUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex-1"
-                          whileHover={{ scale: 1.02 }}
-                          whileTap={{ scale: 0.98 }}
-                        >
-                          <Button size="sm" variant="outline" className="w-full">
-                            <GithubLogo size={16} className="mr-2" />
-                            {t('projects.code')}
-                          </Button>
-                        </motion.a>
-                      )}
-                    </div>
-                  </CardContent>
-                </Card>
+            {/* Right Panel - Card Stack with Auto-Swap (Desktop) */}
+            <div className="hidden lg:block lg:w-[40%] relative">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="relative h-[600px]"
+              >
+                <CardSwap
+                  width={450}
+                  height={300}
+                  cardDistance={40}
+                  verticalDistance={50}
+                  delay={3000}
+                  pauseOnHover={true}
+                  skewAmount={4}
+                  easing="elastic"
+                  onCardClick={(idx) => setActiveProjectIndex(idx)}
+                  onFrontCardChange={(idx) => setActiveProjectIndex(idx)}
+                >
+                  {filteredProjects.map((project) => (
+                    <SwapCard
+                      key={project.id}
+                      customClass="cursor-pointer hover:scale-105 transition-transform duration-300 overflow-hidden"
+                    >
+                      <div className="w-full h-full relative flex flex-col">
+                        {/* Project Title Header */}
+                        <div className="bg-gradient-to-r from-primary/90 to-accent/90 px-4 py-2 text-white">
+                          <h3 className="text-lg font-bold truncate">{project.title}</h3>
+                        </div>
+                        {/* Project Image */}
+                        <div className="flex-1 relative">
+                          <img
+                            src={project.image}
+                            alt={project.title}
+                            className="w-full h-full object-cover"
+                            loading="lazy"
+                            onError={(e) => {
+                              const target = e.target as HTMLImageElement;
+                              const fallback = getFallbackFor(project.image);
+                              if (fallback && target.src !== fallback) {
+                                target.src = fallback;
+                              }
+                            }}
+                          />
+                          {project.featured && (
+                            <Badge className="absolute top-2 right-2 bg-accent animate-pulse-glow">
+                              ⭐
+                            </Badge>
+                          )}
+                          {project.year && (
+                            <Badge variant="secondary" className="absolute bottom-2 left-2 text-xs">
+                              {project.year}
+                            </Badge>
+                          )}
+                        </div>
+                      </div>
+                    </SwapCard>
+                  ))}
+                </CardSwap>
               </motion.div>
-              );
-            })}
-          </AnimatePresence>
-        </motion.div>
+            </div>
+
+            {/* Mobile Card Stack */}
+            <div className="block lg:hidden w-full mt-[180px]">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="relative h-[180px] flex items-center justify-center"
+              >
+                <CardSwap
+                  width={300}
+                  height={200}
+                  cardDistance={25}
+                  verticalDistance={28}
+                  delay={3000}
+                  pauseOnHover={true}
+                  skewAmount={3}
+                  easing="elastic"
+                  onCardClick={(idx) => setActiveProjectIndex(idx)}
+                  onFrontCardChange={(idx) => setActiveProjectIndex(idx)}
+                >
+                  {filteredProjects.map((project) => (
+                    <SwapCard
+                      key={project.id}
+                      customClass="cursor-pointer hover:scale-105 transition-transform duration-300 overflow-hidden"
+                    >
+                      <div className="w-full h-full relative flex flex-col">
+                        {/* Project Title Header */}
+                        <div className="bg-gradient-to-r from-primary/90 to-accent/90 px-3 py-1.5 text-white">
+                          <h3 className="text-sm font-bold truncate">{project.title}</h3>
+                        </div>
+                        {/* Project Image */}
+                        <div className="flex-1 relative">
+                          <img
+                            src={project.image}
+                            alt={project.title}
+                            className="w-full h-full object-cover"
+                            loading="lazy"
+                            onError={(e) => {
+                              const target = e.target as HTMLImageElement;
+                              const fallback = getFallbackFor(project.image);
+                              if (fallback && target.src !== fallback) {
+                                target.src = fallback;
+                              }
+                            }}
+                          />
+                          {project.featured && (
+                            <Badge className="absolute top-1 right-1 bg-accent animate-pulse-glow text-xs">
+                              ⭐
+                            </Badge>
+                          )}
+                          {project.year && (
+                            <Badge variant="secondary" className="absolute bottom-1 left-1 text-xs">
+                              {project.year}
+                            </Badge>
+                          )}
+                        </div>
+                      </div>
+                    </SwapCard>
+                  ))}
+                </CardSwap>
+              </motion.div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

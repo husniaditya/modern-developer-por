@@ -31,9 +31,18 @@ const LetterGlitch = ({
 
   const lettersAndSymbols = Array.from(characters);
 
-  const fontSize = 16;
-  const charWidth = 10;
-  const charHeight = 20;
+  // Adjust font size and dimensions based on screen width
+  const getFontSizeForScreen = () => {
+    if (typeof window === 'undefined') return 16;
+    const width = window.innerWidth;
+    if (width < 640) return 12; // Mobile
+    if (width < 1024) return 14; // Tablet
+    return 16; // Desktop
+  };
+
+  const fontSize = getFontSizeForScreen();
+  const charWidth = fontSize * 0.625; // Proportional to font size
+  const charHeight = fontSize * 1.25; // Proportional to font size
 
   const getRandomChar = () => {
     return lettersAndSymbols[Math.floor(Math.random() * lettersAndSymbols.length)];
@@ -98,17 +107,21 @@ const LetterGlitch = ({
     const dpr = window.devicePixelRatio || 1;
     const rect = parent.getBoundingClientRect();
 
-    canvas.width = rect.width * dpr;
-    canvas.height = rect.height * dpr;
+    // Ensure minimum dimensions for proper coverage
+    const width = Math.max(rect.width, 320);
+    const height = Math.max(rect.height, 480);
 
-    canvas.style.width = `${rect.width}px`;
-    canvas.style.height = `${rect.height}px`;
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+
+    canvas.style.width = `${width}px`;
+    canvas.style.height = `${height}px`;
 
     if (context.current) {
       context.current.setTransform(dpr, 0, 0, dpr, 0, 0);
     }
 
-    const { columns, rows } = calculateGrid(rect.width, rect.height);
+    const { columns, rows } = calculateGrid(width, height);
     initializeLetters(columns, rows);
     drawLetters();
   };
@@ -118,12 +131,18 @@ const LetterGlitch = ({
     const ctx = context.current;
     const { width, height } = canvasRef.current!.getBoundingClientRect();
     ctx.clearRect(0, 0, width, height);
-    ctx.font = `${fontSize}px monospace`;
+    
+    // Use dynamic font size based on current screen
+    const currentFontSize = getFontSizeForScreen();
+    const currentCharWidth = currentFontSize * 0.625;
+    const currentCharHeight = currentFontSize * 1.25;
+    
+    ctx.font = `${currentFontSize}px monospace`;
     ctx.textBaseline = 'top';
 
     letters.current.forEach((letter, index) => {
-      const x = (index % grid.current.columns) * charWidth;
-      const y = Math.floor(index / grid.current.columns) * charHeight;
+      const x = (index % grid.current.columns) * currentCharWidth;
+      const y = Math.floor(index / grid.current.columns) * currentCharHeight;
       ctx.fillStyle = letter.color;
       ctx.fillText(letter.char, x, y);
     });
@@ -132,7 +151,10 @@ const LetterGlitch = ({
   const updateLetters = () => {
     if (!letters.current || letters.current.length === 0) return;
 
-    const updateCount = Math.max(1, Math.floor(letters.current.length * 0.05));
+    // Adjust update count based on device - fewer updates on mobile for better performance
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 640;
+    const updateRatio = isMobile ? 0.03 : 0.05;
+    const updateCount = Math.max(1, Math.floor(letters.current.length * updateRatio));
 
     for (let i = 0; i < updateCount; i++) {
       const index = Math.floor(Math.random() * letters.current.length);

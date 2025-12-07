@@ -1,8 +1,6 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import React, { useState, useEffect } from 'react';
 import { Badge } from '@/components/ui/badge';
-import { Trophy, Calendar } from '@phosphor-icons/react';
+import { Trophy } from '@phosphor-icons/react';
 import { useTranslation } from 'react-i18next';
 import DecryptedText from '@/components/ui/decrypted-text';
 import BlurText from '@/components/ui/blur-text';
@@ -30,15 +28,8 @@ interface Certification {
 
 const CertificationsSection = () => {
   const { t } = useTranslation();
-  
-  const cardAnimations = [
-    { initial: { opacity: 0, y: 30, rotateY: -10 }, animate: { opacity: 1, y: 0, rotateY: 0 } },
-    { initial: { opacity: 0, scale: 0.85, rotate: -3 }, animate: { opacity: 1, scale: 1, rotate: 0 } },
-    { initial: { opacity: 0, x: -30, rotateZ: 5 }, animate: { opacity: 1, x: 0, rotateZ: 0 } },
-    { initial: { opacity: 0, y: 40, skewY: 2 }, animate: { opacity: 1, y: 0, skewY: 0 } },
-    { initial: { opacity: 0, scale: 0.9, rotateX: 10 }, animate: { opacity: 1, scale: 1, rotateX: 0 } },
-    { initial: { opacity: 0, x: 30, rotateY: 10 }, animate: { opacity: 1, x: 0, rotateY: 0 } },
-  ];
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [animatedOptions, setAnimatedOptions] = useState<number[]>([]);
   
   const certifications: Certification[] = [
     {
@@ -107,6 +98,28 @@ const CertificationsSection = () => {
     }
   ];
 
+  const handleOptionClick = (index: number) => {
+    if (index !== activeIndex) {
+      setActiveIndex(index);
+    }
+  };
+
+  useEffect(() => {
+    const timers: ReturnType<typeof setTimeout>[] = [];
+    
+    certifications.forEach((_, i) => {
+      const timer = setTimeout(() => {
+        setAnimatedOptions(prev => [...prev, i]);
+      }, 180 * i);
+      timers.push(timer);
+    });
+    
+    return () => {
+      timers.forEach(timer => clearTimeout(timer));
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <section id="certifications" className="py-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -129,58 +142,207 @@ const CertificationsSection = () => {
           />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {certifications.map((cert, idx) => {
-            const animation = cardAnimations[idx % cardAnimations.length];
-            return (
-              <motion.div
+        {/* Interactive Selector - Desktop */}
+        <div className="relative hidden md:flex justify-center items-center min-h-[500px]">
+          <div className="flex w-full max-w-[900px] h-[400px] items-stretch overflow-hidden relative">
+            {certifications.map((cert, index) => (
+              <div
                 key={cert.id}
-                initial={animation.initial}
-                whileInView={animation.animate}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.6, delay: 0.05 * idx, ease: [0.22, 1, 0.36, 1] }}
-                className="h-full"
+                className="relative flex flex-col justify-end overflow-hidden cursor-pointer"
+                style={{
+                  backgroundImage: `url('${cert.image}')`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  backfaceVisibility: 'hidden',
+                  opacity: animatedOptions.includes(index) ? 1 : 0,
+                  transform: animatedOptions.includes(index) ? 'translateX(0)' : 'translateX(-60px)',
+                  transitionProperty: 'flex-grow, background-size, border-color, box-shadow, opacity, transform',
+                  transitionDuration: '700ms',
+                  transitionTimingFunction: 'ease-in-out',
+                  minWidth: '60px',
+                  minHeight: '100px',
+                  margin: 0,
+                  borderRadius: 0,
+                  borderWidth: '2px',
+                  borderStyle: 'solid',
+                  borderColor: activeIndex === index ? 'hsl(var(--primary))' : 'hsl(var(--border))',
+                  backgroundColor: 'hsl(var(--background))',
+                  boxShadow: activeIndex === index 
+                    ? '0 20px 60px rgba(0,0,0,0.50)' 
+                    : '0 10px 30px rgba(0,0,0,0.30)',
+                  flexGrow: activeIndex === index ? 7 : 1,
+                  flexShrink: 1,
+                  flexBasis: '0%',
+                  zIndex: activeIndex === index ? 10 : 1,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'flex-end',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  willChange: 'flex-grow, box-shadow, background-size, background-position'
+                }}
+                onClick={() => handleOptionClick(index)}
               >
-                <Card className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-full">
-              <div className="relative overflow-hidden rounded-t-lg">
-                <img 
-                  src={cert.image} 
-                  alt={cert.title}
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute top-4 right-4">
-                  <Badge variant={cert.status === 'active' ? 'default' : 'secondary'}>
+                {/* Shadow effect */}
+                <div 
+                  className="absolute left-0 right-0 pointer-events-none transition-all duration-700 ease-in-out"
+                  style={{
+                    bottom: activeIndex === index ? '0' : '-40px',
+                    height: '120px',
+                    boxShadow: activeIndex === index 
+                      ? 'inset 0 -120px 120px -120px #000, inset 0 -120px 120px -80px #000' 
+                      : 'inset 0 -120px 0px -120px #000, inset 0 -120px 0px -80px #000'
+                  }}
+                ></div>
+                
+                {/* Label with icon and info */}
+                <div className="absolute left-0 right-0 bottom-5 flex items-center justify-start h-12 z-[2] pointer-events-none px-4 gap-3 w-full">
+                  <div className="min-w-[44px] max-w-[44px] h-[44px] flex items-center justify-center rounded-full bg-primary/90 backdrop-blur-[10px] shadow-[0_1px_4px_rgba(0,0,0,0.18)] border-2 border-primary-foreground/20 flex-shrink-0 flex-grow-0 transition-all duration-200">
+                    <Trophy size={24} className="text-primary-foreground" />
+                  </div>
+                  <div className="text-white whitespace-pre relative">
+                    <div 
+                      className="font-bold text-lg transition-all duration-700 ease-in-out"
+                      style={{
+                        opacity: activeIndex === index ? 1 : 0,
+                        transform: activeIndex === index ? 'translateX(0)' : 'translateX(25px)'
+                      }}
+                    >
+                      {cert.title}
+                    </div>
+                    <div 
+                      className="text-base text-gray-300 transition-all duration-700 ease-in-out flex items-center gap-2"
+                      style={{
+                        opacity: activeIndex === index ? 1 : 0,
+                        transform: activeIndex === index ? 'translateX(0)' : 'translateX(25px)'
+                      }}
+                    >
+                      <span>{cert.issuer}</span>
+                      <span>•</span>
+                      <span>{cert.date}</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Status Badge */}
+                <div className="absolute top-4 right-4 z-[2]">
+                  <Badge 
+                    variant={cert.status === 'active' ? 'default' : 'secondary'}
+                    className="transition-opacity duration-700"
+                    style={{
+                      opacity: activeIndex === index ? 1 : 0
+                    }}
+                  >
                     {t(`certificates.status.${cert.status}`)}
                   </Badge>
                 </div>
               </div>
-              <CardHeader className="pb-4">
-                <div className="flex items-start justify-between">
-                  <Trophy size={32} className="text-primary flex-shrink-0" />
+            ))}
+          </div>
+        </div>
+
+        {/* Interactive Selector - Mobile (Vertical Stack) */}
+        <div className="flex md:hidden flex-col w-full max-w-[350px] mx-auto gap-0 overflow-hidden relative">
+          {certifications.map((cert, index) => (
+            <div
+              key={cert.id}
+              className="relative flex flex-col justify-end overflow-hidden cursor-pointer"
+              style={{
+                backgroundImage: `url('${cert.image}')`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backfaceVisibility: 'hidden',
+                opacity: animatedOptions.includes(index) ? 1 : 0,
+                transform: animatedOptions.includes(index) ? 'translateY(0)' : 'translateY(-30px)',
+                transitionProperty: 'height, border-color, box-shadow, opacity, transform',
+                transitionDuration: '500ms',
+                transitionTimingFunction: 'ease-in-out',
+                height: activeIndex === index ? '180px' : '50px',
+                minHeight: '50px',
+                margin: 0,
+                borderRadius: '8px',
+                marginBottom: index < certifications.length - 1 ? '8px' : '0',
+                borderWidth: '2px',
+                borderStyle: 'solid',
+                borderColor: activeIndex === index ? 'hsl(var(--primary))' : 'hsl(var(--border))',
+                backgroundColor: 'hsl(var(--background))',
+                boxShadow: activeIndex === index 
+                  ? '0 10px 30px rgba(0,0,0,0.50)' 
+                  : '0 5px 15px rgba(0,0,0,0.30)',
+                zIndex: activeIndex === index ? 10 : 1,
+                willChange: 'height, box-shadow'
+              }}
+              onClick={() => handleOptionClick(index)}
+            >
+              {/* Shadow effect */}
+              <div 
+                className="absolute left-0 right-0 pointer-events-none transition-all duration-500 ease-in-out"
+                style={{
+                  bottom: 0,
+                  height: '80px',
+                  boxShadow: 'inset 0 -80px 80px -80px #000, inset 0 -80px 80px -40px #000'
+                }}
+              ></div>
+              
+              {/* Label with icon and info */}
+              <div className="absolute left-0 right-0 bottom-3 flex items-center justify-start h-10 z-[2] pointer-events-none px-3 gap-2 w-full">
+                <div className="min-w-[36px] max-w-[36px] h-[36px] flex items-center justify-center rounded-full bg-primary/90 backdrop-blur-[10px] shadow-[0_1px_4px_rgba(0,0,0,0.18)] border-2 border-primary-foreground/20 flex-shrink-0 flex-grow-0">
+                  <Trophy size={18} className="text-primary-foreground" />
                 </div>
-                <CardTitle className="text-lg leading-tight group-hover:text-primary transition-colors">
-                  {cert.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <div className="space-y-2">
-                  <p className="font-medium text-foreground">{cert.issuer}</p>
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <Calendar size={16} />
+                <div className="text-white whitespace-nowrap relative overflow-hidden flex-1">
+                  <div 
+                    className="font-bold text-sm transition-all duration-500 ease-in-out truncate"
+                    style={{
+                      opacity: 1,
+                      transform: 'translateX(0)'
+                    }}
+                  >
+                    {cert.title}
+                  </div>
+                  <div 
+                    className="text-xs text-gray-300 transition-all duration-500 ease-in-out flex items-center gap-1"
+                    style={{
+                      opacity: activeIndex === index ? 1 : 0,
+                      height: activeIndex === index ? 'auto' : '0',
+                      overflow: 'hidden'
+                    }}
+                  >
+                    <span>{cert.issuer}</span>
+                    <span>•</span>
                     <span>{cert.date}</span>
                   </div>
-                  {cert.credentialId && (
-                    <p className="text-sm text-muted-foreground">
-                      {t('certificates.credentialId')}: {cert.credentialId}
-                    </p>
-                  )}
                 </div>
-              </CardContent>
-            </Card>
-            </motion.div>
-            );
-          })}
+              </div>
+
+              {/* Status Badge - Mobile */}
+              <div className="absolute top-2 right-2 z-[2]">
+                <Badge 
+                  variant={cert.status === 'active' ? 'default' : 'secondary'}
+                  className="transition-opacity duration-500 text-xs"
+                  style={{
+                    opacity: activeIndex === index ? 1 : 0
+                  }}
+                >
+                  {t(`certificates.status.${cert.status}`)}
+                </Badge>
+              </div>
+            </div>
+          ))}
         </div>
+
+        {/* Custom animations */}
+        <style dangerouslySetInnerHTML={{ __html: `
+          @keyframes slideFadeIn {
+            0% {
+              opacity: 0;
+              transform: translateX(-60px);
+            }
+            100% {
+              opacity: 1;
+              transform: translateX(0);
+            }
+          }
+        ` }} />
       </div>
     </section>
   );

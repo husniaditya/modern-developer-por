@@ -13,11 +13,18 @@ try {
   console.error('failed to parse custom styles', err)
 }
 const defaultTheme = {
-  container: {
-    center: true,
-    padding: "2rem",
-  },
   extend: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        sm: '640px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1280px',
+        '2xl': '1536px',
+      },
+    },
     screens: {
       coarse: { raw: "(pointer: coarse)" },
       fine: { raw: "(pointer: fine)" },

@@ -44,6 +44,7 @@
     "github": "GitHub",
     "code": "Code",
     "featured": "Featured",
+    "technologies": "Technologies",
     "items": {
       "chocomaid": {
         "title": "Choco Maid AI Discord Bot",

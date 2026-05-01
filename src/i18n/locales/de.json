@@ -314,7 +314,19 @@
       "recruitment": "Rekrutierungsmanagementsystem für Stellenausschreibungen, Bewerberverfolgung und Terminplanung für Vorstellungsgespräche.",
       "parking": "Parkverwaltungssystem mit Fahrzeugverfolgung, Zahlungsabwicklung und Raumzuweisung.",
       "shipment": "Sendungsverfolgungssystem für Logistikmanagement mit Echtzeitverfolgung und Lieferaktualisierungen.",
-      "maintenance": "Wartungsmanagementsystem für Geräteverfolgung, Arbeitsaufträge und vorbeugende Wartungsplanung."
+      "maintenance": "Wartungsmanagementsystem für Geräteverfolgung, Arbeitsaufträge und vorbeugende Wartungsplanung.",
+      "impact": {
+        "chocomaidBot": "500+ aktive Nutzer innerhalb von 3 Monaten erreicht bei 98% Verfügbarkeit und unter 200ms Reaktionszeit, 4-faches Community-Engagement-Wachstum und 70% weniger manuellen Moderationsaufwand.",
+        "ciptaSejati": "Betrieb für 63 Dojos und 10.000+ Mitglieder optimiert, Verwaltungsaufwand um 60% reduziert, Mitgliederbindung um 35% gesteigert und Echtzeit-Finanzeinblicke für die Führung ermöglicht.",
+        "erpApp": "50% Steigerung der Betriebseffizienz erzielt, Dateneingabefehler um 80% reduziert und Berichtserstellung von Tagen auf Minuten verkürzt — signifikante Kosteneinsparungen, bessere Entscheidungsfindung und gesteigerte Produktivität in allen Abteilungen.",
+        "digitalLibrary": "Dokumentenspeicherung über die gesamte Rechenzentrumsinfrastruktur zentralisiert, isolierte Dateisysteme beseitigt und die Dokumentabrufzeit um 75% reduziert. Organisationsweiter Zugriff auf 100.000+ Dokumente mit rollenbasierter Berechtigung ermöglicht, Speicherredundanz um 60% gesenkt und die Audit-Compliance in allen Abteilungen verbessert.",
+        "hrisApp": "HR-Workflows für 300+ Mitarbeiter automatisiert, Gehaltsabrechnungszeit um 65% verkürzt, manuelle Datenfehler um 90% reduziert und Genauigkeit der Compliance-Berichte verbessert.",
+        "productSpec": "Produktdokumentationszeit um 45% reduziert, Compliance-Review-Zyklen verkürzt und Time-to-Market für 200+ Produktlinien durch standardisierte Spezifikations-Workflows beschleunigt.",
+        "recruitment": "Durchschnittliche Einstellungszyklen um 40% verkürzt, manuellen Tracking-Aufwand eliminiert und Kandidatenerfahrung durch automatisierte Benachrichtigungen und strukturierte Vorstellungsgespräche verbessert.",
+        "parking": "Parkplatzdurchsatz um 30% erhöht, Einnahmeverluste durch digitale Zahlungsintegration auf nahezu null reduziert und Streitbeilegungszeit um 85% verkürzt.",
+        "shipment": "Echtzeittransparenz für 100+ tägliche Sendungen bereitgestellt, Kundenanfragen um 50% reduziert und Pünktlichkeitsrate um 25% verbessert.",
+        "maintenance": "Ungeplante Geräteausfälle um 40% durch prädiktive Wartungsplanung reduziert, Reparaturkosten gesenkt und durchschnittliche Anlagenlebensdauer um über 20% verlängert."
+      }
     },
     "education": {
       "remark": {

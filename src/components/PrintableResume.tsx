@@ -1042,51 +1042,60 @@ const PrintableResume: React.FC<PrintableResumeProps> = ({ skills, projects, cer
             </div>
           </div>
 
-          {/* Weekly Activity Bar Chart — static representative data */}
-          {(() => {
-            const staticWeeklyData = [
-              { day: 'Mon', hours: 7 },
-              { day: 'Tue', hours: 8 },
-              { day: 'Wed', hours: 6 },
-              { day: 'Thu', hours: 9 },
-              { day: 'Fri', hours: 7 },
-              { day: 'Sat', hours: 5 },
-              { day: 'Sun', hours: 6 },
-            ];
-            return (
-              <div className="weekly-chart-container">
-                <h3 style={{ fontSize: '10pt', marginTop: 0, marginBottom: '8pt', color: '#111827' }}>
-                  {t('wakatime.weeklyActivity', { defaultValue: 'Weekly Activity' })}
-                </h3>
-                <ResponsiveContainer width="100%" height={160}>
-                  <BarChart data={staticWeeklyData} margin={{ left: 0, right: 0, top: 15, bottom: 0 }}>
-                    <XAxis
-                      dataKey="day"
-                      tickLine={false}
-                      axisLine={false}
-                      tick={{ fontSize: 10, fill: '#6b7280' }}
-                    />
-                    <YAxis hide domain={[0, 10]} />
-                    <Bar
-                      dataKey="hours"
-                      fill="#667eea"
-                      radius={[4, 4, 0, 0]}
-                      isAnimationActive={false}
-                      label={(props: any) => {
-                        const { x, y, width, value } = props;
-                        if (!value) return <text />;
-                        return (
-                          <text x={x + width / 2} y={y - 5} fill="#6b7280" fontSize={10} textAnchor="middle">
-                            {value}h
-                          </text>
-                        );
-                      }}
-                    />
-                  </BarChart>
-                </ResponsiveContainer>
-              </div>
-            );
-          })()}
+          {/* Weekly Activity Bar Chart */}
+          {wakaData.weekdays && wakaData.weekdays.length > 0 && (
+            <div className="weekly-chart-container">
+              <h3 style={{ fontSize: '10pt', marginTop: 0, marginBottom: '8pt', color: '#111827' }}>
+                {t('wakatime.weeklyActivity', { defaultValue: 'Weekly Activity' })}
+              </h3>
+              <ResponsiveContainer width="100%" height={160}>
+                <BarChart 
+                  data={wakaData.weekdays
+                    .sort((a, b) => {
+                      const weekdayOrder = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+                      const indexA = weekdayOrder.indexOf(a.weekday || '');
+                      const indexB = weekdayOrder.indexOf(b.weekday || '');
+                      return indexA - indexB;
+                    })
+                    .map(d => ({
+                      day: d.weekday || d.date?.substring(5) || '',
+                      hours: d.total_seconds / 3600,
+                      hoursLabel: d.total_seconds > 0 ? `${Math.round(d.total_seconds / 3600)}h` : ''
+                    }))} 
+                  margin={{ left: 0, right: 0, top: 15, bottom: 0 }}
+                >
+                  <XAxis 
+                    dataKey="day" 
+                    tickLine={false} 
+                    axisLine={false}
+                    tick={{ fontSize: 10, fill: '#6b7280' }}
+                  />
+                  <YAxis hide domain={[0, 'dataMax']} />
+                  <Bar 
+                    dataKey="hours" 
+                    fill="#667eea"
+                    radius={[4, 4, 0, 0]}
+                    isAnimationActive={false}
+                    label={(props: any) => {
+                      const { x, y, width, value } = props;
+                      if (value === 0) return <text />;
+                      return (
+                        <text 
+                          x={x + width / 2} 
+                          y={y - 5} 
+                          fill="#6b7280" 
+                          fontSize={10}
+                          textAnchor="middle"
+                        >
+                          {Math.round(value)}h
+                        </text>
+                      );
+                    }}
+                  />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+          )}
         </div>
       )}
 

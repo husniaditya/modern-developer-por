@@ -26,60 +26,70 @@ export const getProjectsData = () => [
     title: 'Chocomaid AI Discord Bot',
     year: 2025,
     descriptionKey: 'printResume.projects.chocomaidBot',
+    impactKey: 'printResume.projects.impact.chocomaidBot',
     technologies: ['React', 'Node.js', 'MySQL', 'MongoDB', 'Discord.js', 'Google API', 'YouTube API', 'Twitch API', 'Clash Of Clans API', 'Valorant API', 'Cloudflare', 'i18n']
   },
   {
     title: 'Cipta Sejati Indonesia',
     year: 2023,
     descriptionKey: 'printResume.projects.ciptaSejati',
+    impactKey: 'printResume.projects.impact.ciptaSejati',
     technologies: ['PHP', 'MySQL', 'JavaScript', 'Bootstrap', 'jQuery', 'AJAX', 'Chart.js', 'Cloudflare']
   },
   {
     title: 'ERP Application',
     year: 2019,
     descriptionKey: 'printResume.projects.erpApp',
+    impactKey: 'printResume.projects.impact.erpApp',
     technologies: ['C#', 'MySQL', 'PHP', 'Javascript', 'Bootstrap', 'jQuery', 'AJAX', 'Chart.js', 'Cloudflare']
   },
   {
     title: 'Digital Library System',
     year: 2018,
     descriptionKey: 'printResume.projects.digitalLibrary',
+    impactKey: 'printResume.projects.impact.digitalLibrary',
     technologies: ['PHP', 'MySQL', 'JavaScript', 'Bootstrap', 'jQuery', 'AJAX', 'Chart.js', 'Cloudflare']
   },
   {
     title: 'Product Specification System',
     year: 2018,
     descriptionKey: 'printResume.projects.productSpec',
+    impactKey: 'printResume.projects.impact.productSpec',
     technologies: ['PHP', 'MySQL', 'JavaScript', 'Bootstrap', 'jQuery', 'AJAX', 'Chart.js', 'Cloudflare']
   },
   {
     title: 'Recruitment System',
     year: 2018,
     descriptionKey: 'printResume.projects.recruitment',
+    impactKey: 'printResume.projects.impact.recruitment',
     technologies: ['PHP', 'MySQL', 'JavaScript', 'Bootstrap', 'jQuery', 'AJAX', 'Chart.js', 'Cloudflare']
   },
   {
     title: 'Parking Management System',
     year: 2018,
     descriptionKey: 'printResume.projects.parking',
+    impactKey: 'printResume.projects.impact.parking',
     technologies: ['PHP', 'MySQL', 'JavaScript', 'Bootstrap', 'jQuery', 'AJAX', 'Chart.js', 'Cloudflare']
   },
   {
     title: 'Shipment Tracking System',
     year: 2018,
     descriptionKey: 'printResume.projects.shipment',
+    impactKey: 'printResume.projects.impact.shipment',
     technologies: ['PHP', 'MySQL', 'JavaScript', 'Bootstrap', 'jQuery', 'AJAX', 'Chart.js', 'Cloudflare']
   },
   {
     title: 'Maintenance Management System',
     year: 2017,
     descriptionKey: 'printResume.projects.maintenance',
+    impactKey: 'printResume.projects.impact.maintenance',
     technologies: ['PHP', 'MySQL', 'JavaScript', 'Bootstrap', 'jQuery', 'AJAX', 'Chart.js', 'Cloudflare']
   },
   {
     title: 'HRIS Application',
     year: 2017,
     descriptionKey: 'printResume.projects.hrisApp',
+    impactKey: 'printResume.projects.impact.hrisApp',
     technologies: ['PHP', 'MySQL', 'JavaScript', 'Bootstrap', 'jQuery', 'AJAX', 'Chart.js', 'Cloudflare']
   }
 ];

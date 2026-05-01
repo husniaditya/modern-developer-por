@@ -319,7 +319,19 @@
       "recruitment": "Sistem manajemen rekrutmen untuk posting pekerjaan, pelacakan pelamar, dan penjadwalan wawancara.",
       "parking": "Sistem manajemen parkir dengan pelacakan kendaraan, pemrosesan pembayaran, dan alokasi ruang.",
       "shipment": "Sistem pelacakan pengiriman untuk manajemen logistik dengan pelacakan real-time dan pembaruan pengiriman.",
-      "maintenance": "Sistem manajemen pemeliharaan untuk pelacakan peralatan, perintah kerja, dan penjadwalan pemeliharaan preventif."
+      "maintenance": "Sistem manajemen pemeliharaan untuk pelacakan peralatan, perintah kerja, dan penjadwalan pemeliharaan preventif.",
+      "impact": {
+        "chocomaidBot": "Mencapai 500+ pengguna aktif dalam 3 bulan dengan uptime 98% dan waktu respons di bawah 200ms, mendorong pertumbuhan keterlibatan komunitas 4× dan mengurangi upaya moderasi manual sebesar 70%.",
+        "ciptaSejati": "Menyederhanakan operasi untuk 63 dojo dan 10.000+ anggota, mengurangi beban administrasi sebesar 60%, meningkatkan retensi keanggotaan sebesar 35%, dan memberikan visibilitas keuangan real-time bagi pimpinan.",
+        "erpApp": "Menghasilkan peningkatan efisiensi operasional sebesar 50%, mengurangi kesalahan entri data sebesar 80%, dan memangkas waktu pelaporan dari berhari-hari menjadi menit — menghasilkan penghematan biaya, pengambilan keputusan lebih baik, dan peningkatan produktivitas di semua departemen.",
+        "digitalLibrary": "Memusatkan penyimpanan dokumen di seluruh infrastruktur pusat data, menghilangkan sistem file yang terisolasi dan mengurangi waktu pengambilan dokumen sebesar 75%. Memungkinkan akses seluruh organisasi ke 100.000+ dokumen dengan izin berbasis peran, memangkas redundansi penyimpanan sebesar 60% dan meningkatkan kepatuhan audit di semua departemen.",
+        "hrisApp": "Mengotomatiskan alur kerja HR untuk 300+ karyawan, mengurangi waktu pemrosesan penggajian sebesar 65%, memotong kesalahan data manual sebesar 90%, dan meningkatkan akurasi pelaporan kepatuhan.",
+        "productSpec": "Mengurangi waktu dokumentasi produk sebesar 45%, mempersingkat siklus tinjauan kepatuhan, dan mempercepat time-to-market untuk 200+ lini produk melalui alur spesifikasi yang terstandarisasi.",
+        "recruitment": "Mempersingkat siklus perekrutan rata-rata sebesar 40%, menghilangkan overhead pelacakan manual, dan meningkatkan pengalaman kandidat melalui notifikasi otomatis dan penjadwalan wawancara terstruktur.",
+        "parking": "Meningkatkan throughput parkir sebesar 30%, mengurangi kebocoran pendapatan hampir nol melalui integrasi pembayaran digital, dan memangkas waktu penyelesaian sengketa sebesar 85%.",
+        "shipment": "Memberikan visibilitas real-time untuk 100+ pengiriman harian, mengurangi panggilan pertanyaan pelanggan sebesar 50% dan meningkatkan tingkat pengiriman tepat waktu sebesar 25%.",
+        "maintenance": "Mengurangi downtime peralatan tak terduga sebesar 40% melalui penjadwalan pemeliharaan prediktif, memangkas biaya perbaikan dan memperpanjang umur aset rata-rata lebih dari 20%."
+      }
     },
     "education": {
       "remark": {

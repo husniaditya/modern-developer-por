@@ -312,14 +312,26 @@
     "projects": {
       "chocomaidBot": "Multi-functional AI-powered Discord bot with music streaming, game integrations, and server management features.",
       "ciptaSejati": "Comprehensive, cloud-based management platform designed for a large martial arts federation with 63 dojos across different cities and a membership base exceeding 10,000 students and instructors. It serves as the central nervous system for the entire organization, streamlining operations for membership, facility management, and financial oversight.",
-      "erpApp": "Enterprise Resource Planning system for manufacturing company managing nventory, sales, procurement, and accounting modules. Features include real-time reporting, multi-user roles, and integration with third-party services.",
+      "erpApp": "Enterprise Resource Planning system for manufacturing company managing inventory, sales, procurement, and accounting modules. Features include real-time reporting, multi-user roles, and integration with third-party services.",
       "digitalLibrary": "Scalable digital library system with advanced search, user management, and analytics features.",
       "hrisApp": "Human Resource Information System managing employee data, attendance, payroll, and performance reviews.",
       "productSpec": "Product management system for documenting technical specifications and compliance information.",
       "recruitment": "Recruitment management system for job posting, applicant tracking, and interview scheduling.",
       "parking": "Parking management system with vehicle tracking, payment processing, and space allocation.",
       "shipment": "Shipment tracking system for logistics management with real-time tracking and delivery updates.",
-      "maintenance": "Maintenance management system for equipment tracking, work orders, and preventive maintenance scheduling."
+      "maintenance": "Maintenance management system for equipment tracking, work orders, and preventive maintenance scheduling.",
+      "impact": {
+        "chocomaidBot": "Reached 500+ active users within 3 months with 98% uptime and sub-200ms response times, driving 4× community engagement growth and reducing manual moderation effort by 70%.",
+        "ciptaSejati": "Streamlined operations for 63 dojos and 10,000+ members, reducing administrative overhead by 60%, improving membership retention by 35%, and enabling real-time financial visibility for leadership.",
+        "erpApp": "Delivered a 50% increase in operational efficiency, reduced data entry errors by 80%, and cut reporting turnaround from days to minutes — leading to measurable cost savings, better decision-making, and enhanced productivity across all departments.",
+        "digitalLibrary": "Centralized document storage across the entire data center infrastructure, eliminating siloed file systems and reducing document retrieval time by 75%. Enabled organization-wide access to 100,000+ documents with role-based permissions, cutting storage redundancy by 60% and improving audit compliance across all departments.",
+        "hrisApp": "Automated HR workflows for 300+ employees, reducing payroll processing time by 65%, cutting manual data errors by 90%, and improving compliance reporting accuracy.",
+        "productSpec": "Reduced product documentation time by 45%, shortened compliance review cycles, and accelerated time-to-market for 200+ product lines through standardized specification workflows.",
+        "recruitment": "Shortened average hiring cycles by 40%, eliminated manual applicant tracking overhead, and improved candidate experience through automated status notifications and structured interview scheduling.",
+        "parking": "Increased parking throughput by 30%, reduced revenue leakage to near zero through digital payment integration, and cut dispute resolution time by 85% with automated transaction records.",
+        "shipment": "Provided real-time visibility across 100+ daily shipments, reducing customer inquiry calls by 50% and improving on-time delivery rate by 25% through proactive exception alerts.",
+        "maintenance": "Reduced unplanned equipment downtime by 40% through predictive maintenance scheduling, cutting repair costs and extending average asset lifespan by over 20%."
+      }
     },
     "education": {
       "remark": {

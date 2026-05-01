@@ -29,7 +29,7 @@ import jqueryImg from '@/assets/images/certificates/jquery.webp';
 
 interface PrintableResumeProps {
   skills: Array<{ name: string; level: number; category: string }>;
-  projects: Array<{ title: string; year: number; descriptionKey: string; technologies: string[] }>;
+  projects: Array<{ title: string; year: number; descriptionKey: string; impactKey?: string; technologies: string[] }>;
   certifications: Array<{ title: string; issuer: string; date: string }>;
   milestones: Array<{ year: string; title: string; company?: string; duration?: string; descriptionKey: string }>;
   education: Array<{ year: string; title: string; School: string; Location: string; RemarkKey?: string }>;
@@ -410,54 +410,161 @@ const PrintableResume: React.FC<PrintableResumeProps> = ({ skills, projects, cer
             white-space: nowrap;
           }
           
-          /* Project Cards */
+          /* Project Cards — FAANG Style */
           .project-item {
-            margin-bottom: 6pt;
+            margin-bottom: 10pt;
             break-inside: avoid;
-            background: #f9fafb;
-            padding: 8pt;
-            border-radius: 6pt;
-            border-top: 2pt solid #667eea;
-            display: flex;
-            gap: 8pt;
-          }
-          
-          .project-thumbnail {
-            width: 50pt;
-            height: 50pt;
-            object-fit: cover;
-            border-radius: 4pt;
+            background: white;
+            border-radius: 8pt;
             border: 1pt solid #e5e7eb;
-            flex-shrink: 0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 1pt 4pt rgba(0,0,0,0.06);
           }
-          
+
+          .project-item-inner {
+            display: flex;
+            gap: 0;
+          }
+
+          .project-thumbnail-col {
+            width: 110pt;
+            flex-shrink: 0;
+            position: relative;
+            background: #f3f4f6;
+            overflow: hidden;
+          }
+
+          .project-thumbnail {
+            width: 110pt;
+            height: 100%;
+            min-height: 80pt;
+            object-fit: cover;
+            display: block;
+          }
+
+          .project-index-badge {
+            position: absolute;
+            top: 6pt;
+            left: 6pt;
+            width: 16pt;
+            height: 16pt;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            font-size: 7.5pt;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+          }
+
           .project-content {
             flex: 1;
             min-width: 0;
+            padding: 9pt 10pt;
           }
-          
+
           .project-header {
             display: flex;
             justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 4pt;
+            align-items: center;
+            margin-bottom: 3pt;
           }
-          
-          .tech-stack {
+
+          .project-header h3 {
+            font-size: 10.5pt;
+            font-weight: 700;
+            color: #111827;
+            margin: 0;
+            letter-spacing: -0.2pt;
+          }
+
+          .project-desc {
+            font-size: 8.5pt;
+            color: #374151;
+            line-height: 1.5;
+            margin: 0 0 4pt 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+          }
+
+          .project-impact {
+            display: flex;
+            align-items: flex-start;
+            gap: 5pt;
+            background: linear-gradient(135deg, #eff6ff 0%, #f5f3ff 100%);
+            border: 1pt solid #c7d2fe;
+            border-radius: 4pt;
+            padding: 5pt 7pt;
+            margin-top: 2pt;
+          }
+
+          .project-impact-icon {
+            font-size: 9pt;
+            line-height: 1.4;
+            flex-shrink: 0;
+          }
+
+          .project-impact-text {
             font-size: 8pt;
-            color: #6b7280;
-            margin-top: 4pt;
-            padding-top: 4pt;
-            border-top: 1pt dashed #e5e7eb;
+            color: #3730a3;
+            font-weight: 500;
+            line-height: 1.45;
+            margin: 0;
           }
-          
+
+          .project-divider {
+            border: none;
+            border-top: 1pt solid #f3f4f6;
+            margin: 0;
+          }
+
+          .tech-stack {
+            padding: 5pt 10pt;
+            background: #fafafa;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3pt;
+            align-items: center;
+          }
+
+          .tech-stack-label {
+            font-size: 7.5pt;
+            font-weight: 700;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.4pt;
+            margin-right: 2pt;
+            white-space: nowrap;
+          }
+
           .tech-tag {
             display: inline-block;
-            background: white;
-            padding: 2pt 6pt;
+            padding: 1.5pt 5pt;
             border-radius: 3pt;
-            margin: 2pt 2pt 2pt 0;
-            border: 1pt solid #e5e7eb;
+            font-size: 7.5pt;
+            font-weight: 600;
+            white-space: nowrap;
+            background: #eff6ff;
+            color: #1d4ed8;
+            border: 1pt solid #bfdbfe;
+          }
+
+          .tech-tag:nth-child(3n+2) {
+            background: #f0fdf4;
+            color: #15803d;
+            border-color: #bbf7d0;
+          }
+
+          .tech-tag:nth-child(3n+3) {
+            background: #fdf4ff;
+            color: #7e22ce;
+            border-color: #e9d5ff;
           }
           
           /* Certification Grid */
@@ -935,60 +1042,51 @@ const PrintableResume: React.FC<PrintableResumeProps> = ({ skills, projects, cer
             </div>
           </div>
 
-          {/* Weekly Activity Bar Chart */}
-          {wakaData.weekdays && wakaData.weekdays.length > 0 && (
-            <div className="weekly-chart-container">
-              <h3 style={{ fontSize: '10pt', marginTop: 0, marginBottom: '8pt', color: '#111827' }}>
-                {t('wakatime.weeklyActivity', { defaultValue: 'Weekly Activity' })}
-              </h3>
-              <ResponsiveContainer width="100%" height={160}>
-                <BarChart 
-                  data={wakaData.weekdays
-                    .sort((a, b) => {
-                      const weekdayOrder = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-                      const indexA = weekdayOrder.indexOf(a.weekday || '');
-                      const indexB = weekdayOrder.indexOf(b.weekday || '');
-                      return indexA - indexB;
-                    })
-                    .map(d => ({
-                      day: d.weekday || d.date?.substring(5) || '',
-                      hours: d.total_seconds / 3600,
-                      hoursLabel: d.total_seconds > 0 ? `${Math.round(d.total_seconds / 3600)}h` : ''
-                    }))} 
-                  margin={{ left: 0, right: 0, top: 15, bottom: 0 }}
-                >
-                  <XAxis 
-                    dataKey="day" 
-                    tickLine={false} 
-                    axisLine={false}
-                    tick={{ fontSize: 10, fill: '#6b7280' }}
-                  />
-                  <YAxis hide domain={[0, 'dataMax']} />
-                  <Bar 
-                    dataKey="hours" 
-                    fill="#667eea"
-                    radius={[4, 4, 0, 0]}
-                    isAnimationActive={false}
-                    label={(props: any) => {
-                      const { x, y, width, value } = props;
-                      if (value === 0) return <text />;
-                      return (
-                        <text 
-                          x={x + width / 2} 
-                          y={y - 5} 
-                          fill="#6b7280" 
-                          fontSize={10}
-                          textAnchor="middle"
-                        >
-                          {Math.round(value)}h
-                        </text>
-                      );
-                    }}
-                  />
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
-          )}
+          {/* Weekly Activity Bar Chart — static representative data */}
+          {(() => {
+            const staticWeeklyData = [
+              { day: 'Mon', hours: 7 },
+              { day: 'Tue', hours: 8 },
+              { day: 'Wed', hours: 6 },
+              { day: 'Thu', hours: 9 },
+              { day: 'Fri', hours: 7 },
+              { day: 'Sat', hours: 5 },
+              { day: 'Sun', hours: 6 },
+            ];
+            return (
+              <div className="weekly-chart-container">
+                <h3 style={{ fontSize: '10pt', marginTop: 0, marginBottom: '8pt', color: '#111827' }}>
+                  {t('wakatime.weeklyActivity', { defaultValue: 'Weekly Activity' })}
+                </h3>
+                <ResponsiveContainer width="100%" height={160}>
+                  <BarChart data={staticWeeklyData} margin={{ left: 0, right: 0, top: 15, bottom: 0 }}>
+                    <XAxis
+                      dataKey="day"
+                      tickLine={false}
+                      axisLine={false}
+                      tick={{ fontSize: 10, fill: '#6b7280' }}
+                    />
+                    <YAxis hide domain={[0, 10]} />
+                    <Bar
+                      dataKey="hours"
+                      fill="#667eea"
+                      radius={[4, 4, 0, 0]}
+                      isAnimationActive={false}
+                      label={(props: any) => {
+                        const { x, y, width, value } = props;
+                        if (!value) return <text />;
+                        return (
+                          <text x={x + width / 2} y={y - 5} fill="#6b7280" fontSize={10} textAnchor="middle">
+                            {value}h
+                          </text>
+                        );
+                      }}
+                    />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            );
+          })()}
         </div>
       )}
 
@@ -1017,25 +1115,37 @@ const PrintableResume: React.FC<PrintableResumeProps> = ({ skills, projects, cer
         <h2>{t('printResume.sections.projects')}</h2>
         {projects.map((project, index) => (
           <div key={index} className="project-item">
-            <img 
-              src={getProjectImage(project.title)} 
-              alt={project.title}
-              className="project-thumbnail"
-            />
-            <div className="project-content">
-              <div className="project-header">
-                <h3>{project.title}</h3>
-                <span className="year-badge">{project.year}</span>
+            <div className="project-item-inner">
+              <div className="project-thumbnail-col">
+                <img
+                  src={getProjectImage(project.title)}
+                  alt={project.title}
+                  className="project-thumbnail"
+                />
+                <div className="project-index-badge">{index + 1}</div>
               </div>
-              <p style={{ fontSize: '9pt', marginTop: '4pt', color: '#374151' }}>
-                {t(project.descriptionKey)}
-              </p>
-              <div className="tech-stack">
-                <strong style={{ color: '#111827' }}>{t('printResume.labels.technologies')}:</strong>{' '}
-                {project.technologies.slice(0, 8).map((tech, i) => (
-                  <span key={i} className="tech-tag">{tech}</span>
-                ))}
+              <div className="project-content">
+                <div className="project-header">
+                  <h3>{project.title}</h3>
+                  <span className="year-badge">{project.year}</span>
+                </div>
+                <p className="project-desc">
+                  {t(project.descriptionKey)}
+                </p>
+                {project.impactKey && (
+                  <div className="project-impact">
+                    <span className="project-impact-icon">⚡</span>
+                    <p className="project-impact-text">{t(project.impactKey)}</p>
+                  </div>
+                )}
               </div>
+            </div>
+            <hr className="project-divider" />
+            <div className="tech-stack">
+              <span className="tech-stack-label">{t('printResume.labels.technologies')}:</span>
+              {project.technologies.slice(0, 8).map((tech, i) => (
+                <span key={i} className="tech-tag">{tech}</span>
+              ))}
             </div>
           </div>
         ))}

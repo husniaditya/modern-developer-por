@@ -51,53 +51,269 @@
       "chocomaid": {
         "title": "Choco Maid AI Discord Bot",
         "description": "AI驅動的Discord機器人，用於管理社群，具備審核工具、趣味指令，以及與YouTube、Twitch、Clash Of Clans、Valorant等外部API的無縫整合。支援多種語言（英語、印尼語、德語、西班牙語、日語、中文、法語）並具備i18n國際化功能。",
-        "category": "全端, 後端, 前端"
+        "category": "全端, 後端, 前端",
+        "experience": "从功能设计到部署，构建了生产级Discord平台，平衡社区用户体验、审核工作流程和第三方API可靠性。",
+        "signalToNoise": "高信噪比：每项功能都与日常社区留存、发现或自动化相关；有意排除低价值的新奇功能。",
+        "architecturalDepth": "事件驱动的机器人核心，具有模块化集成、API适配器、弹性降级处理和Cloudflare边缘防护。",
+        "metrics": {
+          "activeUsers": {
+            "label": "活跃用户",
+            "value": "500+"
+          },
+          "uptime": {
+            "label": "可用率",
+            "value": "98%"
+          },
+          "responseTime": {
+            "label": "响应时间",
+            "value": "<200ms"
+          },
+          "engagement": {
+            "label": "参与度",
+            "value": "4x growth"
+          }
+        }
       },
       "ciptasejati": {
         "title": "Cipta Sejati Indonesia - 社群平台",
         "description": "為大型武術聯盟設計的全面雲端管理平台，擁有分佈在不同城市的63個道場，會員基礎超過10,000名學生和教練。它作為整個組織的中樞神經系統，簡化會員管理、設施管理和財務監督的運營。",
-        "category": "全端, 後端, 前端"
+        "category": "全端, 後端, 前端",
+        "experience": "主导交付了涵盖会员管理、设施运营和财务工作流程的国家级管理平台。",
+        "signalToNoise": "优先解决运营瓶颈：具有最高领导力影响的注册、考勤、账单和报告流程。",
+        "architecturalDepth": "基于角色的多租户Web架构，具有安全的管理员工作流程、事务数据边界和报告模块。",
+        "metrics": {
+          "dojoCoverage": {
+            "label": "道场覆盖",
+            "value": "63"
+          },
+          "members": {
+            "label": "会员数",
+            "value": "10,000+"
+          },
+          "adminOverhead": {
+            "label": "管理开销",
+            "value": "-60%"
+          },
+          "retentionLift": {
+            "label": "留存提升",
+            "value": "+35%"
+          }
+        }
       },
       "erp": {
         "title": "企業資源規劃（ERP）系統",
         "description": "模組化ERP系統，包含庫存、銷售、採購和會計模組。功能包括即時報告、多使用者角色和第三方服務整合。",
-        "category": "全端, 前端, 後端"
+        "category": "全端, 前端, 後端",
+        "experience": "为制造业实施了跨部门ERP工作流程，整合了库存、采购、销售和会计运营。",
+        "signalToNoise": "优先处理延迟和错误代价最高的关键路径，尤其是数据录入和管理报告。",
+        "architecturalDepth": "模块化企业栈，具有域分离模块、共享主数据模型和可审计的事务管道。",
+        "metrics": {
+          "operationalEfficiency": {
+            "label": "运营效率",
+            "value": "+50%"
+          },
+          "dataErrors": {
+            "label": "数据错误",
+            "value": "-80%"
+          },
+          "reportTurnaround": {
+            "label": "报告周转",
+            "value": "天→分钟"
+          },
+          "decisionLatency": {
+            "label": "决策延迟",
+            "value": "显著降低"
+          }
+        }
       },
       "digitalLibrary": {
         "title": "數位圖書館系統",
         "description": "可擴展的數位圖書館系統，具備進階搜尋、使用者管理和分析功能。",
-        "category": "全端, 後端, 前端"
+        "category": "全端, 後端, 前端",
+        "experience": "构建了数据中心文档平台，集中管理企业记录、访问流程和长期存储治理。",
+        "signalToNoise": "削减了非必要的UI复杂性，专注于文档检索速度、一致性和权限正确性。",
+        "architecturalDepth": "具有基于角色的访问、索引策略和存储生命周期控制的集中式存储库架构。",
+        "metrics": {
+          "documentsIndexed": {
+            "label": "已索引文档",
+            "value": "100,000+"
+          },
+          "retrievalTime": {
+            "label": "检索时间",
+            "value": "-75%"
+          },
+          "storageRedundancy": {
+            "label": "存储冗余",
+            "value": "-60%"
+          },
+          "auditCompliance": {
+            "label": "审计合规",
+            "value": "全组织改善"
+          }
+        }
       },
       "productSpec": {
         "title": "產品規格管理系統",
         "description": "用於管理產品規格的綜合平台，包括版本控制、協作工具和與設計系統的整合。",
-        "category": "全端, 後端, 前端"
+        "category": "全端, 後端, 前端",
+        "experience": "为产品、工程和合规团队创建了具有严格版本可见性的统一规格工作流程。",
+        "signalToNoise": "强调可追溯性和审批流程，而非装饰性工具，以防止返工和合规模糊性。",
+        "architecturalDepth": "结构化规格实体、修订历史和审批状态，每个部门有明确的所有权边界。",
+        "metrics": {
+          "documentationTime": {
+            "label": "文档时间",
+            "value": "-45%"
+          },
+          "reviewCycles": {
+            "label": "审查周期",
+            "value": "缩短"
+          },
+          "productLines": {
+            "label": "产品线",
+            "value": "200+"
+          },
+          "timeToMarket": {
+            "label": "上市时间",
+            "value": "加速"
+          }
+        }
       },
       "recruitment": {
         "title": "招募管理系統",
         "description": "端到端招募管理系統，具備應徵者追蹤、面試排程和報告功能。",
-        "category": "全端, 後端, 前端"
+        "category": "全端, 後端, 前端",
+        "experience": "从候选人管道创建到面试协调和状态跟踪，交付了端到端的招聘平台。",
+        "signalToNoise": "专注于招聘人员吞吐量和候选人可见性；消除了手动状态追踪和电子表格偏差。",
+        "architecturalDepth": "具有阶段关卡、自动通知和调度器集成的工作流驱动申请人生命周期。",
+        "metrics": {
+          "hiringCycle": {
+            "label": "招聘周期",
+            "value": "-40%"
+          },
+          "manualTracking": {
+            "label": "手动跟踪",
+            "value": "已消除"
+          },
+          "candidateResponse": {
+            "label": "候选人响应",
+            "value": "更快"
+          },
+          "schedulingFriction": {
+            "label": "调度摩擦",
+            "value": "显著降低"
+          }
+        }
       },
       "parking": {
         "title": "停車場管理系統",
         "description": "綜合停車場管理系統，具備即時可用性追蹤、預約管理和付款整合。",
-        "category": "全端, 後端, 前端"
+        "category": "全端, 後端, 前端",
+        "experience": "构建了涵盖进出跟踪、支付对账和车位利用率的运营停车管理系统。",
+        "signalToNoise": "优先考虑吞吐量、支付完整性和争议可追溯性，而非装饰性仪表板复杂性。",
+        "architecturalDepth": "事务优先架构，具有事件日志、支付状态跟踪和运营对账报告。",
+        "metrics": {
+          "throughput": {
+            "label": "吞吐量",
+            "value": "+30%"
+          },
+          "revenueLeakage": {
+            "label": "收入泄漏",
+            "value": "接近零"
+          },
+          "disputeResolution": {
+            "label": "争议解决",
+            "value": "-85%"
+          },
+          "paymentReliability": {
+            "label": "支付可靠性",
+            "value": "改善"
+          }
+        }
       },
       "shipment": {
         "title": "貨運管理系統",
         "description": "強大的貨運管理系統，具備即時追蹤、庫存管理和分析功能。",
-        "category": "全端, 後端, 前端"
+        "category": "全端, 後端, 前端",
+        "experience": "为调度团队和客户支持实施了物流可见性工具，提供实时货运状态更新。",
+        "signalToNoise": "首先减少运营不确定性：ETA置信度、异常警报和可追溯的状态历史。",
+        "architecturalDepth": "状态事件管道设计，具有交付里程碑、异常标志和基于时间线的货运可审计性。",
+        "metrics": {
+          "dailyShipments": {
+            "label": "日常货运量",
+            "value": "100+"
+          },
+          "inquiryCalls": {
+            "label": "查询电话",
+            "value": "-50%"
+          },
+          "onTimeDelivery": {
+            "label": "准时交付",
+            "value": "+25%"
+          },
+          "exceptionResponse": {
+            "label": "异常响应",
+            "value": "更快"
+          }
+        }
       },
       "maintenance": {
         "title": "維護管理系統",
         "description": "綜合維護管理系統，具備工作單追蹤、資產管理和報告功能。",
-        "category": "全端, 後端, 前端"
+        "category": "全端, 後端, 前端",
+        "experience": "构建了用于预防性调度、工单执行和设备健康可见性的维护运营软件。",
+        "signalToNoise": "专注于停机预防和维护计划规程，而非通用工单功能。",
+        "architecturalDepth": "以资产为中心的设计，具有预防性间隔、工单生命周期状态和维护历史记录。",
+        "metrics": {
+          "unplannedDowntime": {
+            "label": "计划外停机",
+            "value": "-40%"
+          },
+          "repairCost": {
+            "label": "维修成本",
+            "value": "降低"
+          },
+          "assetLifespan": {
+            "label": "资产寿命",
+            "value": "+20%+"
+          },
+          "scheduleAdherence": {
+            "label": "计划遵守",
+            "value": "改善"
+          }
+        }
       },
       "hris": {
         "title": "人力資源資訊系統（HRIS）",
         "description": "可擴展的HRIS，具備員工管理、薪資處理和績效追蹤功能。",
-        "category": "全端, 後端, 前端"
+        "category": "全端, 後端, 前端",
+        "experience": "交付了涵盖员工记录、考勤、薪资录入和绩效评审流程的HRIS工作流程。",
+        "signalToNoise": "专注于数据准确性和可重复的HR操作，最小化手动整合和对账工作。",
+        "architecturalDepth": "领域驱动的HR模块，具有权限记录、薪资就绪数据流和合规报告生成。",
+        "metrics": {
+          "employeesSupported": {
+            "label": "支持的员工数",
+            "value": "300+"
+          },
+          "payrollProcessing": {
+            "label": "薪资处理",
+            "value": "-65%"
+          },
+          "dataErrors": {
+            "label": "数据错误",
+            "value": "-90%"
+          },
+          "complianceAccuracy": {
+            "label": "合规准确性",
+            "value": "改善"
+          }
+        }
       }
+    },
+    "details": {
+      "experience": "经验",
+      "signalToNoise": "信噪比",
+      "architecturalDepth": "架构深度",
+      "metrics": "指标"
     }
   },
   "milestones": {

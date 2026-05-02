@@ -51,53 +51,269 @@
       "chocomaid": {
         "title": "Choco Maid AI Discord Bot",
         "description": "コミュニティ管理のためのAI搭載Discordボット。モデレーションツール、楽しいコマンド、YouTube、Twitch、Clash Of Clans、Valorantなどの外部APIとのシームレスな統合を特徴とします。i18nにより複数言語（英語、インドネシア語、ドイツ語、スペイン語、日本語、中国語、フランス語）をサポート。",
-        "category": "フルスタック, バックエンド, フロントエンド"
+        "category": "フルスタック, バックエンド, フロントエンド",
+        "experience": "機能設計からデプロイメントまでDiscordの本番プラットフォームを構築し、コミュニティUX、モデレーションワークフロー、サードパーティAPIの信頼性のバランスをとりました。",
+        "signalToNoise": "高シグナル：すべての機能は日常的なコミュニティの維持、発見、または自動化に結びついており、低価値の新規性は意図的に除外されています。",
+        "architecturalDepth": "モジュラー統合、APIアダプター、堅牢なフォールバック処理、Cloudflareエッジ保護を備えたイベント駆動型ボットコア。",
+        "metrics": {
+          "activeUsers": {
+            "label": "アクティブユーザー",
+            "value": "500+"
+          },
+          "uptime": {
+            "label": "稼働率",
+            "value": "98%"
+          },
+          "responseTime": {
+            "label": "応答時間",
+            "value": "<200ms"
+          },
+          "engagement": {
+            "label": "エンゲージメント",
+            "value": "4x growth"
+          }
+        }
       },
       "ciptasejati": {
         "title": "Cipta Sejati Indonesia - コミュニティプラットフォーム",
         "description": "異なる都市に63の道場を持ち、10,000人を超える生徒とインストラクターの会員基盤を持つ大規模な武道連盟向けに設計された包括的なクラウドベースの管理プラットフォーム。組織全体の中枢神経系として機能し、会員管理、施設管理、財務監督の業務を効率化します。",
-        "category": "フルスタック, バックエンド, フロントエンド"
+        "category": "フルスタック, バックエンド, フロントエンド",
+        "experience": "会員管理、施設運営、財務ワークフローにわたる国家規模の管理プラットフォームの完全なデリバリーをリードしました。",
+        "signalToNoise": "最初にオペレーショナルボトルネックに注力：登録、出席、請求、およびリーダーシップへの影響が最も高い報告経路。",
+        "architecturalDepth": "安全な管理ワークフロー、トランザクションデータ境界、レポートモジュールを備えたロールベースのマルチテナントWebアーキテクチャ。",
+        "metrics": {
+          "dojoCoverage": {
+            "label": "道場カバレッジ",
+            "value": "63"
+          },
+          "members": {
+            "label": "会員数",
+            "value": "10,000+"
+          },
+          "adminOverhead": {
+            "label": "管理負担",
+            "value": "-60%"
+          },
+          "retentionLift": {
+            "label": "定着率向上",
+            "value": "+35%"
+          }
+        }
       },
       "erp": {
         "title": "エンタープライズリソースプランニング（ERP）システム",
         "description": "在庫、販売、調達、会計モジュールを持つモジュラーERPシステム。リアルタイムレポート、マルチユーザーロール、サードパーティサービスとの統合を特徴とします。",
-        "category": "フルスタック, フロントエンド, バックエンド"
+        "category": "フルスタック, フロントエンド, バックエンド",
+        "experience": "製造業向けの部門横断ERPワークフローを実装し、在庫、調達、販売、会計の業務を連携しました。",
+        "signalToNoise": "遅延とエラーが最もコストのかかるミッションクリティカルな経路、特にデータ入力と管理報告を優先しました。",
+        "architecturalDepth": "ドメイン分離モジュール、共有マスターデータモデル、監査可能なトランザクションパイプラインを持つモジュラーエンタープライズスタック。",
+        "metrics": {
+          "operationalEfficiency": {
+            "label": "業務効率",
+            "value": "+50%"
+          },
+          "dataErrors": {
+            "label": "データエラー",
+            "value": "-80%"
+          },
+          "reportTurnaround": {
+            "label": "レポート作成時間",
+            "value": "日→分"
+          },
+          "decisionLatency": {
+            "label": "意思決定遅延",
+            "value": "大幅に短縮"
+          }
+        }
       },
       "digitalLibrary": {
         "title": "デジタル図書館システム",
         "description": "高度な検索、ユーザー管理、分析機能を備えたスケーラブルなデジタル図書館システム。",
-        "category": "フルスタック, バックエンド, フロントエンド"
+        "category": "フルスタック, バックエンド, フロントエンド",
+        "experience": "企業記録、アクセスフロー、長期ストレージガバナンスを一元化したデータセンター文書プラットフォームを構築しました。",
+        "signalToNoise": "不要なUIの複雑さを削減し、ドキュメント検索速度、一貫性、権限の正確性に注力しました。",
+        "architecturalDepth": "ロールベースのアクセス、インデックス戦略、ストレージライフサイクル制御を備えた集中リポジトリアーキテクチャ。",
+        "metrics": {
+          "documentsIndexed": {
+            "label": "インデックス済み文書",
+            "value": "100,000+"
+          },
+          "retrievalTime": {
+            "label": "検索時間",
+            "value": "-75%"
+          },
+          "storageRedundancy": {
+            "label": "ストレージ冗長性",
+            "value": "-60%"
+          },
+          "auditCompliance": {
+            "label": "監査コンプライアンス",
+            "value": "組織全体で改善"
+          }
+        }
       },
       "productSpec": {
         "title": "製品仕様管理システム",
         "description": "バージョン管理、コラボレーションツール、デザインシステムとの統合を含む製品仕様管理のための包括的プラットフォーム。",
-        "category": "フルスタック, バックエンド, フロントエンド"
+        "category": "フルスタック, バックエンド, フロントエンド",
+        "experience": "厳密なバージョン可視性を持つ製品、エンジニアリング、コンプライアンスチーム向けの統一された仕様ワークフローを作成しました。",
+        "signalToNoise": "手直しやコンプライアンスの曖昧さを防ぐために、装飾的なツールよりも追跡可能性と承認フローを重視しました。",
+        "architecturalDepth": "部門ごとに明確な所有権境界を持つ構造化された仕様エンティティ、改訂履歴、承認状態。",
+        "metrics": {
+          "documentationTime": {
+            "label": "ドキュメント作成時間",
+            "value": "-45%"
+          },
+          "reviewCycles": {
+            "label": "レビューサイクル",
+            "value": "短縮"
+          },
+          "productLines": {
+            "label": "製品ライン",
+            "value": "200+"
+          },
+          "timeToMarket": {
+            "label": "市場投入時間",
+            "value": "加速"
+          }
+        }
       },
       "recruitment": {
         "title": "採用管理システム",
         "description": "応募者追跡、面接スケジューリング、レポート機能を備えたエンドツーエンド採用管理システム。",
-        "category": "フルスタック, バックエンド, フロントエンド"
+        "category": "フルスタック, バックエンド, フロントエンド",
+        "experience": "候補者パイプラインの作成から面接調整、ステータストラッキングまでのエンドツーエンドの採用プラットフォームを提供しました。",
+        "signalToNoise": "採用担当者のスループットと候補者の可視性に注力；手動ステータス追跡とスプレッドシートのドリフトを排除しました。",
+        "architecturalDepth": "ステージゲート、自動通知、スケジューラー統合を備えたワークフロー駆動の応募者ライフサイクル。",
+        "metrics": {
+          "hiringCycle": {
+            "label": "採用サイクル",
+            "value": "-40%"
+          },
+          "manualTracking": {
+            "label": "手動追跡",
+            "value": "廃止"
+          },
+          "candidateResponse": {
+            "label": "候補者レスポンス",
+            "value": "高速化"
+          },
+          "schedulingFriction": {
+            "label": "スケジューリングの摩擦",
+            "value": "大幅に低下"
+          }
+        }
       },
       "parking": {
         "title": "駐車場管理システム",
         "description": "リアルタイム利用可能性追跡、予約管理、決済統合を備えた包括的駐車場管理システム。",
-        "category": "フルスタック, バックエンド, フロントエンド"
+        "category": "フルスタック, バックエンド, フロントエンド",
+        "experience": "入出庫トラッキング、支払い調整、スロット利用率をカバーする運用駐車管理システムを構築しました。",
+        "signalToNoise": "装飾的なダッシュボードの複雑さよりもスループット、支払いの整合性、紛争の追跡可能性を優先しました。",
+        "architecturalDepth": "イベントログ、支払い状態追跡、運用調整レポートを備えたトランザクションファーストアーキテクチャ。",
+        "metrics": {
+          "throughput": {
+            "label": "スループット",
+            "value": "+30%"
+          },
+          "revenueLeakage": {
+            "label": "収益漏れ",
+            "value": "ほぼゼロ"
+          },
+          "disputeResolution": {
+            "label": "紛争解決",
+            "value": "-85%"
+          },
+          "paymentReliability": {
+            "label": "支払い信頼性",
+            "value": "改善"
+          }
+        }
       },
       "shipment": {
         "title": "出荷管理システム",
         "description": "リアルタイム追跡、在庫管理、分析機能を備えた堅牢な出荷管理システム。",
-        "category": "フルスタック, バックエンド, フロントエンド"
+        "category": "フルスタック, バックエンド, フロントエンド",
+        "experience": "ライブ配送ステータス更新を伴う配送チームとカスタマーサポートのためのロジスティクス可視化ツールを実装しました。",
+        "signalToNoise": "最初に運用上の不確実性を削減：ETA信頼性、例外アラート、追跡可能なステータス履歴。",
+        "architecturalDepth": "配送マイルストーン、異常フラグ、タイムラインベースの配送監査可能性を備えたステータスイベントパイプライン設計。",
+        "metrics": {
+          "dailyShipments": {
+            "label": "日次出荷数",
+            "value": "100+"
+          },
+          "inquiryCalls": {
+            "label": "問い合わせ電話",
+            "value": "-50%"
+          },
+          "onTimeDelivery": {
+            "label": "定時配送",
+            "value": "+25%"
+          },
+          "exceptionResponse": {
+            "label": "例外対応",
+            "value": "迅速化"
+          }
+        }
       },
       "maintenance": {
         "title": "保守管理システム",
         "description": "作業指示追跡、資産管理、レポート機能を備えた包括的保守管理システム。",
-        "category": "フルスタック, バックエンド, フロントエンド"
+        "category": "フルスタック, バックエンド, フロントエンド",
+        "experience": "予防保全スケジュール、作業指示書の実行、設備の健全性可視化のための保全業務ソフトウェアを構築しました。",
+        "signalToNoise": "一般的なチケット機能ではなく、ダウンタイム防止と保全計画の規律に集中しました。",
+        "architecturalDepth": "予防インターバル、作業指示書のライフサイクル状態、保全履歴レコードを備えたアセット中心の設計。",
+        "metrics": {
+          "unplannedDowntime": {
+            "label": "計画外停止時間",
+            "value": "-40%"
+          },
+          "repairCost": {
+            "label": "修理コスト",
+            "value": "削減"
+          },
+          "assetLifespan": {
+            "label": "資産寿命",
+            "value": "+20%+"
+          },
+          "scheduleAdherence": {
+            "label": "スケジュール遵守",
+            "value": "改善"
+          }
+        }
       },
       "hris": {
         "title": "人事情報システム（HRIS）",
         "description": "従業員管理、給与処理、パフォーマンス追跡機能を備えたスケーラブルHRIS。",
-        "category": "フルスタック, バックエンド, フロントエンド"
+        "category": "フルスタック, バックエンド, フロントエンド",
+        "experience": "従業員記録、出退勤、給与入力、業績レビュープロセスにわたるHRISワークフローを提供しました。",
+        "signalToNoise": "データ精度と繰り返し可能なHR業務に注力し、手動統合と調整作業を最小化しました。",
+        "architecturalDepth": "権限付きレコード、給与対応データフロー、コンプライアンスレポート生成を備えたドメイン駆動型HRモジュール。",
+        "metrics": {
+          "employeesSupported": {
+            "label": "対応従業員数",
+            "value": "300+"
+          },
+          "payrollProcessing": {
+            "label": "給与処理",
+            "value": "-65%"
+          },
+          "dataErrors": {
+            "label": "データエラー",
+            "value": "-90%"
+          },
+          "complianceAccuracy": {
+            "label": "コンプライアンス精度",
+            "value": "改善"
+          }
+        }
       }
+    },
+    "details": {
+      "experience": "経験",
+      "signalToNoise": "シグナル対ノイズ",
+      "architecturalDepth": "アーキテクチャの深さ",
+      "metrics": "指標"
     }
   },
   "milestones": {

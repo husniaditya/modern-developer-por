@@ -51,53 +51,269 @@
       "chocomaid": {
         "title": "Choco Maid AI Discord Bot",
         "description": "Bot de Discord potenciado por IA para gestionar comunidades, con herramientas de moderación, comandos divertidos e integración perfecta con APIs externas como YouTube, Twitch, Clash Of Clans, Valorant y más. Soporta múltiples idiomas (inglés, indonesio, alemán, español, japonés, chino, francés) con i18n.",
-        "category": "Full Stack, Backend, Frontend"
+        "category": "Full Stack, Backend, Frontend",
+        "experience": "Construí una plataforma Discord de producción desde el diseño de características hasta el despliegue, equilibrando la UX comunitaria, los flujos de moderación y la fiabilidad de API de terceros.",
+        "signalToNoise": "Alta señal: cada función se vincula a la retención diaria de la comunidad, descubrimiento o automatización; la novedad de bajo valor fue excluida intencionalmente.",
+        "architecturalDepth": "Núcleo de bot basado en eventos con integraciones modulares, adaptadores de API, manejo robusto de fallbacks y protección edge de Cloudflare.",
+        "metrics": {
+          "activeUsers": {
+            "label": "Usuarios activos",
+            "value": "500+"
+          },
+          "uptime": {
+            "label": "Disponibilidad",
+            "value": "98%"
+          },
+          "responseTime": {
+            "label": "Tiempo de respuesta",
+            "value": "<200ms"
+          },
+          "engagement": {
+            "label": "Participación",
+            "value": "4x growth"
+          }
+        }
       },
       "ciptasejati": {
         "title": "Cipta Sejati Indonesia - Plataforma Comunitaria",
         "description": "Plataforma de gestión integral basada en la nube diseñada para una gran federación de artes marciales con 63 dojos en diferentes ciudades y una base de miembros que supera los 10,000 estudiantes e instructores. Sirve como el sistema nervioso central para toda la organización, optimizando las operaciones de membresía, gestión de instalaciones y supervisión financiera.",
-        "category": "Full Stack, Backend, Frontend"
+        "category": "Full Stack, Backend, Frontend",
+        "experience": "Lideré la entrega completa de una plataforma de gestión nacional que abarca membresías, operaciones de instalaciones y flujos de trabajo financieros.",
+        "signalToNoise": "Enfocado primero en los cuellos de botella operativos: registro, asistencia, facturación y rutas de reporte con mayor impacto en el liderazgo.",
+        "architecturalDepth": "Arquitectura web multi-inquilino basada en roles con flujos de trabajo de administrador seguros, límites de datos transaccionales y módulos de informes.",
+        "metrics": {
+          "dojoCoverage": {
+            "label": "Cobertura de dojos",
+            "value": "63"
+          },
+          "members": {
+            "label": "Miembros",
+            "value": "10,000+"
+          },
+          "adminOverhead": {
+            "label": "Carga administrativa",
+            "value": "-60%"
+          },
+          "retentionLift": {
+            "label": "Aumento de retención",
+            "value": "+35%"
+          }
+        }
       },
       "erp": {
         "title": "Sistema de Planificación de Recursos Empresariales (ERP)",
         "description": "Sistema ERP modular con módulos de inventario, ventas, adquisiciones y contabilidad. Las características incluyen informes en tiempo real, roles multi-usuario e integración con servicios de terceros.",
-        "category": "Full Stack, Frontend, Backend"
+        "category": "Full Stack, Frontend, Backend",
+        "experience": "Implementé flujos de trabajo ERP interdepartamentales para manufactura, alineando operaciones de inventario, adquisiciones, ventas y contabilidad.",
+        "signalToNoise": "Priorizado los caminos críticos donde los retrasos y errores son más costosos, especialmente la entrada de datos e informes de gestión.",
+        "architecturalDepth": "Stack empresarial modular con módulos de dominio separado, modelo de datos maestro compartido y pipelines de transacciones auditables.",
+        "metrics": {
+          "operationalEfficiency": {
+            "label": "Eficiencia operacional",
+            "value": "+50%"
+          },
+          "dataErrors": {
+            "label": "Errores de datos",
+            "value": "-80%"
+          },
+          "reportTurnaround": {
+            "label": "Tiempo de informe",
+            "value": "días → minutos"
+          },
+          "decisionLatency": {
+            "label": "Latencia de decisión",
+            "value": "reducida significativamente"
+          }
+        }
       },
       "digitalLibrary": {
         "title": "Sistema de Biblioteca Digital",
         "description": "Sistema de biblioteca digital escalable con búsqueda avanzada, gestión de usuarios y características de análisis.",
-        "category": "Full Stack, Backend, Frontend"
+        "category": "Full Stack, Backend, Frontend",
+        "experience": "Construí una plataforma de documentos de centro de datos que centralizó registros empresariales, flujos de acceso y gobernanza de almacenamiento a largo plazo.",
+        "signalToNoise": "Reducida la complejidad de UI no esencial con enfoque en velocidad de recuperación de documentos, coherencia y corrección de permisos.",
+        "architecturalDepth": "Arquitectura de repositorio centralizado con acceso basado en roles, estrategias de indexación y controles del ciclo de vida del almacenamiento.",
+        "metrics": {
+          "documentsIndexed": {
+            "label": "Documentos indexados",
+            "value": "100,000+"
+          },
+          "retrievalTime": {
+            "label": "Tiempo de recuperación",
+            "value": "-75%"
+          },
+          "storageRedundancy": {
+            "label": "Redundancia de almacenamiento",
+            "value": "-60%"
+          },
+          "auditCompliance": {
+            "label": "Cumplimiento de auditoría",
+            "value": "mejorado en toda la org"
+          }
+        }
       },
       "productSpec": {
         "title": "Sistema de Gestión de Especificaciones de Producto",
         "description": "Plataforma integral para gestionar especificaciones de productos, incluyendo control de versiones, herramientas de colaboración e integración con sistemas de diseño.",
-        "category": "Full Stack, Backend, Frontend"
+        "category": "Full Stack, Backend, Frontend",
+        "experience": "Creé un flujo de trabajo de especificación unificado para equipos de producto, ingeniería y cumplimiento con visibilidad estricta de versiones.",
+        "signalToNoise": "Énfasis en la trazabilidad y el flujo de aprobación sobre las herramientas cosméticas para evitar el retrabajo y la ambigüedad de cumplimiento.",
+        "architecturalDepth": "Entidades de especificación estructuradas, historial de revisiones y estados de aprobación con límites de propiedad claros por departamento.",
+        "metrics": {
+          "documentationTime": {
+            "label": "Tiempo de documentación",
+            "value": "-45%"
+          },
+          "reviewCycles": {
+            "label": "Ciclos de revisión",
+            "value": "acortados"
+          },
+          "productLines": {
+            "label": "Líneas de producto",
+            "value": "200+"
+          },
+          "timeToMarket": {
+            "label": "Tiempo de comercialización",
+            "value": "acelerado"
+          }
+        }
       },
       "recruitment": {
         "title": "Sistema de Gestión de Reclutamiento",
         "description": "Sistema integral de gestión de reclutamiento con seguimiento de candidatos, programación de entrevistas y características de informes.",
-        "category": "Full Stack, Backend, Frontend"
+        "category": "Full Stack, Backend, Frontend",
+        "experience": "Entregué una plataforma de contratación de extremo a extremo desde la creación del pipeline de candidatos hasta la coordinación de entrevistas y el seguimiento de estado.",
+        "signalToNoise": "Enfocado en el rendimiento del reclutador y la visibilidad del candidato; eliminado el seguimiento manual de estado y la deriva de hojas de cálculo.",
+        "architecturalDepth": "Ciclo de vida de solicitantes basado en flujos de trabajo con etapas de validación, notificaciones automáticas e integraciones de planificación.",
+        "metrics": {
+          "hiringCycle": {
+            "label": "Ciclo de contratación",
+            "value": "-40%"
+          },
+          "manualTracking": {
+            "label": "Seguimiento manual",
+            "value": "eliminado"
+          },
+          "candidateResponse": {
+            "label": "Respuesta de candidatos",
+            "value": "más rápida"
+          },
+          "schedulingFriction": {
+            "label": "Fricción de programación",
+            "value": "significativamente menor"
+          }
+        }
       },
       "parking": {
         "title": "Sistema de Gestión de Estacionamiento",
         "description": "Sistema integral de gestión de estacionamiento con seguimiento de disponibilidad en tiempo real, gestión de reservas e integración de pagos.",
-        "category": "Full Stack, Backend, Frontend"
+        "category": "Full Stack, Backend, Frontend",
+        "experience": "Construí un sistema de control de estacionamiento operacional que cubre el seguimiento de entradas/salidas, conciliación de pagos y utilización de espacios.",
+        "signalToNoise": "Priorizado el rendimiento, la integridad de pagos y la trazabilidad de disputas sobre la complejidad decorativa del tablero.",
+        "architecturalDepth": "Arquitectura transaction-first con registros de eventos, seguimiento del estado de pagos e informes de conciliación operacional.",
+        "metrics": {
+          "throughput": {
+            "label": "Rendimiento",
+            "value": "+30%"
+          },
+          "revenueLeakage": {
+            "label": "Fuga de ingresos",
+            "value": "casi cero"
+          },
+          "disputeResolution": {
+            "label": "Resolución de disputas",
+            "value": "-85%"
+          },
+          "paymentReliability": {
+            "label": "Fiabilidad de pagos",
+            "value": "mejorada"
+          }
+        }
       },
       "shipment": {
         "title": "Sistema de Gestión de Envíos",
         "description": "Sistema robusto de gestión de envíos con seguimiento en tiempo real, gestión de inventario y características de análisis.",
-        "category": "Full Stack, Backend, Frontend"
+        "category": "Full Stack, Backend, Frontend",
+        "experience": "Implementé herramientas de visibilidad logística para equipos de despacho y soporte al cliente con actualizaciones de estado de envío en tiempo real.",
+        "signalToNoise": "Reducción de la incertidumbre operativa primero: confianza en ETA, alertas de excepciones e historial de estado rastreable.",
+        "architecturalDepth": "Diseño de pipeline de estado-evento con hitos de entrega, indicadores de anomalía y auditabilidad de envíos basada en línea de tiempo.",
+        "metrics": {
+          "dailyShipments": {
+            "label": "Envíos diarios",
+            "value": "100+"
+          },
+          "inquiryCalls": {
+            "label": "Llamadas de consulta",
+            "value": "-50%"
+          },
+          "onTimeDelivery": {
+            "label": "Entrega a tiempo",
+            "value": "+25%"
+          },
+          "exceptionResponse": {
+            "label": "Respuesta a excepciones",
+            "value": "más rápida"
+          }
+        }
       },
       "maintenance": {
         "title": "Sistema de Gestión de Mantenimiento",
         "description": "Sistema integral de gestión de mantenimiento con seguimiento de órdenes de trabajo, gestión de activos y características de informes.",
-        "category": "Full Stack, Backend, Frontend"
+        "category": "Full Stack, Backend, Frontend",
+        "experience": "Construí software de operaciones de mantenimiento para programación preventiva, ejecución de órdenes de trabajo y visibilidad del estado de equipos.",
+        "signalToNoise": "Concentrado en la prevención de tiempo de inactividad y la disciplina de planificación de mantenimiento en lugar de características genéricas de tickets.",
+        "architecturalDepth": "Diseño centrado en activos con intervalos preventivos, estados del ciclo de vida de órdenes de trabajo y registros de historial de mantenimiento.",
+        "metrics": {
+          "unplannedDowntime": {
+            "label": "Tiempo de inactividad no planificado",
+            "value": "-40%"
+          },
+          "repairCost": {
+            "label": "Costo de reparación",
+            "value": "reducido"
+          },
+          "assetLifespan": {
+            "label": "Vida útil del activo",
+            "value": "+20%+"
+          },
+          "scheduleAdherence": {
+            "label": "Cumplimiento del horario",
+            "value": "mejorado"
+          }
+        }
       },
       "hris": {
         "title": "Sistema de Información de Recursos Humanos (HRIS)",
         "description": "HRIS escalable con gestión de empleados, procesamiento de nóminas y características de seguimiento de rendimiento.",
-        "category": "Full Stack, Backend, Frontend"
+        "category": "Full Stack, Backend, Frontend",
+        "experience": "Entregué flujos de trabajo HRIS que abarcan registros de empleados, asistencia, entradas de nómina y procesos de revisión de desempeño.",
+        "signalToNoise": "Enfocado en la precisión de datos y operaciones de RR.HH. repetibles, minimizando la consolidación manual y el trabajo de conciliación.",
+        "architecturalDepth": "Módulos de RR.HH. basados en dominio con registros con permisos, flujos de datos listos para nómina y generación de informes de cumplimiento.",
+        "metrics": {
+          "employeesSupported": {
+            "label": "Empleados atendidos",
+            "value": "300+"
+          },
+          "payrollProcessing": {
+            "label": "Procesamiento de nómina",
+            "value": "-65%"
+          },
+          "dataErrors": {
+            "label": "Errores de datos",
+            "value": "-90%"
+          },
+          "complianceAccuracy": {
+            "label": "Precisión de cumplimiento",
+            "value": "mejorada"
+          }
+        }
       }
+    },
+    "details": {
+      "experience": "Experiencia",
+      "signalToNoise": "Señal-ruido",
+      "architecturalDepth": "Profundidad arquitectónica",
+      "metrics": "Métricas"
     }
   },
   "milestones": {

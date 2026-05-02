@@ -58,53 +58,269 @@
       "chocomaid": {
         "title": "Choco Maid AI Discord Bot",
         "description": "Bot Discord bertenaga AI untuk mengelola komunitas, menampilkan alat moderasi, perintah menyenangkan, dan integrasi mulus dengan API eksternal termasuk Youtube, Twitch, Clash Of Clans, Valorant, dan lainnya. Mendukung banyak bahasa (English, Indonesia, Germany, Spanish, Japanese, Chinese, French) dengan i18n.",
-        "category": "Full Stack, Backend, Frontend"
+        "category": "Full Stack, Backend, Frontend",
+        "experience": "Membangun platform Discord produksi dari desain fitur hingga deployment, menyeimbangkan UX komunitas, alur moderasi, dan keandalan API pihak ketiga.",
+        "signalToNoise": "Sinyal tinggi: setiap fitur terhubung dengan retensi komunitas harian, penemuan, atau otomasi; kebaruan bernilai rendah sengaja dikecualikan.",
+        "architecturalDepth": "Inti bot berbasis event dengan integrasi modular, adaptor API, penanganan fallback yang tangguh, dan perlindungan edge Cloudflare.",
+        "metrics": {
+          "activeUsers": {
+            "label": "Pengguna aktif",
+            "value": "500+"
+          },
+          "uptime": {
+            "label": "Uptime",
+            "value": "98%"
+          },
+          "responseTime": {
+            "label": "Waktu respons",
+            "value": "<200ms"
+          },
+          "engagement": {
+            "label": "Keterlibatan",
+            "value": "4x growth"
+          }
+        }
       },
       "ciptasejati": {
         "title": "Cipta Sejati Indonesia - Platform Komunitas",
         "description": "Platform manajemen berbasis cloud yang komprehensif dirancang untuk federasi seni bela diri besar dengan 63 dojo di berbagai kota dan basis keanggotaan lebih dari 10.000 siswa dan instruktur. Platform ini berfungsi sebagai sistem pusat untuk seluruh organisasi, menyederhanakan operasi keanggotaan, manajemen fasilitas, dan pengawasan keuangan.",
-        "category": "Full Stack, Backend, Frontend"
+        "category": "Full Stack, Backend, Frontend",
+        "experience": "Memimpin pengiriman penuh platform manajemen nasional yang mencakup keanggotaan, operasi fasilitas, dan alur kerja keuangan.",
+        "signalToNoise": "Fokus pada hambatan operasional terlebih dahulu: jalur registrasi, kehadiran, penagihan, dan pelaporan dengan dampak kepemimpinan tertinggi.",
+        "architecturalDepth": "Arsitektur web multi-tenant berbasis peran dengan alur kerja admin yang aman, batas data transaksional, dan modul pelaporan.",
+        "metrics": {
+          "dojoCoverage": {
+            "label": "Cakupan dojo",
+            "value": "63"
+          },
+          "members": {
+            "label": "Anggota",
+            "value": "10,000+"
+          },
+          "adminOverhead": {
+            "label": "Overhead admin",
+            "value": "-60%"
+          },
+          "retentionLift": {
+            "label": "Peningkatan retensi",
+            "value": "+35%"
+          }
+        }
       },
       "erp": {
         "title": "Sistem Enterprise Resource Planning (ERP)",
         "description": "Sistem ERP modular dengan modul inventori, penjualan, pengadaan, dan akuntansi. Fitur termasuk pelaporan real-time, peran multi-pengguna, dan integrasi dengan layanan pihak ketiga.",
-        "category": "Full Stack, Frontend, Backend"
+        "category": "Full Stack, Frontend, Backend",
+        "experience": "Mengimplementasikan alur kerja ERP lintas departemen untuk manufaktur, menyelaraskan operasi inventaris, pengadaan, penjualan, dan akuntansi.",
+        "signalToNoise": "Memprioritaskan jalur kritis di mana penundaan dan kesalahan paling mahal, terutama entri data dan pelaporan manajemen.",
+        "architecturalDepth": "Tumpukan enterprise modular dengan modul terpisah domain, model data master bersama, dan pipeline transaksi yang dapat diaudit.",
+        "metrics": {
+          "operationalEfficiency": {
+            "label": "Efisiensi operasional",
+            "value": "+50%"
+          },
+          "dataErrors": {
+            "label": "Kesalahan data",
+            "value": "-80%"
+          },
+          "reportTurnaround": {
+            "label": "Turnaround laporan",
+            "value": "hari → menit"
+          },
+          "decisionLatency": {
+            "label": "Latensi keputusan",
+            "value": "berkurang signifikan"
+          }
+        }
       },
       "digitalLibrary": {
         "title": "Sistem Perpustakaan Digital",
         "description": "Sistem perpustakaan digital yang dapat diskalakan dengan pencarian lanjutan, manajemen pengguna, dan fitur analitik.",
-        "category": "Full Stack, Backend, Frontend"
+        "category": "Full Stack, Backend, Frontend",
+        "experience": "Membangun platform dokumen pusat data yang memusatkan catatan perusahaan, alur akses, dan tata kelola penyimpanan jangka panjang.",
+        "signalToNoise": "Mengurangi kompleksitas UI yang tidak penting dan fokus pada kecepatan pengambilan dokumen, konsistensi, dan ketepatan izin.",
+        "architecturalDepth": "Arsitektur repositori terpusat dengan akses berbasis peran, strategi pengindeksan, dan kontrol siklus hidup penyimpanan.",
+        "metrics": {
+          "documentsIndexed": {
+            "label": "Dokumen terindeks",
+            "value": "100,000+"
+          },
+          "retrievalTime": {
+            "label": "Waktu pengambilan",
+            "value": "-75%"
+          },
+          "storageRedundancy": {
+            "label": "Redundansi penyimpanan",
+            "value": "-60%"
+          },
+          "auditCompliance": {
+            "label": "Kepatuhan audit",
+            "value": "meningkat di seluruh organisasi"
+          }
+        }
       },
       "productSpec": {
         "title": "Sistem Manajemen Spesifikasi Produk",
         "description": "Platform komprehensif untuk mengelola spesifikasi produk, termasuk kontrol versi, alat kolaborasi, dan integrasi dengan sistem desain.",
-        "category": "Full Stack, Backend, Frontend"
+        "category": "Full Stack, Backend, Frontend",
+        "experience": "Membuat alur kerja spesifikasi terpadu untuk tim produk, teknik, dan kepatuhan dengan visibilitas versi yang ketat.",
+        "signalToNoise": "Menekankan keterlacakan dan alur persetujuan daripada alat kosmetik untuk mencegah pengerjaan ulang dan ambiguitas kepatuhan.",
+        "architecturalDepth": "Entitas spesifikasi terstruktur, riwayat revisi, dan status persetujuan dengan batas kepemilikan yang jelas per departemen.",
+        "metrics": {
+          "documentationTime": {
+            "label": "Waktu dokumentasi",
+            "value": "-45%"
+          },
+          "reviewCycles": {
+            "label": "Siklus tinjauan",
+            "value": "dipersingkat"
+          },
+          "productLines": {
+            "label": "Lini produk",
+            "value": "200+"
+          },
+          "timeToMarket": {
+            "label": "Time-to-market",
+            "value": "dipercepat"
+          }
+        }
       },
       "recruitment": {
         "title": "Sistem Manajemen Rekrutmen",
         "description": "Sistem manajemen rekrutmen end-to-end dengan pelacakan pelamar, penjadwalan wawancara, dan fitur pelaporan.",
-        "category": "Full Stack, Backend, Frontend"
+        "category": "Full Stack, Backend, Frontend",
+        "experience": "Menyerahkan platform perekrutan end-to-end dari pembuatan pipeline kandidat melalui koordinasi wawancara dan pelacakan status.",
+        "signalToNoise": "Fokus pada throughput perekrut dan visibilitas kandidat; menghilangkan pengejaran status manual dan penyimpangan spreadsheet.",
+        "architecturalDepth": "Siklus hidup pelamar berbasis alur kerja dengan gerbang tahap, notifikasi otomatis, dan integrasi penjadwal.",
+        "metrics": {
+          "hiringCycle": {
+            "label": "Siklus perekrutan",
+            "value": "-40%"
+          },
+          "manualTracking": {
+            "label": "Pelacakan manual",
+            "value": "dieliminasi"
+          },
+          "candidateResponse": {
+            "label": "Respons kandidat",
+            "value": "lebih cepat"
+          },
+          "schedulingFriction": {
+            "label": "Hambatan penjadwalan",
+            "value": "jauh lebih rendah"
+          }
+        }
       },
       "parking": {
         "title": "Sistem Manajemen Parkir",
         "description": "Sistem manajemen parkir komprehensif dengan pelacakan ketersediaan real-time, manajemen reservasi, dan integrasi pembayaran.",
-        "category": "Full Stack, Backend, Frontend"
+        "category": "Full Stack, Backend, Frontend",
+        "experience": "Membangun sistem kontrol parkir operasional yang mencakup pelacakan masuk/keluar, rekonsiliasi pembayaran, dan pemanfaatan slot.",
+        "signalToNoise": "Memprioritaskan throughput, integritas pembayaran, dan keterlacakan sengketa daripada kompleksitas dasbor dekoratif.",
+        "architecturalDepth": "Arsitektur transaction-first dengan log kejadian, pelacakan status pembayaran, dan laporan rekonsiliasi operasional.",
+        "metrics": {
+          "throughput": {
+            "label": "Throughput",
+            "value": "+30%"
+          },
+          "revenueLeakage": {
+            "label": "Kebocoran pendapatan",
+            "value": "mendekati nol"
+          },
+          "disputeResolution": {
+            "label": "Penyelesaian sengketa",
+            "value": "-85%"
+          },
+          "paymentReliability": {
+            "label": "Keandalan pembayaran",
+            "value": "meningkat"
+          }
+        }
       },
       "shipment": {
         "title": "Sistem Manajemen Pengiriman",
         "description": "Sistem manajemen pengiriman yang kuat dengan pelacakan real-time, manajemen inventori, dan fitur analitik.",
-        "category": "Full Stack, Backend, Frontend"
+        "category": "Full Stack, Backend, Frontend",
+        "experience": "Mengimplementasikan alat visibilitas logistik untuk tim pengiriman dan dukungan pelanggan dengan pembaruan status pengiriman langsung.",
+        "signalToNoise": "Menargetkan pengurangan ketidakpastian operasional terlebih dahulu: kepercayaan ETA, peringatan pengecualian, dan riwayat status yang dapat dilacak.",
+        "architecturalDepth": "Desain pipeline status-event dengan tonggak pengiriman, tanda anomali, dan auditabilitas pengiriman berbasis timeline.",
+        "metrics": {
+          "dailyShipments": {
+            "label": "Pengiriman harian",
+            "value": "100+"
+          },
+          "inquiryCalls": {
+            "label": "Panggilan pertanyaan",
+            "value": "-50%"
+          },
+          "onTimeDelivery": {
+            "label": "Pengiriman tepat waktu",
+            "value": "+25%"
+          },
+          "exceptionResponse": {
+            "label": "Respons pengecualian",
+            "value": "lebih cepat"
+          }
+        }
       },
       "maintenance": {
         "title": "Sistem Manajemen Pemeliharaan",
         "description": "Sistem manajemen pemeliharaan komprehensif dengan pelacakan perintah kerja, manajemen aset, dan fitur pelaporan.",
-        "category": "Full Stack, Backend, Frontend"
+        "category": "Full Stack, Backend, Frontend",
+        "experience": "Membangun perangkat lunak operasi pemeliharaan untuk penjadwalan preventif, eksekusi work order, dan visibilitas kesehatan peralatan.",
+        "signalToNoise": "Berkonsentrasi pada pencegahan downtime dan disiplin perencanaan pemeliharaan daripada fitur tiket generik.",
+        "architecturalDepth": "Desain berbasis aset dengan interval preventif, status siklus hidup work-order, dan catatan riwayat pemeliharaan.",
+        "metrics": {
+          "unplannedDowntime": {
+            "label": "Downtime tidak terencana",
+            "value": "-40%"
+          },
+          "repairCost": {
+            "label": "Biaya perbaikan",
+            "value": "berkurang"
+          },
+          "assetLifespan": {
+            "label": "Masa pakai aset",
+            "value": "+20%+"
+          },
+          "scheduleAdherence": {
+            "label": "Kepatuhan jadwal",
+            "value": "meningkat"
+          }
+        }
       },
       "hris": {
         "title": "Sistem Informasi Sumber Daya Manusia (HRIS)",
         "description": "HRIS yang dapat diskalakan dengan manajemen karyawan, pemrosesan gaji, dan fitur pelacakan kinerja.",
-        "category": "Full Stack, Backend, Frontend"
+        "category": "Full Stack, Backend, Frontend",
+        "experience": "Menyerahkan alur kerja HRIS yang mencakup catatan karyawan, kehadiran, input penggajian, dan proses tinjauan kinerja.",
+        "signalToNoise": "Fokus pada akurasi data dan operasi HR yang berulang, meminimalkan konsolidasi dan rekonsiliasi manual.",
+        "architecturalDepth": "Modul HR berbasis domain dengan catatan berperizinan, alur data siap penggajian, dan pembuatan laporan kepatuhan.",
+        "metrics": {
+          "employeesSupported": {
+            "label": "Karyawan yang didukung",
+            "value": "300+"
+          },
+          "payrollProcessing": {
+            "label": "Pemrosesan penggajian",
+            "value": "-65%"
+          },
+          "dataErrors": {
+            "label": "Kesalahan data",
+            "value": "-90%"
+          },
+          "complianceAccuracy": {
+            "label": "Akurasi kepatuhan",
+            "value": "meningkat"
+          }
+        }
       }
+    },
+    "details": {
+      "experience": "Pengalaman",
+      "signalToNoise": "Signal-to-noise",
+      "architecturalDepth": "Kedalaman arsitektur",
+      "metrics": "Metrik"
     }
   },
   "milestones": {

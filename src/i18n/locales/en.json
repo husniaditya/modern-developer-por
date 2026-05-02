@@ -49,53 +49,269 @@
       "chocomaid": {
         "title": "Choco Maid AI Discord Bot",
         "description": "AI-powered Discord bot for managing communities, featuring moderation tools, fun commands, and seamless integration with external APIs including Youtube, Twitch, Clash Of Clans, Valorant, and more. Supports multiple languages (English, Indonesia, Germany, Spanish, Japanese, Chinese, French) with i18n.",
-        "category": "Full Stack, Backend, Frontend"
+        "category": "Full Stack, Backend, Frontend",
+        "experience": "Built a production Discord platform from feature design to deployment, balancing community UX, moderation workflows, and third-party API reliability.",
+        "signalToNoise": "High signal: every feature ties to daily community retention, discovery, or automation; low-value novelty was intentionally excluded.",
+        "architecturalDepth": "Event-driven bot core with modular integrations, API adapters, resilient fallback handling, and Cloudflare edge protection.",
+        "metrics": {
+          "activeUsers": {
+            "label": "Active users",
+            "value": "500+"
+          },
+          "uptime": {
+            "label": "Uptime",
+            "value": "98%"
+          },
+          "responseTime": {
+            "label": "Response time",
+            "value": "<200ms"
+          },
+          "engagement": {
+            "label": "Engagement",
+            "value": "4x growth"
+          }
+        }
       },
       "ciptasejati": {
         "title": "Cipta Sejati Indonesia - Community Platform",
         "description": "Comprehensive, cloud-based management platform designed for a large martial arts federation with 63 dojos across different cities and a membership base exceeding 10,000 students and instructors. It serves as the central nervous system for the entire organization, streamlining operations for membership, facility management, and financial oversight.",
-        "category": "Full Stack, Backend, Frontend"
+        "category": "Full Stack, Backend, Frontend",
+        "experience": "Led full delivery of a national-grade management platform spanning membership, facility operations, and financial workflows.",
+        "signalToNoise": "Focused on operational bottlenecks first: registration, attendance, billing, and reporting pathways with highest leadership impact.",
+        "architecturalDepth": "Role-based multi-tenant web architecture with secure admin workflows, transactional data boundaries, and reporting modules.",
+        "metrics": {
+          "dojoCoverage": {
+            "label": "Dojo coverage",
+            "value": "63"
+          },
+          "members": {
+            "label": "Members",
+            "value": "10,000+"
+          },
+          "adminOverhead": {
+            "label": "Admin overhead",
+            "value": "-60%"
+          },
+          "retentionLift": {
+            "label": "Retention lift",
+            "value": "+35%"
+          }
+        }
       },
       "erp": {
         "title": "Enterprise Resource Planning (ERP) System",
         "description": "Modular ERP system with inventory, sales, procurement, and accounting modules. Features include real-time reporting, multi-user roles, and integration with third-party services.",
-        "category": "Full Stack, Frontend, Backend"
+        "category": "Full Stack, Frontend, Backend",
+        "experience": "Implemented cross-department ERP workflows for manufacturing, aligning inventory, procurement, sales, and accounting operations.",
+        "signalToNoise": "Prioritized mission-critical paths where delays and errors were most expensive, especially data entry and management reporting.",
+        "architecturalDepth": "Modular enterprise stack with domain-separated modules, shared master data model, and auditable transaction pipelines.",
+        "metrics": {
+          "operationalEfficiency": {
+            "label": "Operational efficiency",
+            "value": "+50%"
+          },
+          "dataErrors": {
+            "label": "Data errors",
+            "value": "-80%"
+          },
+          "reportTurnaround": {
+            "label": "Report turnaround",
+            "value": "days -> minutes"
+          },
+          "decisionLatency": {
+            "label": "Decision latency",
+            "value": "significantly reduced"
+          }
+        }
       },
       "digitalLibrary": {
         "title": "Digital Library System",
         "description": "Scalable digital library system with advanced search, user management, and analytics features.",
-        "category": "Full Stack, Backend, Frontend"
+        "category": "Full Stack, Backend, Frontend",
+        "experience": "Built a data-center document platform that centralized enterprise records, access flows, and long-term storage governance.",
+        "signalToNoise": "Cut non-essential UI complexity and focused on document retrieval speed, consistency, and permission correctness.",
+        "architecturalDepth": "Centralized repository architecture with role-based access, indexing strategies, and storage lifecycle controls.",
+        "metrics": {
+          "documentsIndexed": {
+            "label": "Documents indexed",
+            "value": "100,000+"
+          },
+          "retrievalTime": {
+            "label": "Retrieval time",
+            "value": "-75%"
+          },
+          "storageRedundancy": {
+            "label": "Storage redundancy",
+            "value": "-60%"
+          },
+          "auditCompliance": {
+            "label": "Audit compliance",
+            "value": "improved org-wide"
+          }
+        }
       },
       "productSpec": {
         "title": "Product Specification Management System",
         "description": "Comprehensive platform for managing product specifications, including version control, collaboration tools, and integration with design systems.",
-        "category": "Full Stack, Backend, Frontend"
+        "category": "Full Stack, Backend, Frontend",
+        "experience": "Created a unified specification workflow for product, engineering, and compliance teams with strict version visibility.",
+        "signalToNoise": "Emphasized traceability and approval flow over cosmetic tooling to prevent rework and compliance ambiguity.",
+        "architecturalDepth": "Structured spec entities, revision history, and approval states with clear ownership boundaries per department.",
+        "metrics": {
+          "documentationTime": {
+            "label": "Documentation time",
+            "value": "-45%"
+          },
+          "reviewCycles": {
+            "label": "Review cycles",
+            "value": "shortened"
+          },
+          "productLines": {
+            "label": "Product lines",
+            "value": "200+"
+          },
+          "timeToMarket": {
+            "label": "Time-to-market",
+            "value": "accelerated"
+          }
+        }
       },
       "recruitment": {
         "title": "Recruitment Management System",
         "description": "End-to-end recruitment management system with applicant tracking, interview scheduling, and reporting features.",
-        "category": "Full Stack, Backend, Frontend"
+        "category": "Full Stack, Backend, Frontend",
+        "experience": "Delivered an end-to-end hiring platform from candidate pipeline creation through interview coordination and status tracking.",
+        "signalToNoise": "Focused on recruiter throughput and candidate visibility; eliminated manual status chasing and spreadsheet drift.",
+        "architecturalDepth": "Workflow-driven applicant lifecycle with stage gates, automated notifications, and scheduler integrations.",
+        "metrics": {
+          "hiringCycle": {
+            "label": "Hiring cycle",
+            "value": "-40%"
+          },
+          "manualTracking": {
+            "label": "Manual tracking",
+            "value": "eliminated"
+          },
+          "candidateResponse": {
+            "label": "Candidate response",
+            "value": "faster"
+          },
+          "schedulingFriction": {
+            "label": "Scheduling friction",
+            "value": "significantly lower"
+          }
+        }
       },
       "parking": {
         "title": "Parking Management System",
         "description": "Comprehensive parking management system with real-time availability tracking, reservation management, and payment integration.",
-        "category": "Full Stack, Backend, Frontend"
+        "category": "Full Stack, Backend, Frontend",
+        "experience": "Built an operational parking control system covering ingress/egress tracking, payment reconciliation, and slot utilization.",
+        "signalToNoise": "Prioritized throughput, payment integrity, and dispute traceability over decorative dashboard complexity.",
+        "architecturalDepth": "Transaction-first architecture with event logs, payment state tracking, and operational reconciliation reports.",
+        "metrics": {
+          "throughput": {
+            "label": "Throughput",
+            "value": "+30%"
+          },
+          "revenueLeakage": {
+            "label": "Revenue leakage",
+            "value": "near zero"
+          },
+          "disputeResolution": {
+            "label": "Dispute resolution",
+            "value": "-85%"
+          },
+          "paymentReliability": {
+            "label": "Payment reliability",
+            "value": "improved"
+          }
+        }
       },
       "shipment": {
         "title": "Shipment Management System",
         "description": "Robust shipment management system with real-time tracking, inventory management, and analytics features.",
-        "category": "Full Stack, Backend, Frontend"
+        "category": "Full Stack, Backend, Frontend",
+        "experience": "Implemented logistics visibility tooling for dispatch teams and customer support with live shipment status updates.",
+        "signalToNoise": "Targeted operational uncertainty reduction first: ETA confidence, exception alerts, and traceable status history.",
+        "architecturalDepth": "Status-event pipeline design with delivery milestones, anomaly flags, and timeline-based shipment auditability.",
+        "metrics": {
+          "dailyShipments": {
+            "label": "Daily shipments",
+            "value": "100+"
+          },
+          "inquiryCalls": {
+            "label": "Inquiry calls",
+            "value": "-50%"
+          },
+          "onTimeDelivery": {
+            "label": "On-time delivery",
+            "value": "+25%"
+          },
+          "exceptionResponse": {
+            "label": "Exception response",
+            "value": "faster"
+          }
+        }
       },
       "maintenance": {
         "title": "Maintenance Management System",
         "description": "Comprehensive maintenance management system with work order tracking, asset management, and reporting features.",
-        "category": "Full Stack, Backend, Frontend"
+        "category": "Full Stack, Backend, Frontend",
+        "experience": "Built maintenance operations software for preventive scheduling, work order execution, and equipment health visibility.",
+        "signalToNoise": "Concentrated on downtime prevention and maintenance planning discipline instead of generic ticketing features.",
+        "architecturalDepth": "Asset-centric design with preventive intervals, work-order lifecycle states, and maintenance history records.",
+        "metrics": {
+          "unplannedDowntime": {
+            "label": "Unplanned downtime",
+            "value": "-40%"
+          },
+          "repairCost": {
+            "label": "Repair cost",
+            "value": "reduced"
+          },
+          "assetLifespan": {
+            "label": "Asset lifespan",
+            "value": "+20%+"
+          },
+          "scheduleAdherence": {
+            "label": "Schedule adherence",
+            "value": "improved"
+          }
+        }
       },
       "hris": {
         "title": "Human Resource Information System (HRIS)",
         "description": "Scalable HRIS with employee management, payroll processing, and performance tracking features.",
-        "category": "Full Stack, Backend, Frontend"
+        "category": "Full Stack, Backend, Frontend",
+        "experience": "Delivered HRIS workflows spanning employee records, attendance, payroll inputs, and performance review processes.",
+        "signalToNoise": "Focused on data accuracy and repeatable HR operations, minimizing manual consolidation and reconciliation work.",
+        "architecturalDepth": "Domain-driven HR modules with permissioned records, payroll-ready data flows, and compliance report generation.",
+        "metrics": {
+          "employeesSupported": {
+            "label": "Employees supported",
+            "value": "300+"
+          },
+          "payrollProcessing": {
+            "label": "Payroll processing",
+            "value": "-65%"
+          },
+          "dataErrors": {
+            "label": "Data errors",
+            "value": "-90%"
+          },
+          "complianceAccuracy": {
+            "label": "Compliance accuracy",
+            "value": "improved"
+          }
+        }
       }
+    },
+    "details": {
+      "experience": "Experience",
+      "signalToNoise": "Signal-to-noise",
+      "architecturalDepth": "Architectural depth",
+      "metrics": "Metrics"
     }
   },
   "milestones": {

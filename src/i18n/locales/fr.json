@@ -51,53 +51,269 @@
       "chocomaid": {
         "title": "Choco Maid AI Discord Bot",
         "description": "Bot Discord alimenté par l'IA pour gérer les communautés, avec des outils de modération, des commandes amusantes et une intégration transparente avec des APIs externes incluant YouTube, Twitch, Clash Of Clans, Valorant, et plus. Supporte plusieurs langues (anglais, indonésien, allemand, espagnol, japonais, chinois, français) avec i18n.",
-        "category": "Full Stack, Backend, Frontend"
+        "category": "Full Stack, Backend, Frontend",
+        "experience": "Développement d'une plateforme Discord de production, de la conception des fonctionnalités au déploiement, en équilibrant l'UX communautaire, les flux de modération et la fiabilité des API tierces.",
+        "signalToNoise": "Signal fort : chaque fonctionnalité est liée à la rétention quotidienne de la communauté, à la découverte ou à l'automatisation ; la nouveauté à faible valeur a été intentionnellement exclue.",
+        "architecturalDepth": "Cœur de bot événementiel avec intégrations modulaires, adaptateurs d'API, gestion robuste des fallbacks et protection edge Cloudflare.",
+        "metrics": {
+          "activeUsers": {
+            "label": "Utilisateurs actifs",
+            "value": "500+"
+          },
+          "uptime": {
+            "label": "Disponibilité",
+            "value": "98%"
+          },
+          "responseTime": {
+            "label": "Temps de réponse",
+            "value": "<200ms"
+          },
+          "engagement": {
+            "label": "Engagement",
+            "value": "4x growth"
+          }
+        }
       },
       "ciptasejati": {
         "title": "Cipta Sejati Indonesia - Plateforme Communautaire",
         "description": "Plateforme de gestion complète basée sur le cloud conçue pour une grande fédération d'arts martiaux avec 63 dojos dans différentes villes et une base de membres dépassant 10 000 étudiants et instructeurs. Elle sert de système nerveux central pour l'ensemble de l'organisation, rationalisant les opérations d'adhésion, de gestion des installations et de supervision financière.",
-        "category": "Full Stack, Backend, Frontend"
+        "category": "Full Stack, Backend, Frontend",
+        "experience": "Dirigé la livraison complète d'une plateforme de gestion nationale couvrant la gestion des membres, les opérations des installations et les flux financiers.",
+        "signalToNoise": "Priorité aux goulots d'étranglement opérationnels : inscription, présence, facturation et flux de reporting à fort impact organisationnel.",
+        "architecturalDepth": "Architecture web multi-tenant basée sur les rôles avec workflows administratifs sécurisés, limites de données transactionnelles et modules de reporting.",
+        "metrics": {
+          "dojoCoverage": {
+            "label": "Couverture dojos",
+            "value": "63"
+          },
+          "members": {
+            "label": "Membres",
+            "value": "10,000+"
+          },
+          "adminOverhead": {
+            "label": "Surcharge admin",
+            "value": "-60%"
+          },
+          "retentionLift": {
+            "label": "Hausse de rétention",
+            "value": "+35%"
+          }
+        }
       },
       "erp": {
         "title": "Système de Planification des Ressources d'Entreprise (ERP)",
         "description": "Système ERP modulaire avec modules d'inventaire, ventes, approvisionnement et comptabilité. Les fonctionnalités incluent des rapports en temps réel, des rôles multi-utilisateurs et l'intégration avec des services tiers.",
-        "category": "Full Stack, Frontend, Backend"
+        "category": "Full Stack, Frontend, Backend",
+        "experience": "Implémentation des flux ERP inter-départements pour la fabrication, alignant les opérations d'inventaire, d'approvisionnement, de ventes et de comptabilité.",
+        "signalToNoise": "Priorisation des chemins critiques où les retards et erreurs sont les plus coûteux, notamment la saisie des données et les rapports de gestion.",
+        "architecturalDepth": "Stack entreprise modulaire avec modules à domaines séparés, modèle de données maître partagé et pipelines de transactions auditables.",
+        "metrics": {
+          "operationalEfficiency": {
+            "label": "Efficacité opérationnelle",
+            "value": "+50%"
+          },
+          "dataErrors": {
+            "label": "Erreurs de données",
+            "value": "-80%"
+          },
+          "reportTurnaround": {
+            "label": "Délai de rapport",
+            "value": "jours → minutes"
+          },
+          "decisionLatency": {
+            "label": "Latence décisionnelle",
+            "value": "réduite significativement"
+          }
+        }
       },
       "digitalLibrary": {
         "title": "Système de Bibliothèque Numérique",
         "description": "Système de bibliothèque numérique évolutif avec recherche avancée, gestion des utilisateurs et fonctionnalités d'analyse.",
-        "category": "Full Stack, Backend, Frontend"
+        "category": "Full Stack, Backend, Frontend",
+        "experience": "Construction d'une plateforme documentaire de centre de données centralisant les archives d'entreprise, les flux d'accès et la gouvernance de stockage à long terme.",
+        "signalToNoise": "Réduction de la complexité UI superflue, avec focus sur la vitesse de récupération des documents, la cohérence et la précision des permissions.",
+        "architecturalDepth": "Architecture de référentiel centralisé avec accès basé sur les rôles, stratégies d'indexation et contrôles du cycle de vie du stockage.",
+        "metrics": {
+          "documentsIndexed": {
+            "label": "Documents indexés",
+            "value": "100,000+"
+          },
+          "retrievalTime": {
+            "label": "Temps de récupération",
+            "value": "-75%"
+          },
+          "storageRedundancy": {
+            "label": "Redondance de stockage",
+            "value": "-60%"
+          },
+          "auditCompliance": {
+            "label": "Conformité d'audit",
+            "value": "améliorée à l'échelle org"
+          }
+        }
       },
       "productSpec": {
         "title": "Système de Gestion des Spécifications Produits",
         "description": "Plateforme complète pour gérer les spécifications produits, incluant le contrôle de version, les outils de collaboration et l'intégration avec les systèmes de design.",
-        "category": "Full Stack, Backend, Frontend"
+        "category": "Full Stack, Backend, Frontend",
+        "experience": "Création d'un workflow de spécification unifié pour les équipes produit, ingénierie et conformité avec une visibilité stricte des versions.",
+        "signalToNoise": "Accent sur la traçabilité et le flux d'approbation plutôt que sur les outils cosmétiques pour éviter les retouches et les ambiguïtés de conformité.",
+        "architecturalDepth": "Entités de spécification structurées, historique des révisions et états d'approbation avec des limites de propriété claires par département.",
+        "metrics": {
+          "documentationTime": {
+            "label": "Temps de documentation",
+            "value": "-45%"
+          },
+          "reviewCycles": {
+            "label": "Cycles de révision",
+            "value": "raccourcis"
+          },
+          "productLines": {
+            "label": "Lignes de produits",
+            "value": "200+"
+          },
+          "timeToMarket": {
+            "label": "Délai de mise sur le marché",
+            "value": "accéléré"
+          }
+        }
       },
       "recruitment": {
         "title": "Système de Gestion du Recrutement",
         "description": "Système de gestion du recrutement de bout en bout avec suivi des candidats, planification d'entretiens et fonctionnalités de rapport.",
-        "category": "Full Stack, Backend, Frontend"
+        "category": "Full Stack, Backend, Frontend",
+        "experience": "Livraison d'une plateforme de recrutement de bout en bout, de la création du pipeline candidat à la coordination des entretiens et au suivi des statuts.",
+        "signalToNoise": "Focus sur le débit des recruteurs et la visibilité des candidats ; élimination du suivi manuel des statuts et de la dérive des feuilles de calcul.",
+        "architecturalDepth": "Cycle de vie des candidats piloté par workflow avec des étapes de validation, des notifications automatiques et des intégrations de planification.",
+        "metrics": {
+          "hiringCycle": {
+            "label": "Cycle de recrutement",
+            "value": "-40%"
+          },
+          "manualTracking": {
+            "label": "Suivi manuel",
+            "value": "éliminé"
+          },
+          "candidateResponse": {
+            "label": "Réponse candidat",
+            "value": "plus rapide"
+          },
+          "schedulingFriction": {
+            "label": "Friction de planification",
+            "value": "nettement réduite"
+          }
+        }
       },
       "parking": {
         "title": "Système de Gestion de Stationnement",
         "description": "Système complet de gestion de stationnement avec suivi de disponibilité en temps réel, gestion des réservations et intégration de paiement.",
-        "category": "Full Stack, Backend, Frontend"
+        "category": "Full Stack, Backend, Frontend",
+        "experience": "Construction d'un système de contrôle de parking opérationnel couvrant le suivi entrées/sorties, la réconciliation des paiements et l'utilisation des places.",
+        "signalToNoise": "Priorité au débit, à l'intégrité des paiements et à la traçabilité des litiges plutôt qu'à la complexité décorative du tableau de bord.",
+        "architecturalDepth": "Architecture transaction-first avec journaux d'événements, suivi des états de paiement et rapports de réconciliation opérationnelle.",
+        "metrics": {
+          "throughput": {
+            "label": "Débit",
+            "value": "+30%"
+          },
+          "revenueLeakage": {
+            "label": "Fuite de revenus",
+            "value": "quasi nulle"
+          },
+          "disputeResolution": {
+            "label": "Résolution des litiges",
+            "value": "-85%"
+          },
+          "paymentReliability": {
+            "label": "Fiabilité des paiements",
+            "value": "améliorée"
+          }
+        }
       },
       "shipment": {
         "title": "Système de Gestion d'Expédition",
         "description": "Système robuste de gestion d'expédition avec suivi en temps réel, gestion d'inventaire et fonctionnalités d'analyse.",
-        "category": "Full Stack, Backend, Frontend"
+        "category": "Full Stack, Backend, Frontend",
+        "experience": "Implémentation d'outils de visibilité logistique pour les équipes d'expédition et le support client avec des mises à jour de statut en temps réel.",
+        "signalToNoise": "Réduction en priorité de l'incertitude opérationnelle : confiance ETA, alertes d'exception et historique de statut traçable.",
+        "architecturalDepth": "Conception de pipeline status-événement avec jalons de livraison, indicateurs d'anomalie et auditabilité des expéditions basée sur la chronologie.",
+        "metrics": {
+          "dailyShipments": {
+            "label": "Expéditions quotidiennes",
+            "value": "100+"
+          },
+          "inquiryCalls": {
+            "label": "Appels d'enquête",
+            "value": "-50%"
+          },
+          "onTimeDelivery": {
+            "label": "Livraison dans les délais",
+            "value": "+25%"
+          },
+          "exceptionResponse": {
+            "label": "Réponse aux exceptions",
+            "value": "plus rapide"
+          }
+        }
       },
       "maintenance": {
         "title": "Système de Gestion de Maintenance",
         "description": "Système complet de gestion de maintenance avec suivi des ordres de travail, gestion d'actifs et fonctionnalités de rapport.",
-        "category": "Full Stack, Backend, Frontend"
+        "category": "Full Stack, Backend, Frontend",
+        "experience": "Construction d'un logiciel d'opérations de maintenance pour la planification préventive, l'exécution des ordres de travail et la visibilité de l'état des équipements.",
+        "signalToNoise": "Concentration sur la prévention des pannes et la discipline de planification de la maintenance plutôt que sur les fonctions génériques de ticketing.",
+        "architecturalDepth": "Conception centrée sur les actifs avec intervalles préventifs, états du cycle de vie des ordres de travail et enregistrements d'historique de maintenance.",
+        "metrics": {
+          "unplannedDowntime": {
+            "label": "Temps d'arrêt non planifié",
+            "value": "-40%"
+          },
+          "repairCost": {
+            "label": "Coût de réparation",
+            "value": "réduit"
+          },
+          "assetLifespan": {
+            "label": "Durée de vie des actifs",
+            "value": "+20%+"
+          },
+          "scheduleAdherence": {
+            "label": "Respect du planning",
+            "value": "amélioré"
+          }
+        }
       },
       "hris": {
         "title": "Système d'Information des Ressources Humaines (SIRH)",
         "description": "SIRH évolutif avec gestion des employés, traitement des paies et fonctionnalités de suivi des performances.",
-        "category": "Full Stack, Backend, Frontend"
+        "category": "Full Stack, Backend, Frontend",
+        "experience": "Livraison des workflows HRIS couvrant les dossiers des employés, la présence, les entrées de paie et les processus de revue de performance.",
+        "signalToNoise": "Focus sur la précision des données et des opérations RH répétables, minimisant la consolidation manuelle et le travail de réconciliation.",
+        "architecturalDepth": "Modules RH pilotés par domaine avec des dossiers autorisés, des flux de données prêts pour la paie et la génération de rapports de conformité.",
+        "metrics": {
+          "employeesSupported": {
+            "label": "Employés supportés",
+            "value": "300+"
+          },
+          "payrollProcessing": {
+            "label": "Traitement de la paie",
+            "value": "-65%"
+          },
+          "dataErrors": {
+            "label": "Erreurs de données",
+            "value": "-90%"
+          },
+          "complianceAccuracy": {
+            "label": "Précision de conformité",
+            "value": "améliorée"
+          }
+        }
       }
+    },
+    "details": {
+      "experience": "Experience",
+      "signalToNoise": "Signal-bruit",
+      "architecturalDepth": "Profondeur architecturale",
+      "metrics": "Métriques"
     }
   },
   "milestones": {

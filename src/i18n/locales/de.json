@@ -51,53 +51,269 @@
       "chocomaid": {
         "title": "Choco Maid AI Discord Bot",
         "description": "KI-gestützter Discord-Bot für Community-Management mit Moderationstools, unterhaltsamen Befehlen und nahtloser Integration externer APIs wie YouTube, Twitch, Clash Of Clans, Valorant und mehr. Unterstützt mehrere Sprachen (Englisch, Indonesisch, Deutsch, Spanisch, Japanisch, Chinesisch, Französisch) mit i18n.",
-        "category": "Full Stack, Backend, Frontend"
+        "category": "Full Stack, Backend, Frontend",
+        "experience": "Aufbau einer Discord-Produktionsplattform von der Feature-Konzeption bis zum Deployment, mit Balance zwischen Community-UX, Moderations-Workflows und Drittanbieter-API-Zuverlässigkeit.",
+        "signalToNoise": "Hohes Signal: Jedes Feature ist mit täglicher Community-Bindung, Entdeckung oder Automatisierung verknüpft; wertarme Neuerungen wurden bewusst ausgeschlossen.",
+        "architecturalDepth": "Ereignisgesteuerter Bot-Kern mit modularen Integrationen, API-Adaptern, robustem Fallback-Handling und Cloudflare-Edge-Schutz.",
+        "metrics": {
+          "activeUsers": {
+            "label": "Aktive Nutzer",
+            "value": "500+"
+          },
+          "uptime": {
+            "label": "Verfügbarkeit",
+            "value": "98%"
+          },
+          "responseTime": {
+            "label": "Antwortzeit",
+            "value": "<200ms"
+          },
+          "engagement": {
+            "label": "Engagement",
+            "value": "4x growth"
+          }
+        }
       },
       "ciptasejati": {
         "title": "Cipta Sejati Indonesia - Community-Plattform",
         "description": "Umfassende, cloudbasierte Management-Plattform für einen großen Kampfkunst-Verband mit 63 Dojos in verschiedenen Städten und einer Mitgliederbasis von über 10.000 Schülern und Instruktoren. Sie dient als zentrales Nervensystem für die gesamte Organisation und optimiert Vorgänge für Mitgliedschaft, Anlagenverwaltung und Finanzaufsicht.",
-        "category": "Full Stack, Backend, Frontend"
+        "category": "Full Stack, Backend, Frontend",
+        "experience": "Vollständige Lieferung einer nationalen Verwaltungsplattform für Mitgliedschaft, Facilitymanagement und Finanzprozesse geleitet.",
+        "signalToNoise": "Operationale Engpässe wurden zuerst angegangen: Registrierung, Anwesenheit, Abrechnung und Berichtswege mit höchstem Führungseinfluss.",
+        "architecturalDepth": "Rollenbasierte Multi-Tenant-Webarchitektur mit sicheren Admin-Workflows, transaktionalen Datengrenzen und Reporting-Modulen.",
+        "metrics": {
+          "dojoCoverage": {
+            "label": "Dojo-Abdeckung",
+            "value": "63"
+          },
+          "members": {
+            "label": "Mitglieder",
+            "value": "10,000+"
+          },
+          "adminOverhead": {
+            "label": "Admin-Aufwand",
+            "value": "-60%"
+          },
+          "retentionLift": {
+            "label": "Bindungsverbesserung",
+            "value": "+35%"
+          }
+        }
       },
       "erp": {
         "title": "Enterprise Resource Planning (ERP) System",
         "description": "Modulares ERP-System mit Inventar-, Verkaufs-, Beschaffungs- und Buchhaltungsmodulen. Features umfassen Echtzeit-Berichterstattung, Multi-User-Rollen und Integration mit Drittanbieterdiensten.",
-        "category": "Full Stack, Frontend, Backend"
+        "category": "Full Stack, Frontend, Backend",
+        "experience": "Abteilungsübergreifende ERP-Workflows für die Fertigung implementiert und Lager-, Einkaufs-, Vertriebs- und Buchhaltungsabläufe ausgerichtet.",
+        "signalToNoise": "Kritische Pfade priorisiert, bei denen Verzögerungen und Fehler am teuersten sind, insbesondere Dateneingabe und Managementberichte.",
+        "architecturalDepth": "Modularer Enterprise-Stack mit domängetrennten Modulen, gemeinsamem Stammdatenmodell und prüfbaren Transaktionspipelines.",
+        "metrics": {
+          "operationalEfficiency": {
+            "label": "Betriebseffizienz",
+            "value": "+50%"
+          },
+          "dataErrors": {
+            "label": "Datenfehler",
+            "value": "-80%"
+          },
+          "reportTurnaround": {
+            "label": "Berichtsturnaround",
+            "value": "Tage → Minuten"
+          },
+          "decisionLatency": {
+            "label": "Entscheidungslatenz",
+            "value": "deutlich reduziert"
+          }
+        }
       },
       "digitalLibrary": {
         "title": "Digitales Bibliothekssystem",
         "description": "Skalierbares digitales Bibliothekssystem mit erweiterten Such-, Benutzerverwaltungs- und Analysefunktionen.",
-        "category": "Full Stack, Backend, Frontend"
+        "category": "Full Stack, Backend, Frontend",
+        "experience": "Eine Rechenzentrum-Dokumentenplattform aufgebaut, die Unternehmensunterlagen, Zugriffsabläufe und langfristige Speicher-Governance zentralisiert.",
+        "signalToNoise": "Unnötige UI-Komplexität reduziert und Fokus auf Dokumentenabrufgeschwindigkeit, Konsistenz und Berechtigungskorrektheit gelegt.",
+        "architecturalDepth": "Zentralisierte Repository-Architektur mit rollenbasiertem Zugriff, Indexierungsstrategien und Speicherlebenszykluskontrollen.",
+        "metrics": {
+          "documentsIndexed": {
+            "label": "Indexierte Dokumente",
+            "value": "100,000+"
+          },
+          "retrievalTime": {
+            "label": "Abrufzeit",
+            "value": "-75%"
+          },
+          "storageRedundancy": {
+            "label": "Speicherredundanz",
+            "value": "-60%"
+          },
+          "auditCompliance": {
+            "label": "Audit-Konformität",
+            "value": "organisationsweit verbessert"
+          }
+        }
       },
       "productSpec": {
         "title": "Produktspezifikations-Managementsystem",
         "description": "Umfassende Plattform für die Verwaltung von Produktspezifikationen, einschließlich Versionskontrolle, Kollaborationstools und Integration mit Designsystemen.",
-        "category": "Full Stack, Backend, Frontend"
+        "category": "Full Stack, Backend, Frontend",
+        "experience": "Einen einheitlichen Spezifikations-Workflow für Produkt-, Technik- und Compliance-Teams mit strikter Versionssichtbarkeit erstellt.",
+        "signalToNoise": "Rückverfolgbarkeit und Genehmigungsfluss über kosmetische Werkzeuge gestellt, um Nacharbeit und Compliance-Mehrdeutigkeiten zu verhindern.",
+        "architecturalDepth": "Strukturierte Spezifikationsentitäten, Revisionshistorie und Genehmigungsstatus mit klaren Eigentumsabgrenzungen pro Abteilung.",
+        "metrics": {
+          "documentationTime": {
+            "label": "Dokumentationszeit",
+            "value": "-45%"
+          },
+          "reviewCycles": {
+            "label": "Überprüfungszyklen",
+            "value": "verkürzt"
+          },
+          "productLines": {
+            "label": "Produktlinien",
+            "value": "200+"
+          },
+          "timeToMarket": {
+            "label": "Zeit bis zur Markteinführung",
+            "value": "beschleunigt"
+          }
+        }
       },
       "recruitment": {
         "title": "Rekrutierungs-Managementsystem",
         "description": "End-to-End-Rekrutierungs-Managementsystem mit Bewerberverfolgung, Terminplanung für Interviews und Berichtsfunktionen.",
-        "category": "Full Stack, Backend, Frontend"
+        "category": "Full Stack, Backend, Frontend",
+        "experience": "Eine End-to-End-Einstellungsplattform von der Kandidaten-Pipeline-Erstellung über Interviewkoordination bis zum Statustracking geliefert.",
+        "signalToNoise": "Fokus auf Recruiter-Durchsatz und Kandidatensichtbarkeit; manuelles Statusnachlaufen und Tabellenkalkulationsabweichungen eliminiert.",
+        "architecturalDepth": "Workflow-gesteuerter Bewerberlebenszyklus mit Stage-Gates, automatischen Benachrichtigungen und Planer-Integrationen.",
+        "metrics": {
+          "hiringCycle": {
+            "label": "Einstellungszyklus",
+            "value": "-40%"
+          },
+          "manualTracking": {
+            "label": "Manuelles Tracking",
+            "value": "eliminiert"
+          },
+          "candidateResponse": {
+            "label": "Kandidatenantwort",
+            "value": "schneller"
+          },
+          "schedulingFriction": {
+            "label": "Planungsreibung",
+            "value": "deutlich geringer"
+          }
+        }
       },
       "parking": {
         "title": "Parkplatz-Managementsystem",
         "description": "Umfassendes Parkplatz-Managementsystem mit Echtzeit-Verfügbarkeitsverfolgung, Reservierungsverwaltung und Zahlungsintegration.",
-        "category": "Full Stack, Backend, Frontend"
+        "category": "Full Stack, Backend, Frontend",
+        "experience": "Ein operatives Parksteuerungssystem für Einfahrt/Ausfahrt-Tracking, Zahlungsabgleich und Stellplatznutzung entwickelt.",
+        "signalToNoise": "Durchsatz, Zahlungsintegrität und Streit-Rückverfolgbarkeit über dekorative Dashboard-Komplexität priorisiert.",
+        "architecturalDepth": "Transaction-First-Architektur mit Ereignisprotokollen, Zahlungsstatusverfolgung und betrieblichen Abstimmungsberichten.",
+        "metrics": {
+          "throughput": {
+            "label": "Durchsatz",
+            "value": "+30%"
+          },
+          "revenueLeakage": {
+            "label": "Umsatzverlust",
+            "value": "nahezu null"
+          },
+          "disputeResolution": {
+            "label": "Streitbeilegung",
+            "value": "-85%"
+          },
+          "paymentReliability": {
+            "label": "Zahlungszuverlässigkeit",
+            "value": "verbessert"
+          }
+        }
       },
       "shipment": {
         "title": "Versand-Managementsystem",
         "description": "Robustes Versand-Managementsystem mit Echtzeit-Tracking, Inventarverwaltung und Analysefunktionen.",
-        "category": "Full Stack, Backend, Frontend"
+        "category": "Full Stack, Backend, Frontend",
+        "experience": "Logistik-Sichtbarkeitswerkzeuge für Versandteams und Kundensupport mit Live-Sendungsstatusaktualisierungen implementiert.",
+        "signalToNoise": "Zuerst operative Unsicherheit reduziert: ETA-Zuverlässigkeit, Ausnahmewarnungen und rückverfolgbare Statushistorie.",
+        "architecturalDepth": "Status-Event-Pipeline-Design mit Liefermeilensteinen, Anomalie-Flags und zeitlinienbasierter Sendungsauditierbarkeit.",
+        "metrics": {
+          "dailyShipments": {
+            "label": "Tägliche Sendungen",
+            "value": "100+"
+          },
+          "inquiryCalls": {
+            "label": "Anfrageanrufe",
+            "value": "-50%"
+          },
+          "onTimeDelivery": {
+            "label": "Pünktliche Lieferung",
+            "value": "+25%"
+          },
+          "exceptionResponse": {
+            "label": "Ausnahmereaktion",
+            "value": "schneller"
+          }
+        }
       },
       "maintenance": {
         "title": "Wartungs-Managementsystem",
         "description": "Umfassendes Wartungs-Managementsystem mit Arbeitsauftragsverfolgung, Asset-Management und Berichtsfunktionen.",
-        "category": "Full Stack, Backend, Frontend"
+        "category": "Full Stack, Backend, Frontend",
+        "experience": "Wartungsbetriebssoftware für präventive Planung, Arbeitsauftragsausführung und Gerätezustandssichtbarkeit entwickelt.",
+        "signalToNoise": "Auf Ausfallzeitprävention und Wartungsplanungsdisziplin konzentriert statt auf generische Ticketing-Funktionen.",
+        "architecturalDepth": "Asset-zentrisches Design mit präventiven Intervallen, Arbeitsauftrags-Lebenszyklusstatus und Wartungshistorienaufzeichnungen.",
+        "metrics": {
+          "unplannedDowntime": {
+            "label": "Ungeplante Ausfallzeit",
+            "value": "-40%"
+          },
+          "repairCost": {
+            "label": "Reparaturkosten",
+            "value": "reduziert"
+          },
+          "assetLifespan": {
+            "label": "Asset-Lebensdauer",
+            "value": "+20%+"
+          },
+          "scheduleAdherence": {
+            "label": "Planeinhaltung",
+            "value": "verbessert"
+          }
+        }
       },
       "hris": {
         "title": "Human Resource Information System (HRIS)",
         "description": "Skalierbares HRIS mit Mitarbeiterverwaltung, Gehaltsabrechnung und Leistungsverfolgungsfunktionen.",
-        "category": "Full Stack, Backend, Frontend"
+        "category": "Full Stack, Backend, Frontend",
+        "experience": "HRIS-Workflows für Mitarbeiterdatensätze, Anwesenheit, Gehaltsabrechnungseingaben und Leistungsbewertungsprozesse bereitgestellt.",
+        "signalToNoise": "Fokus auf Datengenauigkeit und wiederholbare HR-Operationen, minimale manuelle Konsolidierung und Abstimmungsarbeit.",
+        "architecturalDepth": "Domänengetriebene HR-Module mit berechtigten Datensätzen, gehaltsabrechnungsbereiten Datenflüssen und Compliance-Berichtsgenerierung.",
+        "metrics": {
+          "employeesSupported": {
+            "label": "Unterstützte Mitarbeiter",
+            "value": "300+"
+          },
+          "payrollProcessing": {
+            "label": "Gehaltsabrechnung",
+            "value": "-65%"
+          },
+          "dataErrors": {
+            "label": "Datenfehler",
+            "value": "-90%"
+          },
+          "complianceAccuracy": {
+            "label": "Compliance-Genauigkeit",
+            "value": "verbessert"
+          }
+        }
       }
+    },
+    "details": {
+      "experience": "Erfahrung",
+      "signalToNoise": "Signal-Rausch-Verhältnis",
+      "architecturalDepth": "Architekturtiefe",
+      "metrics": "Metriken"
     }
   },
   "milestones": {
